@@ -1,0 +1,42 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import MapConsent from "../components/MapConsent.astro";
+const title = "Kontakt | KRIEG PERFORMANCE – Online Marketingbüro";
+const description = "Termin vereinbaren oder Angebot anfordern. Adresse, Telefon, E‑Mail & Anfahrt (Google‑Maps).";
+---
+<BaseLayout title={title} description={description} path="/kontakt/">
+  <section class="section"><div class="container grid" style="--cols:2">
+    <div>
+      <h1 class="h1">Lernen wir Ihr Ziel kennen.</h1>
+      <p class="lead">Ich melde mich in der Regel innerhalb von 24 Stunden. Kostenloses Erstgespräch (30 Min.) möglich.</p>
+      <form class="form card" id="contact-form" novalidate>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required /></div>
+        <div class="field"><label for="email">E‑Mail</label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" value="0160 436 53 63" /></div>
+        <div class="field"><label for="site">Adresse/Website</label><input id="site" name="site" type="text" value="Kitzingstraße 7, 73529 Schwäbisch Gmünd" /></div>
+        <div class="field"><label for="message">Nachricht</label><textarea id="message" name="message" rows="6" required></textarea></div>
+        <button class="btn btn--primary" type="submit">Unverbindlich anfragen</button>
+        <p id="form-success" class="sr-only" role="status" aria-live="polite">Vielen Dank. Ihre Anfrage wurde gesendet.</p>
+        <p id="form-error" class="sr-only" role="alert" aria-live="assertive">Bitte Eingaben prüfen und erneut versuchen.</p>
+      </form>
+      <script type="module">
+        const form = document.getElementById('contact-form');
+        const success = document.getElementById('form-success');
+        const error = document.getElementById('form-error');
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          const msg = `Name: ${fd.get('name')}\nE-Mail: ${fd.get('email')}\nTelefon: ${fd.get('phone')}\nAdresse/Website: ${fd.get('site')}\nNachricht: ${fd.get('message')}`;
+          window.location.href = `mailto:hallo@kriegperformance.de?subject=Neue Anfrage%20(Website)&body=${encodeURIComponent(msg)}`;
+          success?.classList.remove('sr-only');
+          form.reset();
+        });
+      </script>
+    </div>
+    <div>
+      <h2 class="h2">Anfahrt</h2>
+      <MapConsent />
+      <p class="help">Adresse: Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+    </div>
+  </div></section>
+</BaseLayout>
