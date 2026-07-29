@@ -1,5 +1,5 @@
 ---
-export interface Props { title?: string; description?: string; path?: string; }
+export interface Props { title?: string; description?: string; path?: string }
 const { title, description, path = "/" } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
@@ -16,33 +16,23 @@ const canonical = new URL(path, Astro.site);
     <meta property="og:title" content={title ?? "Timo Krieg – Online Marketingbüro"} />
     <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={new URL('/images/og-default.jpg', Astro.site).href} />
+    <meta property="og:image" content="https://www.example.com/images/og-default.jpg" />
     <meta property="og:locale" content="de_DE" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="stylesheet" href="/src/styles/design-system.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/design-system.css" />
   </head>
   <body>
     <a class="sr-only" href="#main">Zum Inhalt springen</a>
-    <header class="section" style="padding-block:16px;">
-      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
-        <a href="/" aria-label="Startseite" style="display:flex;align-items:center;gap:10px;">
-          <strong>Timo Krieg</strong><span class="help">Online Marketingbüro</span>
-        </a>
-        <nav aria-label="Hauptnavigation">
-          <a href="/leistungen/">Leistungen</a> ·
-          <a href="/referenzen/">Referenzen</a> ·
-          <a href="/ueber-mich/">Über mich</a> ·
-          <a href="/kontakt/" class="btn">Kontakt</a>
-        </nav>
-      </div>
-    </header>
+    ---
+    import Header from "../components/Header.astro";
+    import Footer from "../components/Footer.astro";
+    ---
+    <Header />
     <main id="main">
       <slot />
     </main>
-    <footer class="section" style="border-top:1px solid var(--border-1);">
-      <div class="container">
-        <p>Kitzingstraße 7, 73529 Schwäbisch Gmünd · Tel. <a href="tel:+491604365363">0160 436 53 63</a></p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
