@@ -1,5 +1,5 @@
 {
-  "name": "timo-krieg-marketingbuero",
+  "name": "timo-krieg-online-marketing",
   "version": "1.0.0",
   "private": true,
   "type": "module",
@@ -9,9 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.10.0",
-    "gsap": "^3.12.5",
-    "swiper": "^11.1.4"
+    "astro": "^4.10.0"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
