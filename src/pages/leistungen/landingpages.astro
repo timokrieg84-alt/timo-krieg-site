@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Landingpage erstellen | Conversion‑starkes Webdesign";
+const description = "Kampagnen‑Landingpages, die konvertieren: UX, Copy, Speed & A/B‑Tests. Schnelle Umsetzung und messbare Ergebnisse.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/landingpages/">
+  <SchemaService name="Landingpages & Webdesign" url="/leistungen/landingpages/" />
+  <section class="section"><div class="container">
+    <h1 class="h1">Landingpages, die konvertieren – klar, schnell, überzeugend.</h1>
+    <p class="lead">Struktur nach Nutzerintention. Ladezeiten optimiert. Design, das verkauft.</p>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Pakete</h3><ul><li>Page‑Audit</li><li>Wireframes & Copy</li><li>Design & Build</li><li>Speed & SEO‑Basics</li></ul></div>
+      <div class="card"><h3>Prozess</h3><ol><li>Research</li><li>Entwurf</li><li>Umsetzung</li></ol></div>
+    </div>
+    <h3 class="h3" style="margin-top:24px;">FAQ</h3>
+    <details class="card"><summary>Arbeiten Sie mit unserem CMS?</summary><div>Ja, gängige Systeme oder Headless/No‑Code – je nach Ziel.</div></details>
+    <details class="card"><summary>Unterstützen Sie Mehrsprachigkeit?</summary><div>Ja, de/en – weitere Sprachen auf Anfrage.</div></details>
+    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">Landingpage anfragen – Konzept erhalten</a>
+  </div></section>
+</BaseLayout>
