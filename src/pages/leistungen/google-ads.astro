@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Google Ads Agentur Schwäbisch Gmünd | SEA‑Audit, Setup & Skalierung";
+const description = "Profitabel werben: Such‑, Display‑, Shopping‑ & PMax‑Kampagnen. Audit, Setup & laufende Optimierung inkl. Tracking & Reporting.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/google-ads/">
+  <SchemaService name="Google Ads Agentur" url="/leistungen/google-ads/" />
+  <section class="section"><div class="container">
+    <h1 class="h1">Google Ads mit Rendite – präzise, transparent, skalierbar.</h1>
+    <p class="lead">Ziel‑CPA/ROAS‑Steuerung, saubere Kontostruktur, transparente Reports.</p>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Pakete</h3><ul><li>Konto‑Audit</li><li>Setup: Suche, Shopping, PMax</li><li>Optimierung & Tests</li><li>B2B & E‑Com Spezial</li></ul></div>
+      <div class="card"><h3>Prozess</h3><ol><li>Ziele & Tracking</li><li>Aufbau</li><li>Optimierung</li></ol></div>
+    </div>
+    <h3 class="h3" style="margin-top:24px;">FAQ</h3>
+    <details class="card"><summary>Wie gross ist ein sinnvolles Startbudget?</summary><div>Abhängig von Branche/Region; ab ca. 1–2k€/Monat sinnvoll. Wir planen realistisch.</div></details>
+    <details class="card"><summary>Übernehmen Sie bestehende Konten?</summary><div>Ja, mit Migrationsplan und Quick Wins.</div></details>
+    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">Google Ads optimieren – Gespräch buchen</a>
+  </div></section>
+</BaseLayout>
