@@ -1,5 +1,11 @@
 ---
-export interface Props { title?: string; description?: string; path?: string; ogImage?: string; jsonLd?: any[]; }
+export interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  jsonLd?: any[];
+}
 const { title, description, path = "/", ogImage, jsonLd = [] } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
@@ -8,20 +14,19 @@ const canonical = new URL(path, Astro.site);
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title ?? "KRIEG PERFORMANCE – Online Marketingbüro"}</title>
+    <title>{title ?? "Timo Krieg – Online Marketingbüro"}</title>
     <meta name="description" content={description ?? "Online‑Marketing: SEO, Google Ads, Landingpages, CRO & Analytics – klar, messbar, senior."} />
     <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="KRIEG PERFORMANCE" />
-    <meta property="og:title" content={title ?? "KRIEG PERFORMANCE – Online Marketingbüro"} />
+    <meta property="og:site_name" content="Timo Krieg – Online Marketingbüro" />
+    <meta property="og:title" content={title ?? "Timo Krieg – Online Marketingbüro"} />
     <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={ogImage ?? "https://kriegperformance.de/images/og-default.jpg"} />
-    <meta property="og:locale" content="de_DE" />
+    <meta property="og:image" content={ogImage ?? "https://www.example.com/images/og-default.jpg"} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/src/styles/design-system.css" />
+    <link rel="stylesheet" href="/public/styles/design-system.css" />
     {jsonLd?.map((obj) => <script type="application/ld+json">{JSON.stringify(obj)}</script>)}
   </head>
   <body>
@@ -33,7 +38,5 @@ const canonical = new URL(path, Astro.site);
     </main>
     <import Footer from "../components/Footer.astro" />
     <Footer />
-    <script type="module" src="/src/scripts/init-gsap.ts"></script>
-    <script type="module" src="/src/scripts/init-swiper.ts"></script>
   </body>
 </html>
