@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "SEO Agentur Schwäbisch Gmünd | Beratung, Audit & Betreuung";
+const description = "Technisches SEO, Content, Local SEO & Audits. Planbare Roadmaps und Betreuung für KMU in BW & DACH.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/seo/">
+  <SchemaService name="SEO Agentur" url="/leistungen/seo/" />
+  <section class="section"><div class="container">
+    <h1 class="h1">SEO, das Geschäft bewegt – lokal & national.</h1>
+    <p class="lead">Sichtbarkeit für Suchanfragen mit Kaufabsicht. Technisch sauber, inhaltlich stark.</p>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Pakete</h3><ul><li>SEO Audit</li><li>Onpage & Technik</li><li>Content & Local SEO</li><li>Monitoring</li></ul></div>
+      <div class="card"><h3>Prozess</h3><ol><li>Diagnose</li><li>Priorisieren</li><li>Umsetzen & messen</li></ol></div>
+    </div>
+    <h3 class="h3" style="margin-top:24px;">FAQ</h3>
+    <details class="card"><summary>Wie schnell wirkt SEO?</summary><div>Erste Effekte oft in 8–12 Wochen, nachhaltig in 3–6 Monaten.</div></details>
+    <details class="card"><summary>Brauche ich Content?</summary><div>Ja – Qualität und Relevanz sind zentral.</div></details>
+    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">SEO‑Audit anfragen</a>
+  </div></section>
+</BaseLayout>
