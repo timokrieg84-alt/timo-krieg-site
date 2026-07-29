@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const title = "Case Studies | Online‑Marketing Erfolge";
+const description = "Echte Projekte, echte KPIs: Google Ads, SEO, CRO & Analytics.";
+---
+<BaseLayout title={title} description={description} path="/referenzen/">
+  <section class="section"><div class="container">
+    <h1 class="h1">Case Studies</h1>
+    <article class="card case">
+      <div class="case__meta"><span class="tag">E‑Commerce</span><span class="tag">Google Ads</span></div>
+      <h2 class="case__title">+178% Umsatz in Q3</h2>
+      <p class="lead">Account‑Restrukturierung, neues Bidding, Landingpage‑Tests.</p>
+      <div class="case__kpis">
+        <div class="kpi"><div class="kpi__value">+178%</div><div class="kpi__label">Umsatz</div></div>
+        <div class="kpi"><div class="kpi__value">-41%</div><div class="kpi__label">CPA</div></div>
+        <div class="kpi"><div class="kpi__value">+3.2x</div><div class="kpi__label">ROAS</div></div>
+      </div>
+    </article>
+  </div></section>
+</BaseLayout>
