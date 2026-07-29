@@ -1,0 +1,16 @@
+---
+export interface Props { name: string }
+const { name } = Astro.props;
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "serviceType": name,
+  "provider": {
+    "@type": "CleaningService",
+    "name": "Novo Reinigungen AG",
+    "areaServed": "Zürich & Umgebung",
+    "telephone": "+41 44 491 91 91"
+  }
+};
+---
+<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
