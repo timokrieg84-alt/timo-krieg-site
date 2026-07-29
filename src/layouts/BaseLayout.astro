@@ -1,0 +1,48 @@
+---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SEO from "../components/SEO.astro";
+import "../styles/base.css";
+export interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  jsonLd?: any;
+  children: any;
+}
+const { title, description, path = "/", ogImage, jsonLd } = Astro.props;
+const canonical = new URL(path, Astro.site);
+---
+<html lang="de-CH">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title ? title : "Novo Reinigungen AG – Reinigungsfirma Zürich"}</title>
+    <meta name="description" content={description ?? "Professionelle Reinigungen für Büro, Praxis & Wohnung in Zürich. Allpura-Mitglied, faire Preise. Offerte: +41 44 491 91 91."} />
+    <link rel="canonical" href={canonical.href} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Novo Reinigungen AG" />
+    <meta property="og:title" content={title ?? "Novo Reinigungen AG – Reinigungsfirma Zürich"} />
+    <meta property="og:description" content={description ?? "Professionelle Reinigungen in Zürich & Umgebung."} />
+    <meta property="og:url" content={canonical.href} />
+    <meta property="og:image" content={ogImage ?? "/images/og-default.svg"} />
+    <meta property="og:locale" content="de_CH" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title ?? "Novo Reinigungen AG – Reinigungsfirma Zürich"} />
+    <meta name="twitter:description" content={description ?? "Professionelle Reinigungen in Zürich & Umgebung."} />
+    <meta name="twitter:image" content={ogImage ?? "/images/og-default.svg"} />
+    <link rel="preload" as="image" href="/images/hero.svg" />
+    <slot name="head" />
+    <SEO jsonLd={jsonLd} />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script type="module">import "/src/scripts/gsap-setup.ts";</script>
+  </body>
+</html>
