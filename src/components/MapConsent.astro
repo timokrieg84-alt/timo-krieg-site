@@ -1,0 +1,24 @@
+---
+const mapSrc = "https://www.google.com/maps?q=Kitzingstra%C3%9Fe%207%2C%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed";
+---
+<div class="card" style="display:grid;gap:16px;">
+  <div id="map-placeholder" class="map-embed" style="display:grid;place-items:center;background:var(--surface-2);">
+    <div class="container" style="text-align:center;">
+      <p class="lead">Karte anzeigen</p>
+      <p class="help">Durch Klick laden Sie Inhalte von Google Maps. Es gelten die Datenschutzbestimmungen von Google.</p>
+      <button class="btn btn--primary" id="map-load">Karte laden</button>
+    </div>
+  </div>
+</div>
+<script>
+  const btn = document.getElementById('map-load');
+  btn?.addEventListener('click', () => {
+    const wrap = document.getElementById('map-placeholder');
+    if (!wrap) return;
+    const iframe = document.createElement('iframe');
+    iframe.src = "{mapSrc}";
+    iframe.width = "100%"; iframe.height = "100%";
+    iframe.style.border = "0"; iframe.loading = "lazy"; iframe.referrerPolicy = "no-referrer-when-downgrade"; iframe.title = "Google Maps";
+    wrap.replaceChildren(iframe);
+  });
+</script>
