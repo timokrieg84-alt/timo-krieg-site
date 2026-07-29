@@ -2,6 +2,8 @@
 export interface Props { title?: string; description?: string; path?: string }
 const { title, description, path = "/" } = Astro.props;
 const canonical = new URL(path, Astro.site);
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 ---
 <!doctype html>
 <html lang="de-DE">
@@ -9,14 +11,13 @@ const canonical = new URL(path, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ?? "Timo Krieg – Online Marketingbüro"}</title>
-    <meta name="description" content={description ?? "SEO, Google Ads, Landingpages, CRO & Analytics. Senior‑Know‑how, klare KPIs, schnelle Umsetzung."} />
+    <meta name="description" content={description ?? "SEO, Google Ads, Landingpages, CRO & Analytics."} />
     <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Timo Krieg – Online Marketingbüro" />
     <meta property="og:title" content={title ?? "Timo Krieg – Online Marketingbüro"} />
     <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content="https://www.example.com/images/og-default.jpg" />
     <meta property="og:locale" content="de_DE" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +26,6 @@ const canonical = new URL(path, Astro.site);
   </head>
   <body>
     <a class="sr-only" href="#main">Zum Inhalt springen</a>
-    ---
-    import Header from "../components/Header.astro";
-    import Footer from "../components/Footer.astro";
-    ---
     <Header />
     <main id="main">
       <slot />
