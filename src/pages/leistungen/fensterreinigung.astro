@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Fensterreinigung Zürich | Streifenfrei & sicher";
+const description = "Fenster, Glasflächen & Storen professionell reinigen lassen. Für Firmen & Privat. Schnelle Termine in Zürich.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/fensterreinigung/" ogImage="/images/og-default.svg" jsonLd={{}}>
+  <SchemaService name="Fensterreinigung" slot="head" />
+  <section class="section container">
+    <h1>Fensterreinigung Zürich – glasklar, streifenfrei</h1>
+    <p class="lead">Professionelle Reinigung von Fenstern, Rahmen, Lamellen, Glasdächern. Sicheres Arbeiten, auch in der Höhe – mit geeignetem Equipment.</p>
+
+    <h2>Ihre Vorteile</h2>
+    <ul>
+      <li>Schlierenfreie Resultate, schnelle Trocknung, minimale Störung.</li>
+      <li>Wintergärten und Glasfassaden inklusive – je nach Zugänglichkeit.</li>
+      <li>Flexible Intervalle nach Lage und Witterung.</li>
+    </ul>
+
+    <h2>So läuft es ab – in 3 Schritten</h2>
+    <ol>
+      <li><strong>Objektcheck:</strong> Glasarten, Zugänglichkeit, Sicherheitskonzept.</li>
+      <li><strong>Ausführung:</strong> Reinstwasser- oder klassisches Verfahren, je nach Material.</li>
+      <li><strong>Kontrolle:</strong> Abschlusscheck, saubere Übergabe.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <details><summary>Reinigen Sie auch Wintergärten und Glasfassaden?</summary><p>Ja, inklusive schwer zugänglicher Flächen.</p></details>
+    <details><summary>Welche Intervalle empfehlen Sie?</summary><p>Je nach Lage und Witterung – oft halbjährlich oder quartalsweise.</p></details>
+    <details><summary>Arbeiten Sie bei jedem Wetter?</summary><p>Bei Sicherheitsrisiken verschieben wir in Absprache den Termin.</p></details>
+    <details><summary>Hinterlassen Sie Tropfspuren?</summary><p>Nein, Kanten und Rahmen werden sauber nachgewischt.</p></details>
+
+    <p><a class="btn" href="/kontakt/">Angebot für Fensterreinigung anfragen</a></p>
+  </section>
+</BaseLayout>
