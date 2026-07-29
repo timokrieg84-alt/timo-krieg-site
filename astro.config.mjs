@@ -1,7 +1,6 @@
 import { defineConfig } from "astro/config";
+
 export default defineConfig({
-  site: "https://novoreinigungen.ch",
+  site: "https://kriegperformance.de", // anpassbar
   trailingSlash: "always",
-  integrations: [],
-  server: { port: 4321 }
 });
