@@ -1,0 +1,30 @@
+---
+const testimonials = [
+  { quote: "Pünktlich, leise, tadellos – genau so muss Büroreinigung in Zürich sein.", name: "R. Meier", place: "Zürich" },
+  { quote: "Unsere Praxis ist seit Novo sichtbar hygienischer. Die Abläufe greifen.", name: "Dr. A. Keller", place: "Zürich" },
+  { quote: "Umzugsreinigung mit Abgabegarantie: Schlüsselübergabe ohne Diskussion – top.", name: "M. Steiner", place: "Wallisellen" }
+];
+---
+<section class="section testimonials container">
+  <h2>Kundinnen & Kunden über uns</h2>
+  <div class="swiper swiper--testimonials">
+    <div class="swiper-wrapper">
+      {testimonials.map((t) => (
+        <div class="swiper-slide">
+          <figure class="testimonial">
+            <div class="stars" aria-hidden="true">★★★★★</div>
+            <blockquote>{t.quote}</blockquote>
+            <figcaption class="meta">
+              <span class="avatar" aria-hidden="true"></span>
+              <div><strong>{t.name}</strong><div class="muted">{t.place}</div></div>
+            </figcaption>
+          </figure>
+        </div>
+      ))}
+    </div>
+    <div class="swiper-pagination" aria-label="Testimonials Pagination"></div>
+    <button class="swiper-button-prev" aria-label="Vorheriges Testimonial"></button>
+    <button class="swiper-button-next" aria-label="Nächstes Testimonial"></button>
+  </div>
+  <script type="module" src="/src/scripts/slider.ts"></script>
+</section>
