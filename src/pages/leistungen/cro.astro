@@ -1,21 +1,19 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import SchemaService from "../../components/SchemaService.astro";
-const title = "Conversion Optimierung (CRO) | Tests, UX & Uplift";
+const title = "Conversion‑Optimierung (CRO) | Tests, UX & Uplift";
 const description = "Mehr Abschlüsse ohne mehr Media‑Spend: Funnel‑Analyse, A/B‑Tests, UX‑Research & Quick Wins.";
 ---
 <BaseLayout title={title} description={description} path="/leistungen/cro/">
-  <SchemaService name="Conversion Optimierung (CRO)" url="/leistungen/cro/" />
   <section class="section"><div class="container">
     <h1 class="h1">Mehr Abschlüsse ohne mehr Traffic.</h1>
     <p class="lead">Hypothesengetriebene Tests mit klaren KPIs. Datenanalyse und UX‑Research kombiniert.</p>
-    <div class="grid" style="--cols:2">
-      <div class="card"><h3>Pakete</h3><ul><li>CRO Audit</li><li>Experiment‑Setup</li><li>Research</li><li>Umsetzung & Auswertung</li></ul></div>
+    <div class="grid" style="grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+      <div class="card"><h3>Pakete</h3><ul><li>CRO Audit</li><li>Experiment‑Setup</li><li>Research</li><li>Umsetzung</li></ul></div>
       <div class="card"><h3>Prozess</h3><ol><li>Diagnose</li><li>Roadmap</li><li>Test & Learn</li></ol></div>
     </div>
     <h3 class="h3" style="margin-top:24px;">FAQ</h3>
     <details class="card"><summary>Ab wann lohnt sich CRO?</summary><div>Ab ca. [bitte ergänzen] monatlichen Sessions sinnvoll.</div></details>
-    <details class="card"><summary>Brauchen wir Entwickler?</summary><div>Je nach Setup. No‑Code oder dev‑gestützt.</div></details>
-    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">CRO starten – Backlog & Testkonzept</a>
+    <details class="card"><summary>Wie lange dauert ein Test?</summary><div>2–4 Wochen – abhängig von Traffic/Konversionsrate.</div></details>
+    <a class="btn btn--outline" href="/kontakt/" style="margin-top:16px;">CRO starten – Erstes Testkonzept erhalten</a>
   </div></section>
 </BaseLayout>
