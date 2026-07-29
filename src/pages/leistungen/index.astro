@@ -1,20 +1,20 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "Online‑Marketing Leistungen | Ads, SEO, Webdesign, CRO, Analytics";
-const description = "Alle Services aus einer Hand: Google Ads/SEA, SEO, Social Ads, Landingpages, CRO, GA4/GTM.";
+const title = "Leistungen | Online‑Marketing in BW & DACH";
+const description = "Alle Services: SEO, Google Ads/SEA, Webdesign/Landingpages, Social Ads, CRO, Analytics/Tracking.";
 ---
 <BaseLayout title={title} description={description} path="/leistungen/">
   <section class="section">
     <div class="container">
       <h1 class="h1">Leistungen</h1>
       <p class="lead">Senior‑Know‑how, fokussierte Umsetzung, klare KPIs.</p>
-      <div class="grid" style="--cols: 1">
-        <article class="card service-card"><h3>SEO</h3><p>Sichtbarkeit lokal & national. Technisch sauber, inhaltlich stark.</p><a class="btn btn--ghost" href="/leistungen/seo/">Details</a></article>
-        <article class="card service-card"><h3>Google Ads (SEA)</h3><p>Such‑, Shopping‑, PMax‑Kampagnen mit klarer Rendite.</p><a class="btn btn--ghost" href="/leistungen/google-ads/">Details</a></article>
-        <article class="card service-card"><h3>Webdesign/Landingpages</h3><p>Seiten, die konvertieren. Schnell, klar, mobile‑first.</p><a class="btn btn--ghost" href="/leistungen/landingpages/">Details</a></article>
-        <article class="card service-card"><h3>Social Ads</h3><p>Meta, LinkedIn, TikTok – datengetrieben & kreativ.</p><a class="btn btn--ghost" href="/leistungen/social-ads/">Details</a></article>
-        <article class="card service-card"><h3>Conversion‑Optimierung (CRO)</h3><p>Mehr Abschlüsse ohne mehr Traffic. Testbasiert.</p><a class="btn btn--ghost" href="/leistungen/cro/">Details</a></article>
-        <article class="card service-card"><h3>Analytics/Tracking</h3><p>GA4 & GTM – verlässliche Daten & Dashboards.</p><a class="btn btn--ghost" href="/leistungen/analytics-tracking/">Details</a></article>
+      <div class="grid" style="grid-template-columns:repeat(1,minmax(0,1fr));gap:24px">
+        <article class="card service-card"><h3>SEO</h3><p>Sichtbarkeit lokal & national.</p><ul><li>Audit</li><li>Onpage</li><li>Content & Local</li></ul><a class="btn btn--outline" href="/leistungen/seo/">Details</a></article>
+        <article class="card service-card"><h3>Google Ads (SEA)</h3><p>Such‑, Shopping‑, PMax.</p><ul><li>Audit</li><li>Setup</li><li>Skalierung</li></ul><a class="btn btn--outline" href="/leistungen/google-ads/">Details</a></article>
+        <article class="card service-card"><h3>Webdesign/Landingpages</h3><p>Konversionsstark & schnell.</p><ul><li>Wireframes & Copy</li><li>Build</li><li>Tests</li></ul><a class="btn btn--outline" href="/leistungen/landingpages/">Details</a></article>
+        <article class="card service-card"><h3>Social Ads</h3><p>Meta, LinkedIn, TikTok.</p><ul><li>Funnel</li><li>Setup</li><li>Creative‑Testing</li></ul><a class="btn btn--outline" href="/leistungen/social-ads/">Details</a></article>
+        <article class="card service-card"><h3>CRO</h3><p>Mehr Abschlüsse, testbasiert.</p><ul><li>Audit</li><li>A/B‑Tests</li><li>Research</li></ul><a class="btn btn--outline" href="/leistungen/cro/">Details</a></article>
+        <article class="card service-card"><h3>Analytics/Tracking</h3><p>GA4 & GTM – verlässliche Daten.</p><ul><li>Audit</li><li>Implementierung</li><li>Reporting</li></ul><a class="btn btn--outline" href="/leistungen/analytics-tracking/">Details</a></article>
       </div>
     </div>
   </section>
