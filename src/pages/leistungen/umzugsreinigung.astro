@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Umzugsreinigung Zürich mit Abgabegarantie | Novo";
+const description = "Stressfrei umziehen: Endreinigung mit Abgabe-/Abnahmegarantie in Zürich. Wir begleiten die Übergabe – Fixpreis-Offerte anfordern.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/umzugsreinigung/" ogImage="/images/og-default.svg" jsonLd={{}}>
+  <SchemaService name="Umzugsreinigung mit Abgabegarantie" slot="head" />
+  <section class="section container">
+    <h1>Umzugsreinigung Zürich – mit Abgabegarantie</h1>
+    <p class="lead">Endreinigung inklusive Abgabegarantie bei der Wohnungsübergabe. Auf Wunsch sind wir an der Abnahme vor Ort – für eine reibungslose Schlüsselübergabe.</p>
+
+    <h2>Ihre Vorteile</h2>
+    <ul>
+      <li>Klare Leistungslisten, faire Preise, keine Überraschungen.</li>
+      <li>Fenster und Geräte standardmässig inklusive (Spezialfälle nach Absprache).</li>
+      <li>Abgabe mit Protokoll, Nachreinigung bei Bedarf abgedeckt.</li>
+    </ul>
+
+    <h2>So läuft es ab – in 3 Schritten</h2>
+    <ol>
+      <li><strong>Besichtigung:</strong> Objekt, Vorgaben der Verwaltung, Terminierung.</li>
+      <li><strong>Endreinigung:</strong> Küche, Sanitär, Böden, Fenster, Details gemäss Liste.</li>
+      <li><strong>Abgabe:</strong> Übergabe mit Protokoll, Garantie inklusive.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <details><summary>Was umfasst die Abgabegarantie?</summary><p>Wir sichern die Abnahme durch Verwaltung/Vermieterschaft. Allfällige Nachreinigungen sind für Sie abgedeckt.</p></details>
+    <details><summary>Sind Fenster und Geräte enthalten?</summary><p>Ja, standardmässig inklusive. Spezielle Elemente nach Absprache.</p></details>
+    <details><summary>Muss ich anwesend sein?</summary><p>Nicht zwingend. Mit Vollmacht übernehmen wir die Abgabe.</p></details>
+    <details><summary>Wie kalkulieren Sie den Preis?</summary><p>Nach Zimmerzahl, Zustand und Aufwand – transparent im Angebot.</p></details>
+
+    <p><a class="btn" href="/kontakt/">Umzugsreinigung mit Garantie buchen</a></p>
+  </section>
+</BaseLayout>
