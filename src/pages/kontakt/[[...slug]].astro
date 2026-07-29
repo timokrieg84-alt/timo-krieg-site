@@ -1,0 +1,41 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+---
+<BaseLayout title="Kontakt | Timo Krieg – Online Marketingbüro" description="Termin vereinbaren oder Angebot anfordern. Adresse, Telefon, E‑Mail & Anfahrt (Google‑Maps)." path="/kontakt/">
+  <section class="section"><div class="container grid" style="--cols:2">
+    <div>
+      <h1 class="h1">Lernen wir Ihr Ziel kennen.</h1>
+      <p class="lead">Ich melde mich in der Regel innerhalb von 24 Stunden. Kostenloses Erstgespräch (30 Min.) möglich.</p>
+      <form class="form card" id="contact-form" novalidate>
+        <div class="field"><label for="name">Name</label><input id="name" name="name" required /></div>
+        <div class="field"><label for="email">E‑Mail</label><input id="email" name="email" type="email" required /></div>
+        <div class="field"><label for="phone">Telefon</label><input id="phone" name="phone" type="tel" value="+49 160 4365363" /></div>
+        <div class="field"><label for="site">Website/Ort</label><input id="site" name="site" type="text" value="Kitzingstraße 7, 73529 Schwäbisch Gmünd" /></div>
+        <div class="field"><label for="message">Nachricht</label><textarea id="message" name="message" rows="6" required></textarea></div>
+        <button class="btn btn--primary" type="submit">Unverbindlich anfragen</button>
+        <p id="form-success" class="sr-only" role="status" aria-live="polite">Vielen Dank. Ihre Anfrage wurde gesendet.</p>
+        <p id="form-error" class="sr-only" role="alert" aria-live="assertive">Bitte Eingaben prüfen und erneut versuchen.</p>
+      </form>
+      <script type="module">
+        const form = document.getElementById('contact-form');
+        const success = document.getElementById('form-success');
+        const error = document.getElementById('form-error');
+        form?.addEventListener('submit', async (e) => {
+          e.preventDefault();
+          const fd = new FormData(form);
+          const msg = `Name: ${fd.get('name')}\nE-Mail: ${fd.get('email')}\nTelefon: ${fd.get('phone')}\nWebsite/Ort: ${fd.get('site')}\nNachricht: ${fd.get('message')}`;
+          window.location.href = `mailto:info@deinedomain.de?subject=Neue Anfrage%20(Website)&body=${encodeURIComponent(msg)}`;
+          success?.classList.remove('sr-only');
+          form.reset();
+        });
+      </script>
+    </div>
+    <div>
+      <h2 class="h2">Anfahrt</h2>
+      <div class="card map-embed" role="img" aria-label="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd">
+        <iframe src="https://www.google.com/maps?q=Kitzingstra%C3%9Fe%207%2C%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Maps" width="100%" height="100%" style="border:0"></iframe>
+      </div>
+      <p class="help">Adresse: Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+    </div>
+  </div></section>
+</BaseLayout>
