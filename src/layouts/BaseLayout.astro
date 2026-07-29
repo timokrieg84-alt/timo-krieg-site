@@ -1,4 +1,6 @@
 ---
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 export interface Props {
   title?: string;
   description?: string;
@@ -22,7 +24,7 @@ const canonical = new URL(path, Astro.site);
     <meta property="og:title" content={title ?? "Timo Krieg – Online Marketingbüro"} />
     <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={ogImage ?? "https://www.example.com/images/og-default.jpg"} />
+    <meta property="og:image" content={ogImage ?? "/images/og-default.jpg"} />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -31,12 +33,11 @@ const canonical = new URL(path, Astro.site);
   </head>
   <body>
     <a class="sr-only" href="#main">Zum Inhalt springen</a>
-    <import Header from "../components/Header.astro" />
     <Header />
     <main id="main">
       <slot />
     </main>
-    <import Footer from "../components/Footer.astro" />
     <Footer />
+    <script src="/scripts/reveal.js" defer></script>
   </body>
 </html>
