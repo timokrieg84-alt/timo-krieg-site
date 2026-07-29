@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
 export default defineConfig({
-  site: "https://www.example.com", // TODO: Domain einsetzen
+  site: "https://www.example.com",
   trailingSlash: "always"
 });
