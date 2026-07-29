@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Wohnungsreinigung Zürich | Gründlich & transparent";
+const description = "Einmalige oder wiederkehrende Wohnungsreinigung in Zürich. Fixpreise nach Besichtigung. Jetzt Angebot sichern.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/wohnungsreinigung/" ogImage="/images/og-default.svg" jsonLd={{}}>
+  <SchemaService name="Wohnungsreinigung" slot="head" />
+  <section class="section container">
+    <h1>Wohnungsreinigung Zürich – gepflegt, schonend, verlässlich</h1>
+    <p class="lead">Gründliche Reinigung bewohnter Objekte und Zwischenreinigungen. Materialgerecht, pünktlich, respektvoll im Umgang mit Privaträumen.</p>
+
+    <h2>Ihre Vorteile</h2>
+    <ul>
+      <li>Professionelle Geräte und Mittel inklusive.</li>
+      <li>Zusatzleistungen flexibel zubuchbar (Backofen, Kühlschrank, Fenster, Lamellen).</li>
+      <li>Fixtermine mit klaren Zeitfenstern.</li>
+    </ul>
+
+    <h2>So läuft es ab – in 3 Schritten</h2>
+    <ol>
+      <li><strong>Besichtigung:</strong> Räume, Materialien, Prioritäten.</li>
+      <li><strong>Angebot:</strong> Klare Leistungen, fixer Termin.</li>
+      <li><strong>Durchführung:</strong> Sorgfältige Reinigung, Abschlusskontrolle.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <details><summary>Bringen Sie Material mit?</summary><p>Ja, professionelle Geräte und Mittel sind inklusive.</p></details>
+    <details><summary>Sind Zusatzleistungen möglich?</summary><p>Ja, z. B. Backofen, Kühlschrank, Fenster, Rollläden/Lamellen.</p></details>
+    <details><summary>Wie lange dauert ein Einsatz?</summary><p>Abhängig von Grösse und Zustand. Wir nennen die geschätzte Dauer vorab.</p></details>
+    <details><summary>Kann ich einen Fixtermin buchen?</summary><p>Ja, wir bestätigen verbindliche Zeitfenster.</p></details>
+
+    <p><a class="btn" href="/kontakt/">Offerte für Wohnungsreinigung erhalten</a></p>
+  </section>
+</BaseLayout>
