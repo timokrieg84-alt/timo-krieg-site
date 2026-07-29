@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "GA4 & GTM | Tracking‑Setup, Server‑Side & Dashboards";
+const description = "Saubere Daten für bessere Entscheidungen: GA4‑Setups, Tag‑Management, Consent, E‑Com‑Events & Looker‑Dashboards.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/analytics-tracking/">
+  <SchemaService name="Analytics & Tracking (GA4/GTM)" url="/leistungen/analytics-tracking/" />
+  <section class="section"><div class="container">
+    <h1 class="h1">Zuverlässige Daten mit GA4 und Tag Manager.</h1>
+    <p class="lead">Präzise Messung entlang des Funnels. DSG‑konforme Implementierung. Dashboards, die Entscheidungen erleichtern.</p>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Pakete</h3><ul><li>Tracking Audit</li><li>Implementierung</li><li>Consent & Datenschutz</li><li>Dashboards & Schulung</li></ul></div>
+      <div class="card"><h3>Prozess</h3><ol><li>Scope & KPIs</li><li>Setup & QA</li><li>Enablement</li></ol></div>
+    </div>
+    <h3 class="h3" style="margin-top:24px;">FAQ</h3>
+    <details class="card"><summary>Müssen wir auf GA4 umstellen?</summary><div>Ja, Universal wurde abgelöst. Wir migrieren sauber.</div></details>
+    <details class="card"><summary>Server‑Side Tagging sinnvoll?</summary><div>Bei höherem Volumen und Datengenauigkeit – wir beraten.</div></details>
+    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">Tracking klären – Audit & Messplan</a>
+  </div></section>
+</BaseLayout>
