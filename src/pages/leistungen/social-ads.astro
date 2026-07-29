@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Social Ads Agentur | Meta, LinkedIn & TikTok";
+const description = "Bessere Creatives, klarere Zielgruppen, mehr Leads. Social Ads für B2B/B2C – Testing, Retargeting & Attribution.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/social-ads/">
+  <SchemaService name="Social Ads Agentur" url="/leistungen/social-ads/" />
+  <section class="section"><div class="container">
+    <h1 class="h1">Social Ads, die Nachfrage schaffen – Meta, LinkedIn, TikTok.</h1>
+    <p class="lead">Zielgruppen präzise, Botschaften klar, Creatives getestet. Voller Funnel.</p>
+    <div class="grid" style="--cols:2">
+      <div class="card"><h3>Pakete</h3><ul><li>Strategie & Funnel</li><li>Setup & Pixel/Conversions‑API</li><li>Creative‑Testing</li><li>Lead‑Gen & Retargeting</li></ul></div>
+      <div class="card"><h3>Prozess</h3><ol><li>Research</li><li>Setup</li><li>Scale</li></ol></div>
+    </div>
+    <h3 class="h3" style="margin-top:24px;">FAQ</h3>
+    <details class="card"><summary>Was, wenn wir keine Creatives haben?</summary><div>Wir liefern Test‑Hypothesen und Briefings. Produktion intern oder via Partner.</div></details>
+    <details class="card"><summary>Funktionieren Social Ads im B2B?</summary><div>Ja – mit klarem Offer (Whitepaper, Demo, Termin) und sauberer Qualifizierung.</div></details>
+    <a class="btn btn--primary" href="/kontakt/" style="margin-top:16px;">Social Ads testen – Erstgespräch sichern</a>
+  </div></section>
+</BaseLayout>
