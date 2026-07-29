@@ -1,5 +1,3 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /api/
-Sitemap: https://novoreinigungen.ch/sitemap.xml
+Sitemap: https://kriegperformance.de/sitemap.xml
