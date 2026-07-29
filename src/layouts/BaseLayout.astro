@@ -1,5 +1,5 @@
 ---
-export interface Props { title?: string; description?: string; path?: string }
+export interface Props { title?: string; description?: string; path?: string; }
 const { title, description, path = "/" } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
@@ -9,23 +9,40 @@ const canonical = new URL(path, Astro.site);
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title ?? "Timo Krieg – Online Marketingbüro"}</title>
-    <meta name="description" content={description ?? "SEO, Google Ads, Landingpages, CRO & Analytics – klar, messbar, senior."} />
+    <meta name="description" content={description ?? "SEO, Google Ads, Landingpages, CRO & Analytics. Senior‑Know‑how, klare KPIs, schnelle Umsetzung."} />
     <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Timo Krieg – Online Marketingbüro" />
     <meta property="og:title" content={title ?? "Timo Krieg – Online Marketingbüro"} />
     <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content="https://www.example.com/images/og-default.jpg" />
+    <meta property="og:image" content={new URL('/images/og-default.jpg', Astro.site).href} />
     <meta property="og:locale" content="de_DE" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="stylesheet" href="/src/styles/design-system.css" />
   </head>
   <body>
     <a class="sr-only" href="#main">Zum Inhalt springen</a>
+    <header class="section" style="padding-block:16px;">
+      <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;">
+        <a href="/" aria-label="Startseite" style="display:flex;align-items:center;gap:10px;">
+          <strong>Timo Krieg</strong><span class="help">Online Marketingbüro</span>
+        </a>
+        <nav aria-label="Hauptnavigation">
+          <a href="/leistungen/">Leistungen</a> ·
+          <a href="/referenzen/">Referenzen</a> ·
+          <a href="/ueber-mich/">Über mich</a> ·
+          <a href="/kontakt/" class="btn">Kontakt</a>
+        </nav>
+      </div>
+    </header>
     <main id="main">
       <slot />
     </main>
+    <footer class="section" style="border-top:1px solid var(--border-1);">
+      <div class="container">
+        <p>Kitzingstraße 7, 73529 Schwäbisch Gmünd · Tel. <a href="tel:+491604365363">0160 436 53 63</a></p>
+      </div>
+    </footer>
   </body>
 </html>
