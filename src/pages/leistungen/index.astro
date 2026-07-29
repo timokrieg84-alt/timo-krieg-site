@@ -1,20 +1,21 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
-const title = "Reinigungsservices in Zürich | Büro, Wohnung, Fenster";
-const description = "Alle Dienstleistungen auf einen Blick – Unterhalts‑, Umzugs‑ & Fensterreinigung. Region Zürich & Umgebung. Unverbindliche Beratung anfragen.";
+const title = "Online‑Marketing Leistungen | Ads, SEO, Webdesign, CRO, Analytics";
+const description = "Alle Services aus einer Hand: Google Ads/SEA, SEO, Social Ads, Landingpages, CRO, GA4/GTM.";
 ---
 <BaseLayout title={title} description={description} path="/leistungen/">
-  <section class="section container">
-    <h1>Leistungen</h1>
-    <p class="lead">Unterhaltsreinigung für Unternehmen und Privathaushalte – klar strukturiert, zuverlässig umgesetzt.</p>
-  </section>
-  <section class="section container">
-    <div class="service-grid">
-      <article class="card-service"><div class="icon">🏢</div><h3>Büroreinigung</h3><p>Planbare Einsätze, feste Ansprechperson.</p><a class="link" href="/leistungen/bueroreinigung/">Zur Detailseite →</a></article>
-      <article class="card-service"><div class="icon">🏥</div><h3>Praxisreinigung</h3><p>Hygiene nach klaren Standards.</p><a class="link" href="/leistungen/praxisreinigung/">Zur Detailseite →</a></article>
-      <article class="card-service"><div class="icon">🏠</div><h3>Wohnungsreinigung</h3><p>Gründlich und schonend.</p><a class="link" href="/leistungen/wohnungsreinigung/">Zur Detailseite →</a></article>
-      <article class="card-service"><div class="icon">🚚</div><h3>Umzugsreinigung</h3><p>Mit Abgabegarantie.</p><a class="link" href="/leistungen/umzugsreinigung/">Zur Detailseite →</a></article>
-      <article class="card-service"><div class="icon">🪟</div><h3>Fensterreinigung</h3><p>Streifenfrei und sicher.</p><a class="link" href="/leistungen/fensterreinigung/">Zur Detailseite →</a></article>
+  <section class="section">
+    <div class="container">
+      <h1 class="h1">Leistungen</h1>
+      <p class="lead">Senior‑Know‑how, fokussierte Umsetzung, klare KPIs.</p>
+      <div class="grid" style="--cols: 1">
+        <article class="card service-card"><h3>SEO</h3><p>Sichtbarkeit lokal & national. Technisch sauber, inhaltlich stark.</p><a class="btn btn--ghost" href="/leistungen/seo/">Details</a></article>
+        <article class="card service-card"><h3>Google Ads (SEA)</h3><p>Such‑, Shopping‑, PMax‑Kampagnen mit klarer Rendite.</p><a class="btn btn--ghost" href="/leistungen/google-ads/">Details</a></article>
+        <article class="card service-card"><h3>Webdesign/Landingpages</h3><p>Seiten, die konvertieren. Schnell, klar, mobile‑first.</p><a class="btn btn--ghost" href="/leistungen/landingpages/">Details</a></article>
+        <article class="card service-card"><h3>Social Ads</h3><p>Meta, LinkedIn, TikTok – datengetrieben & kreativ.</p><a class="btn btn--ghost" href="/leistungen/social-ads/">Details</a></article>
+        <article class="card service-card"><h3>Conversion‑Optimierung (CRO)</h3><p>Mehr Abschlüsse ohne mehr Traffic. Testbasiert.</p><a class="btn btn--ghost" href="/leistungen/cro/">Details</a></article>
+        <article class="card service-card"><h3>Analytics/Tracking</h3><p>GA4 & GTM – verlässliche Daten & Dashboards.</p><a class="btn btn--ghost" href="/leistungen/analytics-tracking/">Details</a></article>
+      </div>
     </div>
   </section>
 </BaseLayout>
