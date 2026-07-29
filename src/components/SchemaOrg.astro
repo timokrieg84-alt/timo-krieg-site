@@ -1,0 +1,39 @@
+---
+const org = {
+  "@context": "https://schema.org",
+  "@type": "CleaningService",
+  "name": "Novo Reinigungen AG",
+  "url": "https://novoreinigungen.ch/",
+  "logo": "https://novoreinigungen.ch/images/logo.svg",
+  "telephone": "+41 44 491 91 91",
+  "email": "info@novoreinigungen.ch",
+  "priceRange": "CHF",
+  "foundingDate": "1988-07-11",
+  "parentOrganization": { "@type": "Organization", "name": "Wischmobb Novo Holding AG" },
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rautistrasse 55",
+    "postalCode": "8047",
+    "addressLocality": "Zürich",
+    "addressCountry": "CH"
+  },
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+    "opens": "08:00",
+    "closes": "17:00"
+  }],
+  "areaServed": [
+    {"@type": "AdministrativeArea", "name": "Zürich"},
+    {"@type": "City", "name": "Zürich"},
+    {"@type": "City", "name": "Winterthur"},
+    {"@type": "City", "name": "Schlieren"},
+    {"@type": "City", "name": "Dietikon"},
+    {"@type": "City", "name": "Wallisellen"},
+    {"@type": "City", "name": "Opfikon"},
+    {"@type": "City", "name": "Kloten"},
+    {"@type": "City", "name": "Dübendorf"}
+  ]
+};
+---
+<script type="application/ld+json">{JSON.stringify(org)}</script>
