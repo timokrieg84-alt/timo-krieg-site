@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  site: "https://kriegperformance.de", // anpassbar
-  trailingSlash: "always",
+  site: "https://www.example.com", // TODO: Domain eintragen
+  trailingSlash: "always"
 });
