@@ -1,48 +1,39 @@
 ---
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import SEO from "../components/SEO.astro";
-import "../styles/base.css";
-export interface Props {
-  title?: string;
-  description?: string;
-  path?: string;
-  ogImage?: string;
-  jsonLd?: any;
-  children: any;
-}
-const { title, description, path = "/", ogImage, jsonLd } = Astro.props;
+export interface Props { title?: string; description?: string; path?: string; ogImage?: string; jsonLd?: any[]; }
+const { title, description, path = "/", ogImage, jsonLd = [] } = Astro.props;
 const canonical = new URL(path, Astro.site);
 ---
-<html lang="de-CH">
+<!doctype html>
+<html lang="de-DE">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title ? title : "Novo Reinigungen AG – Reinigungsfirma Zürich"}</title>
-    <meta name="description" content={description ?? "Professionelle Reinigungen für Büro, Praxis & Wohnung in Zürich. Allpura-Mitglied, faire Preise. Offerte: +41 44 491 91 91."} />
+    <title>{title ?? "KRIEG PERFORMANCE – Online Marketingbüro"}</title>
+    <meta name="description" content={description ?? "Online‑Marketing: SEO, Google Ads, Landingpages, CRO & Analytics – klar, messbar, senior."} />
     <link rel="canonical" href={canonical.href} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Novo Reinigungen AG" />
-    <meta property="og:title" content={title ?? "Novo Reinigungen AG – Reinigungsfirma Zürich"} />
-    <meta property="og:description" content={description ?? "Professionelle Reinigungen in Zürich & Umgebung."} />
+    <meta property="og:site_name" content="KRIEG PERFORMANCE" />
+    <meta property="og:title" content={title ?? "KRIEG PERFORMANCE – Online Marketingbüro"} />
+    <meta property="og:description" content={description ?? "SEO, SEA, Webdesign & Analytics für KMU."} />
     <meta property="og:url" content={canonical.href} />
-    <meta property="og:image" content={ogImage ?? "/images/og-default.svg"} />
-    <meta property="og:locale" content="de_CH" />
+    <meta property="og:image" content={ogImage ?? "https://kriegperformance.de/images/og-default.jpg"} />
+    <meta property="og:locale" content="de_DE" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title ?? "Novo Reinigungen AG – Reinigungsfirma Zürich"} />
-    <meta name="twitter:description" content={description ?? "Professionelle Reinigungen in Zürich & Umgebung."} />
-    <meta name="twitter:image" content={ogImage ?? "/images/og-default.svg"} />
-    <link rel="preload" as="image" href="/images/hero.svg" />
-    <slot name="head" />
-    <SEO jsonLd={jsonLd} />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/design-system.css" />
+    {jsonLd?.map((obj) => <script type="application/ld+json">{JSON.stringify(obj)}</script>)}
   </head>
   <body>
-    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <a class="sr-only" href="#main">Zum Inhalt springen</a>
+    <import Header from "../components/Header.astro" />
     <Header />
     <main id="main">
       <slot />
     </main>
+    <import Footer from "../components/Footer.astro" />
     <Footer />
-    <script type="module">import "/src/scripts/gsap-setup.ts";</script>
+    <script type="module" src="/src/scripts/init-gsap.ts"></script>
+    <script type="module" src="/src/scripts/init-swiper.ts"></script>
   </body>
 </html>
