@@ -1,0 +1,35 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SchemaService from "../../components/SchemaService.astro";
+const title = "Praxisreinigung Zürich | Hygienisch & zuverlässig";
+const description = "Reinigung für Arzt‑ & Therapiepraxen gemäss hohen Hygienestandards. Diskret, pünktlich, geschultes Personal. Termin vereinbaren.";
+---
+<BaseLayout title={title} description={description} path="/leistungen/praxisreinigung/" ogImage="/images/og-default.svg" jsonLd={{}}>
+  <SchemaService name="Praxisreinigung" slot="head" />
+  <section class="section container">
+    <h1>Praxisreinigung Zürich – hygienisch nach Plan</h1>
+    <p class="lead">Reinigung nach klaren Hygienevorgaben und Raumzonen. Geschulte Teams, dokumentierte Prozesse, diskrete Durchführung.</p>
+
+    <h2>Ihre Vorteile</h2>
+    <ul>
+      <li>Zonierung, Tuch‑ und Mittelkonzepte mit geprüfter Dosierung.</li>
+      <li>Nachvollziehbare Dokumentation, klare Checklisten, Audits.</li>
+      <li>Randzeiten‑Einsätze ohne Störung des Praxisbetriebs.</li>
+    </ul>
+
+    <h2>So läuft es ab – in 3 Schritten</h2>
+    <ol>
+      <li><strong>Hygieneaufnahme:</strong> Zonierung, Mittel‑ und Tuchkonzept, Ablaufplan.</li>
+      <li><strong>Start:</strong> Schulung am Objekt, Freigabe der Checklisten.</li>
+      <li><strong>Sicherer Betrieb:</strong> Regelmässige Audits, Nachjustierung bei Bedarf.</li>
+    </ol>
+
+    <h2>FAQ</h2>
+    <details><summary>Arbeiten Sie mit Desinfektionsplänen?</summary><p>Ja, wir erstellen ein abgestimmtes Konzept inklusive Dosierung und Einwirkzeiten.</p></details>
+    <details><summary>Können Termine zwischen Sprechstunden erfolgen?</summary><p>Ja, wir planen Randzeiten oder Wochenendeinsätze.</p></details>
+    <details><summary>Wie schützen Sie vertrauliche Daten?</summary><p>Strikte Diskretion, unterzeichnete Vertraulichkeitserklärungen, klare Zugriffsregeln.</p></details>
+    <details><summary>Welche Bereiche übernehmen Sie?</summary><p>Empfang, Wartezimmer, Behandlungsräume, Sanitär, Aufbereitungszonen – nach Vereinbarung.</p></details>
+
+    <p><a class="btn" href="/kontakt/">Beratung für Praxisreinigung sichern</a></p>
+  </section>
+</BaseLayout>
