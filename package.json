@@ -9,8 +9,7 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.10.0",
-    "gsap": "^3.12.5"
+    "astro": "^4.10.0"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
