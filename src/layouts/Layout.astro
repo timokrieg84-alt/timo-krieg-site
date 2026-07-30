@@ -13,13 +13,14 @@ interface Props {
 
 const {
   title,
-  description = "Gylsere Januzi - Fachbetrieb & Digitale Präsenz Schwäbisch Gmünd",
+  description = "Gylsere Januzi – Fachbetrieb & Digitale Präsenz Schwäbisch Gmünd",
   canonical,
   ogImage,
   noIndex = false,
 } = Astro.props as Props;
 
 const url = canonical ?? (Astro.url ? Astro.url.toString() : undefined);
+
 const orgLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
@@ -40,10 +41,10 @@ const orgLd = {
 <!doctype html>
 <html lang="de" class="dark scroll-smooth">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="utf-8" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     {noIndex && <meta name="robots" content="noindex,nofollow" />}
     {url && <link rel="canonical" href={url} />}
     <meta name="theme-color" content="#0A0F0D" />
@@ -61,9 +62,10 @@ const orgLd = {
 
     <style>
       @media (prefers-reduced-motion: reduce) { html.scroll-smooth { scroll-behavior: auto; } }
-      .skip { position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; white-space:nowrap; }
-      .skip:focus { left:12px; top:12px; width:auto; height:auto; background:#121A16; color:#fff; padding:.5rem .75rem; border-radius:.5rem; outline:2px solid #10b981; z-index: 9999; }
+      .skip { position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+      .skip:focus { left:12px; top:12px; width:auto; height:auto; background:#121A16; color:#fff; padding:.5rem .75rem; border-radius:.5rem; outline:2px solid #10b981; z-index:9999; }
     </style>
+
     <slot name="head" />
   </head>
   <body class="bg-brand-dark text-white antialiased min-h-screen flex flex-col font-sans">
@@ -71,6 +73,7 @@ const orgLd = {
     <main id="main" class="grow">
       <slot />
     </main>
+
     <CookieConsent />
     <BackToTop />
   </body>
