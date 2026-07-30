@@ -4,10 +4,10 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 ---
-<Layout title="Gylsere Januzi – online marketing office" description="Digitale Präsenz, die messbar wirkt.">
+<Layout title="Gylsere Januzi - online marketing office">
   <Fragment slot="header"><Header /></Fragment>
-
-  <Section title="Digitale Präsenz, die messbar wirkt." intro="Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI-Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.">
+  
+  <Section intro="Exzellenz & Digitale Präsenz. Wir arbeiten strukturiert, messbar und ohne Buzzwords.">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       
       <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
@@ -47,7 +47,7 @@ import Section from "../components/Section.astro";
       <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
         <div>
           <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
-          <h3 class="text-xl font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
+        <h3 class="text-xl font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
           <p class="text-sm text-gray-400 mb-4">Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.</p>
         </div>
         <div>
@@ -73,6 +73,24 @@ import Section from "../components/Section.astro";
             <span class="bg-gray-800 px-2 py-1 rounded">Entity-SEO</span>
             <span class="bg-gray-800 px-2 py-1 rounded">Citation-Ready Content</span>
             <span class="bg-gray-800 px-2 py-1 rounded">llms.txt & AI Overviews</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <!-- NEW: Google My Business & Local SEO -->
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
+          <h3 class="text-xl font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
+          <p class="text-sm text-gray-400 mb-4">Optimierung des Google-Unternehmensprofils, Einbindung lokaler Keywords und Bewertungen. Top-Platzierung im Google Local Pack und Verknüpfung mit unserer Umland-Dominanz (SEO‑Regio).</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Google Unternehmensprofil</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Local Pack Ranking</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Maps & Reviews</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">NAP-Konsistenz</span>
           </div>
           <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
         </div>
@@ -107,6 +125,141 @@ import Section from "../components/Section.astro";
             <span class="bg-gray-800 px-2 py-1 rounded">24/7 Buchung</span>
             <span class="bg-gray-800 px-2 py-1 rounded">Automatisierte Abläufe</span>
             <span class="bg-gray-800 px-2 py-1 rounded">Echtzeit-Sync</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <!-- Zusatz-Services wie auf der Leistungen-Seite -->
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Marketing</span>
+          <h3 class="text-xl font-bold text-white mb-2">Der Mix, der wirkt.</h3>
+          <p class="text-sm text-gray-400 mb-4">Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Content</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Social Media</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Analytics</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">AI & Automation</span>
+          <h3 class="text-xl font-bold text-white mb-2">Prozesse, die mitdenken.</h3>
+          <p class="text-sm text-gray-400 mb-4">Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Custom-AI-Agenten</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">LLM-Integrationen</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Workflow-Automation</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Branding</span>
+          <h3 class="text-xl font-bold text-white mb-2">Markenbildung mit Substanz.</h3>
+          <p class="text-sm text-gray-400 mb-4">Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Brand Strategy</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Visual Identity</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Logo & Design System</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Messaging</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Social Media</span>
+          <h3 class="text-xl font-bold text-white mb-2">Content, der Kunden bringt.</h3>
+          <p class="text-sm text-gray-400 mb-4">Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbare Anfragen und Umsatz liefert.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Strategie & Kanalaufbau</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Foto, Video & Grafik</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Community-Management</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Paid Social</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Reputation & Bewertungen</span>
+          <h3 class="text-xl font-bold text-white mb-2">Automatisierte Top-Bewertungen & Schutz.</h3>
+          <p class="text-sm text-gray-400 mb-4">Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Rezensionen löschen</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Review-Monitoring</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">5-Sterne-System</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Reputation-Recovery</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Praxis- & Wartezimmer-TV</span>
+          <h3 class="text-xl font-bold text-white mb-2">Hochkonvertierende Präsentationen.</h3>
+          <p class="text-sm text-gray-400 mb-4">Visuell überragende Bildschirmpräsentationen im Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Wartezimmer-TV</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Patienten-Aufklärung</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Zusatzleistungen</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Visuelle Konzepte</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Code-Exzellenz & Software</span>
+          <h3 class="text-xl font-bold text-white mb-2">Custom Programmierarbeiten.</h3>
+          <p class="text-sm text-gray-400 mb-4">Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">Custom Software</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">API Integration</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Logo & Briefköpfe</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Prozessautomatisierung</span>
+          </div>
+          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
+        </div>
+      </article>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
+        <div>
+          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Premium-Factoring</span>
+          <h3 class="text-xl font-bold text-white mb-2">Sofortige Liquidität & Ausfallschutz.</h3>
+          <p class="text-sm text-gray-400 mb-4">Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.</p>
+        </div>
+        <div>
+          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
+            <span class="bg-gray-800 px-2 py-1 rounded">100% Ausfallschutz</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Sofort-Liquidität</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Bessere Bonität</span>
+            <span class="bg-gray-800 px-2 py-1 rounded">Debitorenmanagement</span>
           </div>
           <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
         </div>
