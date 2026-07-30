@@ -1,0 +1,60 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hosting, DSGVO & Wartung | Leistungen | Timo Krieg</title>
+  <meta name="description" content="Stabil, sicher, schnell – EU-Hosting, Backups, Monitoring, Security-Patches und kurze Reaktionszeiten." />
+</head>
+<body class="min-h-screen bg-slate-950 text-white font-sans">
+  <header class="border-b border-white/10">
+    <div class="container py-4 flex items-center justify-between">
+      <a href="/" class="font-semibold">Timo Krieg</a>
+      <nav class="hidden md:flex items-center gap-6">
+        <a href="/leistungen/" class="underline">Leistungen</a>
+        <a href="/ueber-uns">Über uns</a>
+        <a href="/kontakt">Kontakt</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="py-16 md:py-24">
+    <div class="container">
+      <h1 class="text-3xl md:text-5xl font-semibold">Hosting, DSGVO & Wartung</h1>
+      <p class="mt-4 text-slate-300 max-w-2xl">Schnell, sicher, stabil – mit EU-Hosting, Backups, Monitoring und kurzen Reaktionszeiten.</p>
+      <div class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="card">
+          <h2 class="text-xl font-semibold">Leistungen</h2>
+          <ul class="mt-3 list-disc pl-6 text-slate-300 space-y-1">
+            <li>Proaktives Monitoring & Security-Patches</li>
+            <li>Backups & Staging-Umgebungen</li>
+            <li>Serverstandort EU, AVV inklusive</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 class="text-xl font-semibold">Vorteile</h2>
+          <ul class="mt-3 list-disc pl-6 text-slate-300 space-y-1">
+            <li>Minimale Ausfallzeiten</li>
+            <li>Revisionssichere Deployments</li>
+            <li>Hohe Performance & Sicherheit</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 flex gap-3">
+        <a href="/kontakt" class="btn btn-primary">Betreuung anfragen</a>
+        <a href="/leistungen/" class="btn btn-secondary">Zur Übersicht</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="mt-16 border-t border-white/10">
+    <div class="container py-8 text-sm text-slate-400 flex items-center justify-between">
+      <span>© {new Date().getFullYear()} Timo Krieg</span>
+      <nav class="flex gap-4"><a class="underline" href="/impressum">Impressum</a><a class="underline" href="/datenschutz">Datenschutz</a></nav>
+    </div>
+  </footer>
+</body>
+</html>
