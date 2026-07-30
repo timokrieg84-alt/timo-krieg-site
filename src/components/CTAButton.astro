@@ -1,0 +1,5 @@
+---
+const { href = "#", kind = "primary", label = "Jetzt starten" } = Astro.props;
+const classes = kind === "secondary" ? "btn btn-secondary" : kind === "ghost" ? "btn btn-ghost" : "btn btn-primary";
+---
+<a href={href} class={classes}>{label}</a>
