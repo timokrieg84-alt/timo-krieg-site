@@ -1,33 +1,35 @@
----
-const telHref = 'tel:+491604365363';
----
-<footer class="mt-16 border-t border-white/10">
-  <div class="container py-12 grid gap-10 md:grid-cols-2">
+<footer class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200)">
+  <div class="container grid grid-3">
     <div>
-      <h3 class="text-xl font-semibold">Kontakt</h3>
-      <p class="mt-2 text-slate-400">Timo Krieg – Digitalagentur & Performance Marketing<br/>Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
-      <div class="mt-4 space-y-2">
-        <a class="focus-ring block" href={telHref}>+49 160 4365363</a>
-        <a class="focus-ring block" href="mailto:info@listingprofis.de">info@listingprofis.de</a>
-      </div>
+      <h3 class="mb-4">ListingProfis</h3>
+      <p class="text-muted">Digitalagentur & Online‑Marketing – Local SEO, Webentwicklung (Astro), Online‑Präsenzen.</p>
+      <p class="mt-4">
+        <strong>Adresse:</strong><br>
+        Kitzingstraße 7<br>
+        73529 Schwäbisch Gmünd
+      </p>
+      <p class="mt-4"><strong>Telefon:</strong> <a href="tel:+491604365363">+49 160 4365363</a></p>
     </div>
     <div>
-      <h3 class="text-xl font-semibold">Anfahrt</h3>
-      <div class="mt-3">
-        <div class="w-full h-[320px] md:h-[420px] rounded-xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-800 grid place-items-center text-slate-400">
-          <span>Kartenplatzhalter</span>
-        </div>
-        <p class="mt-2 text-xs text-slate-400">Interaktive Karte kann später per Klick DSGVO-konform nachgeladen werden.</p>
+      <h3 class="mb-4">Navigation</h3>
+      <ul style="list-style:none;padding:0;margin:0" class="flow">
+        <li><a href="/">Start</a></li>
+        <li><a href="/ueber-uns/">Über uns</a></li>
+        <li><a href="/leistungen/">Leistungen</a></li>
+        <li><a href="/referenzen/">Referenzen</a></li>
+        <li><a href="/kontakt/">Kontakt</a></li>
+        <li><a href="/impressum/">Impressum</a></li>
+        <li><a href="/datenschutz/">Datenschutz</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="mb-4">Kontakt</h3>
+      <p>Am schnellsten telefonisch. Alternativ: Formular – Rückmeldung werktags < 24h.</p>
+      <div class="mt-4">
+        <a class="btn btn--primary" href="tel:+491604365363">Jetzt anrufen</a>
+        <a class="btn btn--ghost" href="/kontakt/" style="margin-left:8px">Erstgespräch</a>
       </div>
     </div>
   </div>
-  <div class="border-t border-white/10">
-    <div class="container py-6 text-sm text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
-      <span>© {new Date().getFullYear()} Timo Krieg – Digitalagentur & Performance Marketing</span>
-      <nav class="flex gap-4">
-        <a class="focus-ring" href="/impressum">Impressum</a>
-        <a class="focus-ring" href="/datenschutz">Datenschutz</a>
-      </nav>
-    </div>
-  </div>
+  <div class="container" style="border-top:1px solid var(--gray-200);margin-top:32px;padding-top:16px;color:var(--gray-600);font-size:.9rem">© {new Date().getFullYear()} ListingProfis – Timo Krieg. Alle Rechte vorbehalten.</div>
 </footer>
