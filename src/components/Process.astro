@@ -1,0 +1,24 @@
+---
+const steps = [
+  { t:'Analyse', d:'Status-quo, Zielbild und KPIs klären.' },
+  { t:'Strategie', d:'Kanäle, Budgets, Content & Tracking planen.' },
+  { t:'Umsetzung', d:'Astro-Webentwicklung, SEO/Ads Setup, Launch.' },
+  { t:'Optimierung', d:'Tests, Berichte, Skalierung dessen, was wirkt.' },
+];
+---
+<section id="prozess" class="py-16 md:py-24">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-semibold">Analyse → Strategie → Umsetzung → Optimierung</h2>
+    <ol class="mt-8 grid gap-6 md:grid-cols-4">
+      {steps.map((s, i) => (
+        <li class="card card-hover">
+          <div class="flex items-center gap-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-full bg-white/10 border border-white/10 text-white font-semibold">{i+1}</div>
+            <h3 class="text-lg font-semibold">{s.t}</h3>
+          </div>
+          <p class="mt-3 text-sm text-brand.muted">{s.d}</p>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
