@@ -4,5 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://timo-krieg-site.vercel.app',
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  output: 'static',
+  integrations: [
+    tailwind({ applyBaseStyles: false }),
+    sitemap()
+  ]
 });
