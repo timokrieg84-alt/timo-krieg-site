@@ -1,0 +1,46 @@
+---
+import '../../styles/global.css';
+---
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Leistungen | Timo Krieg</title>
+    <meta name="description" content="Überblick über alle Leistungen: Webdesign, SEO, Google/LinkedIn Ads, CRO, Local SEO, Hosting & DSGVO." />
+  </head>
+  <body class="min-h-screen bg-slate-950 text-white font-sans">
+    <header class="border-b border-white/10">
+      <div class="container py-4 flex items-center justify-between gap-4">
+        <a href="/" class="font-semibold">Timo Krieg</a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="/leistungen/" class="underline">Leistungen</a>
+          <a href="/ueber-uns">Über uns</a>
+          <a href="/kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="py-16 md:py-24">
+      <div class="container">
+        <h1 class="text-3xl md:text-5xl font-semibold">Leistungen</h1>
+        <p class="mt-3 text-slate-300 max-w-2xl">Sechs Leistungen – ein Ziel: mehr qualifizierte Anfragen und Wachstum. Jedes Paket ist auf den Mittelstand zugeschnitten.</p>
+        <ul class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/webdesign">Webdesign & Entwicklung</a></h2><p class="mt-2 text-slate-300">Astro/Tailwind, ultraschnell, konversionsstark.</p></li>
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/seo">SEO & Content</a></h2><p class="mt-2 text-slate-300">Technik, Themenarchitektur, interne Verlinkung.</p></li>
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/ads">Google Ads & LinkedIn</a></h2><p class="mt-2 text-slate-300">B2B-Performance, klares Targeting, sauberes Tracking.</p></li>
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/cro">CRO & Landingpages</a></h2><p class="mt-2 text-slate-300">Mehr Leads ohne mehr Traffic.</p></li>
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/local-seo">Local SEO & GBP</a></h2><p class="mt-2 text-slate-300">Local Pack, Bewertungen, NAP-Konsistenz.</p></li>
+          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/hosting">Hosting, DSGVO & Wartung</a></h2><p class="mt-2 text-slate-300">EU-Hosting, Backups, Monitoring.</p></li>
+        </ul>
+      </div>
+    </main>
+
+    <footer class="mt-16 border-t border-white/10">
+      <div class="container py-8 text-sm text-slate-400 flex items-center justify-between">
+        <span>© {new Date().getFullYear()} Timo Krieg</span>
+        <nav class="flex gap-4"><a class="underline" href="/impressum">Impressum</a><a class="underline" href="/datenschutz">Datenschutz</a></nav>
+      </div>
+    </footer>
+  </body>
+</html>
