@@ -1,33 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: 'media',
+  darkMode: 'class',
   content: [
-    "./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}",
+    './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
   ],
   theme: {
     extend: {
       colors: {
         brand: {
-          primary: "#FF6A00", // Orange – CTA / Primary
-          secondary: "#00C853", // Grün – Sekundär / Badges
-          accent: "#FF2D9A", // Pink – Links / Highlights
+          primary: '#FF6A00',
+          secondary: '#00C853',
+          accent: '#FF2D9A',
         },
         surface: {
-          DEFAULT: "#0B0E11",
-          raised: "#12161B",
+          DEFAULT: '#0b0f19',
+          raised: '#121826',
         },
         textc: {
-          base: "#E6EAF0",
-          muted: "#A7B0BE"
-        }
+          base: '#E6EAF0',
+          muted: '#A7B0BE',
+        },
       },
-      boxShadow: {
-        focus: "0 0 0 3px rgba(255,45,154,0.4)"
-      },
-      fontFamily: {
-        sans: ['ui-sans-serif', 'system-ui', 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol']
-      }
-    }
+    },
   },
   plugins: [],
 };

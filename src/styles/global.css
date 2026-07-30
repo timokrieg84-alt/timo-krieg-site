@@ -2,24 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root { color-scheme: dark; }
-  html, body { @apply bg-surface text-textc-base antialiased; }
-  a { @apply text-brand-accent underline decoration-transparent transition-colors; }
-  a:hover { @apply decoration-brand-accent/60 text-brand-accent; }
-  ::selection { background: #FF2D9A33; }
-}
+:root { color-scheme: dark; }
 
-@layer components {
-  .container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
-  .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition-colors focus:outline-none focus-visible:shadow-[0_0_0_3px_rgba(255,45,154,0.5)]; }
-  .btn-primary { @apply bg-brand-primary text-white hover:bg-[#E55F00]; }
-  .btn-secondary { @apply bg-brand-secondary text-black hover:bg-[#00B44B]; }
-  .btn-ghost { @apply border border-brand-primary text-brand-primary hover:bg-brand-primary/10; }
-  .badge, .tag { @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm; }
-  .badge--success, .tag--success { @apply bg-brand-secondary/15 text-brand-secondary border-brand-secondary/40; }
-  .badge--accent { @apply bg-brand-accent/15 text-brand-accent border-brand-accent/40; }
-  .nav-link { @apply text-textc-base hover:text-brand-accent; }
-  .section { @apply py-16 sm:py-20; }
-  .card { @apply bg-surface-raised/80 backdrop-blur rounded-xl border border-white/5; }
-}
+html, body { min-height: 100%; }
+body { @apply bg-[#0b0f19] text-gray-100 antialiased; }
+
+::selection { background: #FF6A00; color: #fff; }

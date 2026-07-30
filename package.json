@@ -6,8 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "lint": "echo \"No lint configured\""
+    "preview": "astro preview"
   },
   "dependencies": {
     "astro": "^4.10.0"
