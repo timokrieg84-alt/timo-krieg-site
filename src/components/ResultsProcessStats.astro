@@ -1,0 +1,35 @@
+---
+import { resultsProcess } from "../data/site";
+---
+<section class="py-20 border-t border-white/10 bg-brand-dark/95">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-10">
+    <div>
+      <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">{resultsProcess.kicker_label}</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold mt-2">{resultsProcess.headline_h2}</h2>
+      <p class="text-brand-muted mt-3">{resultsProcess.intro_text}</p>
+      <ol class="mt-6 space-y-4" role="list">
+        {resultsProcess.left_column_steps.map((s) => (
+          <li class="rounded-xl border border-white/10 p-4 bg-brand-card/50">
+            <div class="flex items-center gap-3">
+              <span class="inline-grid place-items-center w-9 h-9 rounded-lg bg-emerald-400 text-black font-extrabold">{s.step_number}</span>
+              <h3 class="text-lg font-bold">{s.title}</h3>
+            </div>
+            <p class="text-brand-muted mt-2">{s.description}</p>
+            <p class="text-xs text-brand-muted/80 mt-1">{s.duration}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="grid grid-cols-2 gap-4 content-start">
+      {resultsProcess.right_column_stats.map((st) => (
+        <div class="rounded-xl border border-white/10 p-5 bg-brand-card/50">
+          <p class="text-2xl font-extrabold text-emerald-400">{st.value}</p>
+          <p class="text-sm text-brand-muted">{st.text}</p>
+          <p class="text-xs text-brand-muted/80 mt-1">{st.tag}</p>
+        </div>
+      ))}
+      <p class="text-xs text-brand-muted col-span-full mt-2">{resultsProcess.fine_print}</p>
+    </div>
+  </div>
+</section>
