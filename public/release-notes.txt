@@ -1,0 +1,5 @@
+High-End Website Studio – No-Op Build Trigger
+
+Purpose: Trigger a fresh Preview and Production deploy without changing site behavior.
+Timestamp: 2026-07-30T00:00:00Z
+Notes: This file is safe to keep. You can remove it anytime.
