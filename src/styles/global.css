@@ -2,16 +2,25 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Base defaults: system fonts, no external font packages */
-@layer base {
-  html { scroll-behavior: smooth; }
-  body { @apply font-sans antialiased text-white bg-slate-950; }
-}
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { @apply bg-white text-slate-900 font-sans antialiased; }
 
-/* UI primitives */
 .container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
-.btn { @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors; }
-.btn-primary { @apply bg-indigo-600 text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400; }
-.btn-secondary { @apply bg-white/10 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-400; }
-.card { @apply rounded-xl border border-white/10 bg-white/5 p-6; }
-.icon { @apply h-5 w-5; }
+.section { @apply py-16 md:py-24; }
+.card { @apply rounded-2xl border border-slate-200 bg-white p-6 shadow-card transition duration-200 ease-brand hover:shadow-cardHover; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-medium transition duration-200 ease-brand focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-400/60; }
+.btn-primary { @apply bg-brand text-white hover:bg-brand-600 shadow-card hover:shadow-cardHover; }
+.btn-secondary { @apply border border-slate-300 bg-white text-slate-900 hover:bg-slate-50; }
+.input { @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-green-400/40; }
+.badge { @apply inline-flex items-center rounded-full bg-green-50 text-brand px-2.5 py-1 text-xs font-medium ring-1 ring-inset ring-green-200; }
+
+.no-scrollbar { scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Reveal base */
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+[data-reveal] { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; will-change: opacity, transform; }
+.reveal-in { opacity: 1; transform: none; }
