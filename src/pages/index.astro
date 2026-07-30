@@ -1,8 +1,7 @@
 ---
 import '../styles/global.css';
-const title = 'Timo Krieg – Performance Marketing & Webdesign | Schwäbisch Gmünd';
-const description = 'Leads & Umsatz für den Mittelstand: Webdesign (Astro/Tailwind), SEO, Google/LinkedIn Ads, CRO. Jetzt anrufen: +49 160 4365363';
-const tel = 'tel:+491604365363';
+const title = 'Timo Krieg – Performance Marketing Agentur | Schwäbisch Gmünd';
+const description = 'Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Tailwind, SEO, Google/LinkedIn Ads und Conversion-Optimierung. Schnelle Ladezeiten, klare KPIs.';
 ---
 <!DOCTYPE html>
 <html lang="de">
@@ -11,41 +10,41 @@ const tel = 'tel:+491604365363';
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
   </head>
-  <body class="bg-slate-950 text-white antialiased">
+  <body class="min-h-screen bg-slate-950 text-white">
     <header class="border-b border-white/10">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between gap-4">
-        <a href="/" class="font-semibold">Timo Krieg</a>
+      <div class="container py-4 flex items-center justify-between gap-4">
+        <a href="#hero" class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+          <span class="font-semibold">Timo Krieg</span>
+          <span class="text-slate-400 hidden sm:inline">Performance Marketing</span>
+        </a>
         <nav class="hidden md:flex items-center gap-6">
-          <a href="#leistungen" class="hover:underline">Leistungen</a>
-          <a href="#ueber" class="hover:underline">Über uns</a>
-          <a href="#kontakt" class="hover:underline">Kontakt</a>
-          <a href={tel} class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500">Jetzt anrufen</a>
+          <a href="#leistungen" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Leistungen</a>
+          <a href="#ueber-uns" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Über uns</a>
+          <a href="#kontakt" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Kontakt</a>
+          <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
         </nav>
-        <a href={tel} class="md:hidden inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500">Anrufen</a>
+        <a href="#kontakt" class="md:hidden btn btn-primary">Kontakt</a>
       </div>
     </header>
 
     <main id="main">
       <!-- Hero -->
-      <section class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-10 md:grid-cols-2 items-center">
+      <section id="hero" class="py-16 md:py-24">
+        <div class="container grid gap-10 md:grid-cols-2 items-center">
           <div>
             <p class="text-sm uppercase tracking-wider text-indigo-300">Schwäbisch Gmünd · DACH</p>
             <h1 class="mt-3 text-3xl md:text-5xl font-semibold">Performance Marketing für den Mittelstand</h1>
-            <p class="mt-4 text-slate-300">Webdesign (Astro/Tailwind), SEO, Google/LinkedIn Ads und CRO – messbar, schnell, transparent.</p>
+            <p class="mt-4 text-slate-300">Webdesign mit Astro/Tailwind, SEO, Google/LinkedIn Ads und Conversion-Optimierung. Schnell, messbar, effizient.</p>
             <div class="mt-6 flex flex-col sm:flex-row gap-3">
-              <a href={tel} class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500">Jetzt anrufen</a>
-              <a href="#kontakt" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-white/10 hover:bg-white/20">Kostenloses Erstgespräch</a>
+              <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+              <a href="#kontakt" class="btn btn-secondary">Kostenloses Erstgespräch</a>
             </div>
           </div>
-          <div class="rounded-xl border border-white/10 bg-white/5 p-6">
+          <div class="card">
             <ul class="space-y-2 text-slate-300">
               <li>Core Web Vitals im grünen Bereich</li>
-              <li>Ladezeit unter 1 Sekunde</li>
+              <li>Ladezeiten unter 1 Sekunde</li>
               <li>Transparente KPIs & Reporting</li>
             </ul>
           </div>
@@ -54,145 +53,131 @@ const tel = 'tel:+491604365363';
 
       <!-- Leistungen -->
       <section id="leistungen" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="container">
           <h2 class="text-3xl md:text-4xl font-semibold">Leistungen</h2>
-          <p class="mt-2 text-slate-400 max-w-2xl">Fokus auf das, was wirklich wirkt – schlank, messbar, effizient.</p>
+          <p class="mt-2 text-slate-400 max-w-2xl">Konzentriert auf das, was wirklich Wirkung zeigt – für Industrie, Tech und Services im Mittelstand.</p>
           <ul class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Webdesign & Astro/Tailwind</h3>
-              <p class="mt-1 text-slate-400">Markenstarke Websites mit exzellenter UX und Conversion.</p>
+            <li class="card">
+              <h3 class="text-lg font-semibold">Webdesign & Entwicklung (Astro/Tailwind)</h3>
+              <p class="mt-2 text-slate-300">Markenstark, blitzschnell, konversionsorientiert – mit statischem Astro für Top-Core-Web-Vitals.</p>
             </li>
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">SEO & Content</h3>
-              <p class="mt-1 text-slate-400">Technik, Content-Strategie und Onpage für Top-Rankings.</p>
+            <li class="card">
+              <h3 class="text-lg font-semibold">SEO & Content-Strategie</h3>
+              <p class="mt-2 text-slate-300">Technik, strukturierte Inhalte und interne Verlinkung für nachhaltige Sichtbarkeit.</p>
             </li>
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Local SEO</h3>
-              <p class="mt-1 text-slate-400">Regional besser gefunden werden – mehr Anrufe und Termine.</p>
+            <li class="card">
+              <h3 class="text-lg font-semibold">Google Ads (SEA) & LinkedIn</h3>
+              <p class="mt-2 text-slate-300">B2B-Performance mit klaren Zielgruppen, präzisen Botschaften und sauberem Tracking.</p>
             </li>
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Google Ads & LinkedIn</h3>
-              <p class="mt-1 text-slate-400">B2B-Performance mit Fokus auf Profitabilität und Qualität.</p>
-            </li>
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
+            <li class="card">
               <h3 class="text-lg font-semibold">CRO & Landingpages</h3>
-              <p class="mt-1 text-slate-400">Mehr Leads ohne mehr Traffic – starke UX und Tests.</p>
+              <p class="mt-2 text-slate-300">Mehr Leads ohne mehr Traffic – bessere UX, klare Value Proposition, A/B-Tests.</p>
             </li>
-            <li class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Wartung & DSGVO</h3>
-              <p class="mt-1 text-slate-400">Schnell, sicher, stabil – EU-Hosting und Monitoring.</p>
+            <li class="card">
+              <h3 class="text-lg font-semibold">Local SEO & Google Business</h3>
+              <p class="mt-2 text-slate-300">Regionale Sichtbarkeit steigern: Local Pack, Bewertungen, konsistente NAP-Daten.</p>
+            </li>
+            <li class="card">
+              <h3 class="text-lg font-semibold">Wartung, DSGVO & Hosting</h3>
+              <p class="mt-2 text-slate-300">Schnell, sicher, stabil – EU-Hosting, Backups, Monitoring und kurze Reaktionszeiten.</p>
             </li>
           </ul>
         </div>
       </section>
 
       <!-- Über uns -->
-      <section id="ueber" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 class="text-3xl md:text-4xl font-semibold">Über Timo Krieg</h2>
+      <section id="ueber-uns" class="py-16 md:py-24">
+        <div class="container">
+          <h2 class="text-3xl md:text-4xl font-semibold">Klarer Kurs. Messbare Ergebnisse.</h2>
           <div class="mt-6 grid gap-6 md:grid-cols-3">
-            <div class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Philosophie</h3>
-              <p class="mt-2 text-slate-400">Strategie vor Design. Fokus auf Kundennutzen, klare KPIs und kontinuierliches Lernen.</p>
+            <div class="card">
+              <h3 class="text-xl font-semibold">Philosophie</h3>
+              <p class="mt-2 text-slate-300">Strategie vor Design. Fokus auf Kundennutzen, klare KPIs und kontinuierliches Lernen.</p>
             </div>
-            <div class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Qualitätsversprechen</h3>
+            <div class="card">
+              <h3 class="text-xl font-semibold">Qualitätsversprechen</h3>
               <ul class="mt-2 list-disc pl-5 text-slate-300 space-y-1">
                 <li>Performance by default: Speed, SEO, Conversion</li>
-                <li>Transparenz in Zeit, Budget und Ergebnis</li>
-                <li>Verbindliche Kommunikation, schnelle Reaktionszeiten</li>
+                <li>Transparente Planung, Budget, Reporting</li>
+                <li>Verbindliche Kommunikation, schnelle Reaktion</li>
               </ul>
             </div>
-            <div class="rounded-xl border border-white/10 bg-white/5 p-6">
-              <h3 class="text-lg font-semibold">Regionaler Fokus</h3>
-              <p class="mt-2 text-slate-400">Verwurzelt in Schwäbisch Gmünd, aktiv in DACH. Wir kennen die Bedürfnisse des Mittelstands.</p>
+            <div class="card">
+              <h3 class="text-xl font-semibold">Regional verwurzelt</h3>
+              <p class="mt-2 text-slate-300">Schwäbisch Gmünd als Basis, DACH als Wirkungsraum – remote oder vor Ort.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Kontakt-Sektion -->
+      <!-- Kontakt -->
       <section id="kontakt" class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-8 md:grid-cols-2 items-start">
-          <div class="rounded-xl border border-white/10 bg-white/5 p-6">
-            <h2 class="text-2xl font-semibold">Kontakt</h2>
+        <div class="container grid gap-8 md:grid-cols-2 items-start">
+          <div class="card">
+            <h2 class="text-2xl font-semibold">Direktkontakt</h2>
             <ul class="mt-3 space-y-2 text-slate-300">
-              <li>Telefon: <a class="underline" href={tel}>+49 160 4365363</a></li>
-              <li>E-Mail: <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
-              <li>Adresse: Kitzingstraße 7, 73529 Schwäbisch Gmünd</li>
+              <li><strong>Telefon:</strong> <a class="underline" href="tel:+491604365363">+49 160 4365363</a></li>
+              <li><strong>E-Mail:</strong> <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
+              <li><strong>Adresse:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</li>
             </ul>
             <div class="mt-4 flex gap-3">
-              <a href={tel} class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500">Jetzt anrufen</a>
-              <a href="#form" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-white/10 hover:bg-white/20">Erstgespräch sichern</a>
+              <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+              <a href="#form" class="btn btn-secondary">Erstgespräch vereinbaren</a>
             </div>
             <p class="mt-3 text-xs text-slate-400">Hinweis: Eingehende Anfragen werden per Telegram-Benachrichtigung zugestellt.</p>
           </div>
 
-          <form id="form" class="rounded-xl border border-white/10 bg-white/5 p-6 space-y-4" action="https://timokrieg.app.n8n.cloud/webhook/contact-form" method="post">
-            <h2 class="text-xl font-semibold">Kontaktformular</h2>
+          <form id="form" class="card space-y-4" action="https://timokrieg.app.n8n.cloud/webhook/contact-form" method="post">
+            <h2 class="text-2xl font-semibold">Kontaktformular</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label class="block text-sm mb-1" for="name">Name</label>
-                <input id="name" name="name" type="text" required class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                <input id="name" name="name" type="text" class="w-full rounded-md bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400 px-3 py-2" required />
               </div>
               <div>
                 <label class="block text-sm mb-1" for="email">E-Mail</label>
-                <input id="email" name="email" type="email" required class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                <input id="email" name="email" type="email" class="w-full rounded-md bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400 px-3 py-2" required />
               </div>
               <div>
                 <label class="block text-sm mb-1" for="phone">Telefon</label>
-                <input id="phone" name="phone" type="tel" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                <input id="phone" name="phone" type="tel" class="w-full rounded-md bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400 px-3 py-2" />
               </div>
               <div>
-                <label class="block text-sm mb-1" for="site">Webseite/Firma</label>
-                <input id="site" name="site" type="text" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+                <label class="block text-sm mb-1" for="site">Website</label>
+                <input id="site" name="site" type="text" class="w-full rounded-md bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400 px-3 py-2" />
               </div>
             </div>
             <div>
               <label class="block text-sm mb-1" for="message">Nachricht</label>
-              <textarea id="message" name="message" rows="5" required class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"></textarea>
+              <textarea id="message" name="message" rows="5" class="w-full rounded-md bg-white/5 border border-white/10 focus:outline-none focus:ring-2 focus:ring-indigo-400 px-3 py-2" required></textarea>
             </div>
-            <button type="submit" class="inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium bg-indigo-600 hover:bg-indigo-500">Absenden</button>
-            <p class="text-xs text-slate-400">Mit Ihrer Kontaktaufnahme verarbeiten wir Ihre Angaben zur Beantwortung der Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Details in der <a class="underline" href="#datenschutz">Datenschutzerklärung</a>.</p>
+            <button type="submit" class="btn btn-primary">Absenden</button>
+            <p class="text-xs text-slate-400">Mit Ihrer Kontaktaufnahme verarbeiten wir Ihre Angaben zur Beantwortung der Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>.</p>
           </form>
         </div>
       </section>
 
-      <!-- Anfahrt (Google Maps Embed) -->
-      <section class="py-16 md:py-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Anfahrt: Google Maps Embed -->
+      <section id="anfahrt" class="py-16 md:py-24">
+        <div class="container">
           <h2 class="text-3xl md:text-4xl font-semibold">Anfahrt</h2>
-          <div class="mt-6 rounded-xl overflow-hidden border border-white/10 aspect-video bg-white/5">
-            <iframe
-              title="Google Maps – Kitzingstraße 7, 73529 Schwäbisch Gmünd"
-              width="100%" height="100%" style="border:0;"
-              loading="lazy" allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed"></iframe>
+          <div class="mt-6 overflow-hidden rounded-xl border border-white/10">
+            <iframe 
+              title="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd"
+              src="https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed"
+              width="100%" height="420" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
       </section>
     </main>
 
-    <footer class="mt-16 border-t border-white/10" id="impressum">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 md:grid-cols-2">
-        <div>
-          <h3 class="text-xl font-semibold">Impressum</h3>
-          <p class="mt-2 text-slate-400">Timo Krieg – Digitalagentur &amp; Performance Marketing<br/>Kitzingstraße 7, 73529 Schwäbisch Gmünd<br/>Telefon: <a class="underline" href={tel}>+49 160 4365363</a><br/>E-Mail: <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></p>
-        </div>
-        <div id="datenschutz">
-          <h3 class="text-xl font-semibold">Datenschutz</h3>
-          <p class="mt-2 text-slate-400">Wir verarbeiten personenbezogene Daten zur Beantwortung Ihrer Anfrage und zum Betrieb der Website. Details entnehmen Sie bitte der Datenschutzerklärung. Optionales Tracking (Google/LinkedIn) nur mit Einwilligung.</p>
-        </div>
-      </div>
-      <div class="border-t border-white/10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-sm text-slate-400 flex flex-col md:flex-row items-center justify-between gap-2">
-          <span>© {new Date().getFullYear()} Timo Krieg</span>
-          <nav class="flex gap-4">
-            <a href="#impressum" class="hover:underline">Impressum</a>
-            <a href="#datenschutz" class="hover:underline">Datenschutz</a>
-          </nav>
-        </div>
+    <footer class="mt-16 border-t border-white/10">
+      <div class="container py-8 text-sm text-slate-400 flex flex-col md:flex-row items-center justify-between gap-3">
+        <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
+        <nav class="flex items-center gap-4">
+          <a class="underline" href="/impressum">Impressum</a>
+          <a class="underline" href="/datenschutz">Datenschutz</a>
+        </nav>
       </div>
     </footer>
   </body>
