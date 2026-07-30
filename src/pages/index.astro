@@ -4,265 +4,55 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 ---
-<Layout title="Gylsere Januzi - online marketing office">
+<Layout title="Gylsere Januzi – Online Marketing Office" description="Digitale Präsenz, die messbar wirkt. SEO, Local SEO, GEO, Google Ads, Webdesign und mehr.">
   <Fragment slot="header"><Header /></Fragment>
-  
-  <Section intro="Exzellenz & Digitale Präsenz. Wir arbeiten strukturiert, messbar und ohne Buzzwords.">
+
+  <section class="bg-[#0b0f19] py-16 sm:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-3xl">
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">Digitale Präsenz, die messbar wirkt.</h1>
+        <p class="text-lg text-gray-300">Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI-Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.</p>
+      </div>
+    </div>
+  </section>
+
+  <Section title="Leistungen" intro="Die wichtigsten Hebel – klar priorisiert.">
     <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO</span>
-          <h3 class="text-xl font-bold text-white mb-2">Sichtbar werden, wenn es zählt.</h3>
-          <p class="text-sm text-gray-400 mb-4">Technisches SEO, Content-Strategie und Backlinks – damit ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Technisches SEO</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Content & Keywords</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Backlink-Aufbau</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Local SEO</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
+        <h3 class="text-lg font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
+        <p class="text-sm text-gray-400 mb-4">Profil-Optimierung, lokale Keywords, Reviews und NAP-Konsistenz für maximale Sichtbarkeit im Umkreis – verknüpft mit unserer Umland-Dominanz.</p>
       </article>
 
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO-Regio</span>
-          <h3 class="text-xl font-bold text-white mb-2">Die absolute Umland-Dominanz.</h3>
-          <p class="text-sm text-gray-400 mb-4">Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">50 Satelliten-Seiten</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Kein Risiko für Original-Site</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Umland-Abdeckung</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Local SEO Boost</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO</span>
+        <h3 class="text-lg font-bold text-white mb-2">Sichtbar werden, wenn es zählt.</h3>
+        <p class="text-sm text-gray-400 mb-4">Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.</p>
       </article>
 
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
-        <h3 class="text-xl font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
-          <p class="text-sm text-gray-400 mb-4">Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Search & PMax</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Conversion Tracking</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Klickschutz</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Retargeting</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
+        <h3 class="text-lg font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
+        <p class="text-sm text-gray-400 mb-4">Search, PMax, YouTube – mit messbarem ROAS, Klickschutz und ohne Budgetverschwendung.</p>
       </article>
 
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">GEO</span>
-          <h3 class="text-xl font-bold text-white mb-2">Sichtbar in ChatGPT, Perplexity & Google AI.</h3>
-          <p class="text-sm text-gray-400 mb-4">Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">LLM-Crawling</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Entity-SEO</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Citation-Ready Content</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">llms.txt & AI Overviews</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">GEO</span>
+        <h3 class="text-lg font-bold text-white mb-2">Sichtbar in ChatGPT, Perplexity & Google AI.</h3>
+        <p class="text-sm text-gray-400 mb-4">Generative Engine Optimization: LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.</p>
       </article>
 
-      <!-- NEW: Google My Business & Local SEO -->
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
-          <h3 class="text-xl font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
-          <p class="text-sm text-gray-400 mb-4">Optimierung des Google-Unternehmensprofils, Einbindung lokaler Keywords und Bewertungen. Top-Platzierung im Google Local Pack und Verknüpfung mit unserer Umland-Dominanz (SEO‑Regio).</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Google Unternehmensprofil</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Local Pack Ranking</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Maps & Reviews</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">NAP-Konsistenz</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Webdesign</span>
+        <h3 class="text-lg font-bold text-white mb-2">Websites, die verkaufen.</h3>
+        <p class="text-sm text-gray-400 mb-4">Maßgeschneidertes Design in Astro – ultraschnell, DSGVO-sicher, konversionsstark.</p>
       </article>
 
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Webdesign & E-Commerce</span>
-          <h3 class="text-xl font-bold text-white mb-2">Websites, die verkaufen.</h3>
-          <p class="text-sm text-gray-400 mb-4">Maßgeschneidertes Design mit Next.js – schnell, skalierbar, konversionsstark mit blitzschnellen Ladezeiten, DSGVO-Rechtsicherheit und Verkaufspsychologie.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Custom Design</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Next.js & WordPress</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Core Web Vitals</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">CRO & APIs</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Online-Terminvereinbarung</span>
-          <h3 class="text-xl font-bold text-white mb-2">24/7 Terminbuchungen automatisieren.</h3>
-          <p class="text-sm text-gray-400 mb-4">Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">API-Schnittstellen</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">24/7 Buchung</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Automatisierte Abläufe</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Echtzeit-Sync</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <!-- Zusatz-Services wie auf der Leistungen-Seite -->
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Marketing</span>
-          <h3 class="text-xl font-bold text-white mb-2">Der Mix, der wirkt.</h3>
-          <p class="text-sm text-gray-400 mb-4">Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Content</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Social Media</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Analytics</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">AI & Automation</span>
-          <h3 class="text-xl font-bold text-white mb-2">Prozesse, die mitdenken.</h3>
-          <p class="text-sm text-gray-400 mb-4">Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Custom-AI-Agenten</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">LLM-Integrationen</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Workflow-Automation</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Branding</span>
-          <h3 class="text-xl font-bold text-white mb-2">Markenbildung mit Substanz.</h3>
-          <p class="text-sm text-gray-400 mb-4">Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Brand Strategy</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Visual Identity</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Logo & Design System</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Messaging</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Social Media</span>
-          <h3 class="text-xl font-bold text-white mb-2">Content, der Kunden bringt.</h3>
-          <p class="text-sm text-gray-400 mb-4">Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbare Anfragen und Umsatz liefert.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Strategie & Kanalaufbau</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Foto, Video & Grafik</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Community-Management</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Paid Social</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Reputation & Bewertungen</span>
-          <h3 class="text-xl font-bold text-white mb-2">Automatisierte Top-Bewertungen & Schutz.</h3>
-          <p class="text-sm text-gray-400 mb-4">Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Rezensionen löschen</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Review-Monitoring</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">5-Sterne-System</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Reputation-Recovery</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Praxis- & Wartezimmer-TV</span>
-          <h3 class="text-xl font-bold text-white mb-2">Hochkonvertierende Präsentationen.</h3>
-          <p class="text-sm text-gray-400 mb-4">Visuell überragende Bildschirmpräsentationen im Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Wartezimmer-TV</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Patienten-Aufklärung</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Zusatzleistungen</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Visuelle Konzepte</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Code-Exzellenz & Software</span>
-          <h3 class="text-xl font-bold text-white mb-2">Custom Programmierarbeiten.</h3>
-          <p class="text-sm text-gray-400 mb-4">Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">Custom Software</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">API Integration</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Logo & Briefköpfe</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Prozessautomatisierung</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl flex flex-col justify-between">
-        <div>
-          <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Premium-Factoring</span>
-          <h3 class="text-xl font-bold text-white mb-2">Sofortige Liquidität & Ausfallschutz.</h3>
-          <p class="text-sm text-gray-400 mb-4">Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.</p>
-        </div>
-        <div>
-          <div class="flex flex-wrap gap-1.5 mb-6 text-xs text-gray-400">
-            <span class="bg-gray-800 px-2 py-1 rounded">100% Ausfallschutz</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Sofort-Liquidität</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Bessere Bonität</span>
-            <span class="bg-gray-800 px-2 py-1 rounded">Debitorenmanagement</span>
-          </div>
-          <a href="/leistungen" class="text-sm font-semibold text-[#FF2D9A] hover:underline">MEHR ERFAHREN &rarr;</a>
-        </div>
+      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Terminvereinbarung</span>
+        <h3 class="text-lg font-bold text-white mb-2">24/7 Buchungen automatisieren.</h3>
+        <p class="text-sm text-gray-400 mb-4">Professionelle Online-Terminbuchung (inkl. Jameda & Doctolib), eingebunden in Website und Suche.</p>
       </article>
 
     </div>
