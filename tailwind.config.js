@@ -8,7 +8,7 @@ export default {
           dark: '#0A0F0D',
           card: '#121A16',
           orange: '#FF6B00',
-          green: '#00E676',
+          green: '#10b981', // Emerald
           pink: '#FF007F',
           muted: '#A0AAB0'
         }
