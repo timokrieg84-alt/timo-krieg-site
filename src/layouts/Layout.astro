@@ -1,10 +1,11 @@
 ---
+import "../styles/global.css";
 interface Props {
-  title?: string;
+  title: string;
   description?: string;
 }
-const { title = "Gylsere Januzi - online marketing office", description = "Gylsere Januzi - online marketing office" } = Astro.props;
-import "../styles/global.css";
+
+const { title, description = "Gylsere Januzi - online marketing office" } = Astro.props;
 ---
 <!doctype html>
 <html lang="de" class="dark">
