@@ -2,26 +2,8 @@
 export default {
   darkMode: 'class',
   content: [
-    './src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}',
+    "./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}",
   ],
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          primary: '#FF6A00',
-          secondary: '#00C853',
-          accent: '#FF2D9A',
-        },
-        surface: {
-          DEFAULT: '#0b0f19',
-          raised: '#121826',
-        },
-        textc: {
-          base: '#E6EAF0',
-          muted: '#A7B0BE',
-        },
-      },
-    },
-  },
+  theme: { extend: {} },
   plugins: [],
 };
