@@ -1,11 +1,11 @@
 ---
 const telHref = 'tel:+491604365363';
 ---
-<footer class="mt-16 border-t border-white/10 bg-brand.surface/60">
+<footer class="mt-16 border-t border-white/10 bg-brand-surface/60">
   <div class="container py-12 grid gap-10 md:grid-cols-2">
     <div>
       <h3 class="text-xl font-semibold">Kontakt</h3>
-      <p class="mt-2 text-brand.muted">Timo Krieg – Digitalagentur & Performance Marketing<br/>Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+      <p class="mt-2 text-brand-muted">Timo Krieg – Digitalagentur & Performance Marketing<br/>Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
       <div class="mt-4 space-y-2">
         <a class="focus-ring block" href={telHref}>+49 160 4365363</a>
         <a class="focus-ring block" href="mailto:info@listingprofis.de">info@listingprofis.de</a>
@@ -15,17 +15,14 @@ const telHref = 'tel:+491604365363';
     <div>
       <h3 class="text-xl font-semibold">Anfahrt</h3>
       <div class="mt-3">
-        <div class="relative">
-          <div class="w-full h-[320px] md:h-[420px] rounded-xl border border-white/10 bg-gradient-to-br from-brand.navy-900 to-brand.surface grid place-items-center text-brand.muted">
-            <button type="button" data-load-map class="btn btn-secondary">Interaktive Karte laden</button>
-          </div>
+        <div class="w-full h-[320px] md:h-[420px] rounded-xl border border-white/10 bg-gradient-to-br from-brand-navy-900 to-brand-surface grid place-items-center text-brand-muted">
+          <span>Interaktive Karte optional (DSGVO‑freundlich)</span>
         </div>
-        <p class="mt-2 text-xs text-brand.muted">Mit Klick laden Sie Inhalte von Google Maps. Es gelten die Datenschutzbestimmungen von Google.</p>
       </div>
     </div>
   </div>
   <div class="border-t border-white/10">
-    <div class="container py-6 text-sm text-brand.muted flex flex-col md:flex-row items-center justify-between gap-2">
+    <div class="container py-6 text-sm text-brand-muted flex flex-col md:flex-row items-center justify-between gap-2">
       <span>© {new Date().getFullYear()} Timo Krieg – Digitalagentur & Performance Marketing</span>
       <nav class="flex gap-4">
         <a class="focus-ring" href="/impressum">Impressum</a>
