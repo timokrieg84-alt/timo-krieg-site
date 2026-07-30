@@ -12,6 +12,9 @@ export default {
           pink: '#FF007F',
           muted: '#A0AAB0'
         }
+      },
+      boxShadow: {
+        card: '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
       }
     },
   },
