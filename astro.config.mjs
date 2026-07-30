@@ -3,7 +3,10 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://timo-krieg-site.vercel.app',
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
-  output: 'static'
+  site: 'https://example.com',
+  output: 'static',
+  integrations: [
+    tailwind({ applyBaseStyles: true }),
+    sitemap(),
+  ],
 });
