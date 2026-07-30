@@ -1,0 +1,93 @@
+---
+const services = ["SEO","SEO-Regio","GEO","Google Ads","Social Media","Webdesign","Terminbuchung","Marketing","AI & Automation","Branding","Reputation","Factoring","Praxis-TV","Programmierung"];
+---
+<section id="kontakt" class="py-20 bg-brand-card border-t border-white/10">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">— KONTAKT</span>
+      <h2 class="text-4xl font-extrabold mt-2">Lass uns reden.</h2>
+    </div>
+
+    <form id="contact-form" action="mailto:info@januzi-bau.de" method="POST" enctype="text/plain" class="space-y-6">
+      <input type="text" name="_hp" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <div>
+        <label class="block text-sm font-medium mb-3 text-brand-muted">WORUM GEHT ES?</label>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" role="group" aria-label="Leistungsauswahl" aria-describedby="svc-hint">
+          {services.map((service) => (
+            <label class="cursor-pointer">
+              <input type="checkbox" name="service" value={service} class="peer hidden" />
+              <div class="p-3 bg-brand-dark border border-white/10 rounded-lg text-center text-sm font-medium peer-checked:border-emerald-400 peer-checked:text-emerald-400 hover:border-white/30 transition">{service}</div>
+            </label>
+          ))}
+        </div>
+        <p id="svc-hint" class="sr-only">Mehrfachauswahl möglich.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
+        <input type="text" name="name" placeholder="Dein Name *" required class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+        <input type="email" name="email" placeholder="Deine E-Mail *" required class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+        <input type="tel" name="phone" placeholder="Telefonnummer" class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+        <input type="text" name="company" placeholder="Unternehmen" class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+      </div>
+
+      <div>
+        <textarea name="message" rows="4" placeholder="Deine Nachricht an uns..." class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition"></textarea>
+      </div>
+
+      <button type="submit" class="w-full py-4 bg-emerald-400 text-black font-extrabold text-lg rounded-lg hover:bg-opacity-90 transition disabled:opacity-60 disabled:cursor-not-allowed">Anfrage absenden</button>
+
+      <p id="form-status" class="text-sm text-brand-muted min-h-[1.25rem]" role="status" aria-live="polite"></p>
+      <p class="text-xs text-brand-muted">Hinweis: Eingehende Anfragen werden als Telegram-Benachrichtigung zugestellt.</p>
+    </form>
+  </div>
+</section>
+
+<script is:raw>
+(() => {
+  const form = document.getElementById('contact-form');
+  if (!form) return;
+  const statusEl = document.getElementById('form-status');
+  const submitBtn = form.querySelector('button[type="submit"]');
+  const hp = form.querySelector('input[name="_hp"]');
+  let startedAt = performance.now();
+
+  const svcMap = { 'seo':'SEO','seo-regio':'SEO-Regio','google-ads':'Google Ads','geo':'GEO','webdesign':'Webdesign','terminbuchung':'Terminbuchung','marketing':'Marketing','ai-automation':'AI & Automation','branding':'Branding','social-media':'Social Media','reputation':'Reputation','factoring':'Factoring','praxis-tv':'Praxis-TV','programmierung':'Programmierung' };
+  const url = new URL(window.location.href);
+  const qService = url.searchParams.get('service');
+  if (qService && svcMap[qService]) {
+    const match = Array.from(form.querySelectorAll('input[name="service"]')).find(i => i.value === svcMap[qService]);
+    if (match) { match.checked = true; match.dispatchEvent(new Event('change', { bubbles: true })); }
+  }
+
+  const setInvalid = (el, invalid) => {
+    if (!el) return; el.setAttribute('aria-invalid', invalid ? 'true' : 'false'); el.classList.toggle('border-red-500/60', !!invalid);
+  };
+
+  form.addEventListener('input', (e) => {
+    const t = e.target; if (!t || !('name' in t)) return;
+    if (t.name === 'name') setInvalid(t, !t.value.trim());
+    if (t.name === 'email') setInvalid(t, !t.value.trim() || !t.checkValidity());
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const fd = new FormData(form); const data = Object.fromEntries(fd.entries());
+    const nameEl = form.querySelector('[name="name"]'); const emailEl = form.querySelector('[name="email"]');
+    let ok = true; if (!data.name?.toString().trim()) { ok = false; setInvalid(nameEl, true); } if (!data.email?.toString().trim() || !emailEl.checkValidity()) { ok = false; setInvalid(emailEl, true); }
+    if (!ok) { statusEl.textContent = 'Bitte Name und E-Mail ausfüllen.'; return; }
+
+    const tooFast = (performance.now() - startedAt) < 1200; if ((hp && hp.value.trim()) || tooFast) { statusEl.textContent = 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut senden.'; return; }
+
+    const services = Array.from(form.querySelectorAll('input[name="service"]:checked')).map(i => i.value);
+    const payload = { name: data.name.toString().trim(), email: data.email.toString().trim(), phone: (data.phone||'').toString().trim(), site: window.location.href, message: (data.message||'').toString().trim(), services, company: (data.company||'').toString().trim(), target_email: 'info@januzi-bau.de', autoresponder: true };
+
+    try { form.setAttribute('aria-busy','true'); submitBtn.disabled = true; statusEl.textContent = 'Sende ...';
+      const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload) });
+      if (!res.ok) throw new Error('Network');
+      statusEl.textContent = 'Danke! Wir melden uns zeitnah. Du erhältst eine Bestätigung per E-Mail.'; form.reset(); startedAt = performance.now();
+    } catch(err) { statusEl.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder per E-Mail kontaktieren.'; }
+    finally { form.removeAttribute('aria-busy'); submitBtn.disabled = false; }
+  });
+})();
+</script>
