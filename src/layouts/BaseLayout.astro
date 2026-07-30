@@ -18,57 +18,11 @@ const { title = 'Timo Krieg – Digitalagentur & Performance Marketing', descrip
     <SeoTags {title} {description} />
   </head>
   <body>
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus-ring bg-brand.surface px-3 py-2 rounded">Zum Inhalt springen</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus-ring bg-brand-surface px-3 py-2 rounded">Zum Inhalt springen</a>
     <Header />
     <main id="main">
       <slot />
     </main>
     <Footer />
-    <script is:inline type="module">
-      const header = document.querySelector('[data-header]');
-      const s = document.createElement('div');
-      s.style.position='absolute'; s.style.top='120px'; document.body.prepend(s);
-      const io = new IntersectionObserver(([e]) => {
-        header?.classList.toggle('border-white/10', e.isIntersecting);
-        header?.classList.toggle('border-white/5', !e.isIntersecting);
-        header?.classList.toggle('bg-brand.surface/70', e.isIntersecting);
-        header?.classList.toggle('bg-brand.surface/90', !e.isIntersecting);
-      });
-      io.observe(s);
-
-      const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-      const counters = document.querySelectorAll('[data-counter]');
-      if (counters.length) {
-        const run = (el) => {
-          const target = +el.getAttribute('data-target');
-          if (reduce) { el.textContent = target.toLocaleString('de-DE'); return; }
-          const dur = 1200; const start = performance.now();
-          const from = 0; const ease = t => 1- Math.pow(1-t, 4);
-          const step = (now) => {
-            const p = Math.min(1, (now - start) / dur);
-            const val = Math.floor(from + (target - from) * ease(p));
-            el.textContent = val.toLocaleString('de-DE');
-            if (p < 1) requestAnimationFrame(step);
-          };
-          requestAnimationFrame(step);
-        };
-        const obs = new IntersectionObserver((entries, o) => {
-          for (const e of entries) if (e.isIntersecting) { run(e.target); o.unobserve(e.target); }
-        }, { threshold: 0.5 });
-        counters.forEach(el => obs.observe(el));
-      }
-
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-load-map]');
-        if (!btn) return;
-        const wrap = btn.parentElement;
-        const q = encodeURIComponent('Kitzingstraße 7, 73529 Schwäbisch Gmünd');
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.google.com/maps?q=${q}&output=embed`;
-        iframe.loading = 'lazy'; iframe.referrerPolicy = 'no-referrer-when-downgrade';
-        iframe.className = 'w-full h-[320px] md:h-[420px] rounded-xl border border-white/10';
-        wrap.replaceWith(iframe);
-      }, { passive: true });
-    </script>
   </body>
 </html>
