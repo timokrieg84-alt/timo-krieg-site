@@ -1,0 +1,80 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import IconSprite from '../../components/IconSprite.astro';
+const pageTitle = 'Kontakt | ListingProfis – Jetzt Termin sichern';
+const pageDesc = 'Fragen zu Local SEO, GBP/Listing oder schneller Website? Rufen Sie an: +49 160 4365363 oder nutzen Sie das Formular für Ihr Angebot.';
+---
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="icons"><IconSprite /></Fragment>
+  <Fragment slot="header"><Header /></Fragment>
+  <main id="kontakt">
+    <section class="section container" data-reveal-group>
+      <h1 class="reveal">Kontakt</h1>
+      <p class="reveal text-muted" style="max-width:68ch">Schnellster Weg: Anruf. Wir klären in 10–15 Minuten, ob und wie wir helfen. Alternativ: Formular – Rückmeldung werktags innerhalb von 24 Stunden.</p>
+      <div class="grid grid-2 mt-4">
+        <div class="card reveal">
+          <h3 class="card__title">Direkt anrufen</h3>
+          <p class="card__meta">Telefon: <a href="tel:+491604365363">+49 160 4365363</a></p>
+          <p class="mt-4"><a class="btn btn--primary" href="tel:+491604365363">Jetzt anrufen</a></p>
+          <p class="text-muted" style="margin-top:12px">Standort: Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+        </div>
+        <div class="card reveal">
+          <h3 class="card__title">Formular</h3>
+          <form id="contact-form" class="flow" novalidate>
+            <div>
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" required placeholder="Ihr Name" style="width:100%;padding:12px;border:1px solid var(--gray-300);border-radius:10px" />
+            </div>
+            <div class="grid grid-2">
+              <div>
+                <label for="email">E‑Mail</label>
+                <input id="email" name="email" type="email" required placeholder="name@firma.de" style="width:100%;padding:12px;border:1px solid var(--gray-300);border-radius:10px" />
+              </div>
+              <div>
+                <label for="phone">Telefon</label>
+                <input id="phone" name="phone" type="tel" placeholder="+49 …" style="width:100%;padding:12px;border:1px solid var(--gray-300);border-radius:10px" />
+              </div>
+            </div>
+            <div>
+              <label for="site">Website</label>
+              <input id="site" name="site" type="url" placeholder="https://…" style="width:100%;padding:12px;border:1px solid var(--gray-300);border-radius:10px" />
+            </div>
+            <div>
+              <label for="message">Nachricht</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Was können wir für Sie tun?" style="width:100%;padding:12px;border:1px solid var(--gray-300);border-radius:10px"></textarea>
+            </div>
+            <div class="text-muted" style="font-size:.9rem">Mit dem Absenden erklären Sie sich mit der Verarbeitung Ihrer Daten gemäß unserer <a href="/datenschutz/">Datenschutz</a> einverstanden. Eingehende Anfragen werden per Telegram benachrichtigt.</div>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button type="submit" class="btn btn--primary">Abschicken</button>
+              <span id="form-status" class="text-muted" role="status" aria-live="polite"></span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script type="module" client:load>
+    const form = document.getElementById('contact-form');
+    const statusEl = document.getElementById('form-status');
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.textContent = 'Senden…';
+      const data = Object.fromEntries(new FormData(form));
+      try {
+        const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+            name: data.name || '', email: data.email || '', phone: data.phone || '', site: data.site || '', message: data.message || ''
+          })
+        });
+        if (!res.ok) throw new Error('Fehler beim Senden');
+        statusEl.textContent = 'Danke! Wir haben Ihre Anfrage erhalten und melden uns zeitnah (Telegram-Benachrichtigung aktiv).';
+        form.reset();
+      } catch (err) {
+        statusEl.textContent = 'Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
+      }
+    });
+  </script>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
