@@ -1,7 +1,14 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
 
-// https://docs.astro.build/en/reference/configuration-reference/
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind()],
+  site: process.env.SITE_URL || undefined,
+  integrations: [
+    tailwind({
+      config: {
+        applyBaseStyles: true
+      }
+    })
+  ]
 });
