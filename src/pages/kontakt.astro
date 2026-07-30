@@ -4,23 +4,23 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 ---
-<Layout title="Kontakt – Gylsere Januzi">
+<Layout title="Kontakt – Gylsere Januzi" description="Nimm Kontakt auf.">
   <Fragment slot="header"><Header /></Fragment>
-  <Section title="Kontakt aufnehmen" intro="Ruf direkt an oder nutze das Formular.">
+  <Section title="Kontakt aufnehmen" intro="Rufen Sie direkt an oder nutzen Sie das Formular.">
     <div class="grid gap-6 sm:grid-cols-2">
       <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-3 text-white">Telefon</h3>
-        <a href="tel:+491756372395" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00C853] text-gray-950 font-semibold hover:bg-[#00C853]/90 transition-colors">+49 175 6372395</a>
+        <h3 class="text-white font-semibold mb-3">Telefon</h3>
+        <a href="tel:+491756372395" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00C853] text-gray-950 font-semibold hover:bg-[#00C853]/90">+49 175 6372395</a>
       </div>
       <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <h3 class="font-semibold mb-3 text-white">Formular</h3>
+        <h3 class="text-white font-semibold mb-3">Formular</h3>
         <form id="contact-form" class="grid gap-3">
-          <input class="bg-[#0b0f19] border border-gray-800 rounded-lg px-3 py-2" name="name" placeholder="Name" required />
-          <input class="bg-[#0b0f19] border border-gray-800 rounded-lg px-3 py-2" name="email" type="email" placeholder="E-Mail" required />
-          <input class="bg-[#0b0f19] border border-gray-800 rounded-lg px-3 py-2" name="phone" type="tel" placeholder="Telefon" />
-          <input class="bg-[#0b0f19] border border-gray-800 rounded-lg px-3 py-2" name="site" type="url" placeholder="Website (optional)" />
-          <textarea class="bg-[#0b0f19] border border-gray-800 rounded-lg px-3 py-2" name="message" placeholder="Nachricht" rows="4" required></textarea>
-          <button type="submit" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#FF6A00] text-white font-medium hover:bg-[#FF6A00]/90 transition-colors">Senden</button>
+          <input class="bg-transparent border border-gray-700 rounded-lg px-3 py-2" name="name" placeholder="Name" required />
+          <input class="bg-transparent border border-gray-700 rounded-lg px-3 py-2" name="email" type="email" placeholder="E-Mail" required />
+          <input class="bg-transparent border border-gray-700 rounded-lg px-3 py-2" name="phone" type="tel" placeholder="Telefon" />
+          <input class="bg-transparent border border-gray-700 rounded-lg px-3 py-2" name="site" type="url" placeholder="Website (optional)" />
+          <textarea class="bg-transparent border border-gray-700 rounded-lg px-3 py-2" name="message" placeholder="Nachricht" rows="4" required></textarea>
+          <button type="submit" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#FF6A00] text-white font-semibold hover:bg-[#FF6A00]/90">Senden</button>
           <p id="form-status" class="text-sm text-gray-400"></p>
         </form>
         <script>
