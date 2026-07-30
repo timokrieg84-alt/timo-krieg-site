@@ -8,17 +8,14 @@ module.exports = {
     },
     extend: {
       colors: {
-        'brand-bg': '#0b1220',
-        'brand-surface': '#0f172a',
-        'brand-navy-300': '#335c96',
-        'brand-navy-500': '#214371',
-        'brand-navy-700': '#152a49',
-        'brand-navy-900': '#0b162b',
-        'brand-indigo-300': '#818cf8',
-        'brand-indigo-400': '#6366f1',
-        'brand-indigo-500': '#4f46e5',
-        'brand-accent': '#6366f1',
-        'brand-muted': '#94a3b8'
+        brand: {
+          bg: '#0b1220',
+          surface: '#0f172a',
+          navy: { 300:'#335c96', 500:'#214371', 700:'#152a49', 900:'#0b162b' },
+          indigo: { 300:'#818cf8', 400:'#6366f1', 500:'#4f46e5' },
+          accent: '#6366f1',
+          muted: '#94a3b8'
+        }
       },
       fontFamily: {
         sans: ['InterVariable','Inter','system-ui','Segoe UI','Roboto','Helvetica Neue','Arial','Noto Sans','Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol'],
