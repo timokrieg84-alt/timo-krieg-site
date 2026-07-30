@@ -4,10 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SeoTags from '../components/SeoTags.astro';
 
-interface Props {
-  title?: string;
-  description?: string;
-}
+interface Props { title?: string; description?: string; }
 const { title = 'Timo Krieg – Digitalagentur & Performance Marketing', description = 'Performance Marketing & Webdesign für den Mittelstand in Schwäbisch Gmünd & DACH.' } = Astro.props as Props;
 ---
 <!DOCTYPE html>
@@ -17,7 +14,7 @@ const { title = 'Timo Krieg – Digitalagentur & Performance Marketing', descrip
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SeoTags {title} {description} />
   </head>
-  <body>
+  <body class="min-h-screen bg-brand-bg text-slate-200">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus-ring bg-brand-surface px-3 py-2 rounded">Zum Inhalt springen</a>
     <Header />
     <main id="main">
