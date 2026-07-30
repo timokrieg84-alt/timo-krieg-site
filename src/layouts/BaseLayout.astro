@@ -1,48 +1,32 @@
 ---
-interface Props { title?: string; description?: string; }
-const { title = 'Timo Krieg – Digitalagentur', description = 'Performance Marketing, Webdesign, SEO.' } = Astro.props as Props;
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+const { title = 'Timo Krieg – Digitalagentur & Performance Marketing', description = 'Webdesign, SEO, Ads & CRO für den Mittelstand' } = Astro.props as Props;
+const url = Astro.url?.toString?.() ?? '';
 ---
+<!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#020617" />
-    <link rel="canonical" href="/" />
-    <meta property="og:type" content="website" />
+    <link rel="canonical" href={url} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
     <meta property="og:image" content="/assets/og-default.svg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body>
-    <header class="border-b border-white/10 bg-slate-900/70 backdrop-blur">
-      <div class="container flex items-center justify-between py-3">
-        <a href="/" class="no-underline text-slate-100">Timo Krieg</a>
-        <nav class="flex gap-5 text-sm">
-          <a class="no-underline hover:underline" href="/">Start</a>
-          <a class="no-underline hover:underline" href="/leistungen">Leistungen</a>
-          <a class="no-underline hover:underline" href="/ueber-uns">Über uns</a>
-          <a class="no-underline hover:underline" href="/kontakt">Kontakt</a>
-        </nav>
-      </div>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer class="mt-16 border-t border-white/10">
-      <div class="container py-10 text-sm text-slate-300">
-        <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Timo Krieg – Digitalagentur</p>
-          <nav class="flex gap-4">
-            <a class="hover:underline" href="/impressum">Impressum</a>
-            <a class="hover:underline" href="/datenschutz">Datenschutz</a>
-          </nav>
-        </div>
-      </div>
-    </footer>
+    <Header />
+    <main id="main"><slot /></main>
+    <Footer />
   </body>
 </html>
