@@ -2,49 +2,24 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import CTAButton from "../components/CTAButton.astro";
-import Section from "../components/Section.astro";
-const title = "Gylsere Januzi - Online Marketing Office";
-const desc = "Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.";
 ---
-<Layout title={title} description={desc} url="/">
+<Layout title="Gylsere Januzi - Online Marketing Office" description="Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.">
   <Fragment slot="header"><Header /></Fragment>
 
-  <section class="relative overflow-hidden">
-    <div class="container py-24 sm:py-28">
+  <section class="relative overflow-hidden py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="max-w-2xl">
         <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Die richtige Prise Perfektion</h1>
-        <p class="text-textc-muted mt-4">
+        <p class="text-gray-300 mt-4">
           Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.
         </p>
         <div class="mt-8 flex flex-wrap gap-3">
-          <CTAButton href="/kontakt" label="Kostenloses Erstgespräch" />
-          <CTAButton href="tel:+491756372395" kind="secondary" label="Direkt durchstellen" />
+          <a href="/kontakt" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#FF6A00] text-white font-medium hover:bg-[#FF6A00]/90 transition-colors">Kostenloses Erstgespräch</a>
+          <a href="tel:+491756372395" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00C853] text-gray-950 font-semibold hover:bg-[#00C853]/90 transition-colors">Direkt durchstellen</a>
         </div>
       </div>
     </div>
   </section>
-
-  <Section id="leistungen" title="Leistungen" intro="Unsere Leistungen im Überblick.">
-    <!-- TODO: Inhalte 1:1 von Live-Domain einsetzen. Bitte hier im Chat posten, damit ich sie exakt übernehme. -->
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <article class="card p-6">
-        <h3 class="font-semibold mb-2">Leistung 1</h3>
-        <p class="text-textc-muted">Platzhalter – wird 1:1 durch Inhalte der Live-Domain ersetzt.</p>
-      </article>
-      <article class="card p-6">
-        <h3 class="font-semibold mb-2">Leistung 2</h3>
-        <p class="text-textc-muted">Platzhalter – wird 1:1 durch Inhalte der Live-Domain ersetzt.</p>
-      </article>
-      <article class="card p-6">
-        <h3 class="font-semibold mb-2">Leistung 3</h3>
-        <p class="text-textc-muted">Platzhalter – wird 1:1 durch Inhalte der Live-Domain ersetzt.</p>
-      </article>
-    </div>
-    <div class="mt-8">
-      <CTAButton href="/leistungen" label="Alle Leistungen ansehen" kind="ghost" />
-    </div>
-  </Section>
 
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
