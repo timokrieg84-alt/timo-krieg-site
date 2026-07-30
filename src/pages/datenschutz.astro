@@ -1,11 +1,86 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Datenschutzerklärung | Timo Krieg – Digitalagentur & Performance Marketing';
+const description = 'Informationen zum Datenschutz, Cookies, Tracking (Google/LinkedIn) und Ihren Rechten gemäß DSGVO.';
 ---
-<BaseLayout title="Datenschutz | Timo Krieg" description="Informationen zum Datenschutz gemäß DSGVO.">
-  <section class="container py-12 md:py-16 prose prose-invert max-w-none">
-    <h1>Datenschutzerklärung</h1>
-    <p>Verantwortlich: Timo Krieg – Digitalagentur &amp; Performance Marketing, Kitzingstraße 7, 73529 Schwäbisch Gmünd. Telefon: <a href="tel:+491604365363">+49 160 4365363</a> · E-Mail: <a href="mailto:info@listingprofis.de">info@listingprofis.de</a></p>
-    <h2>Verarbeitung</h2>
-    <p>Wir verarbeiten personenbezogene Daten zur Beantwortung von Anfragen und zum Betrieb dieser Website auf Grundlage von Art. 6 Abs. 1 lit. b und f DSGVO.</p>
+<BaseLayout {title} {description}>
+  <section class="container py-12 md:py-16">
+    <h1 class="text-3xl md:text-5xl font-semibold">Datenschutzerklärung</h1>
+    <div class="mt-6 space-y-6 text-slate-300 max-w-3xl">
+      <div>
+        <h2 class="text-xl font-semibold">1. Verantwortlicher</h2>
+        <p class="mt-2">Timo Krieg – Digitalagentur &amp; Performance Marketing, Kitzingstraße 7, 73529 Schwäbisch Gmünd, Deutschland. Telefon: <a class="underline" href="tel:+491604365363">+49 160 4365363</a>, E-Mail: <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">2. Verarbeitete Daten</h2>
+        <ul class="mt-2 list-disc pl-6">
+          <li>Bestands- und Kontaktdaten (Name, Firma, E-Mail, Telefon)</li>
+          <li>Inhaltsdaten (Nachrichten, Projektinfos)</li>
+          <li>Nutzungsdaten (Seitenaufrufe, Interaktionen)</li>
+          <li>Meta-/Kommunikationsdaten (IP-Adresse, Zeitstempel, User-Agent)</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">3. Zwecke und Rechtsgrundlagen</h2>
+        <ul class="mt-2 list-disc pl-6">
+          <li>Beantwortung von Anfragen – Art. 6 Abs. 1 lit. b DSGVO</li>
+          <li>Webseitenbetrieb, Sicherheit, Reichweitenmessung – Art. 6 Abs. 1 lit. f DSGVO</li>
+          <li>Marketing/Analyse mit Einwilligung – Art. 6 Abs. 1 lit. a DSGVO</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">4. Hosting &amp; Auftragsverarbeitung</h2>
+        <p class="mt-2">Die Website wird bei einem europäischen Anbieter gehostet. Mit Dienstleistern bestehen Auftragsverarbeitungsverträge gemäß Art. 28 DSGVO.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">5. Server-Logfiles</h2>
+        <p class="mt-2">Beim Zugriff werden IP-Adresse, Datum/Uhrzeit, Referrer, aufgerufene URL, Statuscode und User-Agent verarbeitet. Speicherung zur Sicherstellung des Betriebs und zur Fehleranalyse, Löschung nach spätestens 30 Tagen.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">6. Cookies &amp; Consent</h2>
+        <p class="mt-2">Wir verwenden technisch notwendige Cookies. Optionale Cookies/Tracking werden nur mit Einwilligung gesetzt. Ihre Auswahl können Sie jederzeit im Consent-Dialog ändern.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">7. Webanalyse &amp; Marketing</h2>
+        <p class="mt-2">Sofern eingesetzt, verarbeiten Analysetools pseudonyme Nutzungsdaten. Google Ads/LinkedIn Ads Conversion-Tracking erfolgt nur mit Einwilligung. Details (Anbieter, Datenkategorien, Speicherdauer, Widerruf) werden im Consent-Tool ausgewiesen.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">8. Kontaktaufnahme</h2>
+        <p class="mt-2">Bei Kontakt per Telefon oder E-Mail verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage. Daten werden gemäß gesetzlichen Aufbewahrungsfristen gespeichert.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">9. Datenweitergabe &amp; Drittlandtransfer</h2>
+        <p class="mt-2">Eine Übermittlung an Dritte erfolgt nur, wenn erforderlich (z. B. Hosting) oder mit Einwilligung. Bei Übermittlungen in Drittländer stellen wir ein angemessenes Datenschutzniveau sicher (z. B. EU-Standardvertragsklauseln).</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">10. Speicherdauer</h2>
+        <p class="mt-2">Personenbezogene Daten werden nur so lange verarbeitet, wie es für die Zwecke erforderlich ist oder gesetzliche Pflichten bestehen.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">11. Sicherheitsmaßnahmen</h2>
+        <p class="mt-2">Wir treffen technische und organisatorische Maßnahmen (TLS, Zugriffsbeschränkungen, Backups), um Daten vor Verlust und Missbrauch zu schützen.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">12. Rechte der betroffenen Personen</h2>
+        <ul class="mt-2 list-disc pl-6">
+          <li>Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16), Löschung (Art. 17)</li>
+          <li>Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20), Widerspruch (Art. 21)</li>
+          <li>Widerruf erteilter Einwilligungen (Art. 7 Abs. 3)</li>
+        </ul>
+        <p class="mt-2">Kontakt zur Ausübung Ihrer Rechte: <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">13. Beschwerderecht</h2>
+        <p class="mt-2">Sie haben das Recht, sich bei einer Datenschutzaufsichtsbehörde zu beschweren, z. B. beim LfDI Baden-Württemberg.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">14. Externe Inhalte &amp; Links</h2>
+        <p class="mt-2">Für Inhalte verlinkter externer Seiten gelten deren Datenschutzbestimmungen.</p>
+      </div>
+      <div>
+        <h2 class="text-xl font-semibold">15. Aktualität</h2>
+        <p class="mt-2">Diese Datenschutzerklärung wird bei Änderungen von Prozessen oder Rechtslagen angepasst. Stand: {new Date().toLocaleDateString('de-DE')}.</p>
+      </div>
+    </div>
   </section>
 </BaseLayout>
