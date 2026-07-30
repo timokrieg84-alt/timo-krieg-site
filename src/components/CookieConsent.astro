@@ -1,38 +1,20 @@
 <style>
   :root {
-    --primary-orange: #FF6B00;
-    --secondary-green: #00E676;
-    --accent-pink: #FF007F;
-    --bg-dark: #0A0F0D;
-    --card-bg: #121A16;
-    --text-main: #FFFFFF;
-    --text-muted: #A0AAB0;
+    --brand-emerald: #10b981;
   }
-  .cc-wrap {
-    position: fixed; inset-inline: 12px; bottom: 12px; z-index: 9999;
-    max-width: 720px; margin-inline: auto;
-    background: color-mix(in oklab, var(--card-bg) 92%, transparent);
-    border: 1px solid color-mix(in oklab, #fff 10%, transparent);
-    border-radius: 14px; padding: 12px;
-    box-shadow: 0 12px 36px rgba(0,0,0,.35);
-    color: var(--text-main);
-  }
+  .cc-wrap { position: fixed; inset-inline: 12px; bottom: 12px; z-index: 9999; max-width: 720px; margin-inline: auto; background: color-mix(in oklab, #121A16 92%, transparent); border: 1px solid color-mix(in oklab, #fff 10%, transparent); border-radius: 14px; padding: 12px; box-shadow: 0 12px 36px rgba(0,0,0,.35); color: #fff; }
   .cc-wrap[hidden] { display: none !important; }
   .cc-head { display:flex; align-items:center; gap:.6rem; font-weight:700; }
-  .cc-text { margin:.35rem 0 .6rem 0; color: var(--text-muted); }
+  .cc-text { margin:.35rem 0 .6rem 0; color: #A0AAB0; }
   .cc-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
-  .cc-chip {
-    display:inline-flex; align-items:center; gap:.45rem; border-radius:999px;
-    padding:.5rem .75rem; border:1px solid color-mix(in oklab, var(--accent) 50%, #fff);
-    background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 10%, transparent), transparent);
-  }
+  .cc-chip { display:inline-flex; align-items:center; gap:.45rem; border-radius:999px; padding:.5rem .75rem; border:1px solid color-mix(in oklab, var(--brand-emerald) 50%, #fff); background: linear-gradient(180deg, color-mix(in oklab, var(--brand-emerald) 10%, transparent), transparent); }
   .cc-actions { display:flex; gap:8px; margin-left:auto; }
   .btn { border:1px solid currentColor; border-radius:999px; padding:.55rem .85rem; background:transparent; color:#fff; cursor:pointer; }
-  .btn.-primary { border-color: color-mix(in oklab, var(--accent) 75%, #fff); box-shadow: 0 0 18px color-mix(in oklab, var(--accent) 20%, transparent); }
+  .btn.-primary { border-color: color-mix(in oklab, var(--brand-emerald) 75%, #fff); box-shadow: 0 0 18px color-mix(in oklab, var(--brand-emerald) 20%, transparent); }
   .sr-only { position:absolute !important; clip:rect(1px,1px,1px,1px); padding:0;border:0;height:1px;width:1px;overflow:hidden;white-space:nowrap; }
 </style>
 
-<div class="cc-wrap" id="cookie-consent" role="dialog" aria-labelledby="cc-title" aria-live="polite" style="--accent: var(--secondary-green)">
+<div class="cc-wrap" id="cookie-consent" role="dialog" aria-labelledby="cc-title" aria-live="polite">
   <div class="cc-head">
     <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="M12 2a1 1 0 0 0-1 1v1a3 3 0 0 1-3 3H7a1 1 0 0 0-1 1v1a3 3 0 0 1-3 3v1a1 1 0 0 0 1 1h1a3 3 0 0 1 3 3v1a1 1 0 0 0 1 1h1a3 3 0 0 1 3 3h1a1 1 0 0 0 1-1v-1a3 3 0 0 1 3-3h1a1 1 0 0 0 1-1v-1a3 3 0 0 1-3-3v-1a1 1 0 0 0-1-1h-1a3 3 0 0 1-3-3V3a1 1 0 0 0-1-1z"/></svg>
     <span id="cc-title">Cookies & Dienste</span>
@@ -40,15 +22,15 @@
   <p class="cc-text">Wir verwenden essenzielle Cookies. Optionale Dienste (Analytics/Marketing) werden nur nach Zustimmung geladen. Do‑Not‑Track wird respektiert.</p>
 
   <div class="cc-row" aria-describedby="cc-opts">
-    <span class="cc-chip" style="--accent: var(--primary-orange)">
+    <span class="cc-chip">
       <input id="cc-essential" type="checkbox" checked disabled aria-label="Essentiell"/>
       <label for="cc-essential">Essentiell</label>
     </span>
-    <span class="cc-chip" style="--accent: var(--secondary-green)">
+    <span class="cc-chip">
       <input id="cc-analytics" type="checkbox" aria-label="Analytics"/>
       <label for="cc-analytics">Analytics</label>
     </span>
-    <span class="cc-chip" style="--accent: var(--accent-pink)">
+    <span class="cc-chip">
       <input id="cc-marketing" type="checkbox" aria-label="Marketing"/>
       <label for="cc-marketing">Marketing</label>
     </span>
@@ -72,15 +54,13 @@
   const stored = localStorage.getItem(key);
   if (stored) {
     const st = JSON.parse(stored);
-    chkA.checked = !!st.analytics;
-    chkM.checked = !!st.marketing;
+    chkA.checked = !!st.analytics; chkM.checked = !!st.marketing;
     if (!dnt) applyConsent(st);
     wrap.hidden = true;
   } else if (dnt) {
     applyConsent({ analytics: false, marketing: false });
     wrap.hidden = true;
   }
-
   function applyConsent(c) {
     document.querySelectorAll('[data-consent]').forEach((el) => {
       const type = el.getAttribute('data-consent');
@@ -91,28 +71,14 @@
           const s = document.createElement('script');
           s.src = src; s.async = true; s.defer = true;
           document.head.appendChild(s);
-        } else {
-          el.setAttribute('src', src);
-        }
+        } else { el.setAttribute('src', src); }
       }
     });
     window.dispatchEvent(new CustomEvent('consentchange', { detail: c }));
   }
-
-  function save(c) {
-    localStorage.setItem(key, JSON.stringify(c));
-    applyConsent(c);
-    wrap.hidden = true;
-  }
-
-  wrap.querySelector('[data-cc="accept"]').addEventListener('click', () => {
-    save({ analytics: true, marketing: true });
-  });
-  wrap.querySelector('[data-cc="decline"]').addEventListener('click', () => {
-    save({ analytics: false, marketing: false });
-  });
-  wrap.querySelector('[data-cc="save"]').addEventListener('click', () => {
-    save({ analytics: chkA.checked, marketing: chkM.checked });
-  });
+  function save(c) { localStorage.setItem(key, JSON.stringify(c)); applyConsent(c); wrap.hidden = true; }
+  wrap.querySelector('[data-cc="accept"]').addEventListener('click', () => save({ analytics: true, marketing: true }));
+  wrap.querySelector('[data-cc="decline"]').addEventListener('click', () => save({ analytics: false, marketing: false }));
+  wrap.querySelector('[data-cc="save"]').addEventListener('click', () => save({ analytics: chkA.checked, marketing: chkM.checked }));
 })();
 </script>
