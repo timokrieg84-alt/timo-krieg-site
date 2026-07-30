@@ -14,6 +14,7 @@ body { @apply bg-white text-slate-900 font-sans antialiased; }
 .btn-secondary { @apply border border-slate-300 bg-white text-slate-900 hover:bg-slate-50; }
 .input { @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-slate-900 placeholder:text-slate-400 focus:border-brand focus:ring-2 focus:ring-green-400/40; }
 .badge { @apply inline-flex items-center rounded-full bg-green-50 text-brand px-2.5 py-1 text-xs font-medium ring-1 ring-inset ring-green-200; }
+.nav-link { @apply text-slate-700 hover:text-slate-900 underline decoration-transparent hover:decoration-slate-300 underline-offset-8 transition; }
 
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
