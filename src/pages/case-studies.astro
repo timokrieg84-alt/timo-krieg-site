@@ -6,8 +6,62 @@ import Section from "../components/Section.astro";
 ---
 <Layout title="Case Studies – Gylsere Januzi" description="Ausgewählte Projekte mit Ergebnissen.">
   <Fragment slot="header"><Header /></Fragment>
-  <Section title="Case Studies">
-    <p class="text-textc-muted">Fallstudien werden hier angezeigt. (Inhalte folgen 1:1 von der Live-Domain.)</p>
+  <Section title="ERGEBNISSE">
+    <div class="grid gap-6">
+      <article class="card p-6">
+        <h2 class="text-xl font-semibold mb-2">Handwerk, nicht Highlight-Reel.</h2>
+        <p class="text-textc-muted">Einzelne Case-Studies beeindrucken niemanden mehr – jede Agentur hat sie. Wir zeigen lieber wie wir arbeiten und was über alle Mandate hinweg entsteht. Aggregate statt Anekdoten.</p>
+      </article>
+
+      <div class="grid sm:grid-cols-3 gap-6">
+        <article class="card p-6">
+          <div class="text-sm text-textc-muted">01</div>
+          <h3 class="font-semibold mb-2">Audit</h3>
+          <p class="text-textc-muted">Bestandsaufnahme in Zahlen. GSC, GA4, Ads-Accounts, Backlinks, technisches SEO. Wir finden was blockiert, bevor wir skalieren.</p>
+          <div class="text-xs text-textc-muted mt-2">— DAUER 5-10 TAGE</div>
+        </article>
+        <article class="card p-6">
+          <div class="text-sm text-textc-muted">02</div>
+          <h3 class="font-semibold mb-2">Strategie</h3>
+          <p class="text-textc-muted">Priorisierung nach Impact, nicht nach Buzzword-Trend. Klare Roadmap mit messbaren Zielen und Budget-Empfehlung.</p>
+          <div class="text-xs text-textc-muted mt-2">— WORKSHOP 1 TAG</div>
+        </article>
+        <article class="card p-6">
+          <div class="text-sm text-textc-muted">03</div>
+          <h3 class="font-semibold mb-2">Umsetzung</h3>
+          <p class="text-textc-muted">Sprints à 2 Wochen, wöchentliche Syncs, gemeinsamer Linear-Zugang. Du siehst live was läuft, keine Blackbox.</p>
+          <div class="text-xs text-textc-muted mt-2">— LAUFEND</div>
+        </article>
+      </div>
+
+      <div class="grid sm:grid-cols-4 gap-6">
+        <article class="card p-6">
+          <div class="text-3xl font-semibold">50+</div>
+          <p class="text-textc-muted">aktive Mandate in DACH, Schweiz und International</p>
+          <div class="text-xs text-textc-muted mt-2">● STAND APR 2026</div>
+        </article>
+        <article class="card p-6">
+          <div class="text-3xl font-semibold">12M+</div>
+          <p class="text-textc-muted">organische Impressionen pro Monat über alle Mandate</p>
+          <div class="text-xs text-textc-muted mt-2">● QUELLE: GSC</div>
+        </article>
+        <article class="card p-6">
+          <div class="text-3xl font-semibold">340+</div>
+          <p class="text-textc-muted">Top-3-Rankings erreicht in den letzten 12 Monaten</p>
+          <div class="text-xs text-textc-muted mt-2">● DEUTSCHLAND, AT, CH, GB</div>
+        </article>
+        <article class="card p-6">
+          <div class="text-3xl font-semibold">~3h</div>
+          <p class="text-textc-muted">durchschnittliche Antwortzeit auf Kundenanfragen</p>
+          <div class="text-xs text-textc-muted mt-2">● WERKTAGS 9-18 UHR</div>
+        </article>
+      </div>
+
+      <article class="card p-6">
+        <h3 class="font-semibold mb-2">Transparenz</h3>
+        <p class="text-textc-muted">Alle Zahlen sind aggregiert über unser gesamtes Portfolio, keine einzelnen Kunden sichtbar. Stichprobengrundlage und Messmethoden teilen wir gerne im Erstgespräch.</p>
+      </article>
+    </div>
   </Section>
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
