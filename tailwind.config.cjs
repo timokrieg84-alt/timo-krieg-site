@@ -1,14 +1,7 @@
-/**** Minimal Tailwind config (no custom tokens) ****/
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/**/*.{astro,html,md,mdx,js,jsx,ts,tsx}',
-    './public/**/*.html',
-  ],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
-    extend: {
-      container: { center: true, padding: '1rem' },
-    },
+    extend: {},
   },
   plugins: [],
 };
