@@ -1,14 +1,19 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
   <defs>
-    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0b1220"/>
       <stop offset="1" stop-color="#0f172a"/>
     </linearGradient>
   </defs>
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <circle cx="180" cy="160" r="80" fill="none" stroke="#6366f1" stroke-width="6" opacity="0.35"/>
-  <path d="M140 190 L180 120 L220 190" fill="none" stroke="#6366f1" stroke-width="6"/>
-  <text x="320" y="290" fill="#ffffff" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="800" font-size="56">Timo Krieg</text>
-  <text x="320" y="340" fill="#94a3b8" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-weight="600" font-size="28">Digitalagentur &amp; Performance Marketing</text>
-  <text x="320" y="410" fill="#c7d2fe" font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif" font-size="24">Performance Marketing & Webdesign für den Mittelstand</text>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g transform="translate(120,120)">
+    <text x="0" y="0" fill="#94a3b8" font-size="28" font-family="Inter, system-ui">Timo Krieg – Digitalagentur</text>
+    <text x="0" y="56" fill="#ffffff" font-size="64" font-weight="700" font-family="Inter, system-ui">Performance Marketing</text>
+    <text x="0" y="116" fill="#a5b4fc" font-size="48" font-weight="600" font-family="Inter, system-ui">Webdesign • SEO • Ads • CRO</text>
+  </g>
+  <g transform="translate(900,80)">
+    <rect width="180" height="180" rx="24" fill="#0f172a" stroke="#1e293b"/>
+    <path d="M20 140 L80 20 H112 L52 140 Z" fill="#6366f1"/>
+    <path d="M68 140 L128 20 H160 L100 140 Z" fill="#22d3ee"/>
+  </g>
 </svg>
