@@ -1,10 +1,10 @@
 ---
 interface Props {
-  title?: string;
+  title: string;
   description?: string;
 }
-const { title = "Gylsere Januzi - online marketing office", description = "Gylsere Januzi - online marketing office" } = Astro.props;
-import "../styles/global.css";
+
+const { title, description = "Gylsere Januzi - online marketing office" } = Astro.props;
 ---
 <!doctype html>
 <html lang="de" class="dark">
@@ -13,6 +13,7 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
   <body class="bg-[#0b0f19] text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-[#FF6A00] selection:text-white">
     <slot name="header" />
