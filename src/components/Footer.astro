@@ -1,18 +1,27 @@
-<footer class="bg-[#0b0f19] border-t border-gray-800 text-gray-400 py-12 mt-20">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-    <div>
-      <h3 class="text-white font-bold text-lg mb-2">Gylsere Januzi</h3>
-      <p class="text-sm">Exzellenz & Digitale Präsenz.</p>
+---
+const year = new Date().getFullYear();
+---
+<footer class="bg-[#0b0f19] border-t border-gray-800 text-gray-300">
+  <div class="mx-auto max-w-7xl px-4 py-10 md:py-12">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <div>
+        <a href="/" class="text-white font-semibold tracking-tight">Gylsere Januzi – online marketing office</a>
+        <p class="text-sm text-gray-400 mt-1">Exzellenz & Digitale Präsenz.</p>
+      </div>
+      <div class="flex items-center gap-4">
+        <a href="mailto:gjanuzikrieg@gmail.com" class="text-[#FF2D9A] hover:underline">gjanuzikrieg@gmail.com</a>
+        <a href="tel:+491756372395" class="text-[#00C853] hover:underline">+49 175 6372395</a>
+      </div>
     </div>
-    <div class="text-sm space-y-1">
-      <p>Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
-      <p>Tel: <a href="tel:+491756372395" class="text-[#FF2D9A] hover:underline">+49 175 6372395</a></p>
-      <p>E-Mail: <a href="mailto:gjanuzikrieg@gmail.com" class="text-[#FF2D9A] hover:underline">gjanuzikrieg@gmail.com</a></p>
-    </div>
-    <div class="flex md:justify-end gap-6 text-sm">
-      <a href="/kontakt" class="hover:text-[#FF2D9A]">Kontakt</a>
-      <a href="/impressum" class="hover:text-[#FF2D9A]">Impressum</a>
-      <a href="/datenschutz" class="hover:text-[#FF2D9A]">Datenschutz</a>
+    <div class="mt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-sm">
+      <nav class="flex gap-4 text-gray-400">
+        <a href="/" class="hover:text-white">Home</a>
+        <a href="/leistungen" class="hover:text-white">Leistungen</a>
+        <a href="/case-studies" class="hover:text-white">Case Studies</a>
+        <a href="/wir" class="hover:text-white">Wir</a>
+        <a href="/kontakt" class="hover:text-white">Kontakt</a>
+      </nav>
+      <p class="text-gray-500">© {year} Gylsere Januzi</p>
     </div>
   </div>
 </footer>
