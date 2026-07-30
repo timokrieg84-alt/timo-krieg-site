@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 const { title = "Gylsere Januzi - online marketing office", description = "Online Marketing Office – Sichtbarkeit bei Google, ChatGPT und Social. Messbar, persönlich, ohne Blabla.", url = Astro.url.pathname } = Astro.props;
 const canonical = new URL(url, Astro.site).toString();
 ---
@@ -16,7 +17,6 @@ const canonical = new URL(url, Astro.site).toString();
     <meta property="og:site_name" content="Gylsere Januzi - Online Marketing Office" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="/favicon.ico" />
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <script type="application/ld+json">
       {JSON.stringify({
         "@context":"https://schema.org",
@@ -24,9 +24,7 @@ const canonical = new URL(url, Astro.site).toString();
         "name":"Gylsere Januzi - Online Marketing Office",
         "url": Astro.site?.origin || "https://timo-krieg-site.vercel.app",
         "telephone":"+49 175 6372395",
-        "sameAs":[
-          "tel:+491756372395"
-        ]
+        "sameAs":["tel:+491756372395"]
       })}
     </script>
   </head>
