@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+const title = 'Leistungen: Performance Marketing, Google/LinkedIn Ads, SEO | Timo Krieg';
+const description = 'B2B-Leistungsportfolio: SEA/SEO, LinkedIn Ads, PMax, CRO & Analytics. Für Mittelstand in Schwäbisch Gmünd, Baden-Württemberg & DACH.';
+---
+<BaseLayout {title} {description}>
+  <section class="container py-16 md:py-24">
+    <h1 class="text-3xl md:text-5xl font-semibold">Digitale Performance, die sich rechnet</h1>
+    <p class="mt-4 max-w-2xl text-brand.muted">Sechs Leistungen – ein Ziel: mehr qualifizierte Anfragen und Wachstum. Jedes Paket ist auf den Mittelstand zugeschnitten.</p>
+
+    <article id="webdesign" class="mt-12 card">
+      <h2 class="text-2xl font-semibold">Individuelles Webdesign & Astro/Tailwind Webentwicklung</h2>
+      <p class="mt-2 text-brand.muted">Markenstarke Websites mit Ladezeiten unter 1 Sekunde, perfekter UX und messbarer Conversion-Steigerung.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Unter 1s Ladezeit: bessere Rankings, weniger Absprünge</li>
+        <li>Sauberer, erweiterbarer Code (Astro/Tailwind)</li>
+        <li>Core Web Vitals im grünen Bereich</li>
+        <li>DSGVO-freundlich: lokal eingebundene Assets</li>
+      </ul>
+    </article>
+
+    <article id="seo" class="mt-8 card">
+      <h2 class="text-2xl font-semibold">SEO & Content-Strategie</h2>
+      <p class="mt-2 text-brand.muted">Nachhaltig organisch wachsen – mit technischer Exzellenz, Content, der konvertiert, und klaren Prioritäten.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Technik-Audit und Onpage-Quickwins</li>
+        <li>Keyword-Strategie entlang der Customer Journey</li>
+        <li>Content-Hubs und interne Verlinkung</li>
+        <li>Tracking & Reporting für klare Entscheidungen</li>
+      </ul>
+    </article>
+
+    <article id="local-seo" class="mt-8 card">
+      <h2 class="text-2xl font-semibold">Local SEO & Google Business Profil</h2>
+      <p class="mt-2 text-brand.muted">Dominieren Sie die lokale Suche: mehr Anrufe, Wegbeschreibungen und Termine.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Local Pack (Maps) optimieren</li>
+        <li>Bewertungen systematisch aufbauen</li>
+        <li>Konsistente NAP-Daten (Name, Adresse, Telefon)</li>
+        <li>Lokale Landingpages für jede Leistung/Region</li>
+      </ul>
+    </article>
+
+    <article id="ads" class="mt-8 card">
+      <h2 class="text-2xl font-semibold">Google Ads (SEA) & Social Performance</h2>
+      <p class="mt-2 text-brand.muted">Planen, testen, skalieren – qualifizierte B2B-Leads mit Fokus auf Profitabilität.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Präzises Targeting, klare Botschaften</li>
+        <li>Saubere Kontostruktur, Quality Score im Blick</li>
+        <li>Conversion-Tracking end-to-end (CRM-ready)</li>
+        <li>ROAS-/CPL-Steuerung und transparente Dashboards</li>
+      </ul>
+    </article>
+
+    <article id="cro" class="mt-8 card">
+      <h2 class="text-2xl font-semibold">Conversion-Rate-Optimierung & Landingpages</h2>
+      <p class="mt-2 text-brand.muted">Mehr Leads ohne mehr Traffic – mit klarem Messaging, starker UX und A/B-Tests.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Klares Value Proposition & Social Proof</li>
+        <li>Reibungslose Funnels, weniger Abbrüche</li>
+        <li>Schnelle Tests: Headlines, Angebote, Formulare</li>
+        <li>Heatmaps, Session-Recordings, Form-Analytics</li>
+      </ul>
+    </article>
+
+    <article id="hosting" class="mt-8 card">
+      <h2 class="text-2xl font-semibold">Wartung, DSGVO & High-Speed Hosting</h2>
+      <p class="mt-2 text-brand.muted">Stabil, sicher, schnell – EU-Hosting, Backups, Monitoring und kurze Reaktionszeiten.</p>
+      <ul class="mt-4 grid sm:grid-cols-2 gap-2 list-disc pl-5 text-slate-300">
+        <li>Proaktives Monitoring & Security-Patches</li>
+        <li>Tägliche Backups & Staging-Umgebungen</li>
+        <li>Serverstandort EU, AVV inklusive</li>
+        <li>Performance-Caching, Bildoptimierung, CDN optional</li>
+      </ul>
+    </article>
+
+    <div class="mt-12 flex flex-col sm:flex-row gap-3">
+      <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+      <a href="/kontakt" class="btn btn-secondary">Kostenloses Erstgespräch</a>
+    </div>
+  </section>
+</BaseLayout>
