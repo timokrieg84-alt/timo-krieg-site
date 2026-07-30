@@ -3,34 +3,21 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Funnel from '../../components/Funnel.astro';
 import Footer from '../../components/Footer.astro';
+import { servicesGrid, projectInfo } from '../../data/site';
 
 export async function getStaticPaths() {
-  const pages = [
-    { slug: 'seo', title: 'SEO', kicker: 'LEISTUNG 01', text: 'Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.' },
-    { slug: 'seo-regio', title: 'SEO-Regio', kicker: 'LEISTUNG 02', text: 'Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir stampfen ein mächtiges Netzwerk aus 50 zusätzlichen, komplett eigenständigen Webseiten aus dem Boden. (Nur 250 € mtl.)' },
-    { slug: 'google-ads', title: 'Google Ads', kicker: 'LEISTUNG 03', text: 'Mit unseren maßgeschneiderten Google Ads Kampagnen platzieren wir Ihr Unternehmen exakt an Position 1 der Suchergebnisse inklusive Klickschutz.' },
-    { slug: 'geo', title: 'GEO (AI-Search & ChatGPT)', kicker: 'LEISTUNG 04', text: 'Generative Engine Optimization – deine Marke wird in AI-Antworten bei ChatGPT, Perplexity & Google AI Overviews zitiert.' },
-    { slug: 'webdesign', title: 'Webdesign & E-Commerce', kicker: 'LEISTUNG 05', text: 'Wir programmieren Ihren digitalen Kernauftritt oder hochkomplexe Shoplösungen von Grund auf neu mit Höchstgeschwindigkeit.' },
-    { slug: 'terminbuchung', title: 'Online-Terminvereinbarungen', kicker: 'LEISTUNG 06', text: 'Offizieller Premium-Partner für Jameda und Doctolib. Wir automatisieren Ihre Terminbuchungsprozesse vollständig.' },
-    { slug: 'marketing', title: 'Marketing', kicker: 'LEISTUNG 07', text: 'Von Content über Social bis Email – ganzheitliches Marketing, das direkt auf Ihre Umsatzzahlen einzahlt.' },
-    { slug: 'ai-automation', title: 'AI & Automation', kicker: 'LEISTUNG 08', text: 'Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.' },
-    { slug: 'branding', title: 'Branding', kicker: 'LEISTUNG 09', text: 'Brand DNA, Visual Identity und Messaging – erschaffen Sie eine Marke, die im Gedächtnis bleibt.' },
-    { slug: 'social-media', title: 'Social Media', kicker: 'LEISTUNG 10', text: 'Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. für echte Neukunden.' },
-    { slug: 'reputation', title: 'Reputation & Bewertungen', kicker: 'LEISTUNG 11', text: 'Automatisierte 5-Sterne-Bewertungen und aktiver Reputationsschutz gegen unfaire oder gefälschte Rezensionen.' },
-    { slug: 'praxis-tv', title: 'Praxis-TV / Display-Systeme', kicker: 'LEISTUNG 12', text: 'Verwandeln Sie die Wartezeit Ihrer Patienten in eine Aufklärungszeit für Zusatzleistungen (iGeL).' },
-    { slug: 'programmierung', title: 'Code-Exzellenz & Programmierung', kicker: 'LEISTUNG 13', text: 'Unsere Software-Ingenieure übernehmen jegliche Programmierarbeiten: APIs, CRM-Verknüpfungen, Logos und Custom Tools.' },
-    { slug: 'factoring', title: 'Premium-Factoring', kicker: 'LEISTUNG 14', text: 'Verkaufen Sie offene Forderungen und erhalten Sie Geld innerhalb von 24 bis 48 Stunden mit 100% Ausfallschutz.' }
-  ];
-  return pages.map(page => ({ params: { slug: page.slug }, props: { page, all: pages } }));
+  return servicesGrid.grid_cards.map((c) => ({ params: { slug: c.slug } }));
 }
 
-const { page, all } = Astro.props as { page: { slug: string; title: string; kicker: string; text: string; }; all: Array<{ slug: string; title: string; kicker: string; text: string; }> };
-const others = all.filter(p => p.slug !== page.slug);
+const { slug } = Astro.params;
+const card = servicesGrid.grid_cards.find((c) => c.slug === slug);
+if (!card) throw new Error(`Service not found for slug: ${slug}`);
+
 const siteUrl = Astro.url ? Astro.url.toString() : '';
-const mailto = `mailto:${encodeURIComponent('info@januzi-bau.de')}?subject=${encodeURIComponent('Anfrage: ' + page.title)}&body=${encodeURIComponent('Hallo,\n\nich interessiere mich für: ' + page.title + '\nSeite: ' + siteUrl + '\n\nDanke!')}`;
+const mailto = `mailto:${encodeURIComponent('info@januzi-bau.de')}?subject=${encodeURIComponent('Anfrage: ' + card.title)}&body=${encodeURIComponent('Hallo,\n\nich interessiere mich für: ' + card.title + '\nSeite: ' + siteUrl + '\n\nDanke!')}`;
 ---
 
-<Layout title={`${page.title} | Gylsere Januzi`}>
+<Layout title={`${card.title} | ${projectInfo.company_name}`}>
   <Header />
 
   <div class="sticky top-0 z-40 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
@@ -40,73 +27,35 @@ const mailto = `mailto:${encodeURIComponent('info@januzi-bau.de')}?subject=${enc
         <span aria-hidden="true"> / </span>
         <a href="/leistungen" class="hover:text-white transition">Leistungen</a>
         <span aria-hidden="true"> / </span>
-        <span aria-current="page" class="text-white font-medium">{page.title}</span>
+        <span aria-current="page" class="text-white font-medium">{card.title}</span>
       </nav>
       <div class="flex items-center gap-2">
         <a href="/" class="px-3 py-1.5 rounded-lg border border-white/15 text-sm hover:bg-white/5 transition" aria-label="Zur Startseite">← Home</a>
-        <a href={`/kontakt?service=${page.slug}`} class="px-3 py-1.5 rounded-lg border border-white/15 text-sm hover:bg-white/5 transition" aria-label="Kontaktformular öffnen">Kontakt</a>
+        <a href={`/kontakt?service=${slug}`} class="px-3 py-1.5 rounded-lg border border-emerald-400 text-emerald-400 text-sm hover:bg-emerald-400 hover:text-black transition" aria-label="Kontaktformular öffnen">Kontakt</a>
         <a href={mailto} class="px-3 py-1.5 rounded-lg border border-white/15 text-sm hover:bg-white/5 transition" aria-label="Direkt E-Mail senden">E‑Mail</a>
       </div>
     </div>
   </div>
 
-  <article class="max-w-4xl mx-auto px-4 py-12 sm:py-20">
-    <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">{page.kicker}</span>
-    <h1 class="text-4xl sm:text-6xl font-black mt-2 mb-8">{page.title}</h1>
-    <div class="bg-brand-card p-8 rounded-2xl border border-white/10 text-lg leading-relaxed text-brand-muted mb-12">{page.text}</div>
+  <article class="max-w-5xl mx-auto px-4 py-12 sm:py-20">
+    <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">LEISTUNG</span>
+    <h1 class="text-4xl sm:text-6xl font-black mt-2 mb-6">{card.title}</h1>
+    <div class="bg-brand-card p-8 rounded-2xl border border-white/10 text-lg leading-relaxed text-brand-muted mb-8">
+      <div class="flex items-center gap-2 mb-2"><span class="text-2xl" aria-hidden="true">{card.icon}</span><strong>{card.sub_headline}</strong></div>
+      <p class="mt-2">{card.description}</p>
+      {card.tags?.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {card.tags.map((t) => (<span class="text-xs px-2 py-1 rounded-full border border-white/10 text-brand-muted">{t}</span>))}
+        </div>
+      )}
+    </div>
     <div class="flex flex-wrap gap-3">
-      <a href="#kontakt" class="bg-emerald-400 text-black px-6 py-3 rounded-xl font-bold hover:bg-opacity-90 transition">Jetzt Anfrage stellen</a>
+      <a href="#kontakt" class="bg-emerald-400 text-black px-6 py-3 rounded-xl font-bold hover:bg-emerald-400/90 transition">Jetzt Anfrage stellen</a>
       <a href="/" class="border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition">← Zurück zur Übersicht</a>
       <a href={mailto} class="border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition" aria-label="E-Mail an info@januzi-bau.de">Per E‑Mail anfragen</a>
     </div>
   </article>
 
-  <section class="py-12 sm:py-16 max-w-7xl mx-auto px-4" aria-labelledby="more-links">
-    <h2 id="more-links" class="text-2xl font-extrabold mb-6">Weitere Leistungen</h2>
-    <ul role="list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {others.map((s) => (
-        <li class="will-change-transform" data-animate="rise">
-          <a href={`/leistungen/${s.slug}`} class="block bg-brand-card p-6 rounded-2xl border border-white/10 hover:border-white/30 transition group focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400" aria-label={`${s.title} ansehen`}>
-            <div class="inline-block px-3 py-1 rounded-full border text-xs font-bold mb-4 border-emerald-400 text-emerald-400">{s.title}</div>
-            <h3 class="text-lg font-bold mb-2 group-hover:text-emerald-400 transition">{s.title}</h3>
-            <p class="text-brand-muted text-sm leading-relaxed mb-4 line-clamp-2">{s.text}</p>
-            <div class="flex gap-2"><span class="text-xs font-bold uppercase tracking-wider text-white group-hover:underline">Mehr erfahren →</span><span class="sr-only">{s.title}</span></div>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-
   <Funnel />
   <Footer />
 </Layout>
-
-<script is:raw>
-(() => {
-  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const els = document.querySelectorAll('[data-animate="rise"]');
-  els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(8px)'; });
-  const io = new IntersectionObserver((entries, obs) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.style.transition='opacity .5s ease, transform .5s ease'; e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target);} });
-  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
-  els.forEach(el => io.observe(el));
-})();
-</script>
-
-<script type="application/ld+json">
-{JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "Service",
-  "name": page.title,
-  "serviceType": page.kicker,
-  "url": siteUrl,
-  "description": page.text,
-  "provider": {
-    "@type": "Organization",
-    "name": "Gylsere Januzi",
-    "email": "info@januzi-bau.de",
-    "telephone": "+49 175 6372395",
-    "address": { "@type": "PostalAddress", "streetAddress": "Kitzingstraße 7", "postalCode": "73529", "addressLocality": "Schwäbisch Gmünd", "addressCountry": "DE" }
-  }
-})}
-</script>
