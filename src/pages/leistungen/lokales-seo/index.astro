@@ -1,0 +1,54 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import IconSprite from '../../../components/IconSprite.astro';
+import ScrollAnimations from '../../../components/ScrollAnimations.astro';
+const pageTitle = 'Lokales SEO Schwäbisch Gmünd | Google Business Profile & Maps';
+const pageDesc = 'Top‑Plätze im Local Pack: GBP‑Optimierung, Citations, Bewertungen & regionale Landingpages für Schwäbisch Gmünd, Ostalbkreis & Stuttgart.';
+---
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="icons"><IconSprite /></Fragment>
+  <Fragment slot="header"><Header /></Fragment>
+  <main>
+    <section class="section container" data-reveal-group>
+      <h1 class="reveal">Lokales SEO</h1>
+      <p class="reveal text-muted" style="max-width:70ch">Werden Sie zur ersten Wahl in Schwäbisch Gmünd: Lokale SEO, die Anrufe und Termine bringt.</p>
+      <div class="grid grid-3 mt-4">
+        <article class="card reveal"><h3 class="card__title">Sichtbarkeit</h3><p class="card__meta">Google Maps, Local Pack, organische Treffer – dort, wo gesucht wird.</p></article>
+        <article class="card reveal"><h3 class="card__title">Vertrauen</h3><p class="card__meta">Bewertungen & Reputation professionell gemanagt.</p></article>
+        <article class="card reveal"><h3 class="card__title">Technik</h3><p class="card__meta">Schnelle Websites, Schema‑Daten, lokale Signale.</p></article>
+      </div>
+      <div class="flow mt-4" data-reveal-group>
+        <h2 class="reveal">Prozess</h2>
+        <ol class="reveal" style="padding-left:18px" class="text-muted">
+          <li>Audit: Standort, Wettbewerb, Website, GBP, Citations, Bewertungen.</li>
+          <li>GBP: Vollständige Optimierung inkl. Kategorien, Services, Posts, Q&A.</li>
+          <li>Citations: Konsistente Listings in relevanten Verzeichnissen.</li>
+          <li>Bewertungen: Review‑Programm, Templates, Reaktionsleitfäden.</li>
+          <li>Lokale Seiten: Stadt‑/Leistungs‑Landingpages, internes Linking, Markup.</li>
+          <li>Reporting: Rankings, Anrufe, Wegbeschreibungen, Conversions.</li>
+        </ol>
+      </div>
+      <div class="mt-4">
+        <a class="btn btn--primary" href="tel:+491604365363">Jetzt anrufen</a>
+        <a class="btn btn--ghost" href="/kontakt/" style="margin-left:8px">Kostenloses Erstgespräch</a>
+      </div>
+    </section>
+  </main>
+  <ScrollAnimations />
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Service",
+      "@id":"https://www.listingprofis.de/leistungen/lokales-seo/#service",
+      "serviceType":"Lokales SEO & Google Business Profile Betreuung",
+      "name":"Lokales SEO Schwäbisch Gmünd",
+      "description":"GBP‑Optimierung, Citations/Verzeichnisse, Bewertungen & lokale Landingpages für bessere Sichtbarkeit im Local Pack.",
+      "areaServed":["Schwäbisch Gmünd","Ostalbkreis","Stuttgart","Baden‑Württemberg"],
+      "provider":{ "@id":"https://www.listingprofis.de/#organization" },
+      "offers":{ "@type":"Offer","priceCurrency":"EUR","url":"https://www.listingprofis.de/kontakt/" }
+    })}</script>
+  </Fragment>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>
