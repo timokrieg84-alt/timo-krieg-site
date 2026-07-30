@@ -1,8 +1,5 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-}
+interface Props { title: string; description: string; }
 const { title, description } = Astro.props as Props;
 const site = Astro.site?.href ?? 'https://timo-krieg-site.vercel.app';
 const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).href : site + Astro.url.pathname;
@@ -30,36 +27,13 @@ const og = new URL('/assets/og-default.svg', site).toString();
 <link rel="icon" href="/assets/logo.svg" type="image/svg+xml" />
 
 <script type="application/ld+json">{JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  '@id': site + '#organization',
-  name: brand,
-  url: site,
-  logo,
-  telephone: tel,
-  email,
-  sameAs: []
+  '@context': 'https://schema.org', '@type': 'Organization', '@id': site + '#organization',
+  name: brand, url: site, logo, telephone: tel, email, sameAs: []
 })}</script>
-
 <script type="application/ld+json">{JSON.stringify({
-  '@context': 'https://schema.org',
-  '@type': ['LocalBusiness','ProfessionalService'],
-  '@id': site + '#local',
-  name: brand,
-  image: og,
-  url: site,
-  telephone: tel,
-  email,
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: 'Kitzingstraße 7',
-    addressLocality: 'Schwäbisch Gmünd',
-    postalCode: '73529',
-    addressRegion: 'BW',
-    addressCountry: 'DE'
-  },
-  areaServed: [{ '@type':'Country', name:'DE' },{ '@type':'Country', name:'AT' },{ '@type':'Country', name:'CH' }],
-  priceRange: '€€€',
-  founder: { '@type':'Person', name: 'Timo Krieg' },
-  parentOrganization: { '@id': site + '#organization' }
+  '@context': 'https://schema.org', '@type': ['LocalBusiness','ProfessionalService'], '@id': site + '#local',
+  name: brand, image: og, url: site, telephone: tel, email,
+  address: { '@type': 'PostalAddress', streetAddress: 'Kitzingstraße 7', addressLocality: 'Schwäbisch Gmünd', postalCode: '73529', addressRegion: 'BW', addressCountry: 'DE' },
+  areaServed: [{ '@type':'Country', name:'DE' },{ '@type':'Country', name:'AT' },{ '@type':'Country', name:'CH' }], priceRange: '€€€',
+  founder: { '@type':'Person', name: 'Timo Krieg' }, parentOrganization: { '@id': site + '#organization' }
 })}</script>
