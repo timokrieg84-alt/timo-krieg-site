@@ -2,196 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Brand color variables */
+/* Brand color system */
 :root {
-  --color-primary: #FF6A00; /* Orange: CTA / Hauptbuttons */
-  --color-green:   #00C853; /* Grün: Sekundäraktionen & Badges */
-  --color-pink:    #FF2D9A; /* Pink: Links & Text-Highlights */
-  --color-text:    #0f172a; /* Grundtext hell */
-  --color-bg:      #ffffff; /* Hintergrund hell */
-  --focus-ring:    var(--color-pink);
+  --color-primary: #FF6A00;  /* Orange: Primary / CTA */
+  --color-secondary: #00C853;/* Green: Secondary / Badges */
+  --color-accent: #FF2D9A;   /* Pink: Links / Highlights */
+  --color-text: #0b0b0b;
+  --color-bg: #ffffff;
+  --focus-color: var(--color-accent);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-text: #e5e7eb; /* Text auf dunkel */
-    --color-bg:   #0b1220; /* Hintergrund dunkel */
+    --color-text: #f2f2f2;
+    --color-bg: #0b0b0b;
   }
 }
 
-/* Base: Farblogik global, ohne Inhalte/Struktur zu verändern */
-@layer base {
-  html { color-scheme: light dark; }
-  body { color: var(--color-text); background-color: var(--color-bg); }
+html { color-scheme: light dark; }
+body { color: var(--color-text); background: var(--color-bg); }
 
-  a, .link {
-    color: var(--color-pink);
-    text-decoration-color: color-mix(in oklab, var(--color-pink), transparent 60%);
-  }
-  a:hover, .link:hover {
-    color: var(--color-primary);
-    text-decoration-color: var(--color-primary);
-  }
+/* Links & text highlights */
+a, .link { color: var(--color-accent); text-decoration-color: color-mix(in oklab, var(--color-accent), transparent 60%); }
+a:hover, .link:hover { color: var(--color-primary); text-decoration-color: var(--color-primary); }
+mark, .highlight { background: color-mix(in oklab, var(--color-accent), white 85%); color: inherit; padding: .05em .25em; border-radius: .25rem; }
 
-  :focus-visible {
-    outline: 2px solid var(--focus-ring);
-    outline-offset: 2px;
-  }
+/* Buttons (generic) */
+button, .btn, [type="button"], [type="submit"], [role="button"], a.button, a.btn {
+  background-color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #fff;
+  transition: background-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
-
-/* Components: Buttons, Badges, Highlights */
-@layer components {
-  /* Primary CTA / Hauptbuttons = Orange */
-  .btn, button, [type="button"], [type="submit"] {
-    @apply inline-flex items-center justify-center rounded-md font-medium px-4 py-2 transition duration-200 ease-out;
-    background-color: var(--color-primary);
-    border: 1px solid var(--color-primary);
-    color: #fff;
-  }
-  .btn:hover, button:hover, [type="button"]:hover, [type="submit"]:hover {
-    filter: brightness(0.95);
-    transform: translateY(-1px);
-  }
-  .btn:active, button:active, [type="button"]:active, [type="submit"]:active {
-    transform: translateY(0);
-    filter: brightness(0.9);
-  }
-
-  /* Sekundäraktionen = Grün */
-  .btn--secondary {
-    background-color: var(--color-green);
-    border-color: var(--color-green);
-    color: #fff;
-  }
-
-  /* Ghost/Outline-Buttons = Orange Akzent */
-  .btn--ghost, .btn--outline {
-    background-color: transparent;
-    color: var(--color-primary);
-    border-color: var(--color-primary);
-  }
-  .btn--ghost:hover, .btn--outline:hover {
-    background-color: color-mix(in oklab, var(--color-primary), white 85%);
-  }
-
-  /* Badges/Tags: Pink, Success-Varianten: Grün */
-  .badge, .tag {
-    @apply inline-flex items-center rounded-md px-2 py-1 text-sm;
-    background-color: color-mix(in oklab, var(--color-pink), white 82%);
-    border: 1px solid color-mix(in oklab, var(--color-pink), transparent 60%);
-    color: var(--color-pink);
-  }
-  .badge--success, .tag--success {
-    background-color: color-mix(in oklab, var(--color-green), white 82%);
-    border-color: color-mix(in oklab, var(--color-green), transparent 60%);
-    color: var(--color-green);
-  }
-
-  .highlight, mark {
-    background-color: color-mix(in oklab, var(--color-pink), white 85%);
-    color: inherit;
-    padding: .1em .25em;
-    border-radius: .25rem;
-  }
+button:hover, .btn:hover, [type="submit"]:hover, a.btn:hover, a.button:hover {
+  background-color: color-mix(in oklab, var(--color-primary), black 10%);
+  transform: translateY(-1px);
 }
+.btn--secondary, .button--secondary { background-color: var(--color-secondary); border-color: var(--color-secondary); color: #083a1f; }
 
-/* Dark-Mode-Anpassungen für Komponenten */
-@media (prefers-color-scheme: dark) {
-  @layer components {
-    .btn--ghost:hover, .btn--outline:hover {
-      background-color: color-mix(in oklab, var(--color-primary), black 85%);
-    }
-    .badge, .tag {
-      background-color: color-mix(in oklab, var(--color-pink), black 85%);
-      border-color: color-mix(in oklab, var(--color-pink), transparent 60%);
-      color: var(--color-pink);
-    }
-    .badge--success, .tag--success {
-      background-color: color-mix(in oklab, var(--color-green), black 85%);
-      border-color: color-mix(in oklab, var(--color-green), transparent 60%);
-      color: var(--color-green);
-    }
-    .highlight, mark {
-      background-color: color-mix(in oklab, var(--color-pink), black 85%);
-    }
-  }
-}
+/* Outline/Ghost buttons */
+.btn--outline, .btn--ghost { color: var(--color-primary); background: transparent; border: 1px solid var(--color-primary); }
+.btn--outline:hover, .btn--ghost:hover { background: color-mix(in oklab, var(--color-primary), white 85%); }
 
-/* Utilities: Brand-Aliasse + gezieltes Überschreiben häufiger Tailwind-Buttonfarben
-   (ohne großflächige Section-Backdrops umzubiegen) */
+/* Badges/Tags */
+.badge, .tag { background: color-mix(in oklab, var(--color-secondary), white 85%); color: var(--color-secondary); border: 1px solid color-mix(in oklab, var(--color-secondary), transparent 60%); }
+.badge--success, .tag--success, .badge-success { background: color-mix(in oklab, var(--color-secondary), white 80%); color: var(--color-secondary); border-color: color-mix(in oklab, var(--color-secondary), transparent 55%); }
+
+/* Focus visibility */
+:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 3px; }
+
+/* Utility shortcuts */
+.text-primary { color: var(--color-primary) !important; }
+.bg-primary { background-color: var(--color-primary) !important; }
+.border-primary { border-color: var(--color-primary) !important; }
+.text-secondary { color: var(--color-secondary) !important; }
+.bg-secondary { background-color: var(--color-secondary) !important; }
+.border-secondary { border-color: var(--color-secondary) !important; }
+.text-accent { color: var(--color-accent) !important; }
+.bg-accent { background-color: var(--color-accent) !important; }
+.border-accent { border-color: var(--color-accent) !important; }
+
+/* Force-map old Tailwind color utilities to new brand colors */
 @layer utilities {
-  /* Brand-Shortcuts */
-  .text-primary { color: var(--color-primary) !important; }
-  .bg-primary { background-color: var(--color-primary) !important; }
-  .border-primary { border-color: var(--color-primary) !important; }
+  /* Backgrounds -> Primary (Orange) */
+  [class*="bg-cyan-"], [class*="bg-sky-"], [class*="bg-blue-"], [class*="bg-teal-"] { background-color: var(--color-primary) !important; }
 
-  .text-secondary { color: var(--color-green) !important; }
-  .bg-secondary { background-color: var(--color-green) !important; }
-  .border-secondary { border-color: var(--color-green) !important; }
+  /* Text -> Accent (Pink) */
+  [class*="text-cyan-"], [class*="text-sky-"], [class*="text-blue-"], [class*="text-teal-"] { color: var(--color-accent) !important; }
 
-  .text-accent { color: var(--color-pink) !important; }
-  .bg-accent { background-color: var(--color-pink) !important; }
-  .border-accent { border-color: var(--color-pink) !important; }
+  /* Borders -> Primary (Orange) */
+  [class*="border-cyan-"], [class*="border-sky-"], [class*="border-blue-"], [class*="border-teal-"] { border-color: var(--color-primary) !important; }
 
-  /* Links, die via Tailwind eingefärbt wurden, auf Pink angleichen */
-  a.text-blue-400, a.text-blue-500, a.text-blue-600,
-  a.text-sky-400,  a.text-sky-500,  a.text-sky-600,
-  a.text-cyan-400, a.text-cyan-500, a.text-cyan-600,
-  a.text-teal-400, a.text-teal-500, a.text-teal-600 {
-    color: var(--color-pink) !important;
+  /* Hover states */
+  [class*="hover:bg-cyan-"]:hover, [class*="hover:bg-sky-"]:hover, [class*="hover:bg-blue-"]:hover, [class*="hover:bg-teal-"]:hover { background-color: color-mix(in oklab, var(--color-primary), black 10%) !important; }
+  [class*="hover:text-cyan-"]:hover, [class*="hover:text-sky-"]:hover, [class*="hover:text-blue-"]:hover, [class*="hover:text-teal-"]:hover { color: color-mix(in oklab, var(--color-accent), black 10%) !important; }
+  [class*="hover:border-cyan-"]:hover, [class*="hover:border-sky-"]:hover, [class*="hover:border-blue-"]:hover, [class*="hover:border-teal-"]:hover { border-color: color-mix(in oklab, var(--color-primary), black 10%) !important; }
+
+  /* Gradients: from -> Orange (Primary), to -> Green (Secondary) */
+  [class*="from-cyan-"], [class*="from-sky-"], [class*="from-blue-"], [class*="from-teal-"] {
+    --tw-gradient-from: var(--color-primary) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgb(255 106 0 / 0)) !important;
   }
-  a.hover\:text-blue-400:hover, a.hover\:text-blue-500:hover, a.hover\:text-blue-600:hover,
-  a.hover\:text-sky-400:hover,  a.hover\:text-sky-500:hover,  a.hover\:text-sky-600:hover,
-  a.hover\:text-cyan-400:hover, a.hover\:text-cyan-500:hover, a.hover\:text-cyan-600:hover,
-  a.hover\:text-teal-400:hover, a.hover\:text-teal-500:hover, a.hover\:text-teal-600:hover {
-    color: var(--color-primary) !important;
+  [class*="to-cyan-"], [class*="to-sky-"], [class*="to-blue-"], [class*="to-teal-"] {
+    --tw-gradient-to: var(--color-secondary) !important;
   }
+}
 
-  /* Häufige Button-Farbnutzungen (sky/cyan/teal/blue) gezielt nur an Buttons auf Orange umbiegen */
-  button.bg-blue-400, button.bg-blue-500, button.bg-blue-600,
-  .btn.bg-blue-400,   .btn.bg-blue-500,   .btn.bg-blue-600,
-  [type="button"].bg-blue-400, [type="button"].bg-blue-500, [type="button"].bg-blue-600,
-  [type="submit"].bg-blue-400, [type="submit"].bg-blue-500, [type="submit"].bg-blue-600,
-  button.bg-sky-400,  button.bg-sky-500,  button.bg-sky-600,
-  .btn.bg-sky-400,    .btn.bg-sky-500,    .btn.bg-sky-600,
-  [type="button"].bg-sky-400,  [type="button"].bg-sky-500,  [type="button"].bg-sky-600,
-  [type="submit"].bg-sky-400,  [type="submit"].bg-sky-500,  [type="submit"].bg-sky-600,
-  button.bg-cyan-400, button.bg-cyan-500, button.bg-cyan-600,
-  .btn.bg-cyan-400,   .btn.bg-cyan-500,   .btn.bg-cyan-600,
-  [type="button"].bg-cyan-400, [type="button"].bg-cyan-500, [type="button"].bg-cyan-600,
-  [type="submit"].bg-cyan-400, [type="submit"].bg-cyan-500, [type="submit"].bg-cyan-600,
-  button.bg-teal-400, button.bg-teal-500, button.bg-teal-600,
-  .btn.bg-teal-400,   .btn.bg-teal-500,   .btn.bg-teal-600,
-  [type="button"].bg-teal-400, [type="button"].bg-teal-500, [type="button"].bg-teal-600,
-  [type="submit"].bg-teal-400, [type="submit"].bg-teal-500, [type="submit"].bg-teal-600 {
-    background-color: var(--color-primary) !important;
-    border-color: var(--color-primary) !important;
-    color: #fff !important;
-  }
+/* Dark-mode specifics */
+@media (prefers-color-scheme: dark) {
+  .badge, .tag { background: color-mix(in oklab, var(--color-secondary), black 80%); color: var(--color-secondary); border-color: color-mix(in oklab, var(--color-secondary), transparent 70%); }
+  .badge--success, .tag--success, .badge-success { background: color-mix(in oklab, var(--color-secondary), black 78%); color: var(--color-secondary); border-color: color-mix(in oklab, var(--color-secondary), transparent 70%); }
+}
 
-  /* Hover-States für Buttons */
-  .hover\:bg-blue-400:hover, .hover\:bg-blue-500:hover, .hover\:bg-blue-600:hover,
-  .hover\:bg-sky-400:hover,  .hover\:bg-sky-500:hover,  .hover\:bg-sky-600:hover,
-  .hover\:bg-cyan-400:hover, .hover\:bg-cyan-500:hover, .hover\:bg-cyan-600:hover,
-  .hover\:bg-teal-400:hover, .hover\:bg-teal-500:hover, .hover\:bg-teal-600:hover {
-    background-color: color-mix(in oklab, var(--color-primary), black 10%) !important;
-  }
-
-  /* Focus-Ring auf Pink setzen, wenn Tailwind ring-* genutzt wird */
-  .focus\:ring-blue-400:focus, .focus\:ring-blue-500:focus, .focus\:ring-blue-600:focus,
-  .focus\:ring-sky-400:focus,  .focus\:ring-sky-500:focus,  .focus\:ring-sky-600:focus,
-  .focus\:ring-cyan-400:focus, .focus\:ring-cyan-500:focus, .focus\:ring-cyan-600:focus,
-  .focus\:ring-teal-400:focus, .focus\:ring-teal-500:focus, .focus\:ring-teal-600:focus {
-    --tw-ring-color: var(--color-pink) !important;
-    outline: 2px solid var(--color-pink);
-    outline-offset: 2px;
-  }
-
-  /* Sekundäraktionen per Utility */
-  .btn--secondary:hover { filter: brightness(0.95); }
-
-  /* Respect reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { transition: none !important; }
-  }
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
 }
