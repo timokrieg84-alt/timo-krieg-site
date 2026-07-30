@@ -1,31 +1,38 @@
 ---
-import { Astro } from 'astro';
-const { title = 'Gylsere Januzi Krieg online marketing office' } = Astro.props ?? {};
+import "../styles/global.css";
+const { title = "Gylsere Januzi - online marketing office", description = "Online Marketing Office – Sichtbarkeit bei Google, ChatGPT und Social. Messbar, persönlich, ohne Blabla.", url = Astro.url.pathname } = Astro.props;
+const canonical = new URL(url, Astro.site).toString();
 ---
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
     <title>{title}</title>
-    <link rel="stylesheet" href="/styles/global.css">
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="Gylsere Januzi - Online Marketing Office" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.ico" />
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Organization",
+        "name":"Gylsere Januzi - Online Marketing Office",
+        "url": Astro.site?.origin || "https://timo-krieg-site.vercel.app",
+        "telephone":"+49 175 6372395",
+        "sameAs":["tel:+491756372395"]
+      })}
+    </script>
   </head>
-  <body class="bg-white text-neutral-900 dark:bg-neutral-900 dark:text-neutral-100">
-    <header class="w-full border-b border-neutral-200/60 dark:border-neutral-800/60">
-      <div class="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
-        <a href="/" class="text-base sm:text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-          Gylsere Januzi Krieg online marketing office
-        </a>
-        <nav aria-label="Hauptnavigation" class="flex items-center gap-6 text-sm">
-          <a class="hover:text-[#FF6A00]" href="/">Home</a>
-          <a class="hover:text-[#FF6A00]" href="/leistungen">Leistungen</a>
-          <a class="hover:text-[#FF6A00]" href="/case-studies">Case Studies</a>
-          <a class="hover:text-[#FF6A00]" href="/wir">Wir</a>
-          <a class="hover:text-[#FF6A00]" href="/kontakt">Kontakt</a>
-        </nav>
-      </div>
-    </header>
-    <main>
+  <body>
+    <slot name="header" />
+    <main id="main" tabindex="-1">
       <slot />
     </main>
+    <slot name="footer" />
   </body>
 </html>

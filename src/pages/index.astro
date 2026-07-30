@@ -1,18 +1,93 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import ServicesBento from '../components/ServicesBento.astro';
-import ResultsProcessStats from '../components/ResultsProcessStats.astro';
-import Funnel from '../components/Funnel.astro';
-import Footer from '../components/Footer.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import CTAButton from "../components/CTAButton.astro";
+import Section from "../components/Section.astro";
+const title = "Gylsere Januzi - Online Marketing Office";
+const desc = "Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.";
 ---
+<Layout title={title} description={desc} url="/">
+  <Fragment slot="header"><Header /></Fragment>
 
-<Layout title="Gylsere Januzi | Digitale Exzellenz Schwäbisch Gmünd">
-  <Header />
-  <Hero />
-  <ServicesBento />
-  <ResultsProcessStats />
-  <Funnel />
-  <Footer />
+  <section class="relative overflow-hidden">
+    <div class="container py-24 sm:py-28">
+      <div class="max-w-2xl">
+        <h1 class="text-4xl sm:text-5xl font-semibold leading-tight">Die richtige Prise Perfektion</h1>
+        <p class="text-textc-muted mt-4">
+          Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <CTAButton href="/kontakt" label="Kostenloses Erstgespräch" />
+          <CTAButton href="tel:+491756372395" kind="secondary" label="Direkt durchstellen" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Section id="leistungen" title="Leistungen" intro="Unsere Leistungen im Überblick.">
+    <!-- Inhalte 1:1 werden unmittelbar nachgeliefert -->
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <article class="card p-6">
+        <h3 class="font-semibold mb-2">Leistung 1</h3>
+        <p class="text-textc-muted">Wird durch Inhalte der Live-Domain ersetzt.</p>
+      </article>
+      <article class="card p-6">
+        <h3 class="font-semibold mb-2">Leistung 2</h3>
+        <p class="text-textc-muted">Wird durch Inhalte der Live-Domain ersetzt.</p>
+      </article>
+      <article class="card p-6">
+        <h3 class="font-semibold mb-2">Leistung 3</h3>
+        <p class="text-textc-muted">Wird durch Inhalte der Live-Domain ersetzt.</p>
+      </article>
+    </div>
+    <div class="mt-8">
+      <CTAButton href="/leistungen" label="Alle Leistungen ansehen" kind="ghost" />
+    </div>
+  </Section>
+
+  <Section id="kontakt" title="Kontakt">
+    <div class="grid gap-6 sm:grid-cols-2">
+      <div class="card p-6">
+        <h3 class="font-semibold mb-3">Telefon</h3>
+        <a href="tel:+491756372395" class="btn btn-secondary">+49 175 6372395</a>
+      </div>
+      <div class="card p-6">
+        <h3 class="font-semibold mb-3">Formular</h3>
+        <form id="contact-form" class="grid gap-3">
+          <input class="card px-3 py-2" name="name" placeholder="Name" required />
+          <input class="card px-3 py-2" name="email" type="email" placeholder="E-Mail" required />
+          <input class="card px-3 py-2" name="phone" type="tel" placeholder="Telefon" />
+          <input class="card px-3 py-2" name="site" type="url" placeholder="Website (optional)" />
+          <textarea class="card px-3 py-2" name="message" placeholder="Nachricht" rows="4" required></textarea>
+          <button type="submit" class="btn btn-primary">Senden</button>
+          <p id="form-status" class="text-sm text-textc-muted"></p>
+        </form>
+        <script>
+          const form = document.getElementById('contact-form');
+          const status = document.getElementById('form-status');
+          form?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const fd = new FormData(form);
+            const payload = Object.fromEntries(fd.entries());
+            status.textContent = "Sende...";
+            try {
+              const res = await fetch("https://timokrieg.app.n8n.cloud/webhook/contact-form", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+              });
+              if (!res.ok) throw new Error("net");
+              status.textContent = "Danke! Deine Anfrage ist eingegangen. Du erhältst eine Bestätigung (Telegram-Benachrichtigung ist aktiv).";
+              form.reset();
+            } catch (err) {
+              status.textContent = "Fehler beim Senden. Bitte versuche es erneut oder rufe an.";
+            }
+          });
+        </script>
+      </div>
+    </div>
+  </Section>
+
+  <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
