@@ -2,53 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Header brand text override (non-destructive: keeps markup, swaps visible label) */
 :root {
-  --brand-header-text: "Gylsere Januzi Krieg online marketing office";
-}
-
-/* Common brand/title selectors in header */
-header .logo,
-header .site-title,
-header .brand,
-header .branding,
-header h1,
-header h1 a,
-header a[href="/"] {
-  position: relative;
-}
-
-/* Visually hide original text color but preserve layout; a11y text remains in DOM */
-header .logo,
-header .site-title,
-header .brand,
-header .branding,
-header h1 a,
-header a[href="/"] {
-  color: transparent !important;
-  text-shadow: none !important;
-}
-
-/* Inject new label */
-header .logo::after,
-header .site-title::after,
-header .brand::after,
-header .branding::after,
-header h1::after,
-header h1 a::after,
-header a[href="/"]::after {
-  content: var(--brand-header-text);
-  color: #111;
+  --color-primary: #FF6A00; /* Orange */
+  --color-secondary: #00C853; /* Green */
+  --color-accent: #FF2D9A; /* Pink */
+  --color-text: #111111;
+  --color-bg: #ffffff;
 }
 
 @media (prefers-color-scheme: dark) {
-  header .logo::after,
-  header .site-title::after,
-  header .brand::after,
-  header .branding::after,
-  header h1::after,
-  header h1 a::after,
-  header a[href="/"]::after {
-    color: #fafafa;
+  :root {
+    --color-text: #F5F7FA;
+    --color-bg: #0D0F12;
   }
 }
+
+/* Generic link / text highlight */
+a, .link { color: var(--color-accent); text-decoration-color: color-mix(in oklab, var(--color-accent), transparent 70%); }
+a:hover, .link:hover { color: var(--color-primary); text-decoration-color: var(--color-primary); }
+
+/* Buttons */
+button, .btn, [type="button"], [type="submit"], .prose a.button {
+  @apply inline-flex items-center justify-center font-medium rounded-md transition focus:outline-none;
+  background: var(--color-primary);
+  border: 1px solid var(--color-primary);
+  color: #fff;
+}
+button:hover, .btn:hover, [type="submit"]:hover { background: #E55F00; }
+.btn--secondary { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
+.btn--ghost, .btn--outline { color: var(--color-primary); border-color: var(--color-primary); background: transparent; }
+.btn--ghost:hover, .btn--outline:hover { background: color-mix(in oklab, var(--color-primary), white 90%); }
+
+/* Badges / Tags */
+.badge, .tag { background: color-mix(in oklab, var(--color-accent), white 88%); color: var(--color-accent); border: 1px solid color-mix(in oklab, var(--color-accent), transparent 65%); }
+.badge--success, .tag--success { background: color-mix(in oklab, var(--color-secondary), white 88%); color: var(--color-secondary); border-color: color-mix(in oklab, var(--color-secondary), transparent 65%); }
+
+/* Highlights */
+.highlight, mark { background: color-mix(in oklab, var(--color-primary), white 88%); padding: .1em .25em; border-radius: .25rem; }
+
+/* Focus ring accessible */
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
