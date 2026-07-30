@@ -1,62 +1,36 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
 ---
-<Layout title="Gylsere Januzi – Online Marketing Office" description="Digitale Präsenz, die messbar wirkt. SEO, Local SEO, GEO, Google Ads, Webdesign und mehr.">
-  <Fragment slot="header"><Header /></Fragment>
 
-  <section class="bg-[#0b0f19] py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">Digitale Präsenz, die messbar wirkt.</h1>
-        <p class="text-lg text-gray-300">Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI-Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.</p>
+<Layout title="Digitale Präsenz, die messbar wirkt. | Gylsere Januzi Online Marketing Office" description="Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI‑Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.">
+  <main class="max-w-7xl mx-auto px-4 py-16 text-gray-200">
+    <section class="text-center">
+      <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">Digitale Präsenz, die messbar wirkt.</h1>
+      <p class="mt-4 text-lg md:text-xl text-gray-300">Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI‑Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.</p>
+    </section>
+
+    <section class="mt-16">
+      <h2 class="sr-only">Leistungs‑Vorschau</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="bg-[#131b2e] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
+          <span class="inline-flex text-xs font-semibold px-2 py-1 rounded bg-[#FF2D9A]/15 text-[#FF2D9A] mb-3">Local SEO</span>
+          <h3 class="text-white text-lg font-semibold">Google My Business & Local SEO</h3>
+          <p class="mt-2 text-gray-300">Optimierung des Google‑Unternehmensprofils, lokale Keywords, Reviews, Top‑Platzierung im Google Local Pack und Verknüpfung zur regionalen SEO‑Dominanz.</p>
+        </article>
+        <article class="bg-[#131b2e] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
+          <span class="inline-flex text-xs font-semibold px-2 py-1 rounded bg-[#FF6A00]/15 text-[#FF6A00] mb-3">SEO</span>
+          <h3 class="text-white text-lg font-semibold">SEO & Content</h3>
+          <p class="mt-2 text-gray-300">Technik, Inhalte und Autorität – sauber umgesetzt für stabile Rankings und messbares Wachstum.</p>
+        </article>
+        <article class="bg-[#131b2e] rounded-xl p-6 border border-white/10 hover:border-white/20 transition-colors">
+          <span class="inline-flex text-xs font-semibold px-2 py-1 rounded bg-[#00C853]/15 text-[#00C853] mb-3">Ads</span>
+          <h3 class="text-white text-lg font-semibold">Google Ads</h3>
+          <p class="mt-2 text-gray-300">Performance‑Kampagnen mit klarer Struktur, Conversion‑Tracking und kontinuierlichem Testing.</p>
+        </article>
       </div>
-    </div>
-  </section>
-
-  <Section title="Leistungen" intro="Die wichtigsten Hebel – klar priorisiert.">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
-        <p class="text-sm text-gray-400 mb-4">Profil-Optimierung, lokale Keywords, Reviews und NAP-Konsistenz für maximale Sichtbarkeit im Umkreis – verknüpft mit unserer Umland-Dominanz.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Sichtbar werden, wenn es zählt.</h3>
-        <p class="text-sm text-gray-400 mb-4">Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
-        <h3 class="text-lg font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
-        <p class="text-sm text-gray-400 mb-4">Search, PMax, YouTube – mit messbarem ROAS, Klickschutz und ohne Budgetverschwendung.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">GEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Sichtbar in ChatGPT, Perplexity & Google AI.</h3>
-        <p class="text-sm text-gray-400 mb-4">Generative Engine Optimization: LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Webdesign</span>
-        <h3 class="text-lg font-bold text-white mb-2">Websites, die verkaufen.</h3>
-        <p class="text-sm text-gray-400 mb-4">Maßgeschneidertes Design in Astro – ultraschnell, DSGVO-sicher, konversionsstark.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Terminvereinbarung</span>
-        <h3 class="text-lg font-bold text-white mb-2">24/7 Buchungen automatisieren.</h3>
-        <p class="text-sm text-gray-400 mb-4">Professionelle Online-Terminbuchung (inkl. Jameda & Doctolib), eingebunden in Website und Suche.</p>
-      </article>
-
-    </div>
-  </Section>
-
-  <Fragment slot="footer"><Footer /></Fragment>
+      <div class="text-center mt-10">
+        <a href="/leistungen" class="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-[#FF6A00] text-white font-semibold hover:bg-[#FF6A00]/90 transition-colors">Alle Leistungen ansehen</a>
+      </div>
+    </section>
+  </main>
 </Layout>
