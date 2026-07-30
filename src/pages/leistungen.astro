@@ -2,17 +2,15 @@
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
 ---
 <Layout title="Leistungen – Gylsere Januzi" description="Alle Leistungen im Überblick.">
   <Fragment slot="header"><Header /></Fragment>
-  <Section title="Leistungen">
-    <!-- TODO: Inhalte 1:1 von Live-Domain einsetzen. Bitte hier im Chat posten. -->
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <article class="card p-6"><h3 class="font-semibold mb-2">Leistung A</h3><p class="text-textc-muted">Platzhalter</p></article>
-      <article class="card p-6"><h3 class="font-semibold mb-2">Leistung B</h3><p class="text-textc-muted">Platzhalter</p></article>
-      <article class="card p-6"><h3 class="font-semibold mb-2">Leistung C</h3><p class="text-textc-muted">Platzhalter</p></article>
+  <section class="py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-semibold mb-6">Leistungen</h1>
+      <!-- Inhalte 1:1 werden hier eingefügt. -->
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
     </div>
-  </Section>
+  </section>
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
