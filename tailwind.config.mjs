@@ -8,9 +8,9 @@ export default {
     extend: {
       colors: {
         brand: {
-          primary: "#FF6A00", // CTA / Primary
-          secondary: "#00C853", // Secondary / Badges
-          accent: "#FF2D9A", // Links / Highlights
+          primary: "#FF6A00", // Orange – CTA / Primary
+          secondary: "#00C853", // Grün – Sekundär / Badges
+          accent: "#FF2D9A", // Pink – Links / Highlights
         },
         surface: {
           DEFAULT: "#0B0E11",
