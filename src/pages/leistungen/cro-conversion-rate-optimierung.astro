@@ -1,0 +1,107 @@
+---
+import '../../styles/global.css';
+const title = 'CRO Agentur: Mehr Leads ohne mehr Traffic | B2B & DACH | Timo Krieg';
+const description = 'Systematische Conversion-Optimierung für B2B: Hypothesen, Tests, Ergebnisse. Höhere Abschlussraten bei gleichen Klickkosten.';
+const canonical = '/leistungen/cro-conversion-rate-optimierung/';
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/og-default.jpg" />
+  <script type="application/ld+json">{JSON.stringify({
+    '@context':'https://schema.org','@type':'Service',serviceType:'Conversion-Rate-Optimierung (CRO)',category:'https://schema.org/ProfessionalService',
+    provider:{'@type':'LocalBusiness',name:'Timo Krieg',address:{'@type':'PostalAddress',postalCode:'73529',addressLocality:'Schwäbisch Gmünd',addressCountry:'DE'},areaServed:['DE','AT','CH']},
+    url: canonical
+  })}</script>
+  <script type="application/ld+json">{JSON.stringify({
+    '@context':'https://schema.org','@type':'WebPage', name:title, description, url: canonical, inLanguage:'de',
+    breadcrumb:{'@type':'BreadcrumbList', itemListElement:[{'@type':'ListItem', position:1, name:'Start', item:'/'},{'@type':'ListItem', position:2, name:'Leistungen', item:'/leistungen/'},{'@type':'ListItem', position:3, name:'CRO', item: canonical}]}
+  })}</script>
+</head>
+<body>
+  <header class="border-b border-slate-200 bg-white/70 backdrop-blur sticky top-0 z-50">
+    <div class="container py-4 flex items-center justify-between gap-4">
+      <a href="/" class="font-semibold tracking-tight">Timo Krieg</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/leistungen/" class="nav-link">Leistungen</a>
+        <a href="/ueber-uns" class="nav-link">Über uns</a>
+        <a href="/kontakt" class="nav-link">Kontakt</a>
+        <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+      </nav>
+      <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid gap-8 lg:grid-cols-2 items-start">
+        <div>
+          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Mehr Abschlüsse ohne mehr Traffic.</h1>
+          <p class="mt-4 text-lg text-slate-600">Systematische Conversion‑Optimierung für B2B – Hypothesen, Tests, Ergebnisse.</p>
+          <div class="mt-6 flex gap-3">
+            <a href="/kontakt" class="btn btn-primary">Conversion‑Potenziale heben</a>
+            <a href="/leistungen/seo/" class="btn btn-secondary">SEO‑Traffic besser nutzen</a>
+          </div>
+        </div>
+        <ul class="card space-y-2">
+          <li>Conversion‑Audit: Funnel, UX, Daten</li>
+          <li>A/B‑Testing‑Plan, Priorisierung, Ressourcen</li>
+          <li>Copy, Design‑Varianten, technische Umsetzung</li>
+          <li>Auswertung, Learnings, Rollout</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section bg-slate-50">
+      <div class="container">
+        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">In 4 Schritten zu besseren Quoten</h2>
+        <ol class="mt-8 grid gap-6 md:grid-cols-4">
+          <li class="card"><h3 class="font-semibold">1) Analyse</h3><p class="mt-1 text-slate-600">Daten, Heuristiken, Nutzerfeedback.</p></li>
+          <li class="card"><h3 class="font-semibold">2) Hypothesen</h3><p class="mt-1 text-slate-600">Chancenrahmen, Priorisierung.</p></li>
+          <li class="card"><h3 class="font-semibold">3) Tests</h3><p class="mt-1 text-slate-600">Variablen, Validität, Tempo.</p></li>
+          <li class="card"><h3 class="font-semibold">4) Skalierung</h3><p class="mt-1 text-slate-600">Gewinner ausrollen, nächste Welle.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid gap-6 md:grid-cols-2">
+        <div class="card">
+          <h2 class="text-2xl font-semibold">Vorteile für den Mittelstand</h2>
+          <ul class="mt-3 list-disc pl-5 text-slate-600 space-y-1">
+            <li>Höhere Lead‑Qualität bei gleichen Klickkosten</li>
+            <li>Schnell sichtbare Effekte am Ende des Funnels</li>
+            <li>Besserer Fit zwischen Angebot und Nachfrage</li>
+            <li>Weniger Abhängigkeit von mehr Traffic</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 class="text-2xl font-semibold">FAQ</h2>
+          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Brauchen wir viel Traffic?</summary><div class="mt-2 text-slate-600">Für belastbare Tests helfen 10k+ Sessions/Monat – sonst kombinieren wir mit qualitativen Methoden.</div></details>
+          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Welche Tools nutzen Sie?</summary><div class="mt-2 text-slate-600">Leichtgewichtige, DSGVO‑konforme Setups; keine unnötigen Skripte.</div></details>
+          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Wie lange dauern Tests?</summary><div class="mt-2 text-slate-600">Je nach Traffic 2–6 Wochen pro Hypothese.</div></details>
+          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Testen Sie auch Pricing?</summary><div class="mt-2 text-slate-600">Wenn sinnvoll und rechtlich sauber – ja, behutsam.</div></details>
+        </div>
+      </div>
+      <div class="container mt-8"><a href="/kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a></div>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
+      <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
+      <nav class="flex items-center gap-4">
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
