@@ -1,9 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
 
+// Minimal, stable config: Astro + Tailwind only
 export default defineConfig({
-  site: 'https://example.com', // TODO: set to real domain before going live
+  site: 'https://example.com', // später auf echte Domain setzen
   output: 'static',
-  integrations: [tailwind(), sitemap()],
+  integrations: [tailwind()],
 });
