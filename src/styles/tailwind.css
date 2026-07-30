@@ -8,17 +8,14 @@
     --card-bg: #121A16;
     --text-main: #FFFFFF;
     --text-muted: #A0AAB0;
-
     --primary-orange: #FF6B00;
     --secondary-green: #00E676;
     --accent-pink: #FF007F;
-
     --accent-orange: var(--primary-orange);
     --accent-green: var(--secondary-green);
     --footer-bg: var(--bg-dark);
     --footer-fg: #eef0f3;
   }
-
   html { color-scheme: dark; }
   body { background-color: var(--bg-dark); color: var(--text-main); }
 }
