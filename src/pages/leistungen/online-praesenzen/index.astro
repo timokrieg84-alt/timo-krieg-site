@@ -1,0 +1,58 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import Footer from '../../../components/Footer.astro';
+import IconSprite from '../../../components/IconSprite.astro';
+import ScrollAnimations from '../../../components/ScrollAnimations.astro';
+const pageTitle = 'Online‑Präsenzen: Listings, Reputation, Content & Ads';
+const pageDesc = 'Einheitliche NAP‑Daten, Verzeichnisse, Bewertungsaufbau, Content & Google Ads – für mehr Anrufe & Anfragen aus Ihrer Region.';
+---
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="icons"><IconSprite /></Fragment>
+  <Fragment slot="header"><Header /></Fragment>
+  <main>
+    <section class="section container" data-reveal-group>
+      <h1 class="reveal">Online‑Präsenzen</h1>
+      <p class="reveal text-muted">Konsistenz, die Vertrauen schafft: Google Business Profile, Listings, Reputation, Content & Ads.</p>
+      <div class="grid grid-3 mt-4">
+        <article class="card reveal"><h3 class="card__title">Einheitliche Daten</h3><p class="card__meta">Überall korrekt gefunden werden – NAP‑Konsistenz.</p></article>
+        <article class="card reveal"><h3 class="card__title">Starke Bewertungen</h3><p class="card__meta">Systematisch positive Reputation aufbauen und smart reagieren.</p></article>
+        <article class="card reveal"><h3 class="card__title">Content & Ads</h3><p class="card__meta">Reichweite in Anfragen verwandeln.</p></article>
+      </div>
+      <h2 class="mt-4">Leistungspakete</h2>
+      <div class="grid grid-3 mt-4">
+        <article class="card reveal">
+          <h3 class="card__title">Basic</h3>
+          <ul class="text-muted" style="padding-left:18px"><li>GBP Setup/Optimierung</li><li>Kern‑Listings anlegen/angleichen</li><li>Monatliches Monitoring, 1 Report</li></ul>
+        </article>
+        <article class="card reveal">
+          <h3 class="card__title">Plus</h3>
+          <ul class="text-muted" style="padding-left:18px"><li>Alles aus Basic</li><li>Review‑Management & Antwort‑Playbooks</li><li>2 lokale Landingpages, 2 GBP‑Posts/Monat</li></ul>
+        </article>
+        <article class="card reveal">
+          <h3 class="card__title">Pro</h3>
+          <ul class="text-muted" style="padding-left:18px"><li>Alles aus Plus</li><li>Erweiterte Listings + Branchenverzeichnisse</li><li>Content & Ads: 2 Content‑Pieces + 1 Kampagne/Monat</li></ul>
+        </article>
+      </div>
+      <div class="mt-4">
+        <a class="btn btn--primary" href="tel:+491604365363">Jetzt anrufen</a>
+        <a class="btn btn--ghost" href="/kontakt/" style="margin-left:8px">Kostenloses Erstgespräch</a>
+      </div>
+    </section>
+  </main>
+  <ScrollAnimations />
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":"Service",
+      "@id":"https://www.listingprofis.de/leistungen/online-praesenzen/#service",
+      "serviceType":"Listings‑Management, Reputation, Content & Ads",
+      "name":"Online‑Präsenzen & Bewertungen",
+      "description":"Konsistente NAP‑Daten in Verzeichnissen, Bewertungsmanagement, Content‑Produktion und Google Ads.",
+      "areaServed":["Schwäbisch Gmünd","Ostalbkreis","Stuttgart","Baden‑Württemberg"],
+      "provider":{ "@id":"https://www.listingprofis.de/#organization" },
+      "offers":{ "@type":"Offer","priceCurrency":"EUR","url":"https://www.listingprofis.de/kontakt/" }
+    })}</script>
+  </Fragment>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

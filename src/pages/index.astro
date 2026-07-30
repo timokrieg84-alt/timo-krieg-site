@@ -1,234 +1,105 @@
 ---
-import '../styles/global.css';
-const title = 'Performance Marketing Agentur für B2B | Schwäbisch Gmünd | Timo Krieg';
-const description = 'Webentwicklung mit Astro/Tailwind, SEO, Google Ads & LinkedIn Ads, Conversion-Optimierung, Local SEO sowie Hosting/Wartung. Für den Mittelstand in Schwäbisch Gmünd, Ostwürttemberg & DACH.';
-const canonical = '/';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import IconSprite from '../components/IconSprite.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import HeroParticles from '../components/HeroParticles.astro';
+import ScrollAnimations from '../components/ScrollAnimations.astro';
+import RefSlider from '../components/RefSlider.astro';
+const pageTitle = 'Digitalagentur Schwäbisch Gmünd | Local SEO & schnelle Websites';
+const pageDesc = 'ListingProfis: Lokales SEO, Google Business Profile, Listings & schnelle Astro‑Websites für Schwäbisch Gmünd, Ostalbkreis & Stuttgart. Jetzt anrufen: +49 160 4365363.';
 ---
-<!DOCTYPE html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <meta property="og:locale" content="de_DE" />
-    <meta property="og:site_name" content="Timo Krieg – Performance Marketing & Webentwicklung" />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content="/og-default.jpg" />
-    <meta property="og:image:alt" content="Timo Krieg – B2B Performance Marketing & Astro-Webentwicklung" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="/og-default.jpg" />
-    <script type="application/ld+json">{JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': ['Organization','LocalBusiness','AdvertisingAgency','ProfessionalService'],
-      name: 'Timo Krieg',
-      url: '/',
-      telephone: '+49-160-4365363',
-      email: 'info@listingprofis.de',
-      address: { '@type':'PostalAddress', streetAddress:'Kitzingstraße 7', postalCode:'73529', addressLocality:'Schwäbisch Gmünd', addressRegion:'Baden-Württemberg', addressCountry:'DE' },
-      areaServed: [{ '@type':'Country', name:'Deutschland' },{ '@type':'Country', name:'Österreich' },{ '@type':'Country', name:'Schweiz' }],
-      description: 'B2B Performance Marketing & High‑Performance Webentwicklung (Astro/Tailwind) für den Mittelstand in Schwäbisch Gmünd, Ostwürttemberg & DACH.'
-    })}</script>
-    <script type="application/ld+json">{JSON.stringify({
-      '@context':'https://schema.org', '@type':'WebPage', name:title, description, url:'/', inLanguage:'de', isPartOf:{'@type':'WebSite', name:'Timo Krieg', url:'/'},
-      breadcrumb:{ '@type':'BreadcrumbList', itemListElement:[ { '@type':'ListItem', position:1, name:'Start', item:'/' } ] }
-    })}</script>
-  </head>
-  <body>
-    <header class="border-b border-slate-200 bg-white/70 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-50">
-      <div class="container py-4 flex items-center justify-between gap-4">
-        <a href="/" class="flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-green-400/60 rounded-lg">
-          <span class="font-semibold tracking-tight">Timo Krieg</span>
-          <span class="text-sm text-slate-500 hidden sm:inline">Performance Marketing</span>
-        </a>
-        <nav class="hidden md:flex items-center gap-6 text-sm">
-          <a href="/leistungen/" class="nav-link">Leistungen</a>
-          <a href="/ueber-uns" class="nav-link">Über uns</a>
-          <a href="/kontakt" class="nav-link">Kontakt</a>
-          <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-        </nav>
-        <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="icons"><IconSprite /></Fragment>
+  <Fragment slot="header"><Header /></Fragment>
+
+  <HeroParticles />
+
+  <main>
+    <!-- Key benefits -->
+    <section class="section container" data-reveal-group>
+      <h2 class="reveal">Lokale Rankings, die Kunden bringen</h2>
+      <p class="reveal text-muted" style="max-width:68ch">Timo Krieg – ListingProfis. Wir kombinieren Local SEO, schnelle Astro‑Websites und konsistente Online‑Präsenzen, um messbar mehr Anrufe und Anfragen zu erzeugen.</p>
+      <div class="grid grid-4 mt-4">
+        <article class="card reveal"><h3 class="card__title">Lokal dominieren</h3><p class="card__meta">Mit lokale SEO Schwäbisch Gmünd werden Sie dort gefunden, wo Kundinnen und Kunden suchen.</p></article>
+        <article class="card reveal"><h3 class="card__title">Geschwindigkeit verkauft</h3><p class="card__meta">Astro Websites mit hervorragenden Core Web Vitals – für Rankings und Conversion.</p></article>
+        <article class="card reveal"><h3 class="card__title">Konsistente Präsenz</h3><p class="card__meta">Google Business Profile, Listings und Reputation aus einem Guss.</p></article>
+        <article class="card reveal"><h3 class="card__title">Klarer ROI</h3><p class="card__meta">Datenbasiert, transparent, ergebnisorientiert. Wir liefern Leads, keine Ausreden.</p></article>
       </div>
-    </header>
+    </section>
 
-    <main>
-      <!-- Hero -->
-      <section class="section">
-        <div class="container grid gap-10 md:grid-cols-2 items-center">
-          <div data-reveal>
-            <span class="badge">Schwäbisch Gmünd · Ostwürttemberg · DACH</span>
-            <h1 class="mt-4 text-4xl md:text-5xl font-semibold tracking-tight">Mehr Anfragen. Bessere Leads. Messbar mehr Umsatz.</h1>
-            <p class="mt-4 text-lg text-slate-600">Klare Strategien, saubere Umsetzung: Webentwicklung mit Astro/Tailwind, SEO, Google Ads & LinkedIn Ads, Conversion‑Optimierung, Local SEO und Hosting/Wartung.</p>
-            <div class="mt-8 flex flex-wrap gap-3">
-              <a href="/kontakt" class="btn btn-primary">Kostenlose Potenzialanalyse vereinbaren</a>
-              <a href="/leistungen/" class="btn btn-secondary">Leistungen entdecken</a>
-            </div>
-          </div>
-          <div class="card" data-reveal>
-            <ul class="space-y-2 text-slate-700">
-              <li>0.9s LCP bei neuen Websites (Astro/Tailwind)</li>
-              <li>+42% qualifizierte Leads im 6‑Monats‑Schnitt</li>
-              <li>−28% CPL mit strukturierten Ads‑Setups</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- Interaktive Leistungen -->
-      <section id="leistungen" class="section bg-slate-50">
-        <div class="container">
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Leistungen</h2>
-          <p class="mt-4 text-slate-600 max-w-2xl">Sechs Bausteine, ein Ziel: planbares Wachstum. Präzise Verzahnung von Technik, Inhalt und Performance – für den Mittelstand.</p>
-          <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3" data-reveal data-reveal-stagger>
-            <li class="card"><a class="block" href="/leistungen/webentwicklung-astro-tailwind/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">W</div><h3 class="mt-3 text-xl font-semibold">Webentwicklung (Astro/Tailwind)</h3><p class="mt-2 text-slate-600">Ultraschnell, suchmaschinenstark, konvertierend.</p></a></li>
-            <li class="card"><a class="block" href="/leistungen/seo/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">S</div><h3 class="mt-3 text-xl font-semibold">SEO & Content</h3><p class="mt-2 text-slate-600">Sichtbarkeit aufbauen, Rankings sichern, Leads gewinnen.</p></a></li>
-            <li class="card"><a class="block" href="/leistungen/google-ads-linkedin-ads/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">A</div><h3 class="mt-3 text-xl font-semibold">Google Ads & LinkedIn Ads</h3><p class="mt-2 text-slate-600">B2B‑Leads skalieren – effizient und steuerbar.</p></a></li>
-            <li class="card"><a class="block" href="/leistungen/cro-conversion-rate-optimierung/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">C</div><h3 class="mt-3 text-xl font-semibold">Conversion‑Optimierung (CRO)</h3><p class="mt-2 text-slate-600">Mehr aus bestehendem Traffic – systematisch getestet.</p></a></li>
-            <li class="card"><a class="block" href="/leistungen/local-seo/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">L</div><h3 class="mt-3 text-xl font-semibold">Local SEO</h3><p class="mt-2 text-slate-600">Regional gefunden werden – mehr Anrufe & Termine.</p></a></li>
-            <li class="card"><a class="block" href="/leistungen/hosting-wartung/"><div class="h-10 w-10 rounded-full bg-green-50 text-brand flex items-center justify-center">H</div><h3 class="mt-3 text-xl font-semibold">Hosting, Wartung & DSGVO</h3><p class="mt-2 text-slate-600">Schnell, sicher, stabil – mit Monitoring & Backups.</p></a></li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- Stats -->
-      <section class="section">
-        <div class="container">
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-6" data-reveal>
-            <div class="card text-center"><div class="text-4xl md:text-5xl font-semibold tabular-nums"><span class="js-count" data-end="42" data-suffix="%">42%</span></div><div class="mt-2 text-sm text-slate-600">mehr qualifizierte Leads</div></div>
-            <div class="card text-center"><div class="text-4xl md:text-5xl font-semibold tabular-nums"><span class="js-count" data-end="28" data-suffix="%">28%</span></div><div class="mt-2 text-sm text-slate-600">niedrigerer CPL</div></div>
-            <div class="card text-center"><div class="text-4xl md:text-5xl font-semibold tabular-nums"><span class="js-count" data-end="0.9" data-decimals="1" data-suffix="s">0.9s</span></div><div class="mt-2 text-sm text-slate-600">Ø LCP bei neuen Sites</div></div>
-            <div class="card text-center"><div class="text-4xl md:text-5xl font-semibold tabular-nums"><span class="js-count" data-end="95" data-suffix="%">95%</span></div><div class="mt-2 text-sm text-slate-600">Kundentreue</div></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Testimonials Slider (scroll-snap) -->
-      <section class="section bg-slate-50" aria-label="Kundenstimmen">
-        <div class="container">
-          <div class="flex items-center justify-between mb-6">
-            <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Kundenstimmen</h2>
-            <div class="flex gap-2">
-              <button id="prevBtn" type="button" aria-label="Vorheriges Testimonial" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-green-400/60">‹</button>
-              <button id="nextBtn" type="button" aria-label="Nächstes Testimonial" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 focus-visible:ring-2 focus-visible:ring-green-400/60">›</button>
-            </div>
-          </div>
-          <div id="track" role="region" aria-roledescription="carousel" tabindex="0" class="flex overflow-x-auto snap-x snap-mandatory scroll-px-4 gap-4 no-scrollbar scroll-smooth" data-reveal>
-            <figure class="snap-start shrink-0 basis-[88%] sm:basis-[70%] md:basis-[55%] lg:basis-[45%] scroll-ml-4 card">
-              <blockquote class="text-lg">“Wir wollten keine bunte Folie, sondern planbar mehr Anfragen. Die Umstellung auf Astro, sauberes SEO und neues Ads‑Setup brachten doppelt so viele qualifizierte Leads in 4 Monaten.”</blockquote>
-              <figcaption class="mt-4 text-sm text-slate-600">— Michael R., Geschäftsführer, Metallbau Huber GmbH (Aalen)</figcaption>
-            </figure>
-            <figure class="snap-start shrink-0 basis-[88%] sm:basis-[70%] md:basis-[55%] lg:basis-[45%] scroll-ml-4 card">
-              <blockquote class="text-lg">“Klare Kommunikation, greifbare KPIs und schnelle Umsetzung. Besonders die Conversion Optimierung hat aus unserem Bestandstraffic messbar mehr Anfragen herausgeholt.”</blockquote>
-              <figcaption class="mt-4 text-sm text-slate-600">— Sabrina K., Marketingleitung, ERP‑Anbieter (Ulm)</figcaption>
-            </figure>
-            <figure class="snap-start shrink-0 basis-[88%] sm:basis-[70%] md:basis-[55%] lg:basis-[45%] scroll-ml-4 card">
-              <blockquote class="text-lg">“Als regionaler Dienstleister profitieren wir massiv von Local SEO. Wir ranken in Schwäbisch Gmünd stabil oben – und das Telefon klingelt wieder.”</blockquote>
-              <figcaption class="mt-4 text-sm text-slate-600">— Jonas B., Inhaber, Technischer Servicebetrieb (Schwäbisch Gmünd)</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <!-- FAQ -->
-      <section class="section">
-        <div class="container">
-          <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">Häufige Fragen</h2>
-          <div class="mt-6 space-y-3" data-reveal>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Arbeiten Sie nur regional in Schwäbisch Gmünd?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Nein. Betreuung in Schwäbisch Gmünd, Ostwürttemberg und der gesamten DACH‑Region – remote oder vor Ort.</div>
-            </details>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Sind Sie eine Full‑Service‑Agentur?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Fokus auf Performance Marketing: Webentwicklung, SEO & Content, Google Ads, LinkedIn Ads, CRO, Local SEO sowie Hosting/Wartung/DSGVO. Spezialthemen via Partner.</div>
-            </details>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Ab welchem Budget lohnt sich Zusammenarbeit?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Sinnvoll ab ca. 2.000 € Projektbudget oder 1.500 € monatlich für laufende Betreuung – abhängig von Ziel und Kanal.</div>
-            </details>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Wie schnell sehen wir Ergebnisse?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Paid‑Kanäle liefern Learnings in 2–4 Wochen. SEO & Content brauchen 3–6 Monate. CRO zeigt oft nach dem ersten Testzyklus Effekte.</div>
-            </details>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Arbeiten Sie mit bestehenden Websites?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Ja. Optimierung bestehender Systeme oder gezielte Migration auf Astro/Tailwind, wenn Performance, SEO und Wartbarkeit es erfordern.</div>
-            </details>
-            <details class="group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition">
-              <summary class="flex cursor-pointer items-center justify-between font-medium text-slate-900">Wie stellen Sie DSGVO & Tracking‑Konformität sicher?<span class="text-slate-400">+</span></summary>
-              <div class="mt-2 text-slate-600">Sauberes Consent‑Management, Datenminimalismus und dokumentierte Prozesse – abgestimmt auf Ihre Rechtsberatung.</div>
-            </details>
-          </div>
-          <div class="mt-10"><a href="/kontakt" class="btn btn-primary">Kurzgespräch buchen</a></div>
-        </div>
-      </section>
-    </main>
-
-    <footer class="border-t border-slate-200">
-      <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
-        <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
-        <nav class="flex items-center gap-4">
-          <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
-          <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
-        </nav>
+    <!-- Leistungen Teaser -->
+    <section class="section container" data-reveal-group>
+      <h2 class="reveal">Unsere Leistungen</h2>
+      <div class="grid grid-3 mt-4">
+        <article class="card reveal">
+          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Local SEO</div>
+          <h3 class="card__title mt-4">Lokales SEO</h3>
+          <p class="card__meta">GBP‑Optimierung, Citations, Bewertungen & lokale Landingpages.</p>
+          <p class="mt-4"><a href="/leistungen/lokales-seo/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
+        </article>
+        <article class="card reveal">
+          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Astro</div>
+          <h3 class="card__title mt-4">Webentwicklung (Astro)</h3>
+          <p class="card__meta">Ultra‑schnelle, SEO‑starke Websites – DSGVO‑fokussiert & wartungsarm.</p>
+          <p class="mt-4"><a href="/leistungen/webentwicklung-astro/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
+        </article>
+        <article class="card reveal">
+          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Präsenz</div>
+          <h3 class="card__title mt-4">Online‑Präsenzen</h3>
+          <p class="card__meta">Listings‑Management, Reputation, Content & Ads für mehr Anfragen.</p>
+          <p class="mt-4"><a href="/leistungen/online-praesenzen/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
+        </article>
       </div>
-    </footer>
+    </section>
 
-    <script type="module">
-      // Reveal
-      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (!prefersReduced && 'IntersectionObserver' in window) {
-        const io = new IntersectionObserver((entries, obs) => {
-          entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-            const el = entry.target; obs.unobserve(el);
-            if (el.hasAttribute('data-reveal-stagger')) {
-              Array.from(el.children).forEach((child, i) => {
-                child.style.setProperty('--reveal-delay', `${i*80}ms`);
-                child.classList.add('reveal-in');
-              });
-            } else { el.classList.add('reveal-in'); }
-          });
-        }, { threshold: 0.2, rootMargin: '80px' });
-        document.querySelectorAll('[data-reveal]').forEach(el => io.observe(el));
-      } else {
-        document.querySelectorAll('[data-reveal]').forEach(el => el.classList.add('reveal-in'));
-      }
+    <RefSlider />
 
-      // Counters
-      const format = (val, locale, decimals) => new Intl.NumberFormat(locale||'de-DE', { minimumFractionDigits:+decimals, maximumFractionDigits:+decimals }).format(val);
-      const counters = document.querySelectorAll('.js-count');
-      if (!prefersReduced && 'IntersectionObserver' in window) {
-        const io2 = new IntersectionObserver((ents, obs) => {
-          ents.forEach(e => {
-            if (!e.isIntersecting) return; const el = e.target; obs.unobserve(el);
-            const end = parseFloat(el.dataset.end||'0'); const duration = 1200;
-            const locale = 'de-DE'; const decimals = el.dataset.decimals||'0';
-            const suffix = el.dataset.suffix||''; const start=0; const t0=performance.now();
-            const step = (now)=>{ const t=Math.min(1,(now-t0)/duration); const eased=1-Math.pow(1-t,3); const cur=start+(end-start)*eased; el.textContent = `${format(cur,locale,decimals)}${suffix}`; if(t<1) requestAnimationFrame(step); else el.textContent=`${format(end,locale,decimals)}${suffix}`;};
-            requestAnimationFrame(step);
-          });
-        }, { threshold: 0.3, rootMargin: '80px' });
-        counters.forEach(el => io2.observe(el));
-      } else {
-        counters.forEach(el => { const end = parseFloat(el.dataset.end||'0'); const decimals = el.dataset.decimals||'0'; const suffix=el.dataset.suffix||''; el.textContent = `${format(end,'de-DE',decimals)}${suffix}`; });
-      }
+    <!-- CTA -->
+    <section class="section container" data-reveal-group>
+      <div class="card reveal" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+        <div>
+          <h3 class="mb-4">Bereit, lokal zu wachsen?</h3>
+          <p class="text-muted">Rufen Sie uns an oder sichern Sie sich Ihr kostenloses Erstgespräch.</p>
+        </div>
+        <div>
+          <a class="btn btn--primary btn--lg" href="tel:+491604365363">Jetzt anrufen</a>
+          <a class="btn btn--ghost btn--lg" href="/kontakt/" style="margin-left:8px">Erstgespräch</a>
+        </div>
+      </div>
+    </section>
 
-      // Testimonials slider
-      const track = document.getElementById('track');
-      const prev = document.getElementById('prevBtn');
-      const next = document.getElementById('nextBtn');
-      if (track && prev && next) {
-        const slides = Array.from(track.children);
-        const clamp = (v,min,max)=>Math.max(min,Math.min(max,v));
-        const curIndex = ()=>{ const x=track.scrollLeft; const offs=slides.map(s=>s.offsetLeft); let i=0; for(let k=0;k<offs.length;k++){ if(x+1>=offs[k]) i=k;} return i; };
-        const go = (d)=>{ const i=curIndex(); const t=clamp(i+d,0,slides.length-1); slides[t].scrollIntoView({behavior:'smooth',inline:'start'}); setTimeout(update,200); };
-        function update(){ const i=curIndex(); prev.disabled=i===0; next.disabled=i>=slides.length-1; [prev,next].forEach(b=>{b.classList.toggle('opacity-50',b.disabled); b.setAttribute('aria-disabled',String(b.disabled));}); }
-        prev.addEventListener('click', ()=>go(-1)); next.addEventListener('click', ()=>go(1)); track.addEventListener('scroll',()=>requestAnimationFrame(update)); track.addEventListener('keydown',(e)=>{ if(e.key==='ArrowRight'){e.preventDefault();go(1);} if(e.key==='ArrowLeft'){e.preventDefault();go(-1);} }); update();
-      }
-    </script>
-  </body>
-</html>
+    <!-- FAQ -->
+    <section class="section container" data-reveal-group>
+      <h2 class="reveal">Häufige Fragen</h2>
+      <div class="grid grid-2 mt-4">
+        <article class="card reveal"><h3 class="card__title">Für wen ist ListingProfis ideal?</h3><p class="card__meta">Für lokale Unternehmen und Mittelstand in Schwäbisch Gmünd, Ostalbkreis und Stuttgart, die mehr qualifizierte Anfragen wollen.</p></article>
+        <article class="card reveal"><h3 class="card__title">Wie schnell sehe ich Ergebnisse?</h3><p class="card__meta">GBP & Listings oft in Wochen spürbar; SEO typ. 8–16 Wochen bis stabile Effekte.</p></article>
+        <article class="card reveal"><h3 class="card__title">Arbeiten Sie auch außerhalb der Region?</h3><p class="card__meta">Ja, primär Baden‑Württemberg, DACH sekundär – remote effizient, lokal nahbar.</p></article>
+        <article class="card reveal"><h3 class="card__title">Womit entwickeln Sie Websites?</h3><p class="card__meta">Mit Astro – exzellente Core Web Vitals, saubere Architektur, minimale JS‑Last.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <ScrollAnimations />
+  <Fragment slot="footer"><Footer /></Fragment>
+
+  <Fragment slot="head">
+    <script type="application/ld+json">{JSON.stringify({
+      "@context":"https://schema.org",
+      "@type":["Organization","LocalBusiness","ProfessionalService"],
+      "@id":"https://www.listingprofis.de/#organization",
+      "name":"ListingProfis – Digitalagentur & Online‑Marketing (Timo Krieg)",
+      "url":"https://www.listingprofis.de/",
+      "logo":"https://www.listingprofis.de/assets/logo.png",
+      "image":"https://www.listingprofis.de/assets/og/listingprofis.jpg",
+      "description":"Lokales SEO, Google Business Profile, Listings & schnelle Astro‑Websites für Schwäbisch Gmünd, Ostalbkreis & Stuttgart.",
+      "telephone":"+49 160 4365363",
+      "priceRange":"€€",
+      "founder":{ "@type":"Person", "name":"Timo Krieg" },
+      "address":{ "@type":"PostalAddress", "streetAddress":"Kitzingstraße 7", "postalCode":"73529", "addressLocality":"Schwäbisch Gmünd", "addressRegion":"Baden‑Württemberg", "addressCountry":"DE" },
+      "areaServed":["Schwäbisch Gmünd","Ostalbkreis","Stuttgart","Deutschland"],
+      "contactPoint":[{ "@type":"ContactPoint", "telephone":"+49 160 4365363", "contactType":"sales", "areaServed":"DE", "availableLanguage":["de","en"] }]
+    })}</script>
+  </Fragment>
+</BaseLayout>

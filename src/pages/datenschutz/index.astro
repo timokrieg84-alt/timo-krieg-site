@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import IconSprite from '../../components/IconSprite.astro';
+const pageTitle = 'Datenschutz | ListingProfis – DSGVO‑Informationen';
+const pageDesc = 'Hinweise zur Verarbeitung personenbezogener Daten, Cookies, Tracking & Kontaktwegen bei ListingProfis.';
+---
+<BaseLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="icons"><IconSprite /></Fragment>
+  <Fragment slot="header"><Header /></Fragment>
+  <main>
+    <section class="section container">
+      <h1>Datenschutz</h1>
+      <p class="text-muted">Diese Seite verarbeitet personenbezogene Daten nur im erforderlichen Umfang (z. B. Kontaktanfragen, Reichweitenmessung mit Einwilligung). Die vollständige Datenschutzerklärung inkl. Datenkategorien, Rechtsgrundlagen, Speicherdauer, Empfänger, Drittlandtransfer, Betroffenenrechte und Cookie‑Richtlinie wird hier hinterlegt und vor Livegang finalisiert.</p>
+    </section>
+  </main>
+  <Fragment slot="footer"><Footer /></Fragment>
+</BaseLayout>

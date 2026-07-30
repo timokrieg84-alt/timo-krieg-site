@@ -1,8 +1,8 @@
 User-agent: *
-Allow: /
-Disallow: /api/
-Disallow: /admin/
-Disallow: /drafts/
-Disallow: /*?utm_*
-Disallow: /*?ref=*
-Sitemap: https://timo-krieg-site.vercel.app/sitemap-index.xml
+Disallow: /wp-admin/
+Disallow: /wp-includes/
+Disallow: /cgi-bin/
+Disallow: /search
+Disallow: /?s=
+Allow: /wp-admin/admin-ajax.php
+Sitemap: https://www.listingprofis.de/sitemap.xml

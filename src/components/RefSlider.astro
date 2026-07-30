@@ -1,0 +1,57 @@
+---
+---
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+<section class="section container" id="referenzen">
+  <div class="flow">
+    <h2 class="reveal">Ausgewählte Referenzen</h2>
+    <div class="swiper" role="region" aria-roledescription="carousel" aria-label="Referenzen Slider">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <article class="card">
+            <img src="/images/ref-1.webp" width="800" height="500" alt="Moderner Workspace mit High-End-Laptop – schnelle Website-Performance">
+            <h3 class="card__title">Astro Relaunch</h3>
+            <p class="card__meta">LCP ~0,6 s · +34% Conversion</p>
+          </article>
+        </div>
+        <div class="swiper-slide">
+          <article class="card">
+            <img src="/images/ref-2.webp" width="800" height="500" alt="Moderne Ladenfront – professionelle Außendarstellung">
+            <h3 class="card__title">Local Presence</h3>
+            <p class="card__meta">Top 3 im Local Pack</p>
+          </article>
+        </div>
+      </div>
+      <div class="swiper-pagination" aria-hidden="true"></div>
+      <button class="btn btn--ghost btn--sm" id="refPause" type="button" aria-pressed="false" aria-label="Autoplay pausieren">
+        <svg width="16" height="16" aria-hidden="true"><use href="#icon-pause"/></svg> Pause
+      </button>
+    </div>
+  </div>
+</section>
+<script type="module" client:idle>
+  const prefersReduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const [{ Swiper }, modules] = await Promise.all([
+    import('swiper'),
+    import('swiper/modules')
+  ]);
+  const { Pagination, A11y, Autoplay, Keyboard } = modules;
+  const el = document.querySelector('.swiper');
+  const btn = document.getElementById('refPause');
+  const swiper = new Swiper(el, {
+    modules: [Pagination, A11y, Autoplay, Keyboard],
+    slidesPerView: 1,
+    spaceBetween: 16,
+    a11y: { enabled: true },
+    keyboard: { enabled: true },
+    autoplay: prefersReduce ? false : { delay: 4000, pauseOnMouseEnter: true, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    breakpoints: { 640: { slidesPerView: 2, spaceBetween: 20 }, 1024:{ slidesPerView: 3, spaceBetween: 24 } }
+  });
+  if (btn && !prefersReduce) {
+    btn.addEventListener('click', () => {
+      const paused = btn.getAttribute('aria-pressed') === 'true';
+      if (paused) { swiper.autoplay.start(); btn.setAttribute('aria-pressed','false'); btn.innerHTML = '<svg width="16" height="16" aria-hidden="true"><use href="#icon-pause"/></svg> Pause';}
+      else { swiper.autoplay.stop(); btn.setAttribute('aria-pressed','true'); btn.innerHTML = '<svg width="16" height="16" aria-hidden="true"><use href="#icon-play"/></svg> Abspielen';}
+    });
+  }
+</script>
