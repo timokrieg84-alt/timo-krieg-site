@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
 
+// Minimal, stable config: Astro + Tailwind only
 export default defineConfig({
-  site: 'https://timo-krieg-site.vercel.app',
-  integrations: [tailwind({ applyBaseStyles: false }), sitemap()],
+  site: 'https://example.com', // später auf echte Domain setzen
+  output: 'static',
+  integrations: [tailwind()],
 });

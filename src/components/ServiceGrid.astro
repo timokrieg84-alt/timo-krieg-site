@@ -11,20 +11,20 @@ const items = [
 <section id="leistungen" class="py-16 md:py-24">
   <div class="container">
     <h2 class="text-3xl md:text-4xl font-semibold">Leistungen</h2>
-    <p class="mt-2 text-brand-muted max-w-2xl">Konzentration auf das, was für den Mittelstand wirklich wirkt.</p>
+    <p class="mt-2 text-slate-400 max-w-2xl">Konzentration auf das, was für den Mittelstand wirklich wirkt.</p>
     <ul class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
       {items.map((s) => (
         <li class="card card-hover">
           <div class="flex flex-col h-full">
             <div class="flex items-start gap-3">
-              <svg class="icon text-brand-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" role="img" aria-label="Icon"><circle cx="12" cy="12" r="9" /><path d="M8 12l2.5 2.5L16 9" stroke-linecap="round" stroke-linejoin="round" /></svg>
+              <svg class="icon text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" role="img" aria-label="Icon"><circle cx="12" cy="12" r="9" /><path d="M8 12l2.5 2.5L16 9" stroke-linecap="round" stroke-linejoin="round" /></svg>
               <div>
                 <h3 class="text-lg font-semibold text-white">{s.title}</h3>
-                <p class="mt-1 text-sm text-brand-muted">{s.text}</p>
+                <p class="mt-1 text-sm text-slate-400">{s.text}</p>
               </div>
             </div>
             <div class="mt-4 pt-4 border-t border-white/10">
-              <a href={s.href} class="text-brand-indigo-400 hover:text-brand-indigo-300 focus-ring inline-flex items-center gap-2">Mehr erfahren <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round"/></svg></a>
+              <a href={s.href} class="text-indigo-400 hover:text-indigo-300 focus-ring inline-flex items-center gap-2">Mehr erfahren <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round"/></svg></a>
             </div>
           </div>
         </li>

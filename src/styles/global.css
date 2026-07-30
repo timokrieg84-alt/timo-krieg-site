@@ -1,34 +1,17 @@
-@import "@fontsource-variable/inter";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base defaults: system fonts, no external font packages */
 @layer base {
-  html { color-scheme: dark; }
-  body { @apply bg-brand-bg text-slate-200 font-sans antialiased; }
-  ::selection { @apply bg-brand-indigo-500 text-white; }
-  a { @apply text-slate-200 hover:text-white transition-colors; }
+  html { scroll-behavior: smooth; }
+  body { @apply font-sans antialiased text-white bg-slate-950; }
 }
 
-@layer components {
-  .focus-ring { @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent focus-visible:ring-offset-2 focus-visible:ring-offset-brand-bg; }
-  .btn { @apply inline-flex items-center gap-2 rounded-lg px-5 py-3 font-medium transition-all focus-ring select-none; }
-  .btn-primary { @apply bg-brand-indigo-500 hover:bg-brand-indigo-400 text-white shadow-card; }
-  .btn-secondary { @apply bg-white/5 hover:bg-white/10 text-slate-100 border border-white/10; }
-  .card { @apply bg-brand-surface/80 border border-white/10 rounded-xl p-6 shadow-card transition-all; }
-  .card-hover { @apply motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.01] hover:border-brand-indigo-500/50; }
-  .kicker { @apply text-brand-muted uppercase tracking-wider text-xs font-semibold; }
-  .stat { @apply text-4xl md:text-5xl font-semibold text-white; }
-  .stat-label { @apply text-sm text-brand-muted; }
-}
-
-.hero-bg { position: absolute; inset: 0; background:
-  radial-gradient(600px circle at 10% 20%, rgba(79,70,229,0.25), transparent 60%),
-  radial-gradient(800px circle at 90% 80%, rgba(23,37,84,0.35), transparent 60%),
-  linear-gradient(180deg, #0b1220 0%, #0f172a 100%);
-  background-size: 200% 200%; }
-@media (prefers-reduced-motion: no-preference) { .hero-bg { animation: shimmer 28s linear infinite alternate; } }
-@media (prefers-reduced-motion: reduce) { .hero-bg { animation: none; } }
-@media (prefers-reduced-motion: reduce) { * { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; } }
-.icon { width: 1.25rem; height: 1.25rem; stroke-width: 1.6; }
+/* UI primitives */
+.container { @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8; }
+.btn { @apply inline-flex items-center justify-center rounded-lg px-4 py-2 text-sm font-medium transition-colors; }
+.btn-primary { @apply bg-indigo-600 text-white hover:bg-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-400; }
+.btn-secondary { @apply bg-white/10 text-white hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-indigo-400; }
+.card { @apply rounded-xl border border-white/10 bg-white/5 p-6; }
+.icon { @apply h-5 w-5; }
