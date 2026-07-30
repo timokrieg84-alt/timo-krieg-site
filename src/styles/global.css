@@ -1,97 +1,107 @@
-/* Tailwind core */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Global color system and component styles (ONLY colors and accent styles) */
-@layer base {
+/* Accent Color System: Orange (Primary), Green (Secondary), Pink (Accent) */
+:root {
+  /* Core brand accents */
+  --color-primary: #FF6A00; /* Orange – CTA Primary / Hauptbuttons */
+  --color-green:   #00C853; /* Secondary actions & badges */
+  --color-pink:    #FF2D9A; /* Links & text highlights */
+
+  /* Derived shades for subtle hovers/active states */
+  --primary-600: #E55F00;
+  --green-600:   #00B24B;
+  --pink-600:    #E6288A;
+
+  /* Focus ring */
+  --focus-ring: 2px solid var(--color-pink);
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
-    /* Accent palette */
-    --color-primary: #FF6A00; /* Orange */
-    --color-green:   #00C853; /* Green */
-    --color-pink:    #FF2D9A; /* Pink */
-
-    /* Base text/background (unchanged neutrals) */
-    --color-text: #111111;
-    --color-bg:   #ffffff;
-
-    /* Focus ring uses green for strong accessibility contrast */
-    --focus-color: var(--color-green);
+    /* keep brand hues; optionally slightly deepen hover shades on dark */
+    --primary-600: #FF6A00; /* keep bright on dark for punchy CTAs */
+    --green-600:   #00C853;
+    --pink-600:    #FF46A6;
   }
+}
 
-  html { color-scheme: light; }
-  body { color: var(--color-text); background: var(--color-bg); }
-
-  ::selection {
-    background: color-mix(in oklab, var(--color-pink), white 20%);
-    color: #111;
-  }
-
-  /* Links */
+/* Base element styles: keep content/structure unchanged; only accents */
+@layer base {
   a, .link {
     color: var(--color-pink);
     text-decoration-color: color-mix(in oklab, var(--color-pink), transparent 70%);
-    text-underline-offset: 3px;
+    text-underline-offset: 2px;
+    transition: color .2s ease, text-decoration-color .2s ease;
   }
   a:hover, .link:hover {
     color: var(--color-primary);
     text-decoration-color: var(--color-primary);
   }
-
-  /* Accessible focus states */
-  :focus-visible {
-    outline: 2px solid var(--focus-color);
+  a:focus-visible, button:focus-visible, .btn:focus-visible, [type="button"]:focus-visible, [type="submit"]:focus-visible {
+    outline: var(--focus-ring);
     outline-offset: 2px;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; animation: none !important; }
   }
 }
 
+/* Components: Buttons, Badges, Highlights (generic selectors only) */
 @layer components {
-  /* Generic buttons (keine inhaltlichen Änderungen, nur Styles) */
-  .btn, button, [type="button"], [type="submit"] {
-    @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium;
-    color: #fff;
+  /* Primary buttons (default): Orange */
+  button, .btn, [type="button"], [type="submit"] {
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
-    transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, border-color .2s ease, color .2s ease;
+    color: #fff;
+    border-radius: .5rem;
+    padding: .65rem 1rem;
+    font-weight: 600;
+    line-height: 1.2;
+    transition: background-color .2s ease, border-color .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
   }
-  .btn:hover, button:hover, [type="button"]:hover, [type="submit"]:hover {
-    background: color-mix(in oklab, var(--color-primary), black 10%);
-    border-color: color-mix(in oklab, var(--color-primary), black 10%);
+  button:hover, .btn:hover, [type="button"]:hover, [type="submit"]:hover {
+    background: var(--primary-600);
+    border-color: var(--primary-600);
     transform: translateY(-1px);
   }
-  .btn:active, button:active, [type="button"]:active, [type="submit"]:active { transform: translateY(0); }
+  button:disabled, .btn:disabled, [type="button"]:disabled, [type="submit"]:disabled {
+    opacity: .65;
+    cursor: not-allowed;
+    transform: none;
+  }
 
-  /* Secondary button = Green */
+  /* Secondary buttons: explicit modifier -> Green */
   .btn--secondary {
-    color: #fff;
     background: var(--color-green);
     border-color: var(--color-green);
+    color: #0A0A0A;
   }
   .btn--secondary:hover {
-    background: color-mix(in oklab, var(--color-green), black 10%);
-    border-color: color-mix(in oklab, var(--color-green), black 10%);
+    background: var(--green-600);
+    border-color: var(--green-600);
   }
 
-  /* Outline/Ghost variants use Orange as accent */
-  .btn--outline, .btn-ghost, .btn--ghost {
-    color: var(--color-primary);
+  /* Ghost/Outline buttons: Orange accent */
+  .btn--ghost, .btn--outline {
     background: transparent;
-    border-color: var(--color-primary);
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
   }
-  .btn--outline:hover, .btn-ghost:hover, .btn--ghost:hover {
+  .btn--ghost:hover, .btn--outline:hover {
     background: color-mix(in oklab, var(--color-primary), white 85%);
   }
 
-  /* Badges/Tags with Pink/Green accents */
+  /* Badges/Tags: Green as default badge color */
   .badge, .tag {
-    @apply inline-flex items-center rounded-full px-2 py-0.5 text-sm;
-    background: color-mix(in oklab, var(--color-pink), white 85%);
-    color: var(--color-pink);
-    border: 1px solid color-mix(in oklab, var(--color-pink), transparent 65%);
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    padding: .25rem .5rem;
+    border-radius: 999px;
+    font-size: .75rem;
+    line-height: 1;
+    background: color-mix(in oklab, var(--color-green), white 85%);
+    color: var(--color-green);
+    border: 1px solid color-mix(in oklab, var(--color-green), transparent 65%);
   }
   .badge--success, .tag--success {
     background: color-mix(in oklab, var(--color-green), white 85%);
@@ -99,42 +109,62 @@
     border-color: color-mix(in oklab, var(--color-green), transparent 65%);
   }
 
-  /* Highlights */
-  mark, .highlight {
-    background: color-mix(in oklab, var(--color-primary), white 85%);
-    color: inherit;
+  /* Text highlights (e.g., <mark>) use Pink */
+  .highlight, mark {
+    background: color-mix(in oklab, var(--color-pink), white 85%);
     padding: .1em .25em;
     border-radius: .25rem;
   }
 }
 
+/* Utilities so Tailwind-style helpers are available without changing tailwind.config */
 @layer utilities {
-  /* Utility classes that integrate with Tailwind's pipeline */
-  .text-accent { color: var(--color-pink); }
-  .text-primary { color: var(--color-primary); }
-  .text-success { color: var(--color-green); }
+  .text-primary { color: var(--color-primary) !important; }
+  .bg-primary { background-color: var(--color-primary) !important; }
+  .border-primary { border-color: var(--color-primary) !important; }
 
-  .bg-accent { background-color: var(--color-pink); }
-  .bg-primary { background-color: var(--color-primary); }
-  .bg-success { background-color: var(--color-green); }
+  .text-secondary { color: var(--color-green) !important; }
+  .bg-secondary { background-color: var(--color-green) !important; }
+  .border-secondary { border-color: var(--color-green) !important; }
 
-  .border-accent { border-color: var(--color-pink); }
-  .border-primary { border-color: var(--color-primary); }
-  .border-success { border-color: var(--color-green); }
+  .text-accent { color: var(--color-pink) !important; }
+  .bg-accent { background-color: var(--color-pink) !important; }
+  .border-accent { border-color: var(--color-pink) !important; }
+}
 
-  .hover\:text-accent:hover { color: var(--color-pink); }
-  .hover\:text-primary:hover { color: var(--color-primary); }
-  .hover\:text-success:hover { color: var(--color-green); }
+/* Dark Mode tweaks: keep contrast, avoid glare */
+@media (prefers-color-scheme: dark) {
+  @layer base {
+    a, .link {
+      color: var(--color-pink);
+      text-decoration-color: color-mix(in oklab, var(--color-pink), transparent 60%);
+    }
+    a:hover, .link:hover {
+      color: var(--color-primary);
+      text-decoration-color: var(--color-primary);
+    }
+  }
+  @layer components {
+    .btn--ghost, .btn--outline {
+      border-color: color-mix(in oklab, var(--color-primary), white 20%);
+      color: var(--color-primary);
+      background: transparent;
+    }
+    .btn--ghost:hover, .btn--outline:hover {
+      background: color-mix(in oklab, var(--color-primary), black 80%);
+    }
+    .badge, .tag, .badge--success, .tag--success {
+      background: color-mix(in oklab, var(--color-green), black 82%);
+      color: var(--color-green);
+      border-color: color-mix(in oklab, var(--color-green), black 55%);
+    }
+    .highlight, mark {
+      background: color-mix(in oklab, var(--color-pink), black 80%);
+    }
+  }
+}
 
-  .hover\:bg-accent:hover { background-color: var(--color-pink); }
-  .hover\:bg-primary:hover { background-color: var(--color-primary); }
-  .hover\:bg-success:hover { background-color: var(--color-green); }
-
-  .hover\:border-accent:hover { border-color: var(--color-pink); }
-  .hover\:border-primary:hover { border-color: var(--color-primary); }
-  .hover\:border-success:hover { border-color: var(--color-green); }
-
-  /* Focus helpers */
-  .focus\:ring-accent:focus-visible { box-shadow: 0 0 0 2px var(--color-bg), 0 0 0 4px var(--focus-color); }
-  .focus\:outline-accent:focus-visible { outline: 2px solid var(--focus-color); outline-offset: 2px; }
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
 }
