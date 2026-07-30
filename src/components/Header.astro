@@ -1,81 +1,113 @@
 ---
-const services = [
-  { label: "SEO", url: "/leistungen/seo" },
-  { label: "SEO-Regio (Umland-Dominanz)", url: "/leistungen/seo-regio" },
-  { label: "Google Ads", url: "/leistungen/google-ads" },
-  { label: "GEO (AI-Search & ChatGPT)", url: "/leistungen/geo" },
-  { label: "Webdesign & E-Commerce", url: "/leistungen/webdesign" },
-  { label: "Online-Terminvereinbarungen", url: "/leistungen/terminbuchung" },
-  { label: "Marketing", url: "/leistungen/marketing" },
-  { label: "AI & Automation", url: "/leistungen/ai-automation" },
-  { label: "Branding", url: "/leistungen/branding" },
-  { label: "Social Media", url: "/leistungen/social-media" },
-  { label: "Reputation & Bewertungen", url: "/leistungen/reputation" },
-  { label: "Praxis-TV / Display-Systeme", url: "/leistungen/praxis-tv" },
-  { label: "Code-Exzellenz & Programmierung", url: "/leistungen/programmierung" },
-  { label: "Premium-Factoring", url: "/leistungen/factoring" }
-];
+import { navigation, projectInfo } from "../data/site";
 const currentPath = Astro.url?.pathname || "/";
 ---
 
-<header id="site-header" class="sticky top-0 z-50 bg-brand-dark/85 backdrop-blur-md border-b border-white/10 transition-colors">
+<header id="site-header" class="sticky top-0 z-50 bg-brand-dark/85 backdrop-blur-md border-b border-white/10 supports-[backdrop-filter]:bg-brand-dark/70 transition-colors">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="/" class="text-2xl font-black tracking-wider text-white hover:text-emerald-400 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded">
-      Gylsere <span class="text-emerald-400">•</span> Januzi
+
+    <!-- Logo -->
+    <a href="/" class="text-2xl font-black tracking-wider text-white hover:text-brand-green transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded" aria-label="Startseite">
+      {navigation.logo_text}
     </a>
 
+    <!-- Desktop Navigation -->
     <nav class="hidden md:flex items-center gap-8" aria-label="Hauptnavigation">
-      <a href="/" aria-current={currentPath === "/" ? "page" : undefined} class="font-medium transition hover:text-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded">Home</a>
-      <div class="relative">
-        <button id="services-btn" class="font-medium flex items-center gap-1 py-2 transition hover:text-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded" aria-haspopup="menu" aria-expanded="false" aria-controls="services-menu" type="button">
-          Leistungen
-          <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div id="services-menu" role="menu" aria-labelledby="services-btn" class="invisible opacity-0 pointer-events-none absolute left-0 top-full w-[min(90vw,640px)] p-4 bg-brand-card/95 border border-white/10 rounded-xl shadow-2xl grid grid-cols-2 gap-2 transition will-change-transform">
-          {services.map((s, i) => (
-            <a href={s.url} role="menuitem" class="p-2 rounded-lg text-sm transition hover:bg-white/5 hover:text-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400" data-index={i}>
-              {s.label}
-            </a>
-          ))}
-        </div>
+      {navigation.links.map((l) => (
+        l.type === 'dropdown_interactive' ? (
+          <div class="relative">
+            <button
+              id="services-btn"
+              class="font-medium flex items-center gap-1 py-2 transition hover:text-brand-green focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded"
+              aria-haspopup="menu"
+              aria-expanded="false"
+              aria-controls="services-menu"
+              type="button"
+            >
+              {l.label}
+              <svg class="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </button>
+
+            <div
+              id="services-menu"
+              role="menu"
+              aria-labelledby="services-btn"
+              class="invisible opacity-0 pointer-events-none absolute left-0 top-full w-[min(90vw,720px)] p-4 bg-brand-card/95 border border-white/10 rounded-xl shadow-2xl grid grid-cols-2 gap-2 transition will-change-transform"
+            >
+              {l.sub_links?.map((s, i) => (
+                <a
+                  href={s.target}
+                  role="menuitem"
+                  class="p-2 rounded-lg text-sm transition hover:bg-white/5 hover:text-brand-green focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green"
+                  data-index={i}
+                >
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
+        ) : (
+          <a href={l.target} aria-current={currentPath === l.target ? 'page' : undefined} class="font-medium transition hover:text-brand-green focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded">{l.label}</a>
+        )
+      ))}
+
+      <!-- Right actions -->
+      <div class="flex items-center gap-2 ml-2">
+        <button id="theme-toggle" class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 hover:bg-white/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Theme umschalten" type="button">☼</button>
+        <a href="#kontakt" class="px-4 py-2 rounded-lg font-semibold border border-brand-green text-brand-green hover:bg-brand-green hover:text-black transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green">Erstgespräch buchen</a>
+        <a href={`tel:${projectInfo.phone_href}`} class="px-4 py-2 rounded-lg font-semibold bg-brand-green text-black hover:bg-emerald-500/90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green">{projectInfo.phone}</a>
       </div>
-      <a href="#kontakt" class="font-medium transition hover:text-emerald-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 rounded" data-kontakt>Kontakt</a>
     </nav>
 
-    <div class="hidden md:flex items-center gap-3">
-      <a href="tel:+491756372395" class="border border-emerald-400 text-emerald-400 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-emerald-400 hover:text-black transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400">+49 175 6372395</a>
-      <a href="#kontakt" class="bg-emerald-400 text-black px-5 py-2 rounded-lg text-sm font-bold hover:bg-opacity-90 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400" data-kontakt>Erstgespräch buchen</a>
-    </div>
-
-    <button id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 hover:bg-white/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400" aria-label="Menü öffnen" aria-controls="mobile-nav" aria-expanded="false" type="button">
-      <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16" /></svg>
+    <!-- Mobile: Hamburger -->
+    <button
+      id="nav-toggle"
+      class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 hover:bg-white/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green"
+      aria-label="Menü öffnen"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+      type="button"
+    >
+      <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16" />
+      </svg>
     </button>
   </div>
 
+  <!-- Mobile Off-Canvas -->
   <div id="mobile-nav" class="md:hidden fixed inset-0 z-50 hidden" role="dialog" aria-modal="true" aria-label="Mobiles Menü">
     <div class="absolute inset-0 bg-black/50 backdrop-blur-sm"></div>
     <div class="ml-auto h-full w-[88vw] max-w-sm bg-brand-card border-l border-white/10 shadow-2xl flex flex-col">
       <div class="h-16 px-4 flex items-center justify-between border-b border-white/10">
         <span class="text-lg font-bold">Menü</span>
-        <button id="nav-close" class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 hover:bg-white/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400" aria-label="Menü schließen" type="button">
+        <button id="nav-close" class="inline-flex items-center justify-center w-10 h-10 rounded-lg border border-white/10 hover:bg-white/5 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green" aria-label="Menü schließen" type="button">
           <svg class="w-5 h-5" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
         </button>
       </div>
+
       <nav class="px-4 py-3 overflow-y-auto grow" aria-label="Mobiles Menü">
-        <a href="/" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition">Home</a>
-        <div class="mt-1">
-          <p class="px-3 py-2 text-sm uppercase tracking-wide text-brand-muted">Leistungen</p>
-          <ul class="grid grid-cols-1 gap-1" role="list">
-            {services.map((s) => (
-              <li><a href={s.url} class="block px-3 py-2 rounded-lg hover:bg-white/5 transition">{s.label}</a></li>
-            ))}
-          </ul>
-        </div>
-        <a href="#kontakt" class="block px-3 py-2 rounded-lg hover:bg-white/5 transition mt-2" data-kontakt>Kontakt</a>
+        {navigation.links.map((l) => (
+          l.type === 'dropdown_interactive' ? (
+            <div class="mt-1">
+              <p class="px-3 py-2 text-sm uppercase tracking-wide text-brand-muted">{l.label}</p>
+              <ul class="grid grid-cols-1 gap-1" role="list">
+                {l.sub_links?.map((s) => (
+                  <li><a href={s.target} class="block px-3 py-2 rounded-lg hover:bg-white/5 transition">{s.label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a href={l.target} class="block px-3 py-2 rounded-lg hover:bg-white/5 transition">{l.label}</a>
+          )
+        ))}
       </nav>
+
       <div class="px-4 py-4 border-t border-white/10 space-y-2">
-        <a href="tel:+491756372395" class="block text-center border border-emerald-400 text-emerald-400 px-4 py-2 rounded-lg text-sm font-semibold hover:bg-emerald-400 hover:text-black transition">+49 175 6372395</a>
-        <a href="#kontakt" class="block text-center bg-emerald-400 text-black px-5 py-2 rounded-lg text-sm font-bold hover:bg-opacity-90 transition" data-kontakt>Erstgespräch buchen</a>
+        <button id="theme-toggle-m" class="block w-full text-center border border-white/10 px-4 py-2 rounded-lg hover:bg-white/5 transition">Theme</button>
+        <a href="#kontakt" class="block text-center border border-brand-green text-brand-green px-4 py-2 rounded-lg text-sm font-semibold hover:bg-brand-green hover:text-black transition">Erstgespräch buchen</a>
+        <a href={`tel:${projectInfo.phone_href}`} class="block text-center bg-brand-green text-black px-5 py-2 rounded-lg text-sm font-bold hover:bg-opacity-90 transition">{projectInfo.phone}</a>
       </div>
     </div>
   </div>
@@ -89,19 +121,23 @@ const currentPath = Astro.url?.pathname || "/";
   const navToggle = document.getElementById('nav-toggle');
   const navClose = document.getElementById('nav-close');
   const mobile = document.getElementById('mobile-nav');
-  const kontaktLinks = document.querySelectorAll('[data-kontakt]');
+  const themeBtns = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-m')].filter(Boolean);
 
+  // Sticky shadow on scroll
   const onScroll = () => {
-    const scrolled = window.scrollY > 4;
+    const y = window.scrollY;
+    const scrolled = y > 4;
     header?.classList.toggle('shadow-[0_10px_30px_rgba(0,0,0,0.25)]', scrolled);
   };
   onScroll();
   window.addEventListener('scroll', onScroll, { passive: true });
 
+  // Dropdown open/close
   let open = false;
   const focusables = () => menu ? Array.from(menu.querySelectorAll('a[href]')) : [];
   const setOpen = (v) => {
-    open = !!v; btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
+    open = !!v;
+    btn?.setAttribute('aria-expanded', open ? 'true' : 'false');
     if (menu) {
       menu.style.transform = open ? 'translateY(0)' : 'translateY(4px)';
       menu.classList.toggle('invisible', !open);
@@ -111,28 +147,31 @@ const currentPath = Astro.url?.pathname || "/";
     if (open) focusables()[0]?.focus();
   };
   btn?.addEventListener('click', () => setOpen(!open));
-  btn?.addEventListener('keydown', (e) => { if (e.key === 'ArrowDown') { e.preventDefault(); setOpen(true);} if (e.key === 'Escape') { setOpen(false); btn.focus(); } });
+  btn?.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); setOpen(true); }
+    if (e.key === 'Escape') { setOpen(false); btn.focus(); }
+  });
   menu?.addEventListener('keydown', (e) => {
-    const items = focusables(); const idx = items.indexOf(document.activeElement);
+    const items = focusables();
+    const idx = items.indexOf(document.activeElement);
     if (e.key === 'Escape') { e.preventDefault(); setOpen(false); btn.focus(); }
     if (e.key === 'ArrowDown') { e.preventDefault(); items[(idx+1) % items.length]?.focus(); }
     if (e.key === 'ArrowUp') { e.preventDefault(); items[(idx-1+items.length) % items.length]?.focus(); }
-    if (e.key === 'Tab') {
-      if (!items.length) return;
-      if (e.shiftKey && document.activeElement === items[0]) { e.preventDefault(); items[items.length-1].focus(); }
-      else if (!e.shiftKey && document.activeElement === items[items.length-1]) { e.preventDefault(); items[0].focus(); }
-    }
   });
-  document.addEventListener('click', (e) => { if (!open) return; if (!menu?.contains(e.target) && !btn?.contains(e.target)) setOpen(false); });
+  document.addEventListener('click', (e) => { if (open && !menu?.contains(e.target) && !btn?.contains(e.target)) setOpen(false); });
 
-  const openMobile = () => { if (!mobile) return; mobile.classList.remove('hidden'); navToggle?.setAttribute('aria-expanded','true'); const first = mobile.querySelector('a, button'); first && first.focus(); document.body.style.overflow = 'hidden'; };
-  const closeMobile = () => { if (!mobile) return; mobile.classList.add('hidden'); navToggle?.setAttribute('aria-expanded','false'); navToggle?.focus(); document.body.style.overflow = ''; };
+  // Mobile open/close
+  const openMobile = () => { if (!mobile) return; mobile.classList.remove('hidden'); navToggle?.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; };
+  const closeMobile = () => { if (!mobile) return; mobile.classList.add('hidden'); navToggle?.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; };
   navToggle?.addEventListener('click', openMobile);
   navClose?.addEventListener('click', closeMobile);
   mobile?.addEventListener('click', (e) => { if (e.target === mobile) closeMobile(); });
   window.addEventListener('keydown', (e) => { if (e.key === 'Escape') { if (open) setOpen(false); if (mobile && !mobile.classList.contains('hidden')) closeMobile(); } });
 
-  const kontaktTargetExists = !!document.getElementById('kontakt');
-  kontaktLinks.forEach(a => { a.addEventListener('click', (ev) => { if (!kontaktTargetExists) { ev.preventDefault(); window.location.href = '/kontakt'; } }); });
+  // Theme toggle
+  const setTheme = (t) => { localStorage.setItem('theme', t); document.documentElement.classList.toggle('dark', t === 'dark'); };
+  const initTheme = () => { const t = localStorage.getItem('theme') || 'dark'; setTheme(t); };
+  initTheme();
+  themeBtns.forEach(btn => btn?.addEventListener('click', () => { const cur = localStorage.getItem('theme') || 'dark'; setTheme(cur === 'dark' ? 'light' : 'dark'); }));
 })();
 </script>
