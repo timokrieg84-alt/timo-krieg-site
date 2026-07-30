@@ -4,10 +4,13 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 ---
-<Layout title="Wir – Gylsere Januzi">
+<Layout title="Wir – Gylsere Januzi" description="Team, Haltung und Arbeitsweise.">
   <Fragment slot="header"><Header /></Fragment>
-  <Section title="Wir" intro="Wer wir sind und wie wir arbeiten.">
-    
+  <Section title="Wir" intro="Exzellenz & Digitale Präsenz.">
+    <div class="max-w-3xl text-gray-300 space-y-4">
+      <p class="text-white font-semibold">Gylsere • Januzi</p>
+      <p>Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.</p>
+    </div>
   </Section>
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
