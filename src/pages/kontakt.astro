@@ -1,130 +1,122 @@
 ---
 import '../styles/global.css';
+const title = 'Kontakt | Performance Marketing & Webentwicklung | Timo Krieg';
+const description = 'Unverbindliches Erstgespräch: Ziele, Potenziale, Quick‑Wins. Jetzt Termin sichern. Anfahrt: Kitzingstraße 7, 73529 Schwäbisch Gmünd.';
+const canonical = '/kontakt';
 ---
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kontakt | Timo Krieg – Performance Marketing</title>
-    <meta name="description" content="Kostenloses Erstgespräch: +49 160 4365363. Adresse: Kitzingstraße 7, 73529 Schwäbisch Gmünd. Jetzt Termin sichern." />
-  </head>
-  <body class="min-h-screen bg-slate-950 text-white font-sans">
-    <header class="border-b border-white/10">
-      <div class="container py-4 flex items-center justify-between">
-        <a href="/" class="font-semibold">Timo Krieg</a>
-        <nav class="hidden md:flex items-center gap-6">
-          <a href="/leistungen/">Leistungen</a>
-          <a href="/ueber-uns">Über uns</a>
-          <a href="/kontakt" class="underline">Kontakt</a>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/og-default.jpg" />
+  <script type="application/ld+json">{JSON.stringify({
+    '@context':'https://schema.org','@type':['Organization','LocalBusiness','ProfessionalService'], name:'Timo Krieg', url:'/',
+    address:{'@type':'PostalAddress', streetAddress:'Kitzingstraße 7', postalCode:'73529', addressLocality:'Schwäbisch Gmünd', addressRegion:'Baden-Württemberg', addressCountry:'DE'},
+    telephone:'+49-160-4365363'
+  })}</script>
+  <script type="application/ld+json">{JSON.stringify({
+    '@context':'https://schema.org','@type':'WebPage', name:title, description, url: canonical, inLanguage:'de',
+    breadcrumb:{'@type':'BreadcrumbList', itemListElement:[{'@type':'ListItem', position:1, name:'Start', item:'/'},{'@type':'ListItem', position:2, name:'Kontakt', item: canonical}]}
+  })}</script>
+</head>
+<body>
+  <header class="border-b border-slate-200 bg-white/70 backdrop-blur sticky top-0 z-50">
+    <div class="container py-4 flex items-center justify-between gap-4">
+      <a href="/" class="font-semibold tracking-tight">Timo Krieg</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/leistungen/" class="nav-link">Leistungen</a>
+        <a href="/ueber-uns" class="nav-link">Über uns</a>
+        <a href="/kontakt" class="nav-link">Kontakt</a>
+        <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+      </nav>
+      <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
+    </div>
+  </header>
 
-    <main class="py-16 md:py-24">
+  <main>
+    <section class="section">
       <div class="container grid gap-8 md:grid-cols-2 items-start">
         <div class="card">
-          <h1 class="text-3xl md:text-5xl font-semibold">Kontakt</h1>
-          <ul class="mt-4 space-y-2 text-slate-300">
+          <h1 class="text-3xl md:text-4xl font-semibold tracking-tight">Sprechen wir über Wachstum</h1>
+          <p class="mt-3 text-slate-700">Kurzer Draht, klare Antworten. In 15–20 Minuten klären wir Potenziale, Budgetrahmen und nächste Schritte.</p>
+          <ul class="mt-4 space-y-2 text-slate-700">
             <li><strong>Telefon:</strong> <a class="underline" href="tel:+491604365363">+49 160 4365363</a></li>
-            <li><strong>E-Mail:</strong> <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
+            <li><strong>E‑Mail:</strong> <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
             <li><strong>Adresse:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</li>
           </ul>
           <div class="mt-4 flex gap-3">
             <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+            <a href="#form" class="btn btn-secondary">Erstgespräch vereinbaren</a>
           </div>
-          <p class="mt-3 text-xs text-slate-400">Hinweis: Eingehende Anfragen werden per Telegram-Benachrichtigung zugestellt.</p>
+          <p class="mt-3 text-xs text-slate-500">Hinweis: Eingehende Anfragen werden per Telegram‑Benachrichtigung zugestellt.</p>
         </div>
-
-        <form id="contact-form" class="card space-y-4" novalidate>
+        <form id="form" class="card space-y-4" action="https://timokrieg.app.n8n.cloud/webhook/contact-form" method="post">
           <h2 class="text-2xl font-semibold">Kontaktformular</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm mb-1" for="name">Name</label>
-              <input id="name" name="name" type="text" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+              <input id="name" name="name" type="text" class="input" required />
             </div>
             <div>
-              <label class="block text-sm mb-1" for="email">E-Mail</label>
-              <input id="email" name="email" type="email" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" required />
+              <label class="block text-sm mb-1" for="email">E‑Mail</label>
+              <input id="email" name="email" type="email" class="input" required />
             </div>
             <div>
               <label class="block text-sm mb-1" for="phone">Telefon</label>
-              <input id="phone" name="phone" type="tel" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+              <input id="phone" name="phone" type="tel" class="input" />
             </div>
             <div>
               <label class="block text-sm mb-1" for="site">Website</label>
-              <input id="site" name="site" type="text" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" />
+              <input id="site" name="site" type="text" class="input" />
             </div>
           </div>
           <div>
             <label class="block text-sm mb-1" for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="5" class="w-full rounded-md bg-white/5 border border-white/10 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400" required></textarea>
+            <textarea id="message" name="message" rows="5" class="input" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Absenden</button>
-          <p id="form-feedback" class="text-sm text-slate-300 hidden">Danke! Ihre Nachricht wurde gesendet.</p>
-          <p class="text-xs text-slate-400">Mit Ihrer Kontaktaufnahme verarbeiten wir Ihre Angaben zur Beantwortung der Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>.</p>
+          <p class="text-xs text-slate-500">Mit Ihrer Kontaktaufnahme verarbeiten wir Ihre Angaben zur Beantwortung der Anfrage (Art. 6 Abs. 1 lit. b DSGVO). Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>.</p>
         </form>
-
-        <script type="module">
-          const form = document.getElementById('contact-form');
-          const feedback = document.getElementById('form-feedback');
-          if (form) {
-            form.addEventListener('submit', async (e) => {
-              e.preventDefault();
-              const fd = new FormData(form);
-              const payload = {
-                name: fd.get('name')?.toString() || '',
-                email: fd.get('email')?.toString() || '',
-                phone: fd.get('phone')?.toString() || '',
-                site: fd.get('site')?.toString() || 'Kontaktseite',
-                message: fd.get('message')?.toString() || ''
-              };
-              try {
-                const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify(payload)
-                });
-                if (!res.ok) throw new Error('Network error');
-                feedback?.classList.remove('hidden');
-                form.reset();
-              } catch (err) {
-                alert('Senden fehlgeschlagen. Bitte versuchen Sie es erneut oder rufen Sie an.');
-              }
-            });
-          }
-        </script>
-      </div>
-    </main>
-
-    <section id="anfahrt" class="py-16 md:py-24">
-      <div class="container">
-        <h2 class="text-3xl md:text-4xl font-semibold">Anfahrt</h2>
-        <div class="mt-6 overflow-hidden rounded-xl border border-white/10">
-          <div id="map-wrapper" class="relative">
-            <button id="load-map" class="absolute inset-0 z-10 w-full h-full bg-slate-900/30 backdrop-blur-sm flex items-center justify-center text-slate-200 hover:bg-slate-900/10 transition">
-              <span class="px-4 py-2 rounded-md bg-white/10 border border-white/10">Karte laden</span>
-            </button>
-            <iframe id="gmap" title="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd" src="about:blank" width="100%" height="420" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div>
-        </div>
-        <script type="module">
-          const btn = document.getElementById('load-map');
-          const frame = document.getElementById('gmap');
-          btn?.addEventListener('click', () => {
-            frame.src = 'https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed';
-            btn.remove();
-          }, { once: true });
-        </script>
-        <p class="mt-2 text-xs text-slate-400">Hinweis: Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrem Klick geladen.</p>
       </div>
     </section>
 
-    <footer class="mt-16 border-t border-white/10">
-      <div class="container py-8 text-sm text-slate-400 flex items-center justify-between">
-        <span>© {new Date().getFullYear()} Timo Krieg</span>
-        <nav class="flex gap-4"><a class="underline" href="/impressum">Impressum</a><a class="underline" href="/datenschutz">Datenschutz</a></nav>
+    <section class="section bg-slate-50">
+      <div class="container">
+        <h2 class="text-2xl md:text-3xl font-semibold tracking-tight">Anfahrt</h2>
+        <div class="mt-4 rounded-2xl border border-slate-200 overflow-hidden">
+          <div id="map-consent" class="relative aspect-[16/9]">
+            <button id="loadMap" class="absolute inset-0 z-10 w-full h-full bg-white/60 backdrop-blur-sm flex items-center justify-center text-slate-800 hover:bg-white/50 transition">
+              <span class="px-4 py-2 rounded-lg bg-brand text-white shadow-card hover:shadow-cardHover">Karte laden</span>
+            </button>
+            <iframe id="mapFrame" src="about:blank" title="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="h-full w-full border-0"></iframe>
+          </div>
+          <p class="mt-2 text-xs text-slate-500">Hinweis: Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrem Klick geladen.</p>
+        </div>
+        <script type="module">
+          const btn = document.getElementById('loadMap');
+          const frame = document.getElementById('mapFrame');
+          const src = 'https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed';
+          try { if (sessionStorage.getItem('mapConsent') === '1') { frame.src = src; btn?.remove(); } } catch {}
+          btn?.addEventListener('click', () => { frame.src = src; btn.remove(); try { sessionStorage.setItem('mapConsent','1'); } catch {} }, { once: true });
+        </script>
       </div>
-    </footer>
-  </body>
+    </section>
+  </main>
+
+  <footer class="border-t border-slate-200">
+    <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
+      <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
+      <nav class="flex items-center gap-4">
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+</body>
 </html>

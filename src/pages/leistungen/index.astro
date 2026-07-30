@@ -1,46 +1,69 @@
 ---
 import '../../styles/global.css';
+const title = 'Leistungen – Digitalagentur für B2B Performance | Schwäbisch Gmünd | Timo Krieg';
+const description = 'Alle Services auf einen Blick: Webentwicklung (Astro/Tailwind), SEO, Google Ads & LinkedIn Ads, CRO, Local SEO sowie Hosting/Wartung. Für den Mittelstand in Schwäbisch Gmünd, Ostwürttemberg & DACH.';
+const canonical = '/leistungen/';
 ---
 <!DOCTYPE html>
 <html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Leistungen | Timo Krieg</title>
-    <meta name="description" content="Überblick über alle Leistungen: Webdesign, SEO, Google/LinkedIn Ads, CRO, Local SEO, Hosting & DSGVO." />
-  </head>
-  <body class="min-h-screen bg-slate-950 text-white font-sans">
-    <header class="border-b border-white/10">
-      <div class="container py-4 flex items-center justify-between gap-4">
-        <a href="/" class="font-semibold">Timo Krieg</a>
-        <nav class="hidden md:flex items-center gap-6">
-          <a href="/leistungen/" class="underline">Leistungen</a>
-          <a href="/ueber-uns">Über uns</a>
-          <a href="/kontakt">Kontakt</a>
-        </nav>
-      </div>
-    </header>
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:site_name" content="Timo Krieg – Performance Marketing & Webentwicklung" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content="/og-default.jpg" />
+  <script type="application/ld+json">{JSON.stringify({
+    '@context':'https://schema.org','@type':'WebPage',name:title,description,url:canonical,inLanguage:'de',
+    isPartOf:{'@type':'WebSite',name:'Timo Krieg',url:'/'},
+    breadcrumb:{'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Start',item:'/'},{'@type':'ListItem',position:2,name:'Leistungen',item:canonical}]}
+  })}</script>
+</head>
+<body>
+  <header class="border-b border-slate-200 bg-white/70 backdrop-blur sticky top-0 z-50">
+    <div class="container py-4 flex items-center justify-between gap-4">
+      <a href="/" class="font-semibold tracking-tight">Timo Krieg</a>
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="/leistungen/" class="nav-link">Leistungen</a>
+        <a href="/ueber-uns" class="nav-link">Über uns</a>
+        <a href="/kontakt" class="nav-link">Kontakt</a>
+        <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
+      </nav>
+      <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
+    </div>
+  </header>
 
-    <main class="py-16 md:py-24">
+  <main>
+    <section class="section">
       <div class="container">
-        <h1 class="text-3xl md:text-5xl font-semibold">Leistungen</h1>
-        <p class="mt-3 text-slate-300 max-w-2xl">Sechs Leistungen – ein Ziel: mehr qualifizierte Anfragen und Wachstum. Jedes Paket ist auf den Mittelstand zugeschnitten.</p>
-        <ul class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/webdesign">Webdesign & Entwicklung</a></h2><p class="mt-2 text-slate-300">Astro/Tailwind, ultraschnell, konversionsstark.</p></li>
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/seo">SEO & Content</a></h2><p class="mt-2 text-slate-300">Technik, Themenarchitektur, interne Verlinkung.</p></li>
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/ads">Google Ads & LinkedIn</a></h2><p class="mt-2 text-slate-300">B2B-Performance, klares Targeting, sauberes Tracking.</p></li>
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/cro">CRO & Landingpages</a></h2><p class="mt-2 text-slate-300">Mehr Leads ohne mehr Traffic.</p></li>
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/local-seo">Local SEO & GBP</a></h2><p class="mt-2 text-slate-300">Local Pack, Bewertungen, NAP-Konsistenz.</p></li>
-          <li class="card"><h2 class="text-lg font-semibold"><a class="underline" href="/leistungen/hosting">Hosting, DSGVO & Wartung</a></h2><p class="mt-2 text-slate-300">EU-Hosting, Backups, Monitoring.</p></li>
+        <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Unsere Leistungen</h1>
+        <p class="mt-4 text-lg text-slate-600 max-w-2xl">Sechs Bausteine, ein Ziel: planbares Wachstum. Präzise Verzahnung von Technik, Inhalt und Performance – für den Mittelstand.</p>
+        <ul class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="card"><a href="/leistungen/webentwicklung-astro-tailwind/" class="block"><h2 class="text-xl font-semibold">Webentwicklung (Astro/Tailwind)</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Top‑Core‑Web‑Vitals</li><li>Saubere technische SEO</li><li>Höhere Conversion</li></ul></a></li>
+          <li class="card"><a href="/leistungen/seo/" class="block"><h2 class="text-xl font-semibold">SEO & Content</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Keyword‑Cluster & Strategie</li><li>Onpage & interne Verlinkung</li><li>Monitoring & Reporting</li></ul></a></li>
+          <li class="card"><a href="/leistungen/google-ads-linkedin-ads/" class="block"><h2 class="text-xl font-semibold">Google Ads & LinkedIn Ads</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Konto‑Audit & Setup</li><li>Sauberes Tracking</li><li>Skalierung ohne Streuung</li></ul></a></li>
+          <li class="card"><a href="/leistungen/cro-conversion-rate-optimierung/" class="block"><h2 class="text-xl font-semibold">Conversion‑Optimierung (CRO)</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Hypothesenbasiert</li><li>A/B‑Tests</li><li>UX‑Verbesserungen</li></ul></a></li>
+          <li class="card"><a href="/leistungen/local-seo/" class="block"><h2 class="text-xl font-semibold">Local SEO</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Google Unternehmensprofil</li><li>Standortseiten</li><li>Bewertungen & Zitate</li></ul></a></li>
+          <li class="card"><a href="/leistungen/hosting-wartung/" class="block"><h2 class="text-xl font-semibold">Hosting, Wartung & DSGVO</h2><ul class="mt-2 list-disc pl-5 text-slate-600 space-y-1"><li>Monitoring & Backups</li><li>Security & Updates</li><li>Consent‑Management</li></ul></a></li>
         </ul>
+        <div class="mt-10"><a href="/kontakt" class="btn btn-primary">Projekt anfragen</a></div>
       </div>
-    </main>
+    </section>
+  </main>
 
-    <footer class="mt-16 border-t border-white/10">
-      <div class="container py-8 text-sm text-slate-400 flex items-center justify-between">
-        <span>© {new Date().getFullYear()} Timo Krieg</span>
-        <nav class="flex gap-4"><a class="underline" href="/impressum">Impressum</a><a class="underline" href="/datenschutz">Datenschutz</a></nav>
-      </div>
-    </footer>
-  </body>
+  <footer class="border-t border-slate-200">
+    <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
+      <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
+      <nav class="flex items-center gap-4">
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
+        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
+      </nav>
+    </div>
+  </footer>
+</body>
 </html>
