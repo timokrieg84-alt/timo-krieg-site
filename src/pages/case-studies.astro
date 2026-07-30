@@ -4,10 +4,63 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Section from "../components/Section.astro";
 ---
-<Layout title="Case Studies – Gylsere Januzi">
+<Layout title="Case Studies – Gylsere Januzi" description="Ausgewählte Projekte mit Ergebnissen.">
   <Fragment slot="header"><Header /></Fragment>
-  <Section title="Case Studies" intro="Ausgewählte Projekte und Ergebnisse.">
+  
+  <Section title="Handwerk, nicht Highlight-Reel." intro="Einzelne Case-Studies beeindrucken niemanden mehr – jede Agentur hat sie. Wir zeigen lieber wie wir arbeiten und was über alle Mandate hinweg entsteht. Aggregate statt Anekdoten.">
     
+    <div class="grid gap-6 sm:grid-cols-3 mb-16">
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">01 Audit</span>
+        <h3 class="text-lg font-bold text-white mb-2">Bestandsaufnahme in Zahlen</h3>
+        <p class="text-sm text-gray-400">GSC, GA4, Ads-Accounts, Backlinks, technisches SEO. Wir finden was blockiert, bevor wir skalieren.</p>
+        <span class="block mt-4 text-xs text-gray-500">— DAUER 5-10 TAGE</span>
+      </div>
+
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">02 Strategie</span>
+        <h3 class="text-lg font-bold text-white mb-2">Priorisierung nach Impact</h3>
+        <p class="text-sm text-gray-400">Nicht nach Buzzword-Trend. Klare Roadmap mit messbaren Zielen und Budget-Empfehlung.</p>
+        <span class="block mt-4 text-xs text-gray-500">— WORKSHOP 1 TAG</span>
+      </div>
+
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
+        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">03 Umsetzung</span>
+        <h3 class="text-lg font-bold text-white mb-2">Sprints & Live-Einblick</h3>
+        <p class="text-sm text-gray-400">Sprints à 2 Wochen, wöchentliche Syncs, gemeinsamer Linear-Zugang. Du siehst live was läuft, keine Blackbox.</p>
+        <span class="block mt-4 text-xs text-gray-500">— LAUFEND</span>
+      </div>
+    </div>
+
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
+        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">50+</div>
+        <p class="text-sm font-medium text-white mb-2">aktive Mandate in DACH, Schweiz und International</p>
+        <span class="text-xs text-gray-500">— STAND APR 2026</span>
+      </div>
+
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
+        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">12M+</div>
+        <p class="text-sm font-medium text-white mb-2">organische Impressionen pro Monat über alle Mandate</p>
+        <span class="text-xs text-gray-500">— QUELLE: GSC</span>
+      </div>
+
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
+        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">340+</div>
+        <p class="text-sm font-medium text-white mb-2">Top-3-Rankings erreicht in den letzten 12 Monaten</p>
+        <span class="text-xs text-gray-500">— DEUTSCHLAND, AT, CH, GB</span>
+      </div>
+
+      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
+        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">~3h</div>
+        <p class="text-sm font-medium text-white mb-2">durchschnittliche Antwortzeit auf Kundenanfragen</p>
+        <span class="text-xs text-gray-500">— WERKTAGS 9-18 UHR</span>
+      </div>
+    </div>
+
+    <p class="text-xs text-gray-500 text-center">Transparenz: Alle Zahlen sind aggregiert über unser gesamtes Portfolio, keine einzelnen Kunden sichtbar. Stichprobengrundlage und Messmethoden teilen wir gerne im Erstgespräch.</p>
+
   </Section>
+
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
