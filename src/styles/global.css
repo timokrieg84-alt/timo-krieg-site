@@ -3,11 +3,9 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --bg-surface: #131b2e;
-  }
+  :root { color-scheme: dark; }
 }
 
-.bg-surface {
-  background-color: var(--bg-surface);
-}
+/* Helper surface class per your snippet */
+:root { --bg-surface: #131b2e; }
+.bg-surface { background-color: var(--bg-surface); }
