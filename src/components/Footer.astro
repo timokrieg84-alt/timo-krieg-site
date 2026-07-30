@@ -1,35 +1,72 @@
-<footer class="section" style="background:var(--gray-50);border-top:1px solid var(--gray-200)">
-  <div class="container grid grid-3">
+---
+const siteUrl = Astro.site ? String(Astro.site) : undefined;
+const orgLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Gylsere Januzi",
+  "url": siteUrl,
+  "slogan": "Exzellenz & Digitale Präsenz.",
+  "email": "gjanuzikrieg@gmail.com",
+  "telephone": "+49 175 6372395",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Kitzingstraße 7",
+    "postalCode": "73529",
+    "addressLocality": "Schwäbisch Gmünd",
+    "addressCountry": "DE"
+  }
+};
+---
+
+<footer class="bg-brand-dark border-t border-white/10 py-12" role="contentinfo" aria-labelledby="footer-brand">
+  <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
     <div>
-      <h3 class="mb-4">ListingProfis</h3>
-      <p class="text-muted">Digitalagentur & Online‑Marketing – Local SEO, Webentwicklung (Astro), Online‑Präsenzen.</p>
-      <p class="mt-4">
-        <strong>Adresse:</strong><br>
-        Kitzingstraße 7<br>
-        73529 Schwäbisch Gmünd
+      <h2 id="footer-brand" class="text-xl font-bold mb-2">Gylsere Januzi</h2>
+      <p class="text-brand-muted text-sm">Exzellenz & Digitale Präsenz.</p>
+    </div>
+
+    <div class="text-brand-muted text-sm space-y-1">
+      <address class="not-italic">
+        <p>Kitzingstraße 7</p>
+        <p>73529 Schwäbisch Gmünd</p>
+      </address>
+      <p>
+        Tel:
+        <a href="tel:+491756372395"
+           class="text-brand-green hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded"
+           aria-label="Telefon: +49 175 6372395">
+          +49 175 6372395
+        </a>
       </p>
-      <p class="mt-4"><strong>Telefon:</strong> <a href="tel:+491604365363">+49 160 4365363</a></p>
+      <p>
+        E-Mail:
+        <a href="mailto:gjanuzikrieg@gmail.com"
+           class="text-brand-orange hover:underline focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded"
+           aria-label="E-Mail an gjanuzikrieg@gmail.com senden">
+          gjanuzikrieg@gmail.com
+        </a>
+      </p>
     </div>
-    <div>
-      <h3 class="mb-4">Navigation</h3>
-      <ul style="list-style:none;padding:0;margin:0" class="flow">
-        <li><a href="/">Start</a></li>
-        <li><a href="/ueber-uns/">Über uns</a></li>
-        <li><a href="/leistungen/">Leistungen</a></li>
-        <li><a href="/referenzen/">Referenzen</a></li>
-        <li><a href="/kontakt/">Kontakt</a></li>
-        <li><a href="/impressum/">Impressum</a></li>
-        <li><a href="/datenschutz/">Datenschutz</a></li>
-      </ul>
-    </div>
-    <div>
-      <h3 class="mb-4">Kontakt</h3>
-      <p>Am schnellsten telefonisch. Alternativ: Formular – Rückmeldung werktags < 24h.</p>
-      <div class="mt-4">
-        <a class="btn btn--primary" href="tel:+491604365363">Jetzt anrufen</a>
-        <a class="btn btn--ghost" href="/kontakt/" style="margin-left:8px">Erstgespräch</a>
-      </div>
-    </div>
+
+    <nav class="flex md:justify-end gap-6 text-sm font-medium" aria-label="Rechtliches">
+      <a href="/impressum"
+         class="hover:text-brand-pink transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded">
+        Impressum
+      </a>
+      <a href="/datenschutz"
+         class="hover:text-brand-pink transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-green rounded">
+        Datenschutz
+      </a>
+    </nav>
   </div>
-  <div class="container" style="border-top:1px solid var(--gray-200);margin-top:32px;padding-top:16px;color:var(--gray-600);font-size:.9rem">© {new Date().getFullYear()} ListingProfis – Timo Krieg. Alle Rechte vorbehalten.</div>
+
+  <div aria-hidden="true" class="max-w-7xl mx-auto px-4 mt-10 grid grid-cols-3 gap-2">
+    <span class="h-0.5 w-full bg-brand-orange/90 rounded-full"></span>
+    <span class="h-0.5 w-full bg-brand-green/90 rounded-full"></span>
+    <span class="h-0.5 w-full bg-brand-pink/90 rounded-full"></span>
+  </div>
+
+  <script type="application/ld+json">
+    {JSON.stringify(orgLd)}
+  </script>
 </footer>
