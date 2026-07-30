@@ -1,6 +1,7 @@
 {
   "name": "timo-krieg-site",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
@@ -8,11 +9,10 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.14.2"
-  },
-  "devDependencies": {
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.41",
-    "tailwindcss": "^3.4.10"
+    "astro": "^4.11.0",
+    "gsap": "^3.12.5",
+    "swiper": "^11.1.1",
+    "tsparticles-engine": "^2.12.0",
+    "tsparticles-slim": "^2.12.0"
   }
 }
