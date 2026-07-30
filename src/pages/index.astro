@@ -1,26 +1,29 @@
 ---
-import '../styles/global.css';
-const title = 'Timo Krieg – Performance Marketing Agentur | Schwäbisch Gmünd';
-const description = 'Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Tailwind, SEO, Google/LinkedIn Ads und Conversion-Optimierung. Schnelle Ladezeiten, klare KPIs.';
 ---
 <!DOCTYPE html>
 <html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
+    <title>Timo Krieg – Performance Marketing Agentur | Schwäbisch Gmünd</title>
+    <meta name="description" content="Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Tailwind, SEO, Google/LinkedIn Ads und Conversion-Optimierung. Schnell, messbar, effizient." />
+    <link rel="preconnect" href="https://www.google.com" crossorigin />
+    <link rel="preconnect" href="https://maps.googleapis.com" crossorigin />
+    <link rel="canonical" href="/" />
+    <script>document.documentElement.classList.add('js')</script>
+    <link rel="stylesheet" href="/src/styles/global.css" />
   </head>
-  <body class="min-h-screen bg-slate-950 text-white">
+  <body class="min-h-screen bg-slate-950 text-white font-sans">
+    <!-- Header -->
     <header class="border-b border-white/10">
       <div class="container py-4 flex items-center justify-between gap-4">
-        <a href="#hero" class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400">
+        <a href="#hero" class="flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">
           <span class="font-semibold">Timo Krieg</span>
           <span class="text-slate-400 hidden sm:inline">Performance Marketing</span>
         </a>
         <nav class="hidden md:flex items-center gap-6">
           <a href="#leistungen" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Leistungen</a>
-          <a href="#ueber-timo" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Über Timo</a>
+          <a href="#ueber" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Über</a>
           <a href="#kontakt" class="focus:outline-none focus:ring-2 focus:ring-indigo-400 rounded">Kontakt</a>
           <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
         </nav>
@@ -51,76 +54,52 @@ const description = 'Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Ta
         </div>
       </section>
 
-      <!-- Leistungen -->
+      <!-- Leistungen (6) -->
       <section id="leistungen" class="py-16 md:py-24">
         <div class="container">
           <h2 class="text-3xl md:text-4xl font-semibold">Leistungen</h2>
-          <p class="mt-2 text-slate-400 max-w-2xl">Konzentriert auf das, was wirklich Wirkung zeigt – für Industrie, Tech und Services im Mittelstand.</p>
+          <p class="mt-2 text-slate-400 max-w-2xl">Konzentriert auf Wirkung – für Industrie, Tech und Services im Mittelstand.</p>
           <ul class="mt-8 grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-            <li class="card">
-              <h3 class="text-lg font-semibold">Webdesign & Entwicklung (Astro/Tailwind)</h3>
-              <p class="mt-2 text-slate-300">Markenstark, blitzschnell, konversionsorientiert – mit statischem Astro für Top-Core-Web-Vitals.</p>
-            </li>
-            <li class="card">
-              <h3 class="text-lg font-semibold">SEO & Content-Strategie</h3>
-              <p class="mt-2 text-slate-300">Technik, strukturierte Inhalte und interne Verlinkung für nachhaltige Sichtbarkeit.</p>
-            </li>
-            <li class="card">
-              <h3 class="text-lg font-semibold">Google Ads (SEA) & LinkedIn</h3>
-              <p class="mt-2 text-slate-300">B2B-Performance mit klaren Zielgruppen, präzisen Botschaften und sauberem Tracking.</p>
-            </li>
-            <li class="card">
-              <h3 class="text-lg font-semibold">CRO & Landingpages</h3>
-              <p class="mt-2 text-slate-300">Mehr Leads ohne mehr Traffic – bessere UX, klare Value Proposition, A/B-Tests.</p>
-            </li>
-            <li class="card">
-              <h3 class="text-lg font-semibold">Local SEO & Google Business</h3>
-              <p class="mt-2 text-slate-300">Regionale Sichtbarkeit steigern: Local Pack, Bewertungen, konsistente NAP-Daten.</p>
-            </li>
-            <li class="card">
-              <h3 class="text-lg font-semibold">Wartung, DSGVO & Hosting</h3>
-              <p class="mt-2 text-slate-300">Schnell, sicher, stabil – EU-Hosting, Backups, Monitoring und kurze Reaktionszeiten.</p>
-            </li>
+            <li class="card"><h3 class="text-lg font-semibold">Webdesign & Entwicklung (Astro/Tailwind)</h3><p class="mt-2 text-slate-300">Markenstark, blitzschnell, konversionsorientiert – statisch für Top-Core-Web-Vitals.</p></li>
+            <li class="card"><h3 class="text-lg font-semibold">SEO & Content-Strategie</h3><p class="mt-2 text-slate-300">Technik, Themenarchitektur und interne Verlinkung für nachhaltige Sichtbarkeit.</p></li>
+            <li class="card"><h3 class="text-lg font-semibold">Google Ads (SEA) & LinkedIn</h3><p class="mt-2 text-slate-300">Präzises Targeting, klare Botschaften und sauberes Conversion-Tracking.</p></li>
+            <li class="card"><h3 class="text-lg font-semibold">CRO & Landingpages</h3><p class="mt-2 text-slate-300">Mehr Leads ohne mehr Traffic – bessere UX, klare Value Proposition, A/B-Tests.</p></li>
+            <li class="card"><h3 class="text-lg font-semibold">Local SEO & Google Business</h3><p class="mt-2 text-slate-300">Local Pack, Bewertungen und konsistente NAP-Daten für mehr Anrufe.</p></li>
+            <li class="card"><h3 class="text-lg font-semibold">Wartung, DSGVO & Hosting</h3><p class="mt-2 text-slate-300">Schnell, sicher, stabil – EU-Hosting, Backups, Monitoring und kurze Reaktionszeiten.</p></li>
           </ul>
         </div>
       </section>
 
       <!-- Über Timo Krieg -->
-      <section id="ueber-timo" class="py-16 md:py-24">
+      <section id="ueber" class="py-16 md:py-24">
         <div class="container">
           <h2 class="text-3xl md:text-4xl font-semibold">Über Timo Krieg</h2>
           <div class="mt-6 grid gap-6 md:grid-cols-3">
-            <div class="card md:col-span-2">
-              <h3 class="text-xl font-semibold">Klarer Kurs. Messbare Ergebnisse.</h3>
-              <p class="mt-2 text-slate-300">Ich helfe mittelständischen Unternehmen, digital zu wachsen – mit einer klaren Strategie und exzellenter Umsetzung. Ein Ansprechpartner, der Verantwortung übernimmt – vom Kick-off bis zum Skalieren.</p>
-              <ul class="mt-3 list-disc pl-5 text-slate-300 space-y-1">
-                <li>Performance by default: Speed, SEO, Conversion</li>
-                <li>Transparente Planung, Budget und Reporting</li>
-                <li>Schwäbisch Gmünd als Basis – in DACH aktiv</li>
-              </ul>
-              <div class="mt-4 flex flex-col sm:flex-row gap-3">
-                <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-                <a href="#kontakt" class="btn btn-secondary">Erstgespräch vereinbaren</a>
-              </div>
+            <div class="card">
+              <h3 class="text-xl font-semibold">Philosophie</h3>
+              <p class="mt-2 text-slate-300">Strategie vor Design. Fokus auf Kundennutzen, klare KPIs und kontinuierliches Lernen.</p>
             </div>
             <div class="card">
-              <h3 class="text-xl font-semibold">Kontaktdaten</h3>
-              <ul class="mt-2 space-y-2 text-slate-300">
-                <li><strong>Name:</strong> Timo Krieg</li>
-                <li><strong>Telefon:</strong> <a class="underline" href="tel:+491604365363">+49 160 4365363</a></li>
-                <li><strong>E-Mail:</strong> <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
-                <li><strong>Adresse:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</li>
+              <h3 class="text-xl font-semibold">Arbeitsweise</h3>
+              <ul class="mt-2 list-disc pl-5 text-slate-300 space-y-1">
+                <li>Performance by default: Speed, SEO, Conversion</li>
+                <li>Transparenz in Planung, Budget, Reporting</li>
+                <li>Verbindliche Kommunikation, schnelle Reaktion</li>
               </ul>
+            </div>
+            <div class="card">
+              <h3 class="text-xl font-semibold">Regional verwurzelt</h3>
+              <p class="mt-2 text-slate-300">Schwäbisch Gmünd als Basis, DACH als Wirkungsraum – remote oder vor Ort.</p>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Kontakt (Form optional) -->
+      <!-- Kontakt & Formular -->
       <section id="kontakt" class="py-16 md:py-24">
         <div class="container grid gap-8 md:grid-cols-2 items-start">
           <div class="card">
-            <h2 class="text-2xl font-semibold">Direktkontakt</h2>
+            <h2 class="text-2xl font-semibold">Kontakt</h2>
             <ul class="mt-3 space-y-2 text-slate-300">
               <li><strong>Telefon:</strong> <a class="underline" href="tel:+491604365363">+49 160 4365363</a></li>
               <li><strong>E-Mail:</strong> <a class="underline" href="mailto:info@listingprofis.de">info@listingprofis.de</a></li>
@@ -128,7 +107,7 @@ const description = 'Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Ta
             </ul>
             <div class="mt-4 flex gap-3">
               <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-              <a href="#ueber-timo" class="btn btn-secondary">Mehr über Timo</a>
+              <a href="#form" class="btn btn-secondary">Erstgespräch vereinbaren</a>
             </div>
             <p class="mt-3 text-xs text-slate-400">Hinweis: Eingehende Anfragen werden per Telegram-Benachrichtigung zugestellt.</p>
           </div>
@@ -163,16 +142,39 @@ const description = 'Leads & Umsatz für den Mittelstand: Webdesign mit Astro/Ta
         </div>
       </section>
 
-      <!-- Anfahrt: Google Maps Embed -->
+      <!-- Anfahrt: DSGVO-freundliches Google Maps Embed (per Klick laden) -->
       <section id="anfahrt" class="py-16 md:py-24">
         <div class="container">
           <h2 class="text-3xl md:text-4xl font-semibold">Anfahrt</h2>
           <div class="mt-6 overflow-hidden rounded-xl border border-white/10">
-            <iframe 
-              title="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd"
-              src="https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed"
-              width="100%" height="420" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- Statischer Platzhalter: Karte erst nach Klick laden (kein Tracking vor Klick) -->
+            <div id="map-wrapper" class="relative">
+              <button id="load-map" class="absolute inset-0 z-10 w-full h-full bg-slate-900/30 backdrop-blur-sm flex items-center justify-center text-slate-200 hover:bg-slate-900/10 transition">
+                <span class="px-4 py-2 rounded-md bg-white/10 border border-white/10">Karte laden</span>
+              </button>
+              <iframe
+                id="gmap"
+                title="Karte: Kitzingstraße 7, 73529 Schwäbisch Gmünd"
+                src="about:blank"
+                width="100%"
+                height="420"
+                style="border:0;"
+                allowfullscreen
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
           </div>
+          <script type="module">
+            const btn = document.getElementById('load-map');
+            const frame = document.getElementById('gmap');
+            if (btn && frame) {
+              btn.addEventListener('click', () => {
+                frame.src = 'https://www.google.com/maps?q=Kitzingstraße%207,%2073529%20Schw%C3%A4bisch%20Gm%C3%BCnd&output=embed';
+                btn.remove();
+              }, { once: true });
+            }
+          </script>
+          <p class="mt-2 text-xs text-slate-400">Hinweis: Aus Datenschutzgründen wird die interaktive Karte erst nach Ihrem Klick geladen.</p>
         </div>
       </section>
     </main>
