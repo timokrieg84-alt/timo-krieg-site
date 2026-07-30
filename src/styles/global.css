@@ -2,154 +2,152 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Brand accent system: Orange (primary CTAs), Green (secondary/badges), Pink (links/highlights) */
+/* Brand color variables */
 :root {
-  --color-primary: #FF6A00; /* Orange */
-  --color-green:   #00C853; /* Green  */
-  --color-pink:    #FF2D9A; /* Pink   */
-  --color-text:    #111111;
+  --color-primary: #FF6A00; /* Orange – CTA Primary */
+  --color-green:   #00C853; /* Green – Secondary/Badges */
+  --color-pink:    #FF2D9A; /* Pink – Links/Highlights */
+
   --color-bg:      #ffffff;
-  --focus-ring:    2px solid var(--color-pink);
+  --color-text:    #0f172a; /* slate-900 */
+  --color-muted:   #64748b; /* slate-500 */
+  --focus-color:   var(--color-pink);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #f3f3f3;
-    --color-bg:   #0b0b0c;
-  }
-}
+html { color-scheme: light dark; }
+body { background: var(--color-bg); color: var(--color-text); }
 
-html, body {
-  color: var(--color-text);
-  background: var(--color-bg);
-}
-
-/* Links & text highlights = Pink; hover moves to Orange */
+/* Links & text highlights (Pink -> hover Orange) */
 a, .link {
   color: var(--color-pink);
+  text-decoration: underline;
   text-decoration-color: color-mix(in oklab, var(--color-pink), transparent 70%);
+  text-underline-offset: 2px;
 }
-
 a:hover, .link:hover {
   color: var(--color-primary);
   text-decoration-color: var(--color-primary);
 }
-
-mark, .highlight {
+mark, .highlight { 
   background: color-mix(in oklab, var(--color-pink), white 85%);
-  color: inherit;
-  padding: .1em .25em;
-  border-radius: .25rem;
+  color: inherit; padding: .1em .25em; border-radius: .25rem; 
 }
 
-@media (prefers-color-scheme: dark) {
-  mark, .highlight {
-    background: color-mix(in oklab, var(--color-pink), black 80%);
-  }
-}
-
-/* CTA Primary buttons = Orange */
+/* Buttons: Primary = Orange, Secondary = Green */
 button, .btn, [type="button"], [type="submit"] {
-  background-color: var(--color-primary);
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+  background: var(--color-primary);
   border: 1px solid var(--color-primary);
-  color: #fff;
-  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease, border-color .2s ease;
-  border-radius: .5rem;
+  color: #fff; border-radius: .5rem; padding: .7rem 1rem;
+  line-height: 1.1; font-weight: 600; letter-spacing: .2px;
+  transition: background-color .2s ease, color .2s ease, box-shadow .2s ease, transform .12s ease;
 }
-
-button:hover, .btn:hover, [type="button"]:hover, [type="submit"]:hover {
-  background-color: #E55F00; /* slightly darker orange */
-  border-color: #E55F00;
+button:hover, .btn:hover, [type="submit"]:hover {
+  background: color-mix(in oklab, var(--color-primary), black 10%);
   transform: translateY(-1px);
 }
-
-button:active, .btn:active, [type="button"]:active, [type="submit"]:active {
-  transform: translateY(0);
-  background-color: #CC5600; /* pressed */
-  border-color: #CC5600;
-}
-
-button:focus-visible, .btn:focus-visible, a:focus-visible, [type="button"]:focus-visible, [type="submit"]:focus-visible {
-  outline: var(--focus-ring);
-  outline-offset: 3px;
-}
-
-/* Secondary actions & badges = Green */
 .btn--secondary {
-  background-color: var(--color-green);
+  background: var(--color-green);
   border-color: var(--color-green);
-  color: #fff;
 }
-
-.btn--secondary:hover {
-  background-color: #00B14C; /* slightly darker green */
-  border-color: #00B14C;
-}
-
-/* Ghost/Outline variants with Orange border */
-.btn--ghost, .btn--outline {
+.btn--outline, .btn--ghost {
   background: transparent;
   color: var(--color-primary);
-  border: 1px solid var(--color-primary);
+  border-color: var(--color-primary);
 }
-
-.btn--ghost:hover, .btn--outline:hover {
+.btn--outline:hover, .btn--ghost:hover {
   background: color-mix(in oklab, var(--color-primary), white 88%);
-}
-
-@media (prefers-color-scheme: dark) {
-  .btn--ghost:hover, .btn--outline:hover {
-    background: color-mix(in oklab, var(--color-primary), black 85%);
-  }
 }
 
 /* Badges/Tags */
 .badge, .tag {
-  display: inline-flex;
-  align-items: center;
-  gap: .35rem;
-  padding: .25rem .5rem;
-  font-size: .85rem;
-  line-height: 1;
-  border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--color-pink), transparent 65%);
-  background: color-mix(in oklab, var(--color-pink), white 85%);
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .25rem .5rem; border-radius: .375rem; font-weight: 600; font-size: .85rem;
+  background: color-mix(in oklab, var(--color-pink), white 88%);
   color: var(--color-pink);
+  border: 1px solid color-mix(in oklab, var(--color-pink), transparent 65%);
 }
-
 .badge--success, .tag--success {
-  border-color: color-mix(in oklab, var(--color-green), transparent 65%);
-  background: color-mix(in oklab, var(--color-green), white 85%);
+  background: color-mix(in oklab, var(--color-green), white 88%);
   color: var(--color-green);
+  border-color: color-mix(in oklab, var(--color-green), transparent 65%);
 }
 
-@media (prefers-color-scheme: dark) {
-  .badge, .tag {
-    background: color-mix(in oklab, var(--color-pink), black 85%);
-    border-color: color-mix(in oklab, var(--color-pink), transparent 65%);
-    color: var(--color-pink);
-  }
-  .badge--success, .tag--success {
-    background: color-mix(in oklab, var(--color-green), black 85%);
-    border-color: color-mix(in oklab, var(--color-green), transparent 65%);
-    color: var(--color-green);
-  }
+/* Focus visibility & a11y */
+:where(a, button, .btn, [type="button"], [type="submit"]) {
+  outline: none;
+}
+:where(a, button, .btn, [type="button"], [type="submit"]):focus-visible {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 3px;
 }
 
-/* Utility helpers to use alongside Tailwind */
-.text-primary { color: var(--color-primary) !important; }
-.bg-primary { background-color: var(--color-primary) !important; }
-.border-primary { border-color: var(--color-primary) !important; }
-
-.text-secondary { color: var(--color-green) !important; }
-.bg-secondary { background-color: var(--color-green) !important; }
-.border-secondary { border-color: var(--color-green) !important; }
-
-.text-accent { color: var(--color-pink) !important; }
-.bg-accent { background-color: var(--color-pink) !important; }
-.border-accent { border-color: var(--color-pink) !important; }
-
-/* Respect reduced motion */
+/* Motion reduction */
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; animation: none !important; }
+}
+
+/* Utility shortcuts so Tailwind-like classes can be used semantically */
+@layer utilities {
+  .text-primary { color: var(--color-primary) !important; }
+  .bg-primary { background-color: var(--color-primary) !important; }
+  .border-primary { border-color: var(--color-primary) !important; }
+
+  .text-secondary { color: var(--color-green) !important; }
+  .bg-secondary { background-color: var(--color-green) !important; }
+  .border-secondary { border-color: var(--color-green) !important; }
+
+  .text-accent { color: var(--color-pink) !important; }
+  .bg-accent { background-color: var(--color-pink) !important; }
+  .border-accent { border-color: var(--color-pink) !important; }
+}
+
+/* IMPORTANT: Map common Tailwind blues/cyans/teals to our brand accents so legacy utilities switch colors without touching markup */
+@layer utilities {
+  /* Primary replacement for common blue/cyan button backgrounds */
+  .bg-sky-500, .bg-cyan-500, .bg-teal-500, .bg-blue-500 { background-color: var(--color-primary) !important; }
+  .hover\:bg-sky-600:hover, .hover\:bg-cyan-600:hover, .hover\:bg-teal-600:hover, .hover\:bg-blue-600:hover {
+    background-color: color-mix(in oklab, var(--color-primary), black 10%) !important;
+  }
+  .border-sky-500, .border-cyan-500, .border-teal-500, .border-blue-500 { border-color: var(--color-primary) !important; }
+  .text-sky-500, .text-cyan-500, .text-teal-500, .text-blue-500 { color: var(--color-pink) !important; }
+  .hover\:text-sky-600:hover, .hover\:text-cyan-600:hover, .hover\:text-teal-600:hover, .hover\:text-blue-600:hover { color: var(--color-primary) !important; }
+
+  /* Gradients: remap common cyan->blue to brand (primary->accent) */
+  .from-cyan-500 { --tw-gradient-from: var(--color-primary) var(--tw-gradient-from-position); --tw-gradient-to: rgb(255 106 0 / 0) var(--tw-gradient-to-position); --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to); }
+  .to-blue-500 { --tw-gradient-to: var(--color-pink) var(--tw-gradient-to-position); }
+}
+
+/* Dark mode variant */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:   #0B0B0C;
+    --color-text: #E5E7EB; /* gray-200 */
+    --color-muted:#9CA3AF; /* gray-400 */
+  }
+  body { background: var(--color-bg); color: var(--color-text); }
+
+  a, .link {
+    color: var(--color-pink);
+    text-decoration-color: color-mix(in oklab, var(--color-pink), transparent 60%);
+  }
+  a:hover, .link:hover {
+    color: color-mix(in oklab, var(--color-pink), white 20%);
+    text-decoration-color: currentColor;
+  }
+  .btn--outline, .btn--ghost {
+    color: color-mix(in oklab, var(--color-primary), white 20%);
+    border-color: color-mix(in oklab, var(--color-primary), white 20%);
+  }
+  .badge, .tag {
+    background: color-mix(in oklab, var(--color-pink), black 82%);
+    color: color-mix(in oklab, var(--color-pink), white 18%);
+    border-color: color-mix(in oklab, var(--color-pink), black 55%);
+  }
+  .badge--success, .tag--success {
+    background: color-mix(in oklab, var(--color-green), black 82%);
+    color: color-mix(in oklab, var(--color-green), white 18%);
+    border-color: color-mix(in oklab, var(--color-green), black 55%);
+  }
+  mark, .highlight { background: color-mix(in oklab, var(--color-pink), black 80%); }
 }
