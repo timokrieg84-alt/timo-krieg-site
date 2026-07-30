@@ -1,50 +1,18 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
+import ServicesBento from '../../components/ServicesBento.astro';
+import Funnel from '../../components/Funnel.astro';
 import Footer from '../../components/Footer.astro';
-import IconSprite from '../../components/IconSprite.astro';
-import ScrollAnimations from '../../components/ScrollAnimations.astro';
-const pageTitle = 'Leistungen: Local SEO, Webentwicklung (Astro), Online‑Präsenzen';
-const pageDesc = 'Alle Services aus einer Hand: Lokales SEO, Google Business Profile, Listings/Reputation, Content/Ads & schnelle Webentwicklung mit Astro.';
 ---
-<BaseLayout title={pageTitle} description={pageDesc}>
-  <Fragment slot="icons"><IconSprite /></Fragment>
-  <Fragment slot="header"><Header /></Fragment>
-  <main>
-    <section class="section container" data-reveal-group>
-      <h1 class="reveal">Leistungen</h1>
-      <p class="reveal text-muted">Digitale Sichtbarkeit, die verkauft: Local SEO, Webentwicklung und starke Online‑Präsenzen.</p>
-      <div class="grid grid-3 mt-4">
-        <article class="card reveal">
-          <h3 class="card__title">Lokales SEO</h3>
-          <ul class="text-muted" style="padding-left:18px">
-            <li>Google Business Profile auf Profi‑Niveau</li>
-            <li>NAP‑Konsistenz & hochwertige Listings</li>
-            <li>Bewertungen systematisch aufbauen</li>
-          </ul>
-          <p class="mt-4"><a class="link-icon" href="/leistungen/lokales-seo/">Mehr zur lokalen SEO <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-        <article class="card reveal">
-          <h3 class="card__title">Webentwicklung mit Astro</h3>
-          <ul class="text-muted" style="padding-left:18px">
-            <li>Edge‑optimiert, exzellente Core Web Vitals</li>
-            <li>SEO‑ready, DSGVO‑fokussiert, wartungsarm</li>
-            <li>Design klar, Code sauber</li>
-          </ul>
-          <p class="mt-4"><a class="link-icon" href="/leistungen/webentwicklung-astro/">Mehr zur Webentwicklung <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-        <article class="card reveal">
-          <h3 class="card__title">Online‑Präsenzen</h3>
-          <ul class="text-muted" style="padding-left:18px">
-            <li>Listings‑Management & Reputation</li>
-            <li>Content & Ads für messbare Anfragen</li>
-            <li>Regionale Reichweite</li>
-          </ul>
-          <p class="mt-4"><a class="link-icon" href="/leistungen/online-praesenzen/">Mehr zu Online‑Präsenzen <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-      </div>
-    </section>
+
+<Layout title="Leistungen | Gylsere Januzi">
+  <Header />
+  <main class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
+    <h1 class="text-4xl font-extrabold mb-6">Leistungen</h1>
+    <p class="text-brand-muted mb-8">Alle 14 Einzelleistungen im Überblick. Wähle eine Karte für Details oder starte direkt den Kontakt.</p>
+    <ServicesBento />
   </main>
-  <ScrollAnimations />
-  <Fragment slot="footer"><Footer /></Fragment>
-</BaseLayout>
+  <Funnel />
+  <Footer />
+</Layout>

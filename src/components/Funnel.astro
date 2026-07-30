@@ -1,0 +1,177 @@
+---
+import { servicesGrid, projectInfo } from "../data/site";
+const step1Options = [
+  { label: "SEO", icon: "🔍", slug: "seo" },
+  { label: "SEO-Regio", icon: "🟢", slug: "seo-regio" },
+  { label: "GEO", icon: "📱", slug: "geo" },
+  { label: "Google Ads", icon: "🌐", slug: "google-ads" },
+  { label: "Social Media", icon: "🔗", slug: "social-media" },
+  { label: "Webdesign", icon: "💻", slug: "webdesign" },
+  { label: "Terminbuchung", icon: "📅", slug: "terminbuchung" },
+  { label: "Marketing", icon: "📣", slug: "marketing" },
+  { label: "AI & Automation", icon: "✨", slug: "ai-automation" },
+  { label: "Branding", icon: "✏️", slug: "branding" },
+  { label: "Reputation", icon: "🛡️", slug: "reputation" },
+  { label: "Factoring", icon: "💶", slug: "factoring" },
+  { label: "Alles", icon: "⚙️", slug: "alles" },
+  { label: "Noch unklar", icon: "❓", slug: "unklar" },
+];
+---
+<section id="kontakt" class="py-20 bg-brand-card border-t border-white/10">
+  <div class="max-w-4xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">— KONTAKT</span>
+      <h2 class="text-4xl font-extrabold mt-2">Lass uns reden.</h2>
+      <p class="mt-2 text-sm text-brand-muted">● LIVE | Q 01 / 03 | <span id="hud-time">--:--</span></p>
+    </div>
+
+    <form id="contact-funnel" class="space-y-6" autocomplete="on" novalidate>
+      <input type="text" name="_hp" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+      <!-- Schritt 1 -->
+      <div class="step" data-step="1" aria-labelledby="s1-title">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 01 VON 03</p>
+        <h3 id="s1-title" class="text-lg font-semibold mt-1 mb-3">WORUM GEHT ES?</h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-3" role="group" aria-label="Leistungsauswahl" aria-describedby="svc-hint">
+          {step1Options.map((o) => (
+            <label class="cursor-pointer">
+              <input type="checkbox" name="service" value={o.label} class="peer hidden" data-slug={o.slug} />
+              <div class="p-3 bg-brand-dark border border-white/10 rounded-lg text-center text-sm font-medium peer-checked:border-emerald-400 peer-checked:text-emerald-400 hover:border-white/30 transition inline-flex items-center justify-center gap-1">
+                <span aria-hidden="true">{o.icon}</span> {o.label}
+              </div>
+            </label>
+          ))}
+        </div>
+        <p id="svc-hint" class="sr-only">Mehrfachauswahl möglich. Aktivieren Sie eine oder mehrere Optionen.</p>
+        <div class="mt-4 flex justify-end">
+          <button class="px-4 py-2 rounded-lg font-semibold border border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-black transition" type="button" data-next>Weiter ➔</button>
+        </div>
+      </div>
+
+      <!-- Schritt 2 -->
+      <div class="step" data-step="2" hidden aria-labelledby="s2-title">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 02 VON 03</p>
+        <h3 id="s2-title" class="text-lg font-semibold mt-1 mb-3">DEINE KONTAKTDATEN</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <input type="text" name="name" placeholder="Dein Name *" required class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+          <input type="email" name="email" placeholder="Deine E-Mail *" required class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+          <input type="tel" name="phone" placeholder="Telefonnummer" class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+          <input type="text" name="company" placeholder="Unternehmen" class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition" />
+        </div>
+        <div class="mt-4 flex justify-between">
+          <button class="px-4 py-2 rounded-lg font-semibold border border-white/15 hover:bg-white/5 transition" type="button" data-prev>Zurück</button>
+          <button class="px-4 py-2 rounded-lg font-semibold bg-emerald-400 text-black hover:bg-emerald-400/90 transition" type="button" data-next>Weiter ➔</button>
+        </div>
+      </div>
+
+      <!-- Schritt 3 -->
+      <div class="step" data-step="3" hidden aria-labelledby="s3-title">
+        <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 03 VON 03</p>
+        <h3 id="s3-title" class="text-lg font-semibold mt-1 mb-3">NACHRICHT</h3>
+        <textarea name="message" rows="4" placeholder="Deine Nachricht an uns..." class="w-full bg-brand-dark border border-white/10 rounded-lg p-3 text-white focus:border-emerald-400 outline-none transition"></textarea>
+        <div class="mt-4 flex justify-between items-center gap-3">
+          <button class="px-4 py-2 rounded-lg font-semibold border border-white/15 hover:bg-white/5 transition" type="button" data-prev>Zurück</button>
+          <button class="px-4 py-2 rounded-lg font-extrabold bg-emerald-400 text-black hover:bg-emerald-400/90 transition disabled:opacity-60 disabled:cursor-not-allowed" type="submit">Anfrage absenden</button>
+        </div>
+        <p class="text-xs text-brand-muted mt-2">Hinweis: Eingehende Anfragen werden als Telegram-Benachrichtigung zugestellt.</p>
+      </div>
+
+      <p id="form-status" class="text-sm text-brand-muted min-h-[1.25rem]" role="status" aria-live="polite"></p>
+      <noscript class="text-xs text-brand-muted">Kein JavaScript? Sende einfach eine E‑Mail an <a href={`mailto:${projectInfo.email}`} class="underline">{projectInfo.email}</a>.</noscript>
+    </form>
+  </div>
+</section>
+
+<script is:raw>
+(() => {
+  const form = document.getElementById('contact-funnel');
+  if (!form) return;
+  const steps = Array.from(form.querySelectorAll('.step'));
+  const statusEl = document.getElementById('form-status');
+  const hp = form.querySelector('input[name="_hp"]');
+  let idx = 0;
+  let startedAt = performance.now();
+
+  const show = (i) => {
+    steps.forEach((s, k) => s.hidden = k !== i);
+    idx = i;
+    const first = steps[i].querySelector('input, textarea, button');
+    first && first.focus();
+  };
+
+  form.addEventListener('click', (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    if (t.matches('[data-next]')) show(Math.min(idx+1, steps.length-1));
+    if (t.matches('[data-prev]')) show(Math.max(idx-1, 0));
+  });
+
+  // Preselect from URL ?service=
+  const svcMap = {
+    'seo':'SEO','seo-regio':'SEO-Regio','google-ads':'Google Ads','geo':'GEO',
+    'webdesign':'Webdesign','terminbuchung':'Terminbuchung','marketing':'Marketing',
+    'ai-automation':'AI & Automation','branding':'Branding','social-media':'Social Media',
+    'reputation':'Reputation','factoring':'Factoring','praxis-tv':'Praxis- & Wartezimmer-TV'
+  };
+  const url = new URL(window.location.href);
+  const qService = url.searchParams.get('service');
+  if (qService && svcMap[qService]) {
+    const match = Array.from(form.querySelectorAll('input[name="service"]')).find(i => i.value === svcMap[qService]);
+    if (match) { match.checked = true; match.dispatchEvent(new Event('change', { bubbles: true })); }
+  }
+
+  // HUD time
+  const hud = document.getElementById('hud-time');
+  const pad = (n) => String(n).padStart(2, '0');
+  setInterval(() => {
+    const d = new Date();
+    hud && (hud.textContent = `${pad(d.getHours())}:${pad(d.getMinutes())}`);
+  }, 1000);
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const tooFast = (performance.now() - startedAt) < 1200;
+    if ((hp && hp.value.trim()) || tooFast) {
+      statusEl.textContent = 'Sicherheitsprüfung fehlgeschlagen. Bitte erneut senden.';
+      return;
+    }
+    const fd = new FormData(form);
+    const services = Array.from(form.querySelectorAll('input[name="service"]:checked')).map(i => i.value);
+    const payload = {
+      name: (fd.get('name') || '').toString().trim(),
+      email: (fd.get('email') || '').toString().trim(),
+      phone: (fd.get('phone') || '').toString().trim(),
+      site: window.location.href,
+      message: (fd.get('message') || '').toString().trim(),
+      services,
+      company: (fd.get('company') || '').toString().trim(),
+      target_email: 'info@januzi-bau.de'
+    };
+    if (!payload.name || !payload.email) {
+      statusEl.textContent = 'Bitte Name und E-Mail ausfüllen.';
+      return;
+    }
+
+    try {
+      form.setAttribute('aria-busy', 'true');
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = true;
+      statusEl.textContent = 'Sende ...';
+      const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error('Network');
+      statusEl.textContent = 'Danke! Wir melden uns zeitnah. Du erhältst eine Bestätigung per E-Mail.';
+      form.reset();
+      show(0);
+      startedAt = performance.now();
+    } catch (err) {
+      statusEl.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder per E-Mail kontaktieren.';
+    } finally {
+      form.removeAttribute('aria-busy');
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) btn.disabled = false;
+    }
+  });
+})();
+</script>

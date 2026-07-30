@@ -1,105 +1,18 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import IconSprite from '../components/IconSprite.astro';
+import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServicesBento from '../components/ServicesBento.astro';
+import ResultsProcessStats from '../components/ResultsProcessStats.astro';
+import Funnel from '../components/Funnel.astro';
 import Footer from '../components/Footer.astro';
-import HeroParticles from '../components/HeroParticles.astro';
-import ScrollAnimations from '../components/ScrollAnimations.astro';
-import RefSlider from '../components/RefSlider.astro';
-const pageTitle = 'Digitalagentur Schwäbisch Gmünd | Local SEO & schnelle Websites';
-const pageDesc = 'ListingProfis: Lokales SEO, Google Business Profile, Listings & schnelle Astro‑Websites für Schwäbisch Gmünd, Ostalbkreis & Stuttgart. Jetzt anrufen: +49 160 4365363.';
 ---
-<BaseLayout title={pageTitle} description={pageDesc}>
-  <Fragment slot="icons"><IconSprite /></Fragment>
-  <Fragment slot="header"><Header /></Fragment>
 
-  <HeroParticles />
-
-  <main>
-    <!-- Key benefits -->
-    <section class="section container" data-reveal-group>
-      <h2 class="reveal">Lokale Rankings, die Kunden bringen</h2>
-      <p class="reveal text-muted" style="max-width:68ch">Timo Krieg – ListingProfis. Wir kombinieren Local SEO, schnelle Astro‑Websites und konsistente Online‑Präsenzen, um messbar mehr Anrufe und Anfragen zu erzeugen.</p>
-      <div class="grid grid-4 mt-4">
-        <article class="card reveal"><h3 class="card__title">Lokal dominieren</h3><p class="card__meta">Mit lokale SEO Schwäbisch Gmünd werden Sie dort gefunden, wo Kundinnen und Kunden suchen.</p></article>
-        <article class="card reveal"><h3 class="card__title">Geschwindigkeit verkauft</h3><p class="card__meta">Astro Websites mit hervorragenden Core Web Vitals – für Rankings und Conversion.</p></article>
-        <article class="card reveal"><h3 class="card__title">Konsistente Präsenz</h3><p class="card__meta">Google Business Profile, Listings und Reputation aus einem Guss.</p></article>
-        <article class="card reveal"><h3 class="card__title">Klarer ROI</h3><p class="card__meta">Datenbasiert, transparent, ergebnisorientiert. Wir liefern Leads, keine Ausreden.</p></article>
-      </div>
-    </section>
-
-    <!-- Leistungen Teaser -->
-    <section class="section container" data-reveal-group>
-      <h2 class="reveal">Unsere Leistungen</h2>
-      <div class="grid grid-3 mt-4">
-        <article class="card reveal">
-          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Local SEO</div>
-          <h3 class="card__title mt-4">Lokales SEO</h3>
-          <p class="card__meta">GBP‑Optimierung, Citations, Bewertungen & lokale Landingpages.</p>
-          <p class="mt-4"><a href="/leistungen/lokales-seo/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-        <article class="card reveal">
-          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Astro</div>
-          <h3 class="card__title mt-4">Webentwicklung (Astro)</h3>
-          <p class="card__meta">Ultra‑schnelle, SEO‑starke Websites – DSGVO‑fokussiert & wartungsarm.</p>
-          <p class="mt-4"><a href="/leistungen/webentwicklung-astro/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-        <article class="card reveal">
-          <div class="chip"><svg width="16" height="16" aria-hidden="true"><use href="#icon-check"/></svg> Präsenz</div>
-          <h3 class="card__title mt-4">Online‑Präsenzen</h3>
-          <p class="card__meta">Listings‑Management, Reputation, Content & Ads für mehr Anfragen.</p>
-          <p class="mt-4"><a href="/leistungen/online-praesenzen/" class="link-icon">Mehr erfahren <svg width="16" height="16"><use href="#icon-arrow-right"/></svg></a></p>
-        </article>
-      </div>
-    </section>
-
-    <RefSlider />
-
-    <!-- CTA -->
-    <section class="section container" data-reveal-group>
-      <div class="card reveal" style="display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-        <div>
-          <h3 class="mb-4">Bereit, lokal zu wachsen?</h3>
-          <p class="text-muted">Rufen Sie uns an oder sichern Sie sich Ihr kostenloses Erstgespräch.</p>
-        </div>
-        <div>
-          <a class="btn btn--primary btn--lg" href="tel:+491604365363">Jetzt anrufen</a>
-          <a class="btn btn--ghost btn--lg" href="/kontakt/" style="margin-left:8px">Erstgespräch</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section container" data-reveal-group>
-      <h2 class="reveal">Häufige Fragen</h2>
-      <div class="grid grid-2 mt-4">
-        <article class="card reveal"><h3 class="card__title">Für wen ist ListingProfis ideal?</h3><p class="card__meta">Für lokale Unternehmen und Mittelstand in Schwäbisch Gmünd, Ostalbkreis und Stuttgart, die mehr qualifizierte Anfragen wollen.</p></article>
-        <article class="card reveal"><h3 class="card__title">Wie schnell sehe ich Ergebnisse?</h3><p class="card__meta">GBP & Listings oft in Wochen spürbar; SEO typ. 8–16 Wochen bis stabile Effekte.</p></article>
-        <article class="card reveal"><h3 class="card__title">Arbeiten Sie auch außerhalb der Region?</h3><p class="card__meta">Ja, primär Baden‑Württemberg, DACH sekundär – remote effizient, lokal nahbar.</p></article>
-        <article class="card reveal"><h3 class="card__title">Womit entwickeln Sie Websites?</h3><p class="card__meta">Mit Astro – exzellente Core Web Vitals, saubere Architektur, minimale JS‑Last.</p></article>
-      </div>
-    </section>
-  </main>
-
-  <ScrollAnimations />
-  <Fragment slot="footer"><Footer /></Fragment>
-
-  <Fragment slot="head">
-    <script type="application/ld+json">{JSON.stringify({
-      "@context":"https://schema.org",
-      "@type":["Organization","LocalBusiness","ProfessionalService"],
-      "@id":"https://www.listingprofis.de/#organization",
-      "name":"ListingProfis – Digitalagentur & Online‑Marketing (Timo Krieg)",
-      "url":"https://www.listingprofis.de/",
-      "logo":"https://www.listingprofis.de/assets/logo.png",
-      "image":"https://www.listingprofis.de/assets/og/listingprofis.jpg",
-      "description":"Lokales SEO, Google Business Profile, Listings & schnelle Astro‑Websites für Schwäbisch Gmünd, Ostalbkreis & Stuttgart.",
-      "telephone":"+49 160 4365363",
-      "priceRange":"€€",
-      "founder":{ "@type":"Person", "name":"Timo Krieg" },
-      "address":{ "@type":"PostalAddress", "streetAddress":"Kitzingstraße 7", "postalCode":"73529", "addressLocality":"Schwäbisch Gmünd", "addressRegion":"Baden‑Württemberg", "addressCountry":"DE" },
-      "areaServed":["Schwäbisch Gmünd","Ostalbkreis","Stuttgart","Deutschland"],
-      "contactPoint":[{ "@type":"ContactPoint", "telephone":"+49 160 4365363", "contactType":"sales", "areaServed":"DE", "availableLanguage":["de","en"] }]
-    })}</script>
-  </Fragment>
-</BaseLayout>
+<Layout title="Gylsere Januzi | Digitale Exzellenz Schwäbisch Gmünd">
+  <Header />
+  <Hero />
+  <ServicesBento />
+  <ResultsProcessStats />
+  <Funnel />
+  <Footer />
+</Layout>

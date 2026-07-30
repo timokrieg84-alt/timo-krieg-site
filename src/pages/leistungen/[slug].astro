@@ -1,0 +1,61 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Funnel from '../../components/Funnel.astro';
+import Footer from '../../components/Footer.astro';
+import { servicesGrid, projectInfo } from '../../data/site';
+
+export async function getStaticPaths() {
+  return servicesGrid.grid_cards.map((c) => ({ params: { slug: c.slug } }));
+}
+
+const { slug } = Astro.params;
+const card = servicesGrid.grid_cards.find((c) => c.slug === slug);
+if (!card) throw new Error(`Service not found for slug: ${slug}`);
+
+const siteUrl = Astro.url ? Astro.url.toString() : '';
+const mailto = `mailto:${encodeURIComponent('info@januzi-bau.de')}?subject=${encodeURIComponent('Anfrage: ' + card.title)}&body=${encodeURIComponent('Hallo,\n\nich interessiere mich für: ' + card.title + '\nSeite: ' + siteUrl + '\n\nDanke!')}`;
+---
+
+<Layout title={`${card.title} | ${projectInfo.company_name}`}>
+  <Header />
+
+  <div class="sticky top-0 z-40 bg-brand-dark/80 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-14 flex items-center justify-between">
+      <nav aria-label="Brotkrumen" class="text-sm text-brand-muted">
+        <a href="/" class="hover:text-white transition">Startseite</a>
+        <span aria-hidden="true"> / </span>
+        <a href="/leistungen" class="hover:text-white transition">Leistungen</a>
+        <span aria-hidden="true"> / </span>
+        <span aria-current="page" class="text-white font-medium">{card.title}</span>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="/" class="px-3 py-1.5 rounded-lg border border-white/15 text-sm hover:bg-white/5 transition" aria-label="Zur Startseite">← Home</a>
+        <a href={`/kontakt?service=${slug}`} class="px-3 py-1.5 rounded-lg border border-emerald-400 text-emerald-400 text-sm hover:bg-emerald-400 hover:text-black transition" aria-label="Kontaktformular öffnen">Kontakt</a>
+        <a href={mailto} class="px-3 py-1.5 rounded-lg border border-white/15 text-sm hover:bg-white/5 transition" aria-label="Direkt E-Mail senden">E‑Mail</a>
+      </div>
+    </div>
+  </div>
+
+  <article class="max-w-5xl mx-auto px-4 py-12 sm:py-20">
+    <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">LEISTUNG</span>
+    <h1 class="text-4xl sm:text-6xl font-black mt-2 mb-6">{card.title}</h1>
+    <div class="bg-brand-card p-8 rounded-2xl border border-white/10 text-lg leading-relaxed text-brand-muted mb-8">
+      <div class="flex items-center gap-2 mb-2"><span class="text-2xl" aria-hidden="true">{card.icon}</span><strong>{card.sub_headline}</strong></div>
+      <p class="mt-2">{card.description}</p>
+      {card.tags?.length > 0 && (
+        <div class="flex flex-wrap gap-2 mt-4">
+          {card.tags.map((t) => (<span class="text-xs px-2 py-1 rounded-full border border-white/10 text-brand-muted">{t}</span>))}
+        </div>
+      )}
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href="#kontakt" class="bg-emerald-400 text-black px-6 py-3 rounded-xl font-bold hover:bg-emerald-400/90 transition">Jetzt Anfrage stellen</a>
+      <a href="/" class="border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition">← Zurück zur Übersicht</a>
+      <a href={mailto} class="border border-white/20 px-6 py-3 rounded-xl font-bold hover:bg-white/10 transition" aria-label="E-Mail an info@januzi-bau.de">Per E‑Mail anfragen</a>
+    </div>
+  </article>
+
+  <Funnel />
+  <Footer />
+</Layout>

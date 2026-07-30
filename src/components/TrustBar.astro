@@ -1,0 +1,24 @@
+---
+import { trustBar } from "../data/site";
+---
+<section class="py-10 border-t border-white/10 bg-brand-dark/90">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <span class="text-emerald-400 font-bold text-sm tracking-widest uppercase">{trustBar.section_headline}</span>
+      </div>
+      <div class="flex items-center gap-3 text-sm">
+        {trustBar.badges.map((b) => (
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 text-brand-muted">
+            {b.text}
+          </span>
+        ))}
+      </div>
+    </div>
+    <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 opacity-80">
+      {trustBar.grayscale_logos.map((name) => (
+        <div class="rounded-lg border border-white/10 px-3 py-6 text-center text-xs text-brand-muted bg-brand-card/40">{name}</div>
+      ))}
+    </div>
+  </div>
+</section>

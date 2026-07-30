@@ -1,0 +1,60 @@
+---
+---
+<section class="results container-narrow py-10" aria-labelledby="results-heading">
+  <p class="text-emerald-400 font-bold text-sm tracking-widest uppercase">ERGEBNISSE & METHODIK</p>
+  <h2 id="results-heading" class="text-3xl font-extrabold mt-1">Handwerk, nicht Highlight-Reel.</h2>
+  <p class="text-brand-muted mt-3 max-w-[70ch]">Einzelne Case-Studies beeindrucken niemanden mehr – jede Agentur hat sie. Wir zeigen lieber wie wir arbeiten und was über alle Mandate hinweg entsteht. Aggregate statt Anekdoten.</p>
+
+  <ol class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6" role="list">
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <div class="flex items-center gap-3"><span class="inline-grid place-items-center w-10 h-10 rounded-lg bg-emerald-400 text-black font-extrabold">01</span><h3 class="font-bold">Audit</h3></div>
+      <p class="mt-2 text-sm">Bestandsaufnahme in Zahlen. GSC, GA4, Ads-Accounts, Backlinks, technisches SEO. Wir finden was blockiert, bevor wir skalieren. — DAUER 5-10 TAGE</p>
+    </li>
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <div class="flex items-center gap-3"><span class="inline-grid place-items-center w-10 h-10 rounded-lg bg-emerald-400 text-black font-extrabold">02</span><h3 class="font-bold">Strategie</h3></div>
+      <p class="mt-2 text-sm">Priorisierung nach Impact, nicht nach Buzzword-Trend. Klare Roadmap mit messbaren Zielen und Budget-Empfehlung. — WORKSHOP 1 TAG</p>
+    </li>
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <div class="flex items-center gap-3"><span class="inline-grid place-items-center w-10 h-10 rounded-lg bg-emerald-400 text-black font-extrabold">03</span><h3 class="font-bold">Umsetzung</h3></div>
+      <p class="mt-2 text-sm">Sprints à 2 Wochen, wöchentliche Syncs, gemeinsamer Linear-Zugang. Du siehst live was läuft, keine Blackbox. — LAUFEND</p>
+    </li>
+  </ol>
+</section>
+
+<section class="stats py-8" aria-labelledby="stats-heading">
+  <h3 id="stats-heading" class="sr-only">Kennzahlen (aggregiert)</h3>
+  <ul class="container-narrow grid grid-cols-2 md:grid-cols-4 gap-4" role="list">
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <p class="text-2xl font-black text-emerald-400">50+</p>
+      <p class="text-sm text-brand-muted">aktive Mandate in DACH, Schweiz und International</p>
+      <p class="text-xs text-brand-muted/80 mt-1">● STAND AKTUELL</p>
+    </li>
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <p class="text-2xl font-black text-emerald-400">12M+</p>
+      <p class="text-sm text-brand-muted">organische Impressionen pro Monat über alle Mandate</p>
+      <p class="text-xs text-brand-muted/80 mt-1">● QUELLE: GSC</p>
+    </li>
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <p class="text-2xl font-black text-emerald-400">340+</p>
+      <p class="text-sm text-brand-muted">Top-3-Rankings erreicht in den letzten 12 Monaten</p>
+      <p class="text-xs text-brand-muted/80 mt-1">● DEUTSCHLAND, AT, CH, GB</p>
+    </li>
+    <li class="rounded-xl border border-white/10 p-4 bg-brand-card" data-animate="rise">
+      <p class="text-2xl font-black text-emerald-400">~3h</p>
+      <p class="text-sm text-brand-muted">durchschnittliche Antwortzeit auf Kundenanfragen</p>
+      <p class="text-xs text-brand-muted/80 mt-1">● WERKTAGS DIRECT LINE</p>
+    </li>
+  </ul>
+</section>
+
+<script is:raw>
+(() => {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const els = document.querySelectorAll('[data-animate="rise"]');
+  els.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(8px)'; });
+  const io = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.style.transition='opacity .5s ease, transform .5s ease'; e.target.style.opacity='1'; e.target.style.transform='translateY(0)'; obs.unobserve(e.target);} });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+  els.forEach(el => io.observe(el));
+})();
+</script>

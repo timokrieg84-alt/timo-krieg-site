@@ -1,0 +1,36 @@
+<style>
+  .top {
+    position: fixed; right: 14px; bottom: 14px; z-index: 60;
+    width: 42px; height: 42px; border-radius: 999px;
+    display: grid; place-items: center;
+    color: #fff; background: color-mix(in oklab, var(--accent, #00E676) 30%, #000);
+    border: 1px solid color-mix(in oklab, var(--accent, #00E676) 70%, #fff);
+    box-shadow: 0 8px 30px color-mix(in oklab, var(--accent, #00E676) 20%, transparent);
+    opacity: 0; pointer-events: none; transform: translateY(8px);
+    transition: opacity .25s ease, transform .25s ease;
+  }
+  .top._in { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .top svg { display:block }
+</style>
+
+<button class="top" id="back-to-top" aria-label="Nach oben" title="Nach oben">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</button>
+
+<script is:raw>
+(() => {
+  const btn = document.getElementById('back-to-top');
+  if (!btn) return;
+  const io = new IntersectionObserver(entries => {
+    const topVisible = entries[0].isIntersecting;
+    btn.classList.toggle('_in', !topVisible);
+  });
+  const sentry = document.createElement('div');
+  sentry.style.position = 'absolute'; sentry.style.top = '0'; sentry.style.height = '1px';
+  document.body.prepend(sentry);
+  io.observe(sentry);
+  btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+})();
+</script>
