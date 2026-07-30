@@ -2,46 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --color-primary: #FF6A00; /* Orange */
-  --color-secondary: #00C853; /* Green */
-  --color-accent: #FF2D9A; /* Pink */
-  --color-text: #111111;
-  --color-bg: #ffffff;
+@layer base {
+  :root { color-scheme: dark; }
+  html, body { @apply bg-surface text-textc-base antialiased; }
+  a { @apply text-brand-accent underline decoration-transparent transition-colors; }
+  a:hover { @apply decoration-brand-accent/60 text-brand-accent; }
+  ::selection { background: #FF2D9A33; }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #F5F7FA;
-    --color-bg: #0D0F12;
-  }
+@layer components {
+  .container { @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8; }
+  .btn { @apply inline-flex items-center justify-center rounded-md px-4 py-2 font-medium transition-colors focus:outline-none focus-visible:shadow-[0_0_0_3px_rgba(255,45,154,0.5)]; }
+  .btn-primary { @apply bg-brand-primary text-white hover:bg-[#E55F00]; }
+  .btn-secondary { @apply bg-brand-secondary text-black hover:bg-[#00B44B]; }
+  .btn-ghost { @apply border border-brand-primary text-brand-primary hover:bg-brand-primary/10; }
+  .badge, .tag { @apply inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-sm; }
+  .badge--success, .tag--success { @apply bg-brand-secondary/15 text-brand-secondary border-brand-secondary/40; }
+  .badge--accent { @apply bg-brand-accent/15 text-brand-accent border-brand-accent/40; }
+  .nav-link { @apply text-textc-base hover:text-brand-accent; }
+  .section { @apply py-16 sm:py-20; }
+  .card { @apply bg-surface-raised/80 backdrop-blur rounded-xl border border-white/5; }
 }
-
-/* Generic link / text highlight */
-a, .link { color: var(--color-accent); text-decoration-color: color-mix(in oklab, var(--color-accent), transparent 70%); }
-a:hover, .link:hover { color: var(--color-primary); text-decoration-color: var(--color-primary); }
-
-/* Buttons */
-button, .btn, [type="button"], [type="submit"], .prose a.button {
-  @apply inline-flex items-center justify-center font-medium rounded-md transition focus:outline-none;
-  background: var(--color-primary);
-  border: 1px solid var(--color-primary);
-  color: #fff;
-}
-button:hover, .btn:hover, [type="submit"]:hover { background: #E55F00; }
-.btn--secondary { background: var(--color-secondary); border-color: var(--color-secondary); color: #fff; }
-.btn--ghost, .btn--outline { color: var(--color-primary); border-color: var(--color-primary); background: transparent; }
-.btn--ghost:hover, .btn--outline:hover { background: color-mix(in oklab, var(--color-primary), white 90%); }
-
-/* Badges / Tags */
-.badge, .tag { background: color-mix(in oklab, var(--color-accent), white 88%); color: var(--color-accent); border: 1px solid color-mix(in oklab, var(--color-accent), transparent 65%); }
-.badge--success, .tag--success { background: color-mix(in oklab, var(--color-secondary), white 88%); color: var(--color-secondary); border-color: color-mix(in oklab, var(--color-secondary), transparent 65%); }
-
-/* Highlights */
-.highlight, mark { background: color-mix(in oklab, var(--color-primary), white 88%); padding: .1em .25em; border-radius: .25rem; }
-
-/* Focus ring accessible */
-:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
-
-/* Reduced motion */
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
