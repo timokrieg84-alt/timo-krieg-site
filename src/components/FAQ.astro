@@ -1,0 +1,26 @@
+---
+const faqs = [
+  { q:'Was kostet professionelles Webdesign für den Mittelstand?', a:'Onepager ab 4.500 €, Unternehmenswebsite ab 8.500 €, komplexe Setups individuell. Sie erhalten ein transparentes Festpreis-Angebot nach dem Erstgespräch.' },
+  { q:'Wie schnell sehen wir Ergebnisse?', a:'Erste Lerneffekte oft in 2–4 Wochen. Signifikante Hebel nach 1–3 Monaten – abhängig von Umfang, Kanal und Funnel.' },
+  { q:'Arbeiten Sie nur in Schwäbisch Gmünd?', a:'Nein. Unser Schwerpunkt liegt in Schwäbisch Gmünd und Region Ostwürttemberg – wir betreuen Kunden in ganz DACH remote oder vor Ort.' },
+  { q:'Was umfasst SEO bei Ihnen?', a:'Technik-Audit, Keyword-Strategie, Content-Plan, Onpage-Optimierung, Local SEO, Tracking und Reporting – praxisnah und messbar.' },
+  { q:'Lohnt sich Google Ads für uns?', a:'Wenn Suchnachfrage besteht, ja. Wir kalkulieren CPA/ROAS, starten mit Testbudget und skalieren, was nachweislich performt.' },
+  { q:'Was ist Astro Webentwicklung?', a:'Ein leichtgewichtiges Framework für extrem schnelle, statische Websites. Ergebnis: Top-Core-Web-Vitals, bessere Rankings und Conversions.' },
+];
+---
+<section id="faq" class="py-16 md:py-24">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-semibold">FAQ</h2>
+    <div class="mt-6 space-y-3">
+      {faqs.map(f => (
+        <details class="group card">
+          <summary class="flex cursor-pointer items-center justify-between list-none">
+            <span class="text-left pr-6 font-medium">{f.q}</span>
+            <svg class="icon transition-transform group-open:rotate-45 text-brand-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true"><path d="M12 5v14M5 12h14" stroke-linecap="round"/></svg>
+          </summary>
+          <div class="mt-3 text-brand-muted">{f.a}</div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

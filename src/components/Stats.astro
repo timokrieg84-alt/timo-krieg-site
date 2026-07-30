@@ -1,0 +1,21 @@
+---
+const stats = [
+  { n: 98, l: 'Kundenzufriedenheit (%)' },
+  { n: 150, l: 'Projekte in DACH' },
+  { n: 7, l: 'Ø ROI-Faktor (x)' },
+  { n: 1, l: 'Sek. LCP bei neuen Websites' },
+];
+---
+<section id="zahlen" class="py-16 md:py-24">
+  <div class="container">
+    <h2 class="text-3xl md:text-4xl font-semibold">Zahlen & Fakten</h2>
+    <div class="mt-8 grid gap-6 grid-cols-2 md:grid-cols-4">
+      {stats.map(s => (
+        <div class="card text-center">
+          <div class="stat tabular-nums">{s.n}</div>
+          <div class="stat-label mt-2">{s.l}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,3 +1,8 @@
 User-agent: *
 Allow: /
-Sitemap: https://www.example.com/sitemap.xml
+Disallow: /api/
+Disallow: /admin/
+Disallow: /drafts/
+Disallow: /*?utm_*
+Disallow: /*?ref=*
+Sitemap: https://timo-krieg-site.vercel.app/sitemap-index.xml
