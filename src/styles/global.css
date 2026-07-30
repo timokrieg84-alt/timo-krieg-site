@@ -1,16 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  :root {
-    --bg-surface: #131b2e;
-    --color-primary: #FF6A00;
-    --color-secondary: #00C853;
-    --color-accent: #FF2D9A;
-  }
+:root {
+  --bg-surface: #131b2e;
+  --color-primary: #FF6A00;
+  --color-secondary: #00C853;
+  --color-accent: #FF2D9A;
 }
 
 .bg-surface {
   background-color: var(--bg-surface);
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
