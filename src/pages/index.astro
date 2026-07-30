@@ -1,17 +1,30 @@
 ---
-const title = 'Timo Krieg – Online Marketingbüro';
+// Startseite – Astro + Tailwind
+const pageTitle = "Startseite";
+const pageDescription = "Willkommen auf unserer Website";
 ---
-<!doctype html>
-<html lang="de">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title}</title>
-  </head>
-  <body>
-    <main>
-      <h1>{title}</h1>
-      <p>Die neue Website entsteht gerade.</p>
-    </main>
-  </body>
-</html>
+
+<main>
+  <section id="hero" class="relative py-20 md:py-28 bg-gradient-to-b from-slate-900 to-slate-800 text-white">
+    <div class="container mx-auto px-4">
+      <!-- Zentrierter Call-to-Action: Jetzt anrufen -->
+      <div class="flex justify-center mb-6">
+        <a
+          href="tel:+491604365363"
+          class="inline-flex items-center gap-2 rounded-full bg-emerald-600 px-6 py-3 text-white font-medium shadow-lg hover:bg-emerald-500 active:bg-emerald-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-emerald-500 transition"
+          aria-label="Jetzt anrufen unter +49 160 436 5363"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path d="M6.62 10.79a15.48 15.48 0 006.59 6.59l2.2-2.2a1 1 0 011.01-.24 11.36 11.36 0 003.56.57 1 1 0 011 1v3.61a1 1 0 01-1 1A17 17 0 013 5a1 1 0 011-1h3.61a1 1 0 011 1 11.36 11.36 0 00.57 3.56 1 1 0 01-.24 1.01l-2.32 2.22z"/>
+          </svg>
+          Jetzt anrufen
+        </a>
+      </div>
+
+      <div class="text-center max-w-3xl mx-auto">
+        <h1 class="text-3xl md:text-5xl font-semibold tracking-tight">Willkommen</h1>
+        <p class="mt-4 text-slate-300">Wir sind für Sie erreichbar. Rufen Sie uns jetzt an.</p>
+      </div>
+    </div>
+  </section>
+</main>
