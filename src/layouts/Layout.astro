@@ -1,23 +1,18 @@
 ---
 import "../styles/global.css";
-interface Props {
-  title: string;
-  description?: string;
-}
-
-const { title, description = "Gylsere Januzi - online marketing office" } = Astro.props;
+const { title = "Gylsere Januzi – Online Marketing Office", description = "Exzellenz & Digitale Präsenz." } = Astro.props;
 ---
-<!doctype html>
-<html lang="de" class="dark">
+<html lang="de">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url.href} />
   </head>
-  <body class="bg-[#0b0f19] text-gray-100 min-h-screen flex flex-col font-sans antialiased selection:bg-[#FF6A00] selection:text-white">
+  <body class="bg-[#0b0f19] text-gray-300">
     <slot name="header" />
-    <main class="flex-grow">
+    <main>
       <slot />
     </main>
     <slot name="footer" />
