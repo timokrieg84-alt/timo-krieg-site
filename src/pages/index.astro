@@ -1,32 +1,17 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Process from '../components/Process.astro';
+import Stats from '../components/Stats.astro';
+import FAQ from '../components/FAQ.astro';
+const title = 'Performance Marketing Agentur für den Mittelstand | Schwäbisch Gmünd | Timo Krieg';
+const description = 'Datengetriebene Leads & Umsatz für B2B. LinkedIn/Google Ads, SEO & CRO – schnell messbar. Jetzt Beratung in Schwäbisch Gmünd sichern: +49 160 4365363.';
 ---
-<BaseLayout title="Performance Marketing & Webdesign | Timo Krieg" description="Schnelle Websites, Leads & Wachstum für Mittelstand in DACH.">
-  <section class="container py-16 md:py-24">
-    <p class="text-sky-300 text-sm">Schwäbisch Gmünd • Ostalbkreis • DACH</p>
-    <h1 class="mt-3 text-4xl md:text-6xl font-semibold tracking-tight">Skalierbares Wachstum, messbar gemacht</h1>
-    <p class="mt-4 max-w-2xl text-slate-300">Webdesign mit Astro, SEO und Performance Marketing – klar auf Ergebnisse. Kostenloses Erstgespräch: +49 160 4365363.</p>
-    <div class="mt-8 flex flex-col sm:flex-row gap-3">
-      <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-      <a href="/kontakt" class="btn btn-secondary">Kostenloses Erstgespräch</a>
-    </div>
-  </section>
-
-  <section class="container py-12 md:py-16">
-    <h2 class="text-2xl md:text-3xl font-semibold">Leistungen</h2>
-    <div class="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="card">
-        <h3 class="font-semibold">Webdesign (Astro)</h3>
-        <p class="mt-1 text-slate-300">Extrem schnelle, konvertierende Websites mit Astro & Tailwind.</p>
-      </div>
-      <div class="card">
-        <h3 class="font-semibold">SEO & Content</h3>
-        <p class="mt-1 text-slate-300">Technik, Content-Plan und Onpage – nachhaltig sichtbar werden.</p>
-      </div>
-      <div class="card">
-        <h3 class="font-semibold">Google/LinkedIn Ads</h3>
-        <p class="mt-1 text-slate-300">Klarer ROAS/CPL-Fokus, sauberes Tracking, smartes Scaling.</p>
-      </div>
-    </div>
-  </section>
+<BaseLayout {title} {description}>
+  <Hero />
+  <ServiceGrid />
+  <Process />
+  <Stats />
+  <FAQ />
 </BaseLayout>
