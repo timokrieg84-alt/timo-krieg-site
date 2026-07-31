@@ -17,19 +17,18 @@ const services = [
   { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
 ];
 ---
-<BaseLayout title="Gylsere Januzi Krieg – Online Marketing Office" description="SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.">
-  <section class="section-y container-px">
-    <h1 class="text-3xl font-semibold tracking-tight mb-3">Unsere Leistungen</h1>
-    <p class="text-zinc-400 max-w-3xl mb-8">Alle 14 Leistungen im Überblick – klar strukturiert, modular kombinierbar und auf Conversions optimiert.</p>
-
+<BaseLayout title="Start – Gylsere Januzi Krieg Online Marketing Office" description="SEO, GEO, Ads, Webdesign, Social, AI & mehr – Full-Service mit Ergebnis-Fokus.">
+  <section class="container">
+    <h1 class="text-white">Unsere Leistungen</h1>
+    <p class="muted mb-6">14 Services – klar strukturiert, kombinierbar, auf Wirkung getrimmt.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map((s) => (
+      {services.map(s => (
         <article id={s.id} class="card">
-          <h2 class="h2 mb-1">{s.title}</h2>
-          <p class="muted mb-3">{s.subtitle}</p>
-          <p class="text-sm text-zinc-200 mb-4">{s.description}</p>
-          <div class="flex flex-wrap gap-2" aria-label="Features">
-            {s.features.map((f) => <span class="chip">{f}</span>)}
+          <h2 class="text-white text-xl font-semibold">{s.title}</h2>
+          <p class="muted mb-2">{s.subtitle}</p>
+          <p class="text-slate-300 mb-4">{s.description}</p>
+          <div class="flex flex-wrap" aria-label="Features">
+            {s.features.map(f => (<span class="chip">{f}</span>))}
           </div>
         </article>
       ))}
