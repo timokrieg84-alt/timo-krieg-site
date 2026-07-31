@@ -18,18 +18,18 @@ const services = [
 ];
 ---
 <BaseLayout title="Leistungen – Gylsere Januzi Krieg Online Marketing Office" description="Alle 14 Leistungen im Überblick: SEO, GEO, Ads, Webdesign, Social, AI & mehr.">
-  <section class="section">
+  <section class="py-12">
     <div class="container">
-      <h1 class="text-white text-3xl font-bold mb-2">Leistungen</h1>
+      <h1 class="text-3xl font-semibold text-white mb-4">Leistungen</h1>
       <p class="text-slate-400 mb-8">Unser vollständiges Leistungsspektrum – modular kombinierbar, messbar wirksam.</p>
       <div class="grid-cards" role="list">
-        {services.map(s => (
+        {services.map((s) => (
           <article class="card" role="listitem" id={s.id}>
-            <h3>{s.title}</h3>
-            <div class="subtitle">{s.subtitle}</div>
-            <p>{s.description}</p>
-            <div class="chips" aria-label="Highlights">
-              {s.features.map(f => (<span class="chip">{f}</span>))}
+            <h2 class="text-xl font-semibold mb-1">{s.title}</h2>
+            <p class="text-slate-400 mb-2">{s.subtitle}</p>
+            <p class="mb-3">{s.description}</p>
+            <div class="features" aria-label="Highlights">
+              {s.features.map((f) => (<span class="chip">{f}</span>))}
             </div>
           </article>
         ))}
