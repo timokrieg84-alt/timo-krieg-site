@@ -1,68 +1,18 @@
 ---
-export interface Props { title?: string; description?: string; }
-const { title = 'Gylsere Januzi Krieg Online Marketing Office', description = 'SEO, GEO, Google Ads, Webdesign & E-Commerce, AI & Automation und mehr – Premium Online Marketing.' } = Astro.props as Props;
+import "../styles/tailwind.css";
+export const prerender = true;
+const { title = "Gylsere Januzi Krieg Online Marketing Office", description = "" } = Astro.props;
 ---
-<html lang="de">
+<html lang="de" class="min-h-full bg-slate-950 text-slate-100">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="canonical" href={Astro.site?.toString() ?? '/'} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-    <style>
-      :root { --bg: #0b0c10; --text: #e6e8eb; --muted: #aab0b6; --brand: #8ae6ff; --brand-2:#6ee7b7; --card:#13151b; --accent:#e2a86a; }
-      * { box-sizing: border-box; }
-      body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: var(--bg); color: var(--text); line-height:1.6; }
-      a{ color: inherit; text-decoration: none; }
-      .container{ width:min(1200px, 92%); margin:0 auto; }
-      header{ position:sticky; top:0; backdrop-filter:saturate(180%) blur(10px); background:color-mix(in srgb, var(--bg) 80%, transparent); border-bottom:1px solid #1f2330; z-index:10; }
-      nav{ display:flex; align-items:center; justify-content:space-between; padding:14px 0; }
-      .logo{ font-weight:800; letter-spacing:.2px; }
-      .nav a{ margin-left:18px; color:var(--muted); }
-      .nav a:hover{ color:var(--text); }
-      main{ display:block; }
-      footer{ border-top:1px solid #1f2330; margin-top:64px; padding:48px 0; color:var(--muted); }
-      .btn{ display:inline-block; padding:12px 18px; border-radius:10px; background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#0b0c10; font-weight:600; box-shadow:0 6px 20px rgba(138,230,255,.25); }
-      .btn.secondary{ background:#1a1f2a; color:var(--text); box-shadow:none; border:1px solid #2a3142; }
-      .grid{ display:grid; gap:24px; }
-      @media (min-width: 800px){ .grid.cols-3{ grid-template-columns:repeat(3, 1fr);} .grid.cols-2{ grid-template-columns:repeat(2, 1fr);} }
-      .card{ background:var(--card); border:1px solid #1f2330; padding:22px; border-radius:16px; }
-      .card h3{ margin:0 0 6px 0; font-size:1.15rem; }
-      .card p{ margin:4px 0 10px 0; color:var(--muted); }
-      .features{ display:flex; flex-wrap:wrap; gap:8px; }
-      .chip{ background:#0f1320; border:1px solid #263149; padding:6px 10px; border-radius:999px; font-size:.85rem; color:#c4cbda; }
-      .hero{ padding:56px 0 28px; }
-      .hero h1{ font-size:clamp(1.8rem, 3.6vw, 3rem); line-height:1.15; margin:0 0 10px 0; }
-      .hero p{ color:var(--muted); margin:0 0 16px 0; }
-      .section{ padding:34px 0; }
-      .section h2{ margin:0 0 14px 0; font-size:1.6rem; }
-      .sr-only{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
-    </style>
+    {description && <meta name="description" content={description} />}
   </head>
-  <body>
-    <header>
-      <div class="container">
-        <nav aria-label="Hauptnavigation">
-          <a class="logo" href="/">Gylsere Januzi Krieg</a>
-          <div class="nav" role="menubar">
-            <a role="menuitem" href="/leistungen">Leistungen</a>
-            <a role="menuitem" href="/referenzen">Referenzen</a>
-            <a role="menuitem" href="/ueber-uns">Über uns</a>
-            <a role="menuitem" href="/kontakt" class="btn">Kontakt</a>
-          </div>
-        </nav>
-      </div>
-    </header>
-    <main>
+  <body class="min-h-screen antialiased">
+    <main class="container mx-auto px-4 py-12">
       <slot />
     </main>
-    <footer>
-      <div class="container">
-        <p>© {new Date().getFullYear()} Gylsere Januzi Krieg Online Marketing Office · Datenschutz · Impressum</p>
-      </div>
-    </footer>
   </body>
 </html>
