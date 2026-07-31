@@ -17,21 +17,23 @@ const services = [
   { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
 ];
 ---
-<BaseLayout title="Start – Gylsere Januzi Krieg Online Marketing Office" description="SEO, GEO, Ads, Webdesign, Social, AI & mehr – Full-Service mit Ergebnis-Fokus.">
-  <section class="container">
-    <h1 class="text-white">Unsere Leistungen</h1>
-    <p class="muted mb-6">14 Services – klar strukturiert, kombinierbar, auf Wirkung getrimmt.</p>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map(s => (
-        <article id={s.id} class="card">
-          <h2 class="text-white text-xl font-semibold">{s.title}</h2>
-          <p class="muted mb-2">{s.subtitle}</p>
-          <p class="text-slate-300 mb-4">{s.description}</p>
-          <div class="flex flex-wrap" aria-label="Features">
-            {s.features.map(f => (<span class="chip">{f}</span>))}
-          </div>
-        </article>
-      ))}
+<BaseLayout title="Gylsere Januzi Krieg Online Marketing Office" description="SEO, GEO, Ads, Webdesign, Social, AI & mehr – in Premium-Qualität.">
+  <section class="section">
+    <div class="container">
+      <h1 class="text-white text-3xl md:text-4xl font-semibold mb-4">Unsere Leistungen</h1>
+      <p class="text-slate-400 mb-8">Das vollständige Leistungsspektrum – modular kombinierbar, messbar wirksam.</p>
+      <div class="grid-cards" role="list">
+        {services.map(s => (
+          <article class="card" role="listitem" id={s.id}>
+            <h2 class="text-xl font-semibold mb-1">{s.title}</h2>
+            <p class="text-slate-400 mb-3"><strong>{s.subtitle}</strong></p>
+            <p class="mb-4">{s.description}</p>
+            <div class="features" aria-label="Highlights">
+              {s.features.map(f => (<span class="chip">{f}</span>))}
+            </div>
+          </article>
+        ))}
+      </div>
     </div>
   </section>
 </BaseLayout>
