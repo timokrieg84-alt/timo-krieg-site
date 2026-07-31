@@ -4,13 +4,7 @@ module.exports = {
     "./src/**/*.{astro,html,js,jsx,ts,tsx,md,mdx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        primary: "#FF6A00",
-        secondary: "#00C853",
-        accent: "#FF2D9A",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };
