@@ -1,66 +1,43 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<Layout title="Case Studies – Gylsere Januzi" description="Ausgewählte Projekte mit Ergebnissen.">
-  <Fragment slot="header"><Header /></Fragment>
-  
-  <Section title="Handwerk, nicht Highlight-Reel." intro="Einzelne Case-Studies beeindrucken niemanden mehr – jede Agentur hat sie. Wir zeigen lieber wie wir arbeiten und was über alle Mandate hinweg entsteht. Aggregate statt Anekdoten.">
-    
-    <div class="grid gap-6 sm:grid-cols-3 mb-16">
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">01 Audit</span>
-        <h3 class="text-lg font-bold text-white mb-2">Bestandsaufnahme in Zahlen</h3>
-        <p class="text-sm text-gray-400">GSC, GA4, Ads-Accounts, Backlinks, technisches SEO. Wir finden was blockiert, bevor wir skalieren.</p>
-        <span class="block mt-4 text-xs text-gray-500">— DAUER 5-10 TAGE</span>
-      </div>
-
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">02 Strategie</span>
-        <h3 class="text-lg font-bold text-white mb-2">Priorisierung nach Impact</h3>
-        <p class="text-sm text-gray-400">Nicht nach Buzzword-Trend. Klare Roadmap mit messbaren Zielen und Budget-Empfehlung.</p>
-        <span class="block mt-4 text-xs text-gray-500">— WORKSHOP 1 TAG</span>
-      </div>
-
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">03 Umsetzung</span>
-        <h3 class="text-lg font-bold text-white mb-2">Sprints & Live-Einblick</h3>
-        <p class="text-sm text-gray-400">Sprints à 2 Wochen, wöchentliche Syncs, gemeinsamer Linear-Zugang. Du siehst live was läuft, keine Blackbox.</p>
-        <span class="block mt-4 text-xs text-gray-500">— LAUFEND</span>
-      </div>
-    </div>
-
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 mb-12">
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
-        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">50+</div>
-        <p class="text-sm font-medium text-white mb-2">aktive Mandate in DACH, Schweiz und International</p>
-        <span class="text-xs text-gray-500">— STAND APR 2026</span>
-      </div>
-
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
-        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">12M+</div>
-        <p class="text-sm font-medium text-white mb-2">organische Impressionen pro Monat über alle Mandate</p>
-        <span class="text-xs text-gray-500">— QUELLE: GSC</span>
-      </div>
-
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
-        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">340+</div>
-        <p class="text-sm font-medium text-white mb-2">Top-3-Rankings erreicht in den letzten 12 Monaten</p>
-        <span class="text-xs text-gray-500">— DEUTSCHLAND, AT, CH, GB</span>
-      </div>
-
-      <div class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl text-center">
-        <div class="text-3xl font-extrabold text-[#FF6A00] mb-1">~3h</div>
-        <p class="text-sm font-medium text-white mb-2">durchschnittliche Antwortzeit auf Kundenanfragen</p>
-        <span class="text-xs text-gray-500">— WERKTAGS 9-18 UHR</span>
+<BaseLayout title="Case Studies – Gylsere Januzi Krieg" description="Ergebnisse, die überzeugen: ausgewählte Projekte und Wachstumsgeschichten.">
+  <section class="section">
+    <div class="container">
+      <h1 class="text-white text-3xl font-bold mb-2">Case Studies</h1>
+      <p class="text-slate-400 mb-8">Ausgewählte Kundenprojekte mit konkreten Ergebnissen. Mehr Cases auf Anfrage.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="card">
+          <h3>SEO-Regio für Dienstleister</h3>
+          <div class="subtitle">+180% organische Anfragen in 4 Monaten</div>
+          <p>50 Satelliten-Seiten, Local SEO & GMB-Optimierung führten zu dominanten Local Rankings.</p>
+          <div class="chips">
+            <span class="chip">Local SEO</span>
+            <span class="chip">Google My Business</span>
+            <span class="chip">Content</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Performance Max Kampagnen</h3>
+          <div class="subtitle">ROAS 5.2 bei 20k€ Spend</div>
+          <p>Klare Creative-Strategie, sauberes Tracking und aggressives Retargeting.</p>
+          <div class="chips">
+            <span class="chip">Google Ads</span>
+            <span class="chip">Tracking</span>
+            <span class="chip">ROAS</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Astro Website Relaunch</h3>
+          <div class="subtitle">LCP < 1.5s, +34% Conversion-Rate</div>
+          <p>Ultraschnelles Frontend in Astro & Next.js, klare Informationsstruktur und CRO.</p>
+          <div class="chips">
+            <span class="chip">Astro</span>
+            <span class="chip">Core Web Vitals</span>
+            <span class="chip">CRO</span>
+          </div>
+        </article>
       </div>
     </div>
-
-    <p class="text-xs text-gray-500 text-center">Transparenz: Alle Zahlen sind aggregiert über unser gesamtes Portfolio, keine einzelnen Kunden sichtbar. Stichprobengrundlage und Messmethoden teilen wir gerne im Erstgespräch.</p>
-
-  </Section>
-
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+  </section>
+</BaseLayout>

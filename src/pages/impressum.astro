@@ -1,66 +1,11 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-
-<Layout title="Impressum | Gylsere Januzi Online Marketing Office" description="Impressum und Anbieterkennzeichnung nach § 5 TMG und § 55 RStV.">
-  <main class="max-w-4xl mx-auto px-4 py-16 text-gray-200">
-    <h1 class="text-3xl font-bold mb-6 text-white">Impressum</h1>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Angaben gemäß § 5 TMG</h2>
-      <address class="not-italic leading-relaxed">
-        <div>Gylsere Januzi Online Marketing Office</div>
-        <div>Inhaberin: Gylsere Januzi</div>
-        <div>73525 Schwäbisch Gmünd</div>
-        <div>Deutschland</div>
-      </address>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Kontakt</h2>
-      <p>E-Mail: <a class="text-[#FF2D9A] hover:underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
-      <p>Telefon: <a class="text-[#00C853] hover:underline" href="tel:+491756372395">+49 175 6372395</a></p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-      <p>Gylsere Januzi, 73525 Schwäbisch Gmünd</p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">EU‑Streitschlichtung</h2>
-      <p>Die Europäische Kommission stellt eine Plattform zur Online‑Streitbeilegung (OS) bereit: <a class="text-[#FF2D9A] hover:underline" href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">https://ec.europa.eu/consumers/odr</a>. Wir sind weder bereit noch verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Haftung für Inhalte</h2>
-      <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von Rechtsverletzungen entfernen wir diese Inhalte umgehend.</p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Haftung für Links</h2>
-      <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich. Rechtswidrige Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Bei Bekanntwerden von Rechtsverletzungen entfernen wir derartige Links umgehend.</p>
-    </section>
-
-    <section class="mb-8">
-      <h2 class="text-xl font-semibold mb-2 text-white">Urheberrecht</h2>
-      <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.</p>
-    </section>
-
-    <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Gylsere Januzi Online Marketing Office",
-        "email": "mailto:gjanuzikrieg@gmail.com",
-        "telephone": "+49 175 6372395",
-        "address": {
-          "@type": "PostalAddress",
-          "postalCode": "73525",
-          "addressLocality": "Schwäbisch Gmünd",
-          "addressCountry": "DE"
-        }
-      })}
-    </script>
-  </main>
-</Layout>
+<BaseLayout title="Impressum – Gylsere Januzi Krieg" description="Angaben gemäß § 5 TMG.">
+  <section class="section">
+    <div class="container">
+      <h1 class="text-white text-3xl font-bold mb-2">Impressum</h1>
+      <p class="text-slate-400">Angaben gemäß § 5 TMG. Inhalte werden nachgereicht.</p>
+    </div>
+  </section>
+</BaseLayout>
