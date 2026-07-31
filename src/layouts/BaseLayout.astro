@@ -1,39 +1,45 @@
 ---
-export interface Props {
+import "../styles/tailwind.css";
+
+interface Props {
   title?: string;
   description?: string;
 }
-const { title = 'Gylsere Januzi Krieg Online Marketing Office', description = 'Online Marketing, SEO, GEO, Ads, Webdesign, Social, AI & mehr.' } = Astro.props;
+
+const {
+  title = "Gylsere Januzi Krieg Online Marketing Office",
+  description = "Online-Marketing, SEO, GEO, Ads, Webdesign, Social & mehr."
+} = Astro.props as Props;
 ---
+
+<!doctype html>
 <html lang="de" class="dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href="/" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>{`:root { --font: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'; } body { font-family: var(--font); }`}</style>
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="/favicon.ico" />
+    {Astro.site && <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />}
   </head>
-  <body>
-    <header class="border-b border-slate-800/80 bg-slate-950/80 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60">
-      <div class="container py-4 flex items-center justify-between">
-        <a href="/" class="text-white font-semibold">Gylsere Januzi Krieg</a>
-        <nav class="text-slate-300 text-sm">
-          <a href="/" class="hover:text-white">Start</a>
-          <span class="mx-3 opacity-30">•</span>
-          <a href="/leistungen" class="hover:text-white">Leistungen</a>
+  <body class="bg-slate-950 text-slate-300 antialiased min-h-screen">
+    <header class="border-b border-slate-800">
+      <div class="mx-auto max-w-7xl px-4 py-4 flex items-center justify-between">
+        <a href="/" class="text-white font-semibold tracking-tight">Gylsere Januzi Krieg</a>
+        <nav class="hidden md:flex items-center gap-6">
+          <a href="/leistungen" class="text-slate-300 hover:text-white">Leistungen</a>
+          <a href="/kontakt" class="text-slate-300 hover:text-white">Kontakt</a>
         </nav>
       </div>
     </header>
-    <main class="bg-slate-950 min-h-screen">
+
+    <main id="main" class="mx-auto max-w-7xl px-4 py-10">
       <slot />
     </main>
-    <footer class="border-t border-slate-800 text-slate-400">
-      <div class="container py-10 text-sm">
+
+    <footer class="border-t border-slate-800">
+      <div class="mx-auto max-w-7xl px-4 py-10 text-sm text-slate-500">
         © {new Date().getFullYear()} Gylsere Januzi Krieg Online Marketing Office
       </div>
     </footer>
