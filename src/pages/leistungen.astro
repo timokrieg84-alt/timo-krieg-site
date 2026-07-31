@@ -18,18 +18,17 @@ const services = [
 ];
 ---
 <BaseLayout title="Leistungen – Gylsere Januzi Krieg Online Marketing Office" description="Alle 14 Leistungen im Überblick: SEO, GEO, Ads, Webdesign, Social, AI & mehr.">
-  <section class="section-y container-px">
-    <h1 class="text-3xl font-semibold tracking-tight mb-3">Leistungen</h1>
-    <p class="text-zinc-400 max-w-3xl mb-8">Unser vollständiges Leistungsspektrum – modular kombinierbar, messbar wirksam.</p>
-
+  <section class="container">
+    <h1 class="text-white">Leistungen</h1>
+    <p class="muted mb-6">Unser vollständiges Leistungsspektrum – modular kombinierbar, messbar wirksam.</p>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map((s) => (
-        <article id={s.id} class="card">
-          <h2 class="h2 mb-1">{s.title}</h2>
-          <p class="muted mb-3">{s.subtitle}</p>
-          <p class="text-sm text-zinc-200 mb-4">{s.description}</p>
-          <div class="flex flex-wrap gap-2" aria-label="Features">
-            {s.features.map((f) => <span class="chip">{f}</span>)}
+      {services.map(s => (
+        <article class="card" id={s.id}>
+          <h2 class="text-white text-xl font-semibold">{s.title}</h2>
+          <p class="muted mb-2">{s.subtitle}</p>
+          <p class="text-slate-300 mb-4">{s.description}</p>
+          <div class="flex flex-wrap" aria-label="Highlights">
+            {s.features.map(f => (<span class="chip">{f}</span>))}
           </div>
         </article>
       ))}
