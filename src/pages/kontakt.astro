@@ -1,81 +1,24 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+const submit = `async function onSubmit(e){e.preventDefault();const f=e.currentTarget;const data={name:f.name.value,email:f.email.value,phone:f.phone.value,site:f.site.value,message:f.message.value};const btn=f.querySelector('[data-submit]');btn.disabled=true;btn.textContent='Wird gesendet…';try{const res=await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!res.ok)throw new Error('Request failed');f.reset();alert('Danke! Wir melden uns – es gibt eine Telegram-Benachrichtigung.');}catch(err){console.error(err);alert('Fehler beim Senden. Bitte später erneut versuchen.');}finally{btn.disabled=false;btn.textContent='Nachricht senden';}}`;
 ---
-<BaseLayout title="Kontakt – Gylsere Januzi Krieg" description="Nehmen Sie Kontakt auf: Erstgespräch, E-Mail oder Telefon.">
-  <section class="section" id="erstgespraech">
+<BaseLayout title="Kontakt – Gylsere Januzi Krieg Online Marketing Office" description="Kontakt aufnehmen: Erstgespräch, E-Mail oder Telefon. Wir antworten schnell.">
+  <section class="py-12" id="erstgespraech">
     <div class="container">
-      <h1 class="text-white text-3xl font-bold mb-2">Kontakt</h1>
-      <p class="text-slate-400 mb-8">Schreiben Sie uns oder buchen Sie direkt Ihr Erstgespräch.</p>
+      <h1 class="text-3xl font-semibold text-white mb-4">Kontakt</h1>
+      <p class="text-slate-400 mb-8">Erstgespräch, E-Mail oder Telefon – wir sind schnell für Sie da.</p>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <article class="card">
-          <h3>Erstgespräch buchen</h3>
-          <p>Wir melden uns schnellstmöglich mit einem Terminvorschlag.</p>
-          <a class="btn btn-primary mt-3" href="#contact-form">Jetzt anfragen</a>
-        </article>
-        <article class="card">
-          <h3>Direktkontakt</h3>
-          <p class="text-slate-400">E-Mail: <a class="text-white underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a><br />
-          Telefon: <a class="text-white underline" href="tel:+491756372395">+49 175 6372395</a></p>
-        </article>
-      </div>
-
-      <form id="contact-form" class="card mt-8" onsubmit="return false;">
-        <h3>Kontaktformular</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-          <label class="block">
-            <span class="text-slate-300 text-sm">Name</span>
-            <input class="mt-1 w-full rounded-md bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200" name="name" required />
-          </label>
-          <label class="block">
-            <span class="text-slate-300 text-sm">E-Mail</span>
-            <input type="email" class="mt-1 w-full rounded-md bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200" name="email" required />
-          </label>
-          <label class="block">
-            <span class="text-slate-300 text-sm">Telefon</span>
-            <input class="mt-1 w-full rounded-md bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200" name="phone" />
-          </label>
-          <label class="block">
-            <span class="text-slate-300 text-sm">Website</span>
-            <input class="mt-1 w-full rounded-md bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200" name="site" />
-          </label>
-          <label class="block md:col-span-2">
-            <span class="text-slate-300 text-sm">Nachricht</span>
-            <textarea class="mt-1 w-full rounded-md bg-slate-950 border border-slate-800 px-3 py-2 text-slate-200" name="message" rows="5" required></textarea>
-          </label>
-        </div>
-        <button class="btn btn-primary mt-4" id="send-btn">Absenden</button>
-        <p id="status" class="text-slate-400 mt-3" role="status" aria-live="polite"></p>
+      <form class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl" on:submit={submit}>
+        <input required name="name" placeholder="Ihr Name" class="bg-zinc-900 border border-slate-800 rounded-md p-3 text-slate-200" />
+        <input required type="email" name="email" placeholder="E-Mail" class="bg-zinc-900 border border-slate-800 rounded-md p-3 text-slate-200" />
+        <input name="phone" placeholder="Telefon" class="bg-zinc-900 border border-slate-800 rounded-md p-3 text-slate-200" />
+        <input name="site" placeholder="Website (optional)" class="bg-zinc-900 border border-slate-800 rounded-md p-3 text-slate-200" />
+        <textarea required name="message" placeholder="Nachricht" class="md:col-span-2 bg-zinc-900 border border-slate-800 rounded-md p-3 text-slate-200" rows="5"></textarea>
+        <button type="submit" data-submit class="md:col-span-2 px-4 py-3 rounded-md bg-brand-primary text-white hover:opacity-90">Nachricht senden</button>
       </form>
-
-      <script>
-        const form = document.getElementById('contact-form');
-        const status = document.getElementById('status');
-        const btn = document.getElementById('send-btn');
-        async function submitForm() {
-          btn.disabled = true; status.textContent = 'Senden…';
-          try {
-            const data = Object.fromEntries(new FormData(form));
-            const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                name: data.name,
-                email: data.email,
-                phone: data.phone,
-                site: data.site,
-                message: data.message,
-              }),
-            });
-            if (!res.ok) throw new Error('Fehler beim Senden');
-            status.textContent = 'Danke! Ihre Anfrage ist eingegangen. Sie erhalten eine Telegram-Benachrichtigung.';
-            form.reset();
-          } catch (e) {
-            status.textContent = 'Senden fehlgeschlagen. Bitte später erneut versuchen oder per E-Mail/Telefon kontaktieren.';
-          } finally { btn.disabled = false; }
-        }
-        form.addEventListener('submit', submitForm);
-      </script>
+      <div class="mt-6 text-slate-400">
+        <p><strong>Oder direkt:</strong> <a class="text-white underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a> · <a class="text-white underline" href="tel:+491756372395">+49 175 6372395</a></p>
+      </div>
     </div>
   </section>
 </BaseLayout>
