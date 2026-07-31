@@ -1,62 +1,41 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const services = [
+  { id: "seo", title: "SEO", subtitle: "Sichtbar werden, wenn es zählt.", description: "Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.", features: ["Technisches SEO", "Content & Keywords", "Backlink-Aufbau", "Local SEO"] },
+  { id: "seo-regio", title: "SEO-Regio", subtitle: "Die absolute Umland-Dominanz.", description: "Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.", features: ["50 Satelliten-Seiten", "Kein Risiko für Original-Site", "Umland-Abdeckung", "Local SEO Boost"] },
+  { id: "google-ads", title: "Google Ads", subtitle: "Jeder Klick mit Absicht.", description: "Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.", features: ["Search & Performance Max", "Conversion-Tracking", "Klickschutz (Click-Fraud)", "Retargeting"] },
+  { id: "geo", title: "GEO", subtitle: "Sichtbar in ChatGPT, Perplexity & Google AI.", description: "Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.", features: ["LLM-Crawling", "Entity-SEO", "Citation-Ready Content", "llms.txt & AI Overviews"] },
+  { id: "webdesign", title: "Webdesign & E-Commerce", subtitle: "Websites, die verkaufen.", description: "Maßgeschneidertes Design mit Astro & Next.js – ultraschnell, skalierbar und konversionsstark mit exzellenten Core Web Vitals, DSGVO-Sicherheit und Verkaufspsychologie.", features: ["Custom Design", "Astro & Next.js", "Core Web Vitals", "CRO & APIs"] },
+  { id: "online-terminvereinbarung", title: "Online-Terminvereinbarung", subtitle: "24/7 Terminbuchungen automatisieren.", description: "Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.", features: ["API-Schnittstellen", "24/7-Buchung", "Automatisierte Abläufe", "Echtzeit-Synchronisation"] },
+  { id: "marketing", title: "Marketing", subtitle: "Der Mix, der wirkt.", description: "Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.", features: ["Content", "Social Media", "Reporting & Analytics"] },
+  { id: "ai-automation", title: "AI & Automation", subtitle: "Prozesse, die mitdenken.", description: "Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.", features: ["Custom-AI-Agenten", "LLM-Integrationen", "Workflow-Automatisierung"] },
+  { id: "branding", title: "Branding", subtitle: "Markenbildung mit Substanz.", description: "Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.", features: ["Brand Strategy", "Visual Identity", "Logo & Design System", "Messaging"] },
+  { id: "social-media", title: "Social Media", subtitle: "Content, der Kunden bringt.", description: "Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbar Anfragen und Umsatz liefert.", features: ["Strategie & Kanalaufbau", "Foto, Video & Grafik", "Community-Management", "Paid Social"] },
+  { id: "reputation", title: "Reputation & Bewertungen", subtitle: "Automatisierte Top-Bewertungen & Schutz.", description: "Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.", features: ["Rezensionen löschen", "Review-Monitoring", "5-Sterne-System", "Reputation-Recovery"] },
+  { id: "praxis-tv", title: "Praxis- & Wartezimmer-TV", subtitle: "Hochkonvertierende Präsentationen.", description: "Visuell überragende Bildschirmpräsentationen für Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.", features: ["Wartezimmer-TV", "Patienten-Aufklärung", "Zusatzleistungen", "Visuelle Konzepte"] },
+  { id: "code-exzellenz", title: "Code-Exzellenz & Software", subtitle: "Custom Programmierarbeiten.", description: "Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.", features: ["Custom Software", "API-Integrationen", "Legacy-Modernisierung", "Prozessautomatisierung"] },
+  { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
+];
 ---
-<Layout title="Gylsere Januzi – Online Marketing Office" description="Digitale Präsenz, die messbar wirkt. SEO, Local SEO, GEO, Google Ads, Webdesign und mehr.">
-  <Fragment slot="header"><Header /></Fragment>
-
-  <section class="bg-[#0b0f19] py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-white mb-4">Digitale Präsenz, die messbar wirkt.</h1>
-        <p class="text-lg text-gray-300">Wir bringen Ihr Unternehmen nach vorn – bei Google, in KI-Antworten und auf Social Media. Klar, strukturiert, ohne Umwege.</p>
-      </div>
-    </div>
+<BaseLayout title="Startseite – Gylsere Januzi Krieg Online Marketing Office" description="Online-Marketing mit Substanz: SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.">
+  <section class="mb-12">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Gylsere Januzi Krieg Online Marketing Office</h1>
+    <p class="text-slate-300 mt-3">Online-Marketing mit Substanz: SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.</p>
   </section>
 
-  <Section title="Leistungen" intro="Die wichtigsten Hebel – klar priorisiert.">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
-        <p class="text-sm text-gray-400 mb-4">Profil-Optimierung, lokale Keywords, Reviews und NAP-Konsistenz für maximale Sichtbarkeit im Umkreis – verknüpft mit unserer Umland-Dominanz.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Sichtbar werden, wenn es zählt.</h3>
-        <p class="text-sm text-gray-400 mb-4">Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
-        <h3 class="text-lg font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
-        <p class="text-sm text-gray-400 mb-4">Search, PMax, YouTube – mit messbarem ROAS, Klickschutz und ohne Budgetverschwendung.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">GEO</span>
-        <h3 class="text-lg font-bold text-white mb-2">Sichtbar in ChatGPT, Perplexity & Google AI.</h3>
-        <p class="text-sm text-gray-400 mb-4">Generative Engine Optimization: LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Webdesign</span>
-        <h3 class="text-lg font-bold text-white mb-2">Websites, die verkaufen.</h3>
-        <p class="text-sm text-gray-400 mb-4">Maßgeschneidertes Design in Astro – ultraschnell, DSGVO-sicher, konversionsstark.</p>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Terminvereinbarung</span>
-        <h3 class="text-lg font-bold text-white mb-2">24/7 Buchungen automatisieren.</h3>
-        <p class="text-sm text-gray-400 mb-4">Professionelle Online-Terminbuchung (inkl. Jameda & Doctolib), eingebunden in Website und Suche.</p>
-      </article>
-
+  <section aria-labelledby="leistungen-heading">
+    <h2 id="leistungen-heading" class="text-2xl md:text-3xl font-semibold mb-6">Unsere Leistungen</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {services.map(s => (
+        <article id={s.id} class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+          <h3 class="text-xl font-semibold tracking-tight">{s.title}</h3>
+          <p class="text-slate-400 mt-1">{s.subtitle}</p>
+          <p class="text-slate-300 mt-4">{s.description}</p>
+          <div class="flex flex-wrap gap-2 mt-5" aria-label="Highlights">
+            {s.features.map(f => (<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-slate-700 text-slate-200">{f}</span>))}
+          </div>
+        </article>
+      ))}
     </div>
-  </Section>
-
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+  </section>
+</BaseLayout>

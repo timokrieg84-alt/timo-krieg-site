@@ -1,39 +1,18 @@
 ---
-const {
-  title = 'Digitalagentur Schwäbisch Gmünd | Local SEO & schnelle Websites',
-  description = 'ListingProfis: Lokales SEO, Google Business Profile, Listings & schnelle Astro‑Websites für Schwäbisch Gmünd, Ostalbkreis & Stuttgart. Jetzt anrufen: +49 160 4365363.',
-  ogImage = '/assets/og/listingprofis.jpg'
-} = Astro.props;
-const canonical = Astro.site ? new URL(Astro.url.pathname, Astro.site).toString() : undefined;
+import "../styles/tailwind.css";
+export const prerender = true;
+const { title = "Gylsere Januzi Krieg Online Marketing Office", description = "" } = Astro.props;
 ---
-<html lang="de">
+<html lang="de" class="min-h-full bg-slate-950 text-slate-100">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:opsz,wght@8..144,400..800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles/design-system.css" />
     <title>{title}</title>
-    <meta name="description" content={description} />
-    <meta property="og:type" content="website">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:site_name" content="ListingProfis – Digitalagentur & Online‑Marketing">
-    <meta property="og:title" content={title}>
-    <meta property="og:description" content={description}>
-    {canonical && <meta property="og:url" content={canonical} />}
-    <meta property="og:image" content={ogImage}>
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content={title}>
-    <meta name="twitter:description" content={description}>
-    <meta name="twitter:image" content={ogImage}>
-    {canonical && <link rel="canonical" href={canonical} />}
-    <slot name="head" />
+    {description && <meta name="description" content={description} />}
   </head>
-  <body>
-    <slot name="icons" />
-    <slot name="header" />
-    <slot />
-    <slot name="footer" />
+  <body class="min-h-screen antialiased">
+    <main class="container mx-auto px-4 py-12">
+      <slot />
+    </main>
   </body>
 </html>

@@ -1,68 +1,61 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
 ---
-<Layout title="Datenschutz – Gylsere Januzi" description="Informationen zur Verarbeitung personenbezogener Daten (DSGVO).">
-  <Fragment slot="header"><Header /></Fragment>
-  <Section title="Datenschutzerklärung" intro="Wir nehmen den Schutz Ihrer Daten ernst und verarbeiten personenbezogene Daten gemäß DSGVO und BDSG.">
-    <article class="prose prose-invert max-w-3xl">
-      <h2>1. Verantwortliche</h2>
-      <p>
-        Gylsere Januzi – Online Marketing Office<br />
-        Standort: Schwäbisch Gmünd, Deutschland<br />
-        E-Mail: <a href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a><br />
-        Telefon: <a href="tel:+491756372395">+49 175 6372395</a>
-      </p>
 
-      <h2>2. Hosting und Logfiles</h2>
-      <p>
-        Diese Website wird bei Vercel (Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA) gehostet. Beim Aufruf der Seiten werden Server-Logfiles verarbeitet 
-        (IP-Adresse, Datum/Uhrzeit, User-Agent, Referrer, aufgerufene URL). Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der sicheren 
-        Bereitstellung der Website). Logfiles werden i. d. R. nach kurzer Zeit automatisch gelöscht.
-      </p>
+<Layout title="Datenschutz | Gylsere Januzi Online Marketing Office" description="Datenschutzhinweise gemäß DSGVO für Gylsere Januzi Online Marketing Office.">
+  <main class="max-w-4xl mx-auto px-4 py-16 text-gray-200">
+    <h1 class="text-3xl font-bold mb-2 text-white">Datenschutzerklärung</h1>
+    <p class="text-sm text-gray-400 mb-8">Stand: 30.07.2026</p>
 
-      <h2>3. Content Delivery und Schriftarten</h2>
-      <p>
-        Statische Assets werden über CDNs von Vercel ausgeliefert. Webfonts werden lokal eingebunden bzw. systemseitig verwendet, um keine externen Verbindungen zu Schriftanbietern herzustellen.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">1. Verantwortliche Stelle</h2>
+      <p>Gylsere Januzi Online Marketing Office, Inhaberin: Gylsere Januzi</p>
+      <p>73525 Schwäbisch Gmünd, Deutschland</p>
+      <p>E-Mail: <a class="text-[#FF2D9A] hover:underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a> · Tel.: <a class="text-[#00C853] hover:underline" href="tel:+491756372395">+49 175 6372395</a></p>
+    </section>
 
-      <h2>4. Kontaktformular</h2>
-      <p>
-        Bei Nutzung des Kontaktformulars werden die von Ihnen eingegebenen Daten (Name, E-Mail, Telefon, Website, Nachricht) an unseren n8n-Webhook übertragen 
-        und zum Zweck der Bearbeitung Ihrer Anfrage verarbeitet. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (Vertrag/Anbahnung) bzw. Art. 6 Abs. 1 lit. f DSGVO 
-        (berechtigtes Interesse an der Kommunikation). Wir löschen Anfragen, sobald sie nicht mehr erforderlich sind und gesetzliche Aufbewahrungspflichten dem nicht entgegenstehen.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">2. Hosting & Logfiles</h2>
+      <p>Diese Website wird statisch über Vercel (Vercel Inc., 340 S Lemon Ave #4133, Walnut, CA 91789, USA) ausgeliefert. Beim Aufruf werden serverseitig technische Protokolldaten (z. B. IP‑Adresse, Datum/Uhrzeit, URL, Referrer, User‑Agent, Statuscodes) verarbeitet, um Betrieb, Stabilität und Sicherheit zu gewährleisten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Eine Datenübertragung in die USA kann stattfinden (SCC).</p>
+    </section>
 
-      <h2>5. Cookies und Tracking</h2>
-      <p>
-        Wir setzen derzeit keine Tracking-Cookies ein. Sofern künftig Analyse- oder Marketing-Tools (z. B. Plausible, Matomo) genutzt werden, informieren wir hierüber und holen erforderliche Einwilligungen ein.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">3. Kontaktaufnahme (Formular & E‑Mail)</h2>
+      <p>Bei Nutzung des Kontaktformulars verarbeiten wir die von Ihnen eingegebenen Daten (Name, E‑Mail, Telefon, Website, Nachricht) zur Bearbeitung Ihrer Anfrage. Empfänger ist unser Automatisierungsdienst (n8n Cloud) über einen Webhook.</p>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Zweck: Kommunikation, Angebotslegung</li>
+        <li>Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO oder lit. f DSGVO</li>
+      </ul>
+    </section>
 
-      <h2>6. Datenweitergabe</h2>
-      <p>
-        Eine Übermittlung Ihrer Daten an Dritte erfolgt nur, sofern dies zur Vertragserfüllung erforderlich ist, wir gesetzlich dazu verpflichtet sind oder eine Einwilligung vorliegt.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">4. Auftragsverarbeitung & Drittlandtransfers</h2>
+      <p>Wir setzen Dienstleister (insb. Hosting/Deployment durch Vercel; Automatisierung n8n Cloud) als Auftragsverarbeiter ein (Art. 28 DSGVO). Übermittlungen in Drittländer erfolgen auf Grundlage geeigneter Garantien (EU‑Standardvertragsklauseln).</p>
+    </section>
 
-      <h2>7. Ihre Rechte</h2>
-      <p>
-        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), 
-        Datenübertragbarkeit (Art. 20 DSGVO) und Widerspruch (Art. 21 DSGVO). Sie haben zudem das Recht, sich bei einer Aufsichtsbehörde zu beschweren.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">5. Speicherdauer</h2>
+      <p>Wir speichern personenbezogene Daten nur solange, wie es für die Zwecke erforderlich ist. Anfragen löschen wir regelmäßig nach Abschluss der Kommunikation, sofern keine Aufbewahrungspflichten entgegenstehen.</p>
+    </section>
 
-      <h2>8. Sicherheit</h2>
-      <p>
-        Wir treffen geeignete technische und organisatorische Maßnahmen, um Ihre Daten vor Verlust, Missbrauch und unberechtigtem Zugriff zu schützen.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">6. Sicherheit (TLS/HTTPS)</h2>
+      <p>Diese Website nutzt TLS‑Verschlüsselung (HTTPS). Daten, die Sie an uns übermitteln, können nicht von Dritten mitgelesen werden.</p>
+    </section>
 
-      <h2>9. Aktualität</h2>
-      <p>
-        Wir passen diese Datenschutzerklärung an, wenn dies erforderlich ist. Die aktuelle Fassung wird hier veröffentlicht.
-      </p>
+    <section class="mb-8">
+      <h2 class="text-xl font-semibold mb-2 text-white">7. Ihre Rechte</h2>
+      <ul class="list-disc pl-5 space-y-1">
+        <li>Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung</li>
+        <li>Datenübertragbarkeit</li>
+        <li>Widerspruch gegen Verarbeitungen auf Grundlage berechtigter Interessen</li>
+        <li>Beschwerde bei einer Aufsichtsbehörde</li>
+      </ul>
+    </section>
 
-      <p class="text-xs text-gray-500">Stand: {new Date().toLocaleDateString('de-DE')}</p>
-    </article>
-  </Section>
-  <Fragment slot="footer"><Footer /></Fragment>
+    <section>
+      <h2 class="text-xl font-semibold mb-2 text-white">8. Cookies, Tracking & Drittinhalte</h2>
+      <p>Wir setzen keine Tracking‑Cookies und keine Analyse‑Tools ein. Externe Inhalte werden – sofern eingesetzt – datensparsam eingebunden.</p>
+    </section>
+  </main>
 </Layout>

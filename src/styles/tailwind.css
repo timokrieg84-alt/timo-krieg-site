@@ -2,41 +2,4 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  :root {
-    --bg-dark: #0A0F0D;
-    --card-bg: #121A16;
-    --text-main: #FFFFFF;
-    --text-muted: #A0AAB0;
-
-    /* Primary triad accents */
-    --primary-orange: #FF6B00;
-    --secondary-green: #00E676;
-    --accent-pink: #FF007F;
-
-    /* Compatibility with prior variable names */
-    --accent-orange: var(--primary-orange);
-    --accent-green: var(--secondary-green);
-    --footer-bg: var(--bg-dark);
-    --footer-fg: #eef0f3;
-  }
-  html { color-scheme: dark; }
-  body { background-color: var(--bg-dark); color: var(--text-main); }
-}
-
-@layer components {
-  .container-narrow { @apply max-w-[1100px] w-[92vw] mx-auto; }
-  .btn-tw { @apply inline-flex items-center gap-2 rounded-full border px-3 py-2 no-underline transition; }
-}
-
-/* Lightweight global color realignment: map any legacy emerald classes to triad brand-green */
-@layer utilities {
-  .text-emerald-400 { @apply text-brand-green; }
-  .text-emerald-500 { @apply text-brand-green; }
-  .border-emerald-400 { @apply border-brand-green; }
-  .border-emerald-500 { @apply border-brand-green; }
-  .bg-emerald-400 { @apply bg-brand-green text-black; }
-  .bg-emerald-500 { @apply bg-brand-green text-black; }
-  .ring-emerald-400 { @apply ring-brand-green; }
-  .ring-emerald-500 { @apply ring-brand-green; }
-}
+:root { color-scheme: dark; }

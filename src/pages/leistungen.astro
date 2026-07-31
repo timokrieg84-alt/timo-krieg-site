@@ -1,193 +1,37 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+const services = [
+  { id: "seo", title: "SEO", subtitle: "Sichtbar werden, wenn es zählt.", description: "Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.", features: ["Technisches SEO", "Content & Keywords", "Backlink-Aufbau", "Local SEO"] },
+  { id: "seo-regio", title: "SEO-Regio", subtitle: "Die absolute Umland-Dominanz.", description: "Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.", features: ["50 Satelliten-Seiten", "Kein Risiko für Original-Site", "Umland-Abdeckung", "Local SEO Boost"] },
+  { id: "google-ads", title: "Google Ads", subtitle: "Jeder Klick mit Absicht.", description: "Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.", features: ["Search & Performance Max", "Conversion-Tracking", "Klickschutz (Click-Fraud)", "Retargeting"] },
+  { id: "geo", title: "GEO", subtitle: "Sichtbar in ChatGPT, Perplexity & Google AI.", description: "Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.", features: ["LLM-Crawling", "Entity-SEO", "Citation-Ready Content", "llms.txt & AI Overviews"] },
+  { id: "webdesign", title: "Webdesign & E-Commerce", subtitle: "Websites, die verkaufen.", description: "Maßgeschneidertes Design mit Astro & Next.js – ultraschnell, skalierbar und konversionsstark mit exzellenten Core Web Vitals, DSGVO-Sicherheit und Verkaufspsychologie.", features: ["Custom Design", "Astro & Next.js", "Core Web Vitals", "CRO & APIs"] },
+  { id: "online-terminvereinbarung", title: "Online-Terminvereinbarung", subtitle: "24/7 Terminbuchungen automatisieren.", description: "Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.", features: ["API-Schnittstellen", "24/7-Buchung", "Automatisierte Abläufe", "Echtzeit-Synchronisation"] },
+  { id: "marketing", title: "Marketing", subtitle: "Der Mix, der wirkt.", description: "Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.", features: ["Content", "Social Media", "Reporting & Analytics"] },
+  { id: "ai-automation", title: "AI & Automation", subtitle: "Prozesse, die mitdenken.", description: "Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.", features: ["Custom-AI-Agenten", "LLM-Integrationen", "Workflow-Automatisierung"] },
+  { id: "branding", title: "Branding", subtitle: "Markenbildung mit Substanz.", description: "Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.", features: ["Brand Strategy", "Visual Identity", "Logo & Design System", "Messaging"] },
+  { id: "social-media", title: "Social Media", subtitle: "Content, der Kunden bringt.", description: "Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbar Anfragen und Umsatz liefert.", features: ["Strategie & Kanalaufbau", "Foto, Video & Grafik", "Community-Management", "Paid Social"] },
+  { id: "reputation", title: "Reputation & Bewertungen", subtitle: "Automatisierte Top-Bewertungen & Schutz.", description: "Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.", features: ["Rezensionen löschen", "Review-Monitoring", "5-Sterne-System", "Reputation-Recovery"] },
+  { id: "praxis-tv", title: "Praxis- & Wartezimmer-TV", subtitle: "Hochkonvertierende Präsentationen.", description: "Visuell überragende Bildschirmpräsentationen für Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.", features: ["Wartezimmer-TV", "Patienten-Aufklärung", "Zusatzleistungen", "Visuelle Konzepte"] },
+  { id: "code-exzellenz", title: "Code-Exzellenz & Software", subtitle: "Custom Programmierarbeiten.", description: "Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.", features: ["Custom Software", "API-Integrationen", "Legacy-Modernisierung", "Prozessautomatisierung"] },
+  { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
+];
 ---
-<Layout title="Leistungen – Gylsere Januzi" description="Alle Leistungen im Überblick.">
-  <Fragment slot="header"><Header /></Fragment>
-  <Section title="Leistungen" intro="Unser vollständiges Portfolio für Ihren digitalen Erfolg.">
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-      
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO</span>
-        <h3 class="text-xl font-bold text-white mb-2">Sichtbar werden, wenn es zählt.</h3>
-        <p class="text-sm text-gray-400 mb-4">Technisches SEO, Content-Strategie und Backlinks – damit ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Technisches SEO</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Content & Keywords</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Backlink-Aufbau</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Local SEO</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Local SEO</span>
-        <h3 class="text-xl font-bold text-white mb-2">Google Unternehmensprofil – ganz oben im Local Pack.</h3>
-        <p class="text-sm text-gray-400 mb-4">Optimierung des Google-Unternehmensprofils, lokale Keywords, Reviews, NAP-Konsistenz – und strategische Verknüpfung mit der Umland‑Dominanz.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Local Pack Ranking</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Reviews & NAP</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">GBP-Optimierung</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Citations</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">SEO-Regio</span>
-        <h3 class="text-xl font-bold text-white mb-2">Die absolute Umland-Dominanz.</h3>
-        <p class="text-sm text-gray-400 mb-4">Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">50 Satelliten-Seiten</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Kein Risiko für Original-Site</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Umland-Abdeckung</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Local SEO Boost</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Google Ads</span>
-        <h3 class="text-xl font-bold text-white mb-2">Jeder Klick mit Absicht.</h3>
-        <p class="text-sm text-gray-400 mb-4">Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Search & PMax</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Conversion Tracking</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Klickschutz</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Retargeting</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">GEO</span>
-        <h3 class="text-xl font-bold text-white mb-2">Sichtbar in ChatGPT, Perplexity & Google AI.</h3>
-        <p class="text-sm text-gray-400 mb-4">Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">LLM-Crawling</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Entity-SEO</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Citation-Ready Content</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">llms.txt & AI Overviews</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Webdesign & E-Commerce</span>
-        <h3 class="text-xl font-bold text-white mb-2">Websites, die verkaufen.</h3>
-        <p class="text-sm text-gray-400 mb-4">Maßgeschneidertes Design mit Next.js – schnell, skalierbar, konversionsstark mit blitzschnellen Ladezeiten, DSGVO-Rechtsicherheit und Verkaufspsychologie.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Custom Design</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Next.js & WordPress</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Core Web Vitals</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">CRO & APIs</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Online-Terminvereinbarung</span>
-        <h3 class="text-xl font-bold text-white mb-2">24/7 Terminbuchungen automatisieren.</h3>
-        <p class="text-sm text-gray-400 mb-4">Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">API-Schnittstellen</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">24/7 Buchung</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Automatisierte Abläufe</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Echtzeit-Sync</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Marketing</span>
-        <h3 class="text-xl font-bold text-white mb-2">Der Mix, der wirkt.</h3>
-        <p class="text-sm text-gray-400 mb-4">Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Content</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Social Media</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Analytics</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">AI & Automation</span>
-        <h3 class="text-xl font-bold text-white mb-2">Prozesse, die mitdenken.</h3>
-        <p class="text-sm text-gray-400 mb-4">Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Custom-AI-Agenten</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">LLM-Integrationen</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Workflow-Automation</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Branding</span>
-        <h3 class="text-xl font-bold text-white mb-2">Markenbildung mit Substanz.</h3>
-        <p class="text-sm text-gray-400 mb-4">Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Brand Strategy</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Visual Identity</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Logo & Design System</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Messaging</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Social Media</span>
-        <h3 class="text-xl font-bold text-white mb-2">Content, der Kunden bringt.</h3>
-        <p class="text-sm text-gray-400 mb-4">Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbare Anfragen und Umsatz liefert.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Strategie & Kanalaufbau</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Foto, Video & Grafik</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Community-Management</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Paid Social</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Reputation & Bewertungen</span>
-        <h3 class="text-xl font-bold text-white mb-2">Automatisierte Top-Bewertungen & Schutz.</h3>
-        <p class="text-sm text-gray-400 mb-4">Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Rezensionen löschen</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Review-Monitoring</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">5-Sterne-System</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Reputation-Recovery</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Praxis- & Wartezimmer-TV</span>
-        <h3 class="text-xl font-bold text-white mb-2">Hochkonvertierende Präsentationen.</h3>
-        <p class="text-sm text-gray-400 mb-4">Visuell überragende Bildschirmpräsentationen im Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Wartezimmer-TV</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Patienten-Aufklärung</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Zusatzleistungen</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Visuelle Konzepte</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Code-Exzellenz & Software</span>
-        <h3 class="text-xl font-bold text-white mb-2">Custom Programmierarbeiten.</h3>
-        <p class="text-sm text-gray-400 mb-4">Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">Custom Software</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">API Integration</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Logo & Briefköpfe</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Prozessautomatisierung</span>
-        </div>
-      </article>
-
-      <article class="bg-[#131b2e] border border-gray-800 p-6 rounded-xl">
-        <span class="inline-block px-2.5 py-1 text-xs font-semibold rounded bg-[#00C853]/10 text-[#00C853] mb-3">Premium-Factoring</span>
-        <h3 class="text-xl font-bold text-white mb-2">Sofortige Liquidität & Ausfallschutz.</h3>
-        <p class="text-sm text-gray-400 mb-4">Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.</p>
-        <div class="flex flex-wrap gap-1.5 text-xs text-gray-400">
-          <span class="bg-gray-800 px-2 py-1 rounded">100% Ausfallschutz</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Sofort-Liquidität</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Bessere Bonität</span>
-          <span class="bg-gray-800 px-2 py-1 rounded">Debitorenmanagement</span>
-        </div>
-      </article>
-
+<BaseLayout title="Leistungen – Gylsere Januzi Krieg Online Marketing Office" description="Alle 14 Leistungen im Überblick: SEO, GEO, Ads, Webdesign, Social, AI & mehr.">
+  <section aria-labelledby="leistungen-h1">
+    <h1 id="leistungen-h1" class="text-3xl md:text-4xl font-bold tracking-tight mb-8">Leistungen</h1>
+    <p class="text-slate-300 mb-8">Unser vollständiges Leistungsspektrum – modular kombinierbar, messbar wirksam.</p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" role="list">
+      {services.map(s => (
+        <article class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow" role="listitem" id={s.id}>
+          <h2 class="text-xl font-semibold tracking-tight">{s.title}</h2>
+          <p class="text-slate-400 mt-1">{s.subtitle}</p>
+          <p class="text-slate-300 mt-4">{s.description}</p>
+          <div class="flex flex-wrap gap-2 mt-5" aria-label="Highlights">
+            {s.features.map(f => (<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-slate-700 text-slate-200">{f}</span>))}
+          </div>
+        </article>
+      ))}
     </div>
-  </Section>
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+  </section>
+</BaseLayout>
