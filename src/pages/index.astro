@@ -17,20 +17,25 @@ const services = [
   { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
 ];
 ---
-<BaseLayout title="Gylsere Januzi Krieg Online Marketing Office" description="SEO, GEO, Ads, Webdesign & mehr – messbar wirksam.">
-  <section class="section">
+<BaseLayout title="Gylsere Januzi Krieg Online Marketing Office" description="High-Performance Online Marketing mit Astro: SEO, GEO, Ads, Webdesign, Social, AI & mehr.">
+  <section class="py-16">
     <div class="container">
-      <h1 class="text-white text-3xl font-bold mb-2">Unsere Leistungen</h1>
-      <p class="text-slate-400 mb-8">14 Bausteine für mehr Sichtbarkeit, Anfragen und Umsatz.</p>
+      <h1 class="text-3xl md:text-4xl font-semibold text-white mb-4">Wir bringen Sichtbarkeit, Leads & Umsatz – mit einem Setup, das skaliert.</h1>
+      <p class="text-slate-400 max-w-3xl">Astro-Performance, messbares Marketing und intelligente Automatisierung. Alles fokussiert auf Ergebnis: Anfragen, ROAS und nachhaltiges Wachstum.</p>
+    </div>
+  </section>
+
+  <section class="py-8">
+    <div class="container">
+      <h2 class="text-2xl font-semibold text-white mb-6">Unsere Leistungen</h2>
       <div class="grid-cards" role="list">
-        {services.map(s => (
-          <a class="card block" role="listitem" id={s.id} href={`/leistungen#${s.id}`}
-            aria-label={`Mehr zu ${s.title}`}>
-            <h3>{s.title}</h3>
-            <div class="subtitle">{s.subtitle}</div>
-            <p>{s.description}</p>
-            <div class="chips" aria-label="Highlights">
-              {s.features.map(f => (<span class="chip">{f}</span>))}
+        {services.map((s) => (
+          <a href={`/leistungen#${s.id}`} class="card block focus:outline-none focus:ring-2 focus:ring-brand-primary" role="listitem" id={s.id}>
+            <h3 class="text-xl font-semibold mb-1">{s.title}</h3>
+            <p class="text-slate-400 mb-2">{s.subtitle}</p>
+            <p class="mb-3">{s.description}</p>
+            <div class="features" aria-label="Highlights">
+              {s.features.map((f) => (<span class="chip">{f}</span>))}
             </div>
           </a>
         ))}

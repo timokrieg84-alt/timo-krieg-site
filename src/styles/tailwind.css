@@ -2,33 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global Dark Theme */
-:root {
-  color-scheme: dark;
-}
-html { @apply dark; }
-body { @apply bg-slate-950 text-slate-300 antialiased; }
+/* Utilities for cards and grid (Tailwind-first, no broken customs) */
+.container{max-width:1200px;margin-inline:auto;padding-inline:1rem}
+.grid-cards{display:grid;grid-template-columns:repeat(1,minmax(0,1fr));gap:1.5rem}
+@media(min-width:768px){.grid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(min-width:1024px){.grid-cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.card{background-color:rgb(24 24 27/1); /* bg-zinc-900 */ border:1px solid rgb(30 41 59/1); /* border-slate-800 */ border-radius:0.75rem; padding:1.5rem; box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1)}
+.card:hover{box-shadow:0 10px 15px -3px rgba(0,0,0,.2),0 4px 6px -4px rgba(0,0,0,.2); transform:translateY(-1px); transition:box-shadow .2s ease, transform .2s ease}
+.card h3,.card h2{color:#fff}
+.card p{color:rgb(148 163 184/1)} /* text-slate-400 */
+.features{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem}
+.chip{display:inline-flex;align-items:center;padding:.25rem .5rem;border-radius:.5rem;background-color:rgb(15 23 42/.6); /* bg-slate-900/60 */ color:rgb(203 213 225/1); /* text-slate-300 */ border:1px solid rgb(30 41 59/1)}
 
-/* Utilities */
-.container { @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8; }
-.section { @apply py-12 sm:py-16; }
-.grid-cards { @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6; }
-.card { @apply bg-zinc-900 border border-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg transition-shadow; }
-.card h3 { @apply text-white text-lg font-semibold mb-1; }
-.card .subtitle { @apply text-slate-400 mb-2; }
-.card p { @apply text-slate-300; }
-.chips { @apply mt-4 flex flex-wrap gap-2; }
-.chip { @apply inline-flex items-center rounded-full border border-slate-800 bg-slate-900/60 px-3 py-1 text-xs text-slate-300; }
-
-.header { @apply border-b border-slate-800 bg-slate-950/80 backdrop-blur supports-[backdrop-filter]:bg-slate-950/60 sticky top-0 z-40; }
-.nav { @apply container flex h-16 items-center justify-between; }
-.nav a { @apply text-slate-300 hover:text-white transition-colors; }
-.nav .links { @apply hidden md:flex items-center gap-6; }
-.actions { @apply flex items-center gap-2; }
-.btn { @apply inline-flex items-center justify-center rounded-md px-3.5 py-2.5 text-sm font-medium; }
-.btn-primary { @apply bg-brand-primary text-white hover:brightness-110; }
-.btn-accent { @apply bg-brand-accent text-white hover:brightness-110; }
-.btn-ghost { @apply border border-slate-800 bg-slate-900/60 text-slate-200 hover:text-white; }
-
-.footer { @apply border-t border-slate-800 mt-16; }
-.footer-inner { @apply container py-8 text-sm text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4; }
+html.dark, body{background-color:rgb(2 6 23/1); /* bg-slate-950 */}
+body{color:rgb(203 213 225/1)}

@@ -1,5 +1,4 @@
 /**** Tailwind Config ****/
-/** Dark theme by default via .dark on html */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -9,12 +8,9 @@ module.exports = {
     extend: {
       colors: {
         brand: {
-          primary: '#f97316',
-          accent: '#22c55e',
+          primary: '#f97316', // orange CTA
+          accent: '#22c55e',  // green phone
         }
-      },
-      boxShadow: {
-        card: '0 8px 24px rgba(0,0,0,0.25)'
       }
     }
   },
