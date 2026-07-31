@@ -17,22 +17,19 @@ const services = [
   { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
 ];
 ---
-<BaseLayout title="Startseite – Gylsere Januzi Krieg Online Marketing Office" description="Online-Marketing mit Substanz: SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.">
-  <section class="mb-12">
-    <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Gylsere Januzi Krieg Online Marketing Office</h1>
-    <p class="text-slate-300 mt-3">Online-Marketing mit Substanz: SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.</p>
-  </section>
+<BaseLayout title="Gylsere Januzi Krieg – Online Marketing Office" description="SEO, GEO, Ads, Webdesign, Social, AI & mehr – messbar wirksam.">
+  <section class="section-y container-px">
+    <h1 class="text-3xl font-semibold tracking-tight mb-3">Unsere Leistungen</h1>
+    <p class="text-zinc-400 max-w-3xl mb-8">Alle 14 Leistungen im Überblick – klar strukturiert, modular kombinierbar und auf Conversions optimiert.</p>
 
-  <section aria-labelledby="leistungen-heading">
-    <h2 id="leistungen-heading" class="text-2xl md:text-3xl font-semibold mb-6">Unsere Leistungen</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {services.map(s => (
-        <article id={s.id} class="bg-slate-900/60 border border-slate-800 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-semibold tracking-tight">{s.title}</h3>
-          <p class="text-slate-400 mt-1">{s.subtitle}</p>
-          <p class="text-slate-300 mt-4">{s.description}</p>
-          <div class="flex flex-wrap gap-2 mt-5" aria-label="Highlights">
-            {s.features.map(f => (<span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-slate-800/60 border border-slate-700 text-slate-200">{f}</span>))}
+      {services.map((s) => (
+        <article id={s.id} class="card">
+          <h2 class="h2 mb-1">{s.title}</h2>
+          <p class="muted mb-3">{s.subtitle}</p>
+          <p class="text-sm text-zinc-200 mb-4">{s.description}</p>
+          <div class="flex flex-wrap gap-2" aria-label="Features">
+            {s.features.map((f) => <span class="chip">{f}</span>)}
           </div>
         </article>
       ))}
