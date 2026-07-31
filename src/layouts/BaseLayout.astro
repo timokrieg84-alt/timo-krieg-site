@@ -1,8 +1,9 @@
 ---
 export interface Props { title?: string; description?: string }
+import "../styles/tailwind.css";
 const { title = "Gylsere Januzi Krieg Online Marketing Office", description = "" } = Astro.props as Props;
 ---
-<html lang="de" class="h-full" data-theme="dark">
+<html lang="de" class="h-full dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -13,11 +14,10 @@ const { title = "Gylsere Januzi Krieg Online Marketing Office", description = ""
     <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <style is:global>
-      :root{--bg:#0b0b0e;--fg:#f8fafc}
       html,body{height:100%}
-      body{margin:0;background:var(--bg);color:var(--fg);font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+      body{margin:0;background:#0b0b0e;color:#f8fafc;font-family:Inter,system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;}
+      a{text-decoration:none}
     </style>
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
   </head>
   <body class="min-h-full antialiased">
     <header class="container-px py-6">
