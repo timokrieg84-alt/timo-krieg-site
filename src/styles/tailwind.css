@@ -2,4 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-:root { color-scheme: dark; }
+/* Components */
+@layer components {
+  .container-px { @apply px-4 sm:px-6 lg:px-8; }
+  .section-y { @apply py-10 sm:py-14 lg:py-20; }
+  .card { @apply bg-white/90 dark:bg-zinc-900/90 border border-zinc-200/70 dark:border-zinc-800 p-6 rounded-xl shadow-card transition hover:shadow-lg hover:-translate-y-0.5 will-change-transform; }
+  .chip { @apply inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200 px-3 py-1 text-xs font-medium; }
+  .h2 { @apply text-xl font-semibold tracking-tight text-zinc-900 dark:text-white; }
+  .muted { @apply text-sm text-zinc-600 dark:text-zinc-400; }
+}
