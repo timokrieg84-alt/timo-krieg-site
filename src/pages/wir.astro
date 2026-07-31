@@ -1,17 +1,31 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import Section from "../components/Section.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<Layout title="Wir – Gylsere Januzi" description="Team und Haltung.">
-  <Fragment slot="header"><Header /></Fragment>
-  <Section title="Gylsere Januzi - online marketing office" intro="Exzellenz & Digitale Präsenz. Wir arbeiten strukturiert, messbar und ohne Buzzwords.">
-    <div class="bg-[#131b2e] border border-gray-800 p-8 rounded-xl max-w-2xl">
-      <p class="text-gray-300 leading-relaxed">
-        Wir stehen für messbaren Erfolg, klare Kommunikation und kompromisslose Qualität im Online-Marketing. Keine leeren Versprechungen, sondern fundiertes Handwerk und datenbasierte Strategien für Ihren nachhaltigen Vorsprung.
-      </p>
+<BaseLayout title="Wir – Gylsere Januzi Krieg" description="Wer wir sind: Strategie, Umsetzung und ehrliche Performance.">
+  <section class="section">
+    <div class="container">
+      <h1 class="text-white text-3xl font-bold mb-2">Wir</h1>
+      <p class="text-slate-400 mb-8">Fokus auf Ergebnisse. Wir verbinden Strategie, Kreativität und Engineering zu messbarer Wirkung.</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <article class="card">
+          <h3>Warum wir</h3>
+          <p>Wir liefern nicht nur Slides – sondern funktionierende Systeme: SEO, GEO, Ads, Web, Automation.</p>
+          <div class="chips">
+            <span class="chip">Astro & Next.js</span>
+            <span class="chip">SEO/GEO</span>
+            <span class="chip">Automation</span>
+          </div>
+        </article>
+        <article class="card">
+          <h3>Wie wir arbeiten</h3>
+          <p>Kurzzyklische Sprints, klare KPIs, transparente Kommunikation. Qualität vor Quantität.</p>
+          <div class="chips">
+            <span class="chip">Sprints</span>
+            <span class="chip">KPIs</span>
+            <span class="chip">Transparenz</span>
+          </div>
+        </article>
+      </div>
     </div>
-  </Section>
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+  </section>
+</BaseLayout>
