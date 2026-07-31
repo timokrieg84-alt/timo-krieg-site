@@ -1,19 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import IconSprite from '../components/IconSprite.astro';
-const pageTitle = 'Seite nicht gefunden | ListingProfis';
-const pageDesc = 'Diese Seite gibt es nicht mehr. Zurück zur Startseite oder Kontakt aufnehmen – wir helfen gerne weiter.';
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<BaseLayout title={pageTitle} description={pageDesc}>
-  <Fragment slot="icons"><IconSprite /></Fragment>
-  <Fragment slot="header"><Header /></Fragment>
-  <main>
-    <section class="section container text-center">
-      <h1>404 – Seite nicht gefunden</h1>
-      <p class="text-muted">Zurück zur <a href="/">Startseite</a> oder <a href="/kontakt/">Kontakt</a>.</p>
-    </section>
-  </main>
-  <Fragment slot="footer"><Footer /></Fragment>
+<BaseLayout title="Seite nicht gefunden – Gylsere Januzi Krieg">
+  <section class="section">
+    <div class="container">
+      <h1 class="text-white text-3xl font-bold mb-2">Seite nicht gefunden</h1>
+      <p class="text-slate-400">Die angeforderte Seite wurde nicht gefunden. Zurück zur <a href="/" class="text-white underline">Startseite</a>.</p>
+    </div>
+  </section>
 </BaseLayout>
