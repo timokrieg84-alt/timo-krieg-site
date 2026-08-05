@@ -56,14 +56,16 @@ const pageId = Astro.props.pageId;
 
     <script>
       (function() {
-        const ls = typeof window !== 'undefined' ? window.localStorage : null;
-        const preferred = ls && ls.getItem('theme');
-        const mql = window.matchMedia('(prefers-color-scheme: dark)');
-        if (preferred === 'dark' || (!preferred && mql.matches)) {
-          document.documentElement.classList.add('dark');
-        } else {
-          document.documentElement.classList.remove('dark');
-        }
+        try {
+          const ls = window.localStorage;
+          const preferred = ls && ls.getItem('theme');
+          const mql = window.matchMedia('(prefers-color-scheme: dark)');
+          if (preferred === 'dark' || (!preferred && mql.matches)) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch(e) {}
       })();
     </script>
   </head>
@@ -83,22 +85,29 @@ const pageId = Astro.props.pageId;
     <script>
       // Matomo (only if consent given for analytics)
       (function() {
-        const cfg = { url: {integrations.analytics.url}, siteId: '{integrations.analytics.siteId}', anonymizeIp: {String(integrations.analytics.anonymizeIp)} };
-        const consentRaw = localStorage.getItem('cookie_consent_v1');
-        const consent = consentRaw ? JSON.parse(consentRaw) : null;
-        const analyticsAllowed = consent && consent.analytics === true;
-        if (!analyticsAllowed) return;
-        var _paq = window._paq = window._paq || [];
-        _paq.push(['disableCookies']);
-        _paq.push(['trackPageView']);
-        _paq.push(['enableLinkTracking']);
-        (function() {
-          var u= cfg.url + '/';
-          _paq.push(['setTrackerUrl', u+'matomo.php']);
-          _paq.push(['setSiteId', cfg.siteId]);
-          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-          g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-        })();
+        const cfg = {
+          url: {JSON.stringify(integrations.analytics.url)},
+          siteId: {JSON.stringify(integrations.analytics.siteId)},
+          anonymizeIp: {JSON.stringify(integrations.analytics.anonymizeIp)}
+        };
+        try {
+          const consentRaw = localStorage.getItem('cookie_consent_v1');
+          const consent = consentRaw ? JSON.parse(consentRaw) : null;
+          const analyticsAllowed = consent && consent.analytics === true;
+          if (!analyticsAllowed) return;
+          var _paq = window._paq = window._paq || [];
+          _paq.push(['disableCookies']);
+          if (cfg.anonymizeIp) _paq.push(['anonymizeIp']);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u= cfg.url + '/';
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', cfg.siteId]);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        } catch(e) {}
       })();
     </script>
   </body>
