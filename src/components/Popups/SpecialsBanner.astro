@@ -1,0 +1,41 @@
+---
+import { siteConfig } from "../../config/site";
+const cfg = siteConfig.popups.specialsBanner;
+if (!cfg?.enabled) {
+  /* no render */
+}
+---
+{cfg?.enabled && (
+  <div id="specials-banner" class="hidden">
+    <div class="w-full bg-yellow-100 text-yellow-900">
+      <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between gap-3">
+        <p class="text-sm font-medium">{cfg.text}</p>
+        <button id="specials-close" class="rounded-full px-2 py-1 text-xs hover:bg-yellow-200">Schließen</button>
+      </div>
+    </div>
+  </div>
+)}
+<script>
+  (function(){
+    const root = document.getElementById('specials-banner');
+    if (!root) return;
+    const dayMap = ['So','Mo','Di','Mi','Do','Fr','Sa'];
+    const start = '%s';
+    const end = '%s';
+    const days = %s;
+    const now = new Date();
+    const pad = (n)=> String(n).padStart(2,'0');
+    const current = pad(now.getHours()) + ':' + pad(now.getMinutes());
+    const today = dayMap[now.getDay()];
+
+    const inWindow = (!start || current >= start) && (!end || current <= end);
+    const onDay = !days || days.includes(today);
+
+    if (inWindow && onDay) {
+      root.classList.remove('hidden');
+    }
+
+    const close = document.getElementById('specials-close');
+    close?.addEventListener('click', ()=> root.remove());
+  })();
+</script>
