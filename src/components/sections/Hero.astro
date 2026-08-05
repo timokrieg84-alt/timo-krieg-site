@@ -12,7 +12,7 @@ interface Props {
 }
 const { id = "hero", preheading, heading, subheading, background, textColor = site.brand.colors.ink, ctas = [] } = Astro.props as Props;
 ---
-<section id={id} class="relative">
+<section id={id} class="relative scroll-mt-24">
   <div class="absolute inset-0 -z-10" style={background?.mode === 'color' && background?.color ? `background:${background.color}` : ''}></div>
   <div class="mx-auto max-w-[1200px] px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
