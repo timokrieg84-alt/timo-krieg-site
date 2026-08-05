@@ -1,0 +1,49 @@
+---
+interface Props {
+  id?: string;
+  headline: string;
+  subheadline?: string;
+  image?: { src: string; alt: string };
+  primaryCta?: { label: string; href: string; style?: string };
+  secondaryCta?: { label: string; href: string; style?: string };
+  badges?: string[];
+}
+const { id, headline, subheadline, image, primaryCta, secondaryCta, badges } = Astro.props as Props;
+---
+<section id={id} class="relative isolate overflow-hidden">
+  {image && (
+    <img src={image.src} alt={image.alt} class="absolute inset-0 -z-10 h-full w-full object-cover opacity-20 dark:opacity-25" />
+  )}
+  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
+    <div class="grid items-center gap-10 md:grid-cols-2">
+      <div>
+        <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl md:text-6xl dark:text-white" style="font-family: 'Playfair Display', serif;">
+          {headline}
+        </h1>
+        {subheadline && <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">{subheadline}</p>}
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          {primaryCta && (
+            <a href={primaryCta.href} class="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:focus:ring-offset-gray-950">
+              {primaryCta.label}
+            </a>
+          )}
+          {secondaryCta && (
+            <a href={secondaryCta.href} class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-900">
+              {secondaryCta.label}
+            </a>
+          )}
+        </div>
+        {badges && badges.length > 0 && (
+          <div class="mt-6 flex flex-wrap gap-3">
+            {badges.map((b) => (
+              <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-800 dark:text-gray-300">{b}</span>
+            ))}
+          </div>
+        )}
+      </div>
+      <div class="hidden md:block">
+        {image && <img src={image.src} alt={image.alt} class="mx-auto rounded-xl shadow-2xl ring-1 ring-black/5" />}
+      </div>
+    </div>
+  </div>
+</section>
