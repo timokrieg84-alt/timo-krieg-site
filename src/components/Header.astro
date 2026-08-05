@@ -17,8 +17,8 @@ const brand = site.brand;
         {nav.cta && (
           <a href={nav.cta.href} class="inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
             style={`background:${site.theme.buttons.primary.bg};color:${site.theme.buttons.primary.text}`}
-            onMouseOver={`this.style.background='${site.theme.buttons.primary.hoverBg}'`}
-            onMouseOut={`this.style.background='${site.theme.buttons.primary.bg}'`}>
+            onmouseover={`this.style.background='${site.theme.buttons.primary.hoverBg}'`}
+            onmouseout={`this.style.background='${site.theme.buttons.primary.bg}'`}>
             {nav.cta.label}
           </a>
         )}
@@ -27,7 +27,7 @@ const brand = site.brand;
           <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="currentColor"><path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zM1 13h3v-2H1v2zm10 9h2v-3h-2v3zm9-9v-2h-3v2h3zm-2.05 7.95l1.41-1.41-1.79-1.8-1.41 1.41 1.79 1.8zM12 4a1 1 0 0 0 1-1V0h-2v3a1 1 0 0 0 1 1zm-7.95 7.95H1v2h3v-2z"/></svg>
         </button>
       </nav>
-      <button class="md:hidden p-2 rounded-md text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-label="Menü öffnen" onClick="document.getElementById('mobile-nav')?.classList.toggle('hidden')">
+      <button class="md:hidden p-2 rounded-md text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100 dark:hover:bg-neutral-800" aria-label="Menü öffnen" onclick="document.getElementById('mobile-nav')?.classList.toggle('hidden')">
         <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
     </div>
@@ -40,8 +40,8 @@ const brand = site.brand;
       {nav.cta && (
         <a href={nav.cta.href} class="mt-2 inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500"
           style={`background:${site.theme.buttons.primary.bg};color:${site.theme.buttons.primary.text}`}
-          onMouseOver={`this.style.background='${site.theme.buttons.primary.hoverBg}'`}
-          onMouseOut={`this.style.background='${site.theme.buttons.primary.bg}'`}>
+          onmouseover={`this.style.background='${site.theme.buttons.primary.hoverBg}'`}
+          onmouseout={`this.style.background='${site.theme.buttons.primary.bg}'`}>
           {nav.cta.label}
         </a>
       )}
