@@ -1,0 +1,16 @@
+---
+interface Image { src: string; alt: string }
+interface Props { image: Image; headline: string; text?: string }
+const { image, headline, text } = Astro.props as Props;
+---
+<section class="bg-white dark:bg-gray-950">
+  <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-[180px_1fr] md:items-start">
+      <img src={image.src} alt={image.alt} class="h-44 w-44 rounded-full object-cover ring-4 ring-[#C6A667]/20" />
+      <div>
+        <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{headline}</h2>
+        {text && <p class="mt-3 text-lg text-gray-600 dark:text-gray-300">{text}</p>}
+      </div>
+    </div>
+  </div>
+</section>
