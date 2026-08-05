@@ -1,49 +1,117 @@
 ---
-import site from "../data/site-config";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import CookieConsent from "../components/Popups/CookieConsent.astro";
+import { siteConfig } from "../config/site";
 
 interface Props {
   title?: string;
   description?: string;
-  robots?: string;
+  pagePath?: string;
 }
-const { title, description, robots } = Astro.props as Props;
-const metaTitle = title ? `${title} | ${site.site.name}` : site.site.name;
-const metaDescription = description ?? site.pages[0]?.seo?.description ?? "";
-const robotsContent = robots ?? site.pages[0]?.seo?.robots ?? "index,follow";
+
+const {
+  project,
+  seo,
+  branding,
+} = siteConfig;
+
+const { defaultTitle, titleTemplate, metaDescription, openGraph, twitter } = seo;
+const pageTitle = Astro.props.title
+  ? titleTemplate.replace("%s", Astro.props.title)
+  : defaultTitle;
+const pageDescription = Astro.props.description ?? metaDescription;
+const pagePath = Astro.props.pagePath ?? Astro.url.pathname;
+const ogImage = openGraph?.image?.src ?? "/og.jpg";
+const ogAlt = openGraph?.image?.alt ?? project.name;
 ---
-<html lang={site.site.language} class="scroll-smooth">
+<!DOCTYPE html>
+<html lang={project.language} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="robots" content={robotsContent} />
-    <meta name="description" content={metaDescription} />
-    <meta property="og:locale" content={site.site.locale} />
-    <meta property="og:site_name" content={site.site.name} />
-    <meta property="og:title" content={metaTitle} />
-    <meta property="og:description" content={metaDescription} />
-    <link rel="icon" href={site.branding.icons.favicon} />
-    <link rel="apple-touch-icon" href={site.branding.icons.touchIcon} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={pageDescription} />
+    <meta name="keywords" content={seo.keywords.join(", ")} />
+
+    <link rel="icon" type="image/png" href={branding.favicon} />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
-    <title>{metaTitle}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content={seo.openGraph.type} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={ogAlt} />
+    <meta property="og:locale" content={project.locale} />
+    <meta property="og:url" content={new URL(pagePath, Astro.site)} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={twitter.card} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={twitter.image} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        ...seo.schema,
+        url: new URL(pagePath, Astro.site)?.toString?.(),
+      })}
+    </script>
+
+    <style is:global>
+      :root{
+        --color-primary: {branding.colors.primary};
+        --color-primary-dark: {branding.colors.primaryDark};
+        --color-secondary: {branding.colors.secondary};
+        --color-accent: {branding.colors.accent};
+        --color-text: {branding.colors.text};
+        --color-muted: {branding.colors.mutedText};
+        --color-bg: {branding.colors.background};
+        --color-surface: {branding.colors.surface};
+        --radius-sm: {branding.radii.sm}px;
+        --radius-md: {branding.radii.md}px;
+        --radius-lg: {branding.radii.lg}px;
+        --shadow-card: {branding.shadows.card};
+        --shadow-elevated: {branding.shadows.elevated};
+      }
+      html, body { height: 100%; }
+      body {
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        background: var(--color-bg);
+        color: var(--color-text);
+      }
+      h1, h2, h3, .font-heading { font-family: Poppins, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial; }
+      .focus-outline:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+    </style>
+
     <script>
       try {
         const stored = localStorage.getItem('theme');
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const theme = stored || (prefersDark ? 'dark' : 'light');
-        if (theme === 'dark') document.documentElement.classList.add('dark');
+        if (stored === 'dark' || (!stored && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
       } catch (e) {}
     </script>
   </head>
-  <body class="min-h-screen bg-white text-gray-800 antialiased dark:bg-gray-950 dark:text-gray-100">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:text-blue-600 dark:focus:bg-gray-900 dark:focus:text-blue-400">Zum Inhalt springen</a>
+  <body class="min-h-screen antialiased selection:bg-yellow-300/40 selection:text-zinc-900">
+    <a href="#main" class="sr-only focus:not-sr-only focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2 focus:ring-offset-white dark:focus:ring-offset-zinc-900 absolute left-2 top-2 z-[100] bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 px-3 py-2 rounded-md">{siteConfig.navigation.a11y.skipToContentLabel}</a>
     <Header />
-    <main id="main" class="relative">
+
+    <main id="main" class="">
       <slot />
     </main>
+
     <Footer />
+    <CookieConsent />
   </body>
 </html>
