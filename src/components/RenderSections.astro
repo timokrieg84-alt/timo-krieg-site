@@ -1,0 +1,65 @@
+---
+import site from "../config/site";
+import Hero from "./sections/Hero.astro";
+import About from "./sections/About.astro";
+import Menu from "./sections/Menu.astro";
+import Cards from "./sections/Cards.astro";
+import Hours from "./sections/Hours.astro";
+import Gallery from "./sections/Gallery.astro";
+import Testimonials from "./sections/Testimonials.astro";
+import Contact from "./sections/Contact.astro";
+
+interface Props { ids: string[] }
+const { ids } = Astro.props as Props;
+
+const dict = Object.fromEntries(site.ui.sections.map((s:any) => [s.id, s]));
+
+function getByPath(obj: any, path: string) {
+  const parts = path.split('.');
+  let cur = obj;
+  for (const p of parts) {
+    if (cur && typeof cur === 'object' && p in cur) cur = cur[p];
+    else return undefined;
+  }
+  return cur;
+}
+
+function resolveRefs(val: any): any {
+  if (typeof val === 'string' && val.startsWith('@')) {
+    const [ns, ...rest] = val.slice(1).split('.');
+    const base = (site as any)[ns];
+    return getByPath(base, rest.join('.'));
+  } else if (Array.isArray(val)) {
+    return val.map(resolveRefs);
+  } else if (val && typeof val === 'object') {
+    return Object.fromEntries(Object.entries(val).map(([k, v]) => [k, resolveRefs(v)]));
+  }
+  return val;
+}
+---
+{ids.map((id) => {
+  const entry = (dict as any)[id];
+  if (!entry) return null;
+  const type = entry.type;
+  const props = resolveRefs(entry.props || {});
+  switch (type) {
+    case 'hero':
+      return <Hero {...props} />;
+    case 'content':
+      return <About {...props} />;
+    case 'menu':
+      return <Menu {...props} />;
+    case 'cards':
+      return <Cards {...props} />;
+    case 'hours':
+      return <Hours {...props} />;
+    case 'gallery':
+      return <Gallery {...props} />;
+    case 'testimonials':
+      return <Testimonials {...props} />;
+    case 'contact':
+      return <Contact {...props} />;
+    default:
+      return null;
+  }
+})}
