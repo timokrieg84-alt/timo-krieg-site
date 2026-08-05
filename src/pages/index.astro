@@ -1,221 +1,95 @@
 ---
-import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
-import { site } from "../config/site";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-const hero = site.sections.find((s: any) => s.id === "hero") as any;
-const menu = site.sections.find((s: any) => s.id === "menu") as any;
-const hours = site.sections.find((s: any) => s.id === "hours") as any;
-const about = site.sections.find((s: any) => s.id === "about") as any;
-const gallery = site.sections.find((s: any) => s.id === "gallery") as any;
-const contact = site.sections.find((s: any) => s.id === "contact") as any;
+const SITE = 'https://timo-krieg-site-git-preview-timo24.vercel.app';
 
-const dayMap: Record<number, keyof typeof hours["regular"]> = {
-  0: "sunday",
-  1: "monday",
-  2: "tuesday",
-  3: "wednesday",
-  4: "thursday",
-  5: "friday",
-  6: "saturday",
+const title = 'Gylsere Januzi Krieg Online Marketing Office – Online-Marketing & Vertriebsmanagement';
+const description = 'Professionelles Online-Marketing und Vertriebsmanagement.';
+const canonical = SITE + '/';
+const ogImage = SITE + '/images/logo-gjk.webp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': SITE + '/#business',
+  'name': 'Gylsere Januzi Krieg Online Marketing Office',
+  'url': SITE + '/',
+  'email': 'gjanuzikrieg@gmail.com',
+  'telephone': '+49 175 6372395',
+  'image': SITE + '/images/logo-gjk.webp',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': 'Kitzingstraße 7',
+    'postalCode': '73529',
+    'addressLocality': 'Schwäbisch Gmünd',
+    'addressCountry': 'DE'
+  },
+  'areaServed': 'DE',
+  'sameAs': []
 };
-const todayKey = site.features.dynamicSections.hours.showTodayHighlight ? dayMap[new Date().getDay()] : null;
-
-function formatPriceCents(v: number) {
-  return (v / 100).toLocaleString(site.meta.locale, { style: 'currency', currency: 'EUR', minimumFractionDigits: 2 });
-}
 ---
-<GoldenMasterLayout>
-  {/* Hero */}
-  <section id="hero" aria-label="Willkommensbereich" class="relative isolate overflow-hidden">
-    {hero?.content?.media?.src && (
-      <picture>
-        <img src={hero.content.media.src} alt={hero.content.media.alt} class="absolute inset-0 -z-10 h-full w-full object-cover" style={`object-position:${hero.content.media.focal || 'center'}`} loading="eager" fetchpriority="high" />
-      </picture>
-    )}
-    <div class="absolute inset-0 -z-10 bg-[#FFF9E9] dark:bg-[#0b0b0a]" aria-hidden="true"></div>
-    <div class="absolute inset-0 -z-10 bg-black/25" aria-hidden="true" style={`opacity:${hero?.content?.media?.overlay ?? 0.25}`}></div>
+<BaseLayout {title} {description} {canonical} {jsonLd} {ogImage}>
+  <Header />
 
-    <div class="max-w-[1140px] mx-auto px-4 py-28 sm:py-36">
-      <div class="max-w-2xl">
-        {hero?.content?.eyebrow && <p class="text-sm tracking-wide uppercase text-[#F6C945] drop-shadow">{hero.content.eyebrow}</p>}
-        <h1 class="mt-2 text-4xl sm:text-5xl font-extrabold leading-tight text-white drop-shadow-xl">{hero?.content?.title ?? site.brand.name}</h1>
-        {hero?.content?.subtitle && (
-          <p class="mt-4 text-base sm:text-lg text-white/90 max-w-prose">
-            {hero.content.subtitle}
-          </p>
-        )}
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          {hero?.content?.ctas?.map((c: any) => (
-            <a href={c.target} class={`px-5 py-3 rounded-md font-semibold shadow ${c.style === 'primary' ? 'bg-[#386641] text-white hover:bg-[#2F5436]' : 'bg-[#F6C945] text-[#2F2A1F] hover:bg-[#EABA2D]'} focus:outline-none focus:ring-2 focus:ring-[#F6C945]`}>{c.label}</a>
-          ))}
+  <main id="main">
+    <section class="hero" aria-label="Intro">
+      <div class="container">
+        <h1>Gylsere Januzi Krieg Online Marketing Office</h1>
+        <p class="claim">Professionelles Online-Marketing und Vertriebsmanagement.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
+          <a class="btn btn--ghost" href="/leistungen">Leistungen</a>
         </div>
-        {hero?.content?.uspBadges && (
-          <div class="mt-8 flex flex-wrap gap-2">
-            {hero.content.uspBadges.map((u: string) => (
-              <span class="inline-flex items-center gap-2 rounded-full bg-white/90 dark:bg-[#151513]/90 text-[#2F2A1F] dark:text-[#f6f0e0] px-3 py-1 text-xs ring-1 ring-[#E8DFC8] dark:ring-[#2a281f] shadow-sm">
-                <span class="h-1.5 w-1.5 rounded-full bg-[#F6C945]" aria-hidden="true"></span>
-                {u}
-              </span>
-            ))}
-          </div>
-        )}
       </div>
-    </div>
-  </section>
 
-  {/* Menu */}
-  <section id="menu" aria-labelledby="menu-heading" class="py-20 bg-white dark:bg-[#0f0f0e]">
-    <div class="max-w-[1140px] mx-auto px-4">
-      <div class="mb-10 flex items-end justify-between gap-6">
-        <div>
-          <h2 id="menu-heading" class="text-3xl sm:text-4xl font-bold text-[#2F2A1F] dark:text-[#f6f0e0]">{menu?.title}</h2>
-          {menu?.notes && <p class="mt-2 text-sm text-[#8A7F6A] dark:text-[#b7ad98]">{menu.notes}</p>}
+      <!-- Subtile, performante Noise-Overlay rein mit SVG -->
+      <svg class="noise" xmlns="http://www.w3.org/2000/svg">
+        <filter id="f">
+          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#f)"></rect>
+      </svg>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <h2>Leistungen</h2>
         </div>
-        {site.features.dynamicSections.menu.showTagsLegend && (
-          <ul class="hidden sm:flex gap-2 text-xs text-[#8A7F6A] dark:text-[#b7ad98]">
-            {Object.entries(site.features.dynamicSections.menu.tagsLegend).map(([k, v]) => (
-              <li class="inline-flex items-center gap-2">
-                <span class="h-2 w-2 rounded-full bg-[#E08E45]" aria-hidden="true"></span>{v}
-              </li>
-            ))}
-          </ul>
-        )}
+        <p>Inhalt folgt. Diese Sektion zeigt später Ihre Kernangebote (z. B. Strategie, Performance Ads, SEO, Vertrieb).</p>
       </div>
+    </section>
 
-      <div class="grid md:grid-cols-2 gap-8">
-        {menu?.categories?.map((cat: any) => (
-          <div class="rounded-xl border border-[#E8DFC8] dark:border-[#2a281f] bg-[#FFFDF7] dark:bg-[#151513] p-6 shadow-sm">
-            <h3 class="text-xl font-semibold text-[#2F2A1F] dark:text-[#f6f0e0] mb-4">{cat.name}</h3>
-            <ul class="divide-y divide-[#E8DFC8] dark:divide-[#2a281f]">
-              {cat.items.map((it: any) => (
-                <li class="py-4 flex items-start gap-4">
-                  <div class="flex-1">
-                    <div class="flex items-center justify-between gap-3">
-                      <p class="text-base font-medium text-[#2F2A1F] dark:text-[#f6f0e0]">{it.name}</p>
-                      <p class="text-sm font-semibold text-[#386641] dark:text-[#9DD3A4] whitespace-nowrap">{formatPriceCents(it.priceCents)}</p>
-                    </div>
-                    {it.description && <p class="mt-1 text-sm text-[#8A7F6A] dark:text-[#b7ad98]">{it.description}</p>}
-                    {it.tags?.length > 0 && (
-                      <div class="mt-2 flex flex-wrap gap-2">
-                        {it.tags.map((t: string) => (
-                          <span class="inline-flex items-center rounded-full border border-[#E8DFC8] dark:border-[#2a281f] px-2 py-0.5 text-[11px] text-[#8A7F6A] dark:text-[#b7ad98]">{t}</span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-
-      {site.features.dynamicSections.menu.showTagsLegend && (
-        <div class="mt-6 sm:hidden">
-          <ul class="flex flex-wrap gap-3 text-xs text-[#8A7F6A] dark:text-[#b7ad98]">
-            {Object.entries(site.features.dynamicSections.menu.tagsLegend).map(([k, v]) => (
-              <li class="inline-flex items-center gap-2">
-                <span class="h-2 w-2 rounded-full bg-[#E08E45]" aria-hidden="true"></span>{v}
-              </li>
-            ))}
-          </ul>
+    <section class="section" id="referenzen">
+      <div class="container">
+        <div class="section-head">
+          <h2>Referenzen</h2>
         </div>
-      )}
-    </div>
-  </section>
-
-  {/* Hours */}
-  <section id="hours" aria-labelledby="hours-heading" class="py-20 bg-[#FFF9E9] dark:bg-[#0b0b0a]">
-    <div class="max-w-[1140px] mx-auto px-4">
-      <h2 id="hours-heading" class="text-3xl sm:text-4xl font-bold text-[#2F2A1F] dark:text-[#f6f0e0]">{hours?.title}</h2>
-      {hours?.notes && <p class="mt-2 text-sm text-[#8A7F6A] dark:text-[#b7ad98]">{hours.notes}</p>}
-      <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {Object.entries(hours?.regular || {}).map(([key, row]: any) => {
-          const isToday = todayKey === key;
-          return (
-            <div class={`flex items-center justify-between rounded-lg border p-4 shadow-sm ${isToday ? 'border-[#F6C945] bg-[#FFF3C1] dark:bg-[#2a281f]' : 'border-[#E8DFC8] dark:border-[#2a281f] bg-white dark:bg-[#151513]'}`}>
-              <span class={`text-sm font-medium ${isToday ? 'text-[#2F2A1F] dark:text-[#f6f0e0]' : 'text-[#2F2A1F] dark:text-[#f6f0e0]'}`}>{row.label}</span>
-              <span class={`text-sm ${row.closed ? 'text-[#8A7F6A] dark:text-[#b7ad98]' : 'text-[#386641] dark:text-[#9DD3A4]'} font-semibold`}>
-                {row.closed ? 'Geschlossen' : `${row.open} – ${row.close}`}
-              </span>
-            </div>
-          )
-        })}
+        <p>Inhalt folgt. Hier platzieren wir Fallstudien, Logos und Ergebnisse – optional mit leichtem Slider.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  {/* About */}
-  <section id="about" aria-labelledby="about-heading" class="py-20 bg-white dark:bg-[#0f0f0e]">
-    <div class="max-w-[1140px] mx-auto px-4 grid lg:grid-cols-2 gap-10 items-center">
-      <div class="order-2 lg:order-1">
-        <h2 id="about-heading" class="text-3xl sm:text-4xl font-bold text-[#2F2A1F] dark:text-[#f6f0e0]">{about?.title}</h2>
-        <div class="mt-4 prose prose-zinc dark:prose-invert max-w-none">
-          <p>{about?.content?.text}</p>
+    <section class="section" id="ueber-uns">
+      <div class="container">
+        <div class="section-head">
+          <h2>Über uns</h2>
         </div>
-        {about?.content?.highlights && (
-          <ul class="mt-6 grid sm:grid-cols-2 gap-3">
-            {about.content.highlights.map((h: string) => (
-              <li class="flex items-center gap-3 rounded-md border border-[#E8DFC8] dark:border-[#2a281f] bg-[#FFFDF7] dark:bg-[#151513] p-3 text-sm text-[#2F2A1F] dark:text-[#f6f0e0]">
-                <span class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#F6C945] text-[#2F2A1F] shadow" aria-hidden="true">✓</span>
-                {h}
-              </li>
-            ))}
-          </ul>
-        )}
+        <p>Inhalt folgt. Kurzprofil, Werte und Arbeitsweise – schlank und glaubwürdig im B2B‑Stil.</p>
       </div>
-      <div class="order-1 lg:order-2">
-        {about?.media?.src && (
-          <img src={about.media.src} alt={about.media.alt} class="w-full h-80 sm:h-96 object-cover rounded-xl border border-[#E8DFC8] dark:border-[#2a281f] shadow-md" loading="lazy" />
-        )}
-      </div>
-    </div>
-  </section>
+    </section>
 
-  {/* Gallery */}
-  <section id="gallery" aria-labelledby="gallery-heading" class="py-20 bg-[#FFF9E9] dark:bg-[#0b0b0a]">
-    <div class="max-w-[1140px] mx-auto px-4">
-      <h2 id="gallery-heading" class="text-3xl sm:text-4xl font-bold text-[#2F2A1F] dark:text-[#f6f0e0]">{gallery?.title}</h2>
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        {gallery?.items?.map((g: any) => (
-          <figure class="overflow-hidden rounded-xl border border-[#E8DFC8] dark:border-[#2a281f] bg-white dark:bg-[#151513] shadow-sm">
-            <img src={g.src} alt={g.alt} class="h-64 w-full object-cover transition-transform duration-500 hover:scale-105" loading="lazy" />
-          </figure>
-        ))}
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+        </div>
+        <p>Inhalt folgt. Der CTA führt vorerst zur Kontaktseite (/kontakt), die wir im nächsten Schritt bauen.</p>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  {/* Contact */}
-  <section id="contact" aria-labelledby="contact-heading" class="py-20 bg-white dark:bg-[#0f0f0e]">
-    <div class="max-w-[1140px] mx-auto px-4 grid lg:grid-cols-2 gap-10 items-start">
-      <div>
-        <h2 id="contact-heading" class="text-3xl sm:text-4xl font-bold text-[#2F2A1F] dark:text-[#f6f0e0]">{contact?.title}</h2>
-        {contact?.intro && <p class="mt-2 text-base text-[#8A7F6A] dark:text-[#b7ad98] max-w-prose">{contact.intro}</p>}
-        {contact?.form?.privacyNote && <p class="mt-4 text-xs text-[#8A7F6A] dark:text-[#b7ad98]">{contact.form.privacyNote}</p>}
-      </div>
-      <div>
-        <form method={contact?.form?.method || 'POST'} action={contact?.form?.action || '#'} class="grid gap-4 bg-[#FFFDF7] dark:bg-[#151513] p-6 rounded-xl border border-[#E8DFC8] dark:border-[#2a281f] shadow-sm">
-          {contact?.form?.fields?.map((f: any) => (
-            <div class="grid gap-2">
-              <label for={f.name} class="text-sm font-medium text-[#2F2A1F] dark:text-[#f6f0e0]">{f.label}{f.required && <span aria-hidden="true"> *</span>}</label>
-              {f.type === 'textarea' ? (
-                <textarea id={f.name} name={f.name} placeholder={f.placeholder} required={f.required} minlength={f.minLength} maxlength={f.maxLength} class="block w-full rounded-md border-[#E8DFC8] dark:border-[#2a281f] bg-white dark:bg-[#111] text-[#2F2A1F] dark:text-[#f6f0e0] shadow-sm focus:border-[#C99E15] focus:ring-[#F6C945]" rows={6}></textarea>
-              ) : f.type === 'checkbox' ? (
-                <div class="flex items-start gap-3">
-                  <input id={f.name} name={f.name} type="checkbox" required={f.required} class="mt-1 h-4 w-4 rounded border-[#E8DFC8] dark:border-[#2a281f] text-[#386641] focus:ring-[#386641]" />
-                  <label for={f.name} class="text-sm text-[#2F2A1F] dark:text-[#f6f0e0]">{f.label}</label>
-                </div>
-              ) : (
-                <input id={f.name} name={f.name} type={f.type} placeholder={f.placeholder} required={f.required} minlength={f.minLength} maxlength={f.maxLength} class="block w-full rounded-md border-[#E8DFC8] dark:border-[#2a281f] bg-white dark:bg-[#111] text-[#2F2A1F] dark:text-[#f6f0e0] shadow-sm focus:border-[#C99E15] focus:ring-[#F6C945]" />
-              )}
-            </div>
-          ))}
-          <div class="pt-2">
-            <button type="submit" class="inline-flex items-center justify-center px-5 py-3 rounded-md font-semibold bg-[#386641] text-white hover:bg-[#2F5436] focus:outline-none focus:ring-2 focus:ring-[#F6C945]">{contact?.form?.submitLabel || 'Absenden'}</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-</GoldenMasterLayout>
+  <Footer />
+</BaseLayout>
