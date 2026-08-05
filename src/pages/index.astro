@@ -1,32 +1,10 @@
 ---
-import Layout from "@/layouts/GoldenMaster.astro";
-import site from "@/config/site";
+import site from "../config/site";
+import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
+import RenderSections from "../components/RenderSections.astro";
 
-import Hero from "@/components/sections/Hero.astro";
-import USP from "@/components/sections/USP.astro";
-import Specials from "@/components/sections/Specials.astro";
-import Menu from "@/components/sections/Menu.astro";
-import Hours from "@/components/sections/Hours.astro";
-import Contact from "@/components/sections/Contact.astro";
-
-const page = site.pages.home;
-const sections = page.sections as any[];
-const getId = (s: any) => s.anchor ?? s.id;
+const page = site.pages.find((p) => p.path === "/");
 ---
-<Layout title={site.seo.defaultTitle} description={site.seo.description}>
-  {sections.map((s) => (
-    s.type === 'hero' ? (
-      <Hero id={getId(s)} {...s.props} />
-    ) : s.type === 'usp' ? (
-      <USP id={getId(s)} {...s.props} />
-    ) : s.type === 'specials' ? (
-      <Specials id={getId(s)} {...s.props} />
-    ) : s.type === 'menu' ? (
-      <Menu id={getId(s)} {...s.props} />
-    ) : s.type === 'hours' ? (
-      <Hours id={getId(s)} {...s.props} />
-    ) : s.type === 'contact' ? (
-      <Contact id={getId(s)} {...s.props} />
-    ) : null
-  ))}
-</Layout>
+<GoldenMasterLayout title={site.seo.defaultTitle} description={site.seo.defaultDescription} ogImage={site.brand.images.defaultOg} variant="default">
+  <RenderSections ids={page?.sections || []} />
+</GoldenMasterLayout>
