@@ -1,0 +1,58 @@
+---
+import siteConfig from "../../site-config";
+interface Props {
+  headline?: string;
+  source?: string;
+  placeholderText?: string;
+  emptyText?: string;
+  cta?: { label: string; path: string };
+}
+const { headline, source, placeholderText, emptyText, cta } = Astro.props as Props;
+const cfg = siteConfig.features.dynamic.availabilityWidget;
+const url = source || cfg.source;
+const displayCount = cfg.displayCount || 3;
+---
+<section class="bg-gray-50 dark:bg-gray-900/60">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    {headline && <h2 class="font-display text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">{headline}</h2>}
+    <div id="slots" class="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300" data-placeholder>{placeholderText || 'Laden...'}</div>
+    </div>
+    {cta && <div class="mt-6"><a href={cta.path} class="inline-flex items-center rounded-md bg-[#C6A667] px-4 py-2 text-sm font-semibold text-[#0F2B46] hover:bg-[#A78B52]">{cta.label}</a></div>}
+  </div>
+  <script>
+    (function(){
+      const wrap = document.getElementById('slots');
+      async function load(){
+        try{
+          const res = await fetch({JSON.stringify(url)});
+          const data = await res.json();
+          const list = Array.isArray(data) ? data : (data?.slots || []);
+          wrap.innerHTML = '';
+          if(!list.length){
+            const el = document.createElement('div');
+            el.className = 'rounded-lg border border-gray-200 bg-white p-4 text-sm text-gray-600 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-300';
+            el.textContent = {JSON.stringify(emptyText || 'Aktuell keine Online-Slots verfügbar – bitte anrufen.')};
+            wrap.appendChild(el);
+            return;
+          }
+          for (const item of list.slice(0, {displayCount})){
+            const card = document.createElement('div');
+            card.className = 'rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-800 dark:bg-gray-900';
+            const d = new Date(item.start || item);
+            const locale = 'de-DE';
+            const date = d.toLocaleDateString(locale, { weekday: 'short', day: '2-digit', month: '2-digit' });
+            const time = d.toLocaleTimeString(locale, { hour: '2-digit', minute: '2-digit' });
+            card.innerHTML = `<div class="text-sm text-gray-600 dark:text-gray-300">${date}</div><div class="mt-1 text-lg font-semibold text-gray-900 dark:text-white">${time}</div>`;
+            wrap.appendChild(card);
+          }
+        }catch(e){
+          console.error(e);
+        }
+      }
+      load();
+      const interval = {Number(siteConfig.features.dynamic.availabilityWidget.refreshIntervalSec) * 1000};
+      if (interval > 0) setInterval(load, interval);
+    })();
+  </script>
+</section>
