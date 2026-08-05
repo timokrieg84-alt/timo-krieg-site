@@ -1,52 +1,49 @@
 ---
-export interface Props {
+import site from "../data/site-config";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
   title?: string;
   description?: string;
+  robots?: string;
 }
-const { title = 'Gylsere Januzi Krieg Online Marketing Office', description = 'High-Performance Online Marketing. SEO, GEO, Ads, Webdesign, Social, AI & mehr.' } = Astro.props;
+const { title, description, robots } = Astro.props as Props;
+const metaTitle = title ? `${title} | ${site.site.name}` : site.site.name;
+const metaDescription = description ?? site.pages[0]?.seo?.description ?? "";
+const robotsContent = robots ?? site.pages[0]?.seo?.robots ?? "index,follow";
 ---
-<html lang="de" class="dark">
+<html lang={site.site.language} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
-    <title>{title}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={(Astro.site ?? new URL('https://timo-krieg-site-ppkjfc45e-timo24.vercel.app')).toString()} />
+    <meta name="robots" content={robotsContent} />
+    <meta name="description" content={metaDescription} />
+    <meta property="og:locale" content={site.site.locale} />
+    <meta property="og:site_name" content={site.site.name} />
+    <meta property="og:title" content={metaTitle} />
+    <meta property="og:description" content={metaDescription} />
+    <link rel="icon" href={site.branding.icons.favicon} />
+    <link rel="apple-touch-icon" href={site.branding.icons.touchIcon} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}</style>
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    <title>{metaTitle}</title>
+    <script>
+      try {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const theme = stored || (prefersDark ? 'dark' : 'light');
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch (e) {}
+    </script>
   </head>
-  <body class="min-h-screen text-slate-300 bg-slate-950">
-    <header class="border-b border-slate-800">
-      <div class="container flex items-center justify-between py-4">
-        <nav class="flex items-center gap-6 text-slate-300">
-          <a href="/" class="hover:text-white">Home</a>
-          <a href="/leistungen" class="hover:text-white">Leistungen</a>
-          <a href="/case-studies" class="hover:text-white">Case Studies</a>
-          <a href="/wir" class="hover:text-white">Wir</a>
-          <a href="/kontakt" class="hover:text-white">Kontakt</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="/kontakt#erstgespraech" class="px-3 py-2 rounded-md bg-brand-primary text-white hover:opacity-90">Erstgespräch buchen</a>
-          <a href="mailto:gjanuzikrieg@gmail.com" class="px-3 py-2 rounded-md border border-slate-700 hover:border-slate-500">E-Mail</a>
-          <a href="tel:+491756372395" class="px-3 py-2 rounded-md bg-brand-accent text-black hover:opacity-90">+49 175 6372395</a>
-        </div>
-      </div>
-    </header>
-    <main>
+  <body class="min-h-screen bg-white text-gray-800 antialiased dark:bg-gray-950 dark:text-gray-100">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:text-blue-600 dark:focus:bg-gray-900 dark:focus:text-blue-400">Zum Inhalt springen</a>
+    <Header />
+    <main id="main" class="relative">
       <slot />
     </main>
-    <footer class="mt-16 border-t border-slate-800">
-      <div class="container py-10 text-sm text-slate-400 flex items-center justify-between">
-        <p>© {new Date().getFullYear()} Gylsere Januzi Krieg Online Marketing Office</p>
-        <nav class="flex gap-6">
-          <a href="/impressum" class="hover:text-white">Impressum</a>
-          <a href="/datenschutz" class="hover:text-white">Datenschutz</a>
-        </nav>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
