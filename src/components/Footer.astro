@@ -1,50 +1,29 @@
 ---
-import siteConfig from "../site-config";
-const { navigation, site } = siteConfig;
-const footerLinks = navigation.footer;
+import site from "@/config/site";
+const { footer, brand } = site;
 ---
-<footer class="mt-24 border-t border-gray-200 bg-gray-50 dark:border-gray-800 dark:bg-gray-900/60">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<footer class="border-t border-neutral-100 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 mt-24">
+  <div class="mx-auto max-w-[1200px] px-6 py-12 grid grid-cols-1 gap-8 sm:grid-cols-3">
+    {footer.columns.map((col) => (
       <div>
-        <a href="/" class="inline-flex items-center gap-3">
-          <img src={site.brand.logo.light} alt={site.brand.logo.alt} class="h-8 w-auto dark:hidden" />
-          <img src={site.brand.logo.dark} alt={site.brand.logo.alt} class="hidden h-8 w-auto dark:block" />
-        </a>
-        <p class="mt-4 max-w-sm text-sm text-gray-600 dark:text-gray-400">{site.tagline}</p>
-      </div>
-      <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Rechtliches</h3>
-        <ul class="mt-3 space-y-2">
-          {footerLinks.map((item) => (
-            item.external ? (
-              <li><a href={item.external} target="_blank" rel="noopener" class="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">{item.label}</a></li>
+        <h3 class="text-sm font-semibold text-neutral-900 dark:text-neutral-100 tracking-wide uppercase">{col.title}</h3>
+        <ul class="mt-4 space-y-2">
+          {col.items.map((it) => (
+            it.href ? (
+              <li><a href={it.href} class="text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white transition-colors">{it.label}</a></li>
             ) : (
-              <li><a href={item.path} class="text-sm text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white">{item.label}</a></li>
+              <li class="text-neutral-700 dark:text-neutral-300">{it.label}</li>
             )
           ))}
         </ul>
       </div>
-      <div>
-        <h3 class="text-sm font-semibold text-gray-900 dark:text-gray-100">Kontakt</h3>
-        <address class="not-italic mt-3 text-sm text-gray-600 dark:text-gray-400">
-          {site.contact.practiceName}<br />
-          {site.contact.street}<br />
-          {site.contact.postalCode} {site.contact.city}
-        </address>
-        <div class="mt-2 space-y-1 text-sm">
-          <a href={`tel:${site.contact.phone.e164}`} class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">{site.contact.phone.display}</a><br />
-          <a href={`mailto:${site.contact.email}`} class="text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">{site.contact.email}</a>
-        </div>
-      </div>
-    </div>
-    <div class="mt-10 flex items-center justify-between border-t border-gray-200 pt-6 text-xs text-gray-500 dark:border-gray-800 dark:text-gray-400">
-      <p>© {new Date().getFullYear()} {site.name}. Alle Rechte vorbehalten.</p>
-      <div class="inline-flex items-center gap-3">
-        <a href="/datenschutz" class="hover:text-gray-700 dark:hover:text-gray-200">Datenschutz</a>
-        <span aria-hidden="true">·</span>
-        <a href="/impressum" class="hover:text-gray-700 dark:hover:text-gray-200">Impressum</a>
-      </div>
+    ))}
+  </div>
+  <div class="mx-auto max-w-[1200px] px-6 pb-12 flex items-center justify-between text-sm text-neutral-500">
+    <p>{footer.note}</p>
+    <div class="flex items-center gap-2">
+      <div class="h-5 w-5 rounded-full" style={`background:${brand.colors.sunflower}`}></div>
+      <span>{brand.name}</span>
     </div>
   </div>
 </footer>
