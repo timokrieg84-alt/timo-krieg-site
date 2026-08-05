@@ -1,15 +1,27 @@
 ---
+import site from "../data/site-config";
+const nav = site.navigation.footer;
 ---
-<footer class="bg-surface border-t border-white/10">
-  <div class="max-w-7xl mx-auto px-4 py-10 grid md:grid-cols-2 gap-6 text-gray-300">
-    <div>
-      <p class="font-semibold text-white">Gylsere Januzi Online Marketing Office</p>
-      <p class="mt-2"><a href="mailto:gjanuzikrieg@gmail.com" class="text-[#FF2D9A] hover:underline">gjanuzikrieg@gmail.com</a></p>
-      <p><a href="tel:+491756372395" class="text-[#00C853] hover:underline">+49 175 6372395</a></p>
+<footer class="border-t border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
+  <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+      <div>
+        <a href="/" class="flex items-center gap-3" aria-label={site.site.name}>
+          <img src={site.branding.logo.src} alt={site.branding.logo.alt} class="h-8 w-auto" />
+          <span class="font-semibold tracking-tight">{site.site.name}</span>
+        </a>
+        <p class="mt-4 max-w-sm text-sm text-gray-600 dark:text-gray-400">Moderne Zahnmedizin mit Zeit und Zuwendung. Persönlich, transparent und auf dem neuesten Stand – für Ihr gesundes Lächeln.</p>
+      </div>
+      <nav class="md:col-span-2">
+        <ul class="flex flex-wrap items-center gap-x-6 gap-y-3">
+          {nav.map((item) => (
+            <li>
+              <a href={item.path} class="text-sm text-gray-700 transition-colors hover:text-gray-900 dark:text-gray-300 dark:hover:text-white">{item.label}</a>
+            </li>
+          ))}
+        </ul>
+        <div class="mt-6 text-sm text-gray-500 dark:text-gray-400">© {new Date().getFullYear()} {site.site.name}. Alle Rechte vorbehalten.</div>
+      </nav>
     </div>
-    <nav class="md:text-right flex md:justify-end gap-6">
-      <a href="/impressum" class="text-gray-400 hover:text-white">Impressum</a>
-      <a href="/datenschutz" class="text-gray-400 hover:text-white">Datenschutz</a>
-    </nav>
   </div>
 </footer>
