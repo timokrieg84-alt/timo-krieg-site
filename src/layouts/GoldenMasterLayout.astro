@@ -1,0 +1,53 @@
+---
+import site from "../config/site";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import SkipLinks from "../components/SkipLinks.astro";
+import Seo from "../components/Seo.astro";
+import CookieConsent from "../components/CookieConsent.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  variant?: "default" | "legal";
+}
+
+const { title, description, ogImage, variant = "default" } = Astro.props as Props;
+const lang = site.project.language || "de";
+---
+<!DOCTYPE html>
+<html lang={lang} class="h-full scroll-smooth" data-theme="light">
+  <head>
+    <Seo title={title} description={description} image={ogImage} />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/png" href={site.brand.logo.favicon} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    <script>
+      // Theme: respect saved preference or system
+      (function(){
+        try {
+          const saved = localStorage.getItem('theme');
+          const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const mode = saved || (systemDark ? 'dark' : 'light');
+          document.documentElement.dataset.theme = mode;
+          if(mode === 'dark') document.documentElement.classList.add('dark');
+        } catch(e) {}
+      })();
+    </script>
+  </head>
+  <body class="min-h-full bg-[#FFF9EC] text-[#3B3B3B] antialiased dark:bg-neutral-950 dark:text-neutral-200">
+    <SkipLinks />
+    <Header />
+
+    <main id="main" class:list={["relative", variant === "legal" ? "pt-20 pb-24" : "pt-8 md:pt-10 pb-16 md:pb-24"]}>
+      <slot />
+    </main>
+
+    <Footer />
+
+    {site.legal?.cookieConsent?.enabled && <CookieConsent />}
+  </body>
+</html>
