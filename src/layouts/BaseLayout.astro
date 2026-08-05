@@ -23,7 +23,6 @@ const {
     <meta name="theme-color" content="#0284c7" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="de_DE" />
     <meta property="og:site_name" content="Gylsere Januzi Krieg Online Marketing Office" />
@@ -31,13 +30,11 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     {ogImage && <meta property="og:image" content={ogImage} />}
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     {ogImage && <meta name="twitter:image" content={ogImage} />}
-
-    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
     {jsonLd && (
       <script type="application/ld+json">
         {JSON.stringify(jsonLd)}
