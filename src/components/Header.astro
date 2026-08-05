@@ -17,21 +17,10 @@ const cta = site.navigation.cta;
       </nav>
       <div class="flex items-center gap-3">
         <a href={cta.href} class="hidden md:inline-flex items-center rounded-full bg-[#F2B705] px-4 py-2 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#C28E04] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 dark:focus:ring-yellow-500">{cta.label}</a>
-        <button type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2D0] bg-white text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200"
-          aria-label="Darstellungsmodus umschalten"
-          onClick={() => {
-            const current = document.documentElement.dataset.theme;
-            const next = current === 'dark' ? 'light' : 'dark';
-            document.documentElement.dataset.theme = next;
-            document.documentElement.classList.toggle('dark');
-            try { localStorage.setItem('theme', next); } catch(e) {}
-          }}>
+        <button id="btn-theme-toggle" type="button" class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2D0] bg-white text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200" aria-label="Darstellungsmodus umschalten">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="h-5 w-5"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3v1.5M12 19.5V21M4.5 12H3m18 0h-1.5M5.864 5.864l1.06 1.06m10.152 10.152l1.06 1.06M18.136 5.864l-1.06 1.06M6.924 16.076l-1.06 1.06M12 6.75A5.25 5.25 0 1 0 17.25 12 5.25 5.25 0 0 0 12 6.75z"/></svg>
         </button>
-        <button class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2D0] bg-white text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200" aria-controls="mobile-menu" aria-expanded="false" onClick={() => {
-          const el = document.getElementById('mobile-menu');
-          if(el){ el.classList.toggle('hidden'); }
-        }}>
+        <button id="btn-mobile-toggle" class="md:hidden inline-flex h-9 w-9 items-center justify-center rounded-full border border-[#E9E2D0] bg-white text-neutral-700 shadow-sm hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200" aria-controls="mobile-menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 6h16M4 12h16M4 18h16"/></svg>
         </button>
       </div>
@@ -45,4 +34,23 @@ const cta = site.navigation.cta;
       <a href={cta.href} class="inline-flex items-center justify-center rounded-full bg-[#F2B705] px-4 py-2 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#C28E04]">{cta.label}</a>
     </nav>
   </div>
+  <script is:inline>
+    (function(){
+      const themeBtn = document.getElementById('btn-theme-toggle');
+      themeBtn?.addEventListener('click', () => {
+        const current = document.documentElement.dataset.theme;
+        const next = current === 'dark' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = next;
+        document.documentElement.classList.toggle('dark');
+        try { localStorage.setItem('theme', next); } catch(e) {}
+      });
+      const mobileBtn = document.getElementById('btn-mobile-toggle');
+      const mobileMenu = document.getElementById('mobile-menu');
+      mobileBtn?.addEventListener('click', () => {
+        if(!mobileMenu) return;
+        const hidden = mobileMenu.classList.toggle('hidden');
+        mobileBtn.setAttribute('aria-expanded', (!hidden).toString());
+      });
+    })();
+  </script>
 </header>
