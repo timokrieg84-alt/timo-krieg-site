@@ -1,0 +1,2 @@
+/* Public styles proxy to src for simple static delivery */
+@import "/src/styles/global.css";
