@@ -3,12 +3,16 @@
 @tailwind utilities;
 
 :root {
-  --bg-surface: #131b2e;
-  --color-primary: #FF6A00;
-  --color-secondary: #00C853;
-  --color-accent: #FF2D9A;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
 }
 
-.bg-surface {
-  background-color: var(--bg-surface);
+html, body {
+  height: 100%;
+}
+
+.prose {
+  @apply prose-neutral;
 }
