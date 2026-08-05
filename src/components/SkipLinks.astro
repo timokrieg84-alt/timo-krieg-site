@@ -1,14 +1,7 @@
 ---
-import site from "../config/site";
+import { site } from "../config/site";
 ---
-<nav aria-label="Skip Links" class="sr-only focus-within:not-sr-only">
-  <ul class="flex gap-3 p-2">
-    {site.accessibility.skipLinks.map((link) => (
-      <li>
-        <a href={link.href} class="rounded-md bg-white px-3 py-2 text-sm font-medium text-neutral-900 shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">
-          {link.label}
-        </a>
-      </li>
-    ))}
-  </ul>
+<nav aria-label="Skip Links" class="sr-only">
+  <a href="#main" class="focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:ring-2 focus:ring-[#F6C945] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-md">Zum Inhalt springen</a>
+  <a href="#contact" class="focus:not-sr-only focus:fixed focus:top-16 focus:left-4 focus:ring-2 focus:ring-[#F6C945] focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded-md">Zum Kontakt springen</a>
 </nav>
