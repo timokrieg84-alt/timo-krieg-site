@@ -1,75 +1,55 @@
 ---
-import siteConfig from "../site-config";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import AnnouncementModal from "../components/AnnouncementModal.astro";
-import ConsentBanner from "../components/ConsentBanner.astro";
+import site from "@/config/site";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import CookieConsent from "@/components/CookieConsent.astro";
 
-interface Props {
-  title?: string;
-  description?: string;
-  ogImage?: string;
-  pageId?: string;
-}
-
-const {
-  site: { name, tagline, language, brand, seo },
-  integrations,
-} = siteConfig;
-
-const pageTitle = Astro.props.title || seo.defaultTitle;
-const metaDesc = Astro.props.description || seo.defaultDescription;
-const ogImage = Astro.props.ogImage || seo.ogImage;
-const pageId = Astro.props.pageId;
+const { seo, project, schema } = site;
+const { defaultTitle, description, openGraph, twitter, canonical } = seo;
+const title = Astro.props.title ?? defaultTitle;
+const metaDescription = Astro.props.description ?? description;
 ---
 <!DOCTYPE html>
-<html lang={language} class="scroll-smooth">
+<html lang={project.language} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{seo.titleTemplate.replace("%s", pageTitle)}</title>
-    <meta name="description" content={metaDesc} />
-    <meta property="og:title" content={pageTitle} />
-    <meta property="og:description" content={metaDesc} />
-    <meta property="og:image" content={ogImage} />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={pageTitle} />
-    <meta name="twitter:description" content={metaDesc} />
-    <meta name="twitter:image" content={ogImage} />
-    <link rel="icon" type="image/png" href={brand.favicon} />
+    <title>{title}</title>
+    <meta name="description" content={metaDescription} />
 
     <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
 
-    <!-- JSON-LD Organization -->
-    <script type="application/ld+json">{JSON.stringify(seo.schema.organization)}</script>
+    <!-- Theme color -->
+    <meta name="theme-color" content={site.brand.colors.sunflower} />
 
-    <style>
-      :root { color-scheme: light dark; }
-      html { scroll-padding-top: 84px; }
-      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
-      h1, h2, h3, .font-display { font-family: "Playfair Display", Times New Roman, serif; }
-    </style>
+    <!-- Open Graph -->
+    <meta property="og:type" content={openGraph.type} />
+    <meta property="og:site_name" content={openGraph.siteName} />
+    <meta property="og:title" content={openGraph.title} />
+    <meta property="og:description" content={openGraph.description} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content={twitter.card} />
+    <meta name="twitter:title" content={twitter.title} />
+    <meta name="twitter:description" content={twitter.description} />
+
+    <link rel="canonical" href={canonical} />
 
     <script>
-      (function() {
-        try {
-          const ls = window.localStorage;
-          const preferred = ls && ls.getItem('theme');
-          const mql = window.matchMedia('(prefers-color-scheme: dark)');
-          if (preferred === 'dark' || (!preferred && mql.matches)) {
-            document.documentElement.classList.add('dark');
-          } else {
-            document.documentElement.classList.remove('dark');
-          }
-        } catch(e) {}
-      })();
+      try {
+        const saved = localStorage.getItem('theme');
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isDark = saved ? saved === 'dark' : prefersDark;
+        document.documentElement.classList.toggle('dark', isDark);
+      } catch (e) {}
     </script>
   </head>
-  <body class="antialiased bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+  <body class="bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 antialiased selection:bg-yellow-300 selection:text-neutral-900" style="font-family: Quicksand, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white px-3 py-2 rounded-md shadow">Zum Inhalt springen</a>
+
     <Header />
 
     <main id="main" class="min-h-[60vh]">
@@ -78,37 +58,10 @@ const pageId = Astro.props.pageId;
 
     <Footer />
 
-    {pageId && <AnnouncementModal pageId={pageId} />}
+    {site.schema?.localBusiness && (
+      <script type="application/ld+json">{JSON.stringify(site.schema.localBusiness)}</script>
+    )}
 
-    <ConsentBanner />
-
-    <script>
-      // Matomo (only if consent given for analytics)
-      (function() {
-        const cfg = {
-          url: {JSON.stringify(integrations.analytics.url)},
-          siteId: {JSON.stringify(integrations.analytics.siteId)},
-          anonymizeIp: {JSON.stringify(integrations.analytics.anonymizeIp)}
-        };
-        try {
-          const consentRaw = localStorage.getItem('cookie_consent_v1');
-          const consent = consentRaw ? JSON.parse(consentRaw) : null;
-          const analyticsAllowed = consent && consent.analytics === true;
-          if (!analyticsAllowed) return;
-          var _paq = window._paq = window._paq || [];
-          _paq.push(['disableCookies']);
-          if (cfg.anonymizeIp) _paq.push(['anonymizeIp']);
-          _paq.push(['trackPageView']);
-          _paq.push(['enableLinkTracking']);
-          (function() {
-            var u= cfg.url + '/';
-            _paq.push(['setTrackerUrl', u+'matomo.php']);
-            _paq.push(['setSiteId', cfg.siteId]);
-            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
-          })();
-        } catch(e) {}
-      })();
-    </script>
+    {site.features?.cookieConsent?.enabled && <CookieConsent />}
   </body>
 </html>
