@@ -1,27 +1,5 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Impressum from "../components/Legal/Impressum.astro";
-import Privacy from "../components/Legal/Privacy.astro";
-
-const { slug = [] } = Astro.params;
-const path = Array.isArray(slug) ? `/${slug.join('/')}` : `/${slug}`;
-
-const routes = {
-  "/impressum": {
-    title: "Impressum",
-    component: Impressum,
-  },
-  "/datenschutz": {
-    title: "Datenschutz",
-    component: Privacy,
-  },
-} as const;
-
-const match = routes[path as keyof typeof routes];
-if (!match) {
-  throw Astro.redirect('/');
+export async function getStaticPaths() {
+  return [];
 }
 ---
-<BaseLayout title={match.title} pagePath={path}>
-  <match.component />
-</BaseLayout>
