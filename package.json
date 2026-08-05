@@ -1,20 +1,20 @@
 {
-  "name": "gylsere-januzi-krieg-online-marketing-office",
+  "name": "generated-site",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "postinstall": "astro telemetry disable || true"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.7.0"
-  },
-  "devDependencies": {
+    "astro": "^4.7.0",
+    "@astrojs/tailwind": "^5.1.0",
     "tailwindcss": "^3.4.10",
-    "postcss": "^8.4.41",
-    "autoprefixer": "^10.4.20"
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41"
   }
 }
