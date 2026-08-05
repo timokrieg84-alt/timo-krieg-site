@@ -1,20 +1,27 @@
 ---
-import site from "../config/site";
-import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Impressum from "../components/Legal/Impressum.astro";
+import Privacy from "../components/Legal/Privacy.astro";
 
-const { slug } = Astro.params;
-const path = "/" + (Array.isArray(slug) ? slug.join("/") : slug || "");
-const page = site.pages.find((p:any) => p.path === path);
+const { slug = [] } = Astro.params;
+const path = Array.isArray(slug) ? `/${slug.join('/')}` : `/${slug}`;
 
-if (!page) {
-  throw Astro.redirect("/");
+const routes = {
+  "/impressum": {
+    title: "Impressum",
+    component: Impressum,
+  },
+  "/datenschutz": {
+    title: "Datenschutz",
+    component: Privacy,
+  },
+} as const;
+
+const match = routes[path as keyof typeof routes];
+if (!match) {
+  throw Astro.redirect('/');
 }
 ---
-<GoldenMasterLayout title={page.title} variant={page.layout === 'legal' ? 'legal' : 'default'}>
-  {page.layout === 'legal' ? (
-    <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-8 md:py-12 prose prose-neutral dark:prose-invert">
-      <h1 class="mb-6" style="font-family: 'Playfair Display', serif;">{page.content.heading}</h1>
-      <pre class="whitespace-pre-wrap break-words font-sans text-[0.95rem] leading-relaxed text-neutral-800 dark:text-neutral-200">{page.content.body}</pre>
-    </section>
-  ) : null}
-</GoldenMasterLayout>
+<BaseLayout title={match.title} pagePath={path}>
+  <match.component />
+</BaseLayout>
