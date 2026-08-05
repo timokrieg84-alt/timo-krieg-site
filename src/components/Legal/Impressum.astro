@@ -1,0 +1,40 @@
+---
+import { siteConfig } from "../../config/site";
+const i = siteConfig.legal.impressum;
+---
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Impressum</h1>
+    <div class="mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+      <div class="prose prose-zinc dark:prose-invert max-w-none">
+        <h2>Café Sonnenblume – Betreiber</h2>
+        <p>
+          {i.company}<br />
+          {i.legalForm}<br />
+          Inhaberin: {i.owner}
+        </p>
+        <p>
+          {i.street}<br />
+          {i.postalCode} {i.city}<br />
+          {i.country}
+        </p>
+        <p>
+          Tel.: <a href={`tel:${i.phone.replace(/\s/g,'')}`}>{i.phone}</a><br />
+          E-Mail: <a href={`mailto:${i.email}`}>{i.email}</a>
+        </p>
+        <p>USt-IdNr.: {i.vatId}</p>
+
+        <h2>Verantwortlich für den Inhalt</h2>
+        <p>{i.responsibleContent}</p>
+
+        <h2>Streitbeilegung</h2>
+        <p>
+          {i.disputeResolution}
+        </p>
+
+        <h2>Haftungsausschluss</h2>
+        <p>{i.liabilityNote}</p>
+      </div>
+    </div>
+  </div>
+</section>
