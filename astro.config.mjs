@@ -1,7 +1,6 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
-  vite: { resolve: { alias: { '@': '/src' } } }
+  site: 'https://timo-krieg-site-git-preview-timo24.vercel.app',
+  trailingSlash: 'never'
 });
