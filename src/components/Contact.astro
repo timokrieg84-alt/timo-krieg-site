@@ -121,7 +121,7 @@ const formCfg = siteConfig.forms.contactReservation;
       const datum = document.getElementById('datum');
       const uhrzeit = document.getElementById('uhrzeit');
       const personen = document.getElementById('personen');
-      const cfg = %s;
+      const cfg = {JSON.stringify(formCfg)};
 
       function toggleReservationFields(){
         const isRes = sel.value === 'Reservierung';
