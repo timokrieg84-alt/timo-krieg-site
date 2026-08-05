@@ -54,12 +54,13 @@ const formCfg = site.forms.contact;
   <script is:inline>
     (function(){
       const form = document.getElementById('contact-form');
+      const successRedirect = {JSON.stringify(formCfg.submit.successRedirect)};
       if(!form) return;
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
         const fd = new FormData(form as HTMLFormElement);
         const res = await fetch(form.getAttribute('action')!, { method: 'POST', body: fd });
-        if(res.ok){ window.location.href = '{formCfg.submit.successRedirect}'; }
+        if(res.ok){ window.location.href = successRedirect; }
         else { alert('Senden fehlgeschlagen. Bitte später erneut versuchen.'); }
       });
     })();
