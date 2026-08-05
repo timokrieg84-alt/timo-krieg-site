@@ -1,35 +1,40 @@
 ---
-import site from "@/config/site";
-const cc = site.features.cookieConsent;
+import site from "../config/site";
+const consent = site.legal.cookieConsent;
 ---
-{cc?.enabled && (
-  <div id="cookie-consent" class="fixed inset-x-0 bottom-0 z-50">
-    <div class="mx-auto max-w-[1200px] px-6 pb-6">
-      <div class="rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white/95 dark:bg-neutral-900/95 shadow-md p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-        <p class="text-sm text-neutral-700 dark:text-neutral-300">{cc.text}</p>
-        <div class="flex items-center gap-3">
-          <button id="cc-accept" class="inline-flex items-center rounded-md px-3 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" style={`background:${site.theme.buttons.primary.bg};color:${site.theme.buttons.primary.text}`}>{cc.acceptLabel}</button>
-          <button id="cc-manage" class="text-sm text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-white">{cc.manageLabel}</button>
+{consent && (
+  <div x-data class="fixed inset-x-0 bottom-0 z-50">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="mb-4 rounded-2xl border border-[#E9E2D0] bg-white p-4 shadow-lg dark:border-neutral-800 dark:bg-neutral-900">
+        <div class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+          <div class="text-sm text-neutral-800 dark:text-neutral-200">
+            <p>Wir verwenden Cookies, um unsere Website bereitzustellen. {consent.categories.find(c=>c.key==='analytics')?.required ? '' : 'Statistik-Cookies sind optional.'}</p>
+            <a href={consent.policyLink} class="mt-1 inline-block text-neutral-700 underline hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">Mehr erfahren</a>
+          </div>
+          <div class="flex w-full gap-2 md:w-auto">
+            <button id="cc-accept-essential" class="flex-1 rounded-full border border-[#E9E2D0] bg-white px-4 py-2 text-sm font-semibold text-neutral-800 hover:bg-neutral-50 focus:outline-none focus:ring-2 focus:ring-yellow-400 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-100">Nur Essentiell</button>
+            <button id="cc-accept-all" class="flex-1 rounded-full bg-[#F2B705] px-4 py-2 text-sm font-semibold text-neutral-900 hover:bg-[#C28E04] focus:outline-none focus:ring-2 focus:ring-yellow-400">Alle akzeptieren</button>
+          </div>
         </div>
       </div>
     </div>
-    <script>
-      const KEY = 'cc_sonnenblume';
-      const bar = document.getElementById('cookie-consent');
-      const accept = document.getElementById('cc-accept');
-      const manage = document.getElementById('cc-manage');
-      try {
-        if (localStorage.getItem(KEY) === 'accepted') {
-          bar?.remove();
-        }
-      } catch (e) {}
-      accept?.addEventListener('click', () => {
-        try { localStorage.setItem(KEY, 'accepted'); } catch (e) {}
-        bar?.remove();
-      });
-      manage?.addEventListener('click', () => {
-        alert('Es werden nur essentielle Cookies verwendet.');
-      });
+    <script is:inline>
+      (function(){
+        const KEY = 'cookie_consent_state';
+        const get = () => { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch(e){ return null; } };
+        const set = (val) => { try { localStorage.setItem(KEY, JSON.stringify(val)); } catch(e){} };
+        const bar = document.currentScript.closest('div');
+        const existing = get();
+        if(existing){ bar.remove(); return; }
+        bar.querySelector('#cc-accept-essential').addEventListener('click', () => {
+          set({ essential: true, analytics: false, ts: Date.now() });
+          bar.remove();
+        });
+        bar.querySelector('#cc-accept-all').addEventListener('click', () => {
+          set({ essential: true, analytics: true, ts: Date.now() });
+          bar.remove();
+        });
+      })();
     </script>
   </div>
 )}
