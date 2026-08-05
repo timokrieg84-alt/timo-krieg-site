@@ -1,119 +1,54 @@
 ---
-import site from "@/config/site";
-interface Field { type: string; name: string; label?: string; placeholder?: string; required?: boolean; maxLength?: number; minLength?: number; validation?: { pattern?: string; message?: string }; options?: { label: string; value?: string }[] }
-interface Props { id?: string; heading?: string; showMap?: boolean; mapHeight?: number; showAddress?: boolean; showForm?: boolean }
-const { id = 'contact', heading = 'Kontakt', showMap = true, mapHeight = 320, showAddress = true, showForm = true } = Astro.props as Props;
-const data = site.data.contact;
+import Map from "../Map.astro";
+import ContactForm from "../forms/ContactForm.astro";
+
+interface Address { street: string; postalCode: string; city: string; country?: string }
+interface Coordinates { lat: number; lng: number }
+interface Props {
+  title?: string;
+  text?: string;
+  address: Address;
+  phone?: string;
+  email?: string;
+  map?: { provider?: string; coordinates: Coordinates; zoom?: number; markerLabel?: string };
+  directions?: string;
+  form?: string;
+}
+
+const { title = 'Kontakt & Anfahrt', text, address, phone, email, map, directions, form } = Astro.props as Props;
 ---
-<section id={id} class="mx-auto max-w-[1200px] px-6 py-16">
-  <h2 class="text-2xl sm:text-3xl font-serif font-bold text-neutral-900 dark:text-neutral-50" style="font-family: Merriweather, ui-serif, Georgia, Cambria, Times New Roman, Times, serif;">{heading}</h2>
-  <div class="mt-6 grid grid-cols-1 lg:grid-cols-5 gap-6">
-    <div class="lg:col-span-3 space-y-6">
-      {showMap && (
-        <div class="rounded-xl overflow-hidden border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900">
-          <div id="map" class="w-full" style={`height:${mapHeight}px`}></div>
-          <div class="px-4 py-3 text-xs text-neutral-600 dark:text-neutral-400 border-t border-neutral-200 dark:border-neutral-800">{site.integrations.map.attribution}</div>
-        </div>
-      )}
-      {showAddress && (
-        <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5">
-          <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Adresse</h3>
-          <p class="mt-2 text-neutral-700 dark:text-neutral-300">{data.address.full}</p>
-          <p class="mt-1 text-sm text-neutral-600 dark:text-neutral-400">{data.directions}</p>
-          <div class="mt-3 flex flex-col sm:flex-row gap-2 text-sm">
-            <a class="text-blue-600 hover:underline" href={`https://www.openstreetmap.org/?mlat=${data.coordinates.lat}&mlon=${data.coordinates.lng}#map=16/${data.coordinates.lat}/${data.coordinates.lng}`} target="_blank" rel="noopener">In Karte öffnen</a>
-            <a class="text-blue-600 hover:underline" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(data.address.full)}`} target="_blank" rel="noopener">Route planen</a>
-          </div>
-        </div>
-      )}
+<section id="contact" class="scroll-mt-24">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="mb-10 max-w-3xl">
+      <h2 class="text-3xl font-semibold text-neutral-900 dark:text-white" style="font-family: 'Playfair Display', serif;">{title}</h2>
+      {text && <p class="mt-2 text-neutral-700 dark:text-neutral-300">{text}</p>}
     </div>
-    <div class="lg:col-span-2">
-      {showForm && (
-        <form id={data.form.id} method={data.form.method} action={data.form.action} class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 p-5 space-y-4" novalidate>
-          <p class="text-sm text-neutral-700 dark:text-neutral-300">{data.form.intro}</p>
-          {data.form.fields.map((f: Field) => (
-            <div class="space-y-1">
-              {f.type !== 'checkbox' && f.label && (<label for={f.name} class="text-sm font-medium text-neutral-800 dark:text-neutral-200">{f.label}</label>)}
-              {f.type === 'text' && (
-                <input type="text" id={f.name} name={f.name} placeholder={f.placeholder} maxlength={f.maxLength} required={f.required} class="block w-full rounded-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 px-3 py-2" />
-              )}
-              {f.type === 'email' && (
-                <input type="email" id={f.name} name={f.name} placeholder={f.placeholder} required={f.required} pattern={f.validation?.pattern} class="block w-full rounded-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 px-3 py-2" />
-              )}
-              {f.type === 'tel' && (
-                <input type="tel" id={f.name} name={f.name} placeholder={f.placeholder} required={f.required} pattern={f.validation?.pattern} class="block w-full rounded-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 px-3 py-2" />
-              )}
-              {f.type === 'select' && (
-                <select id={f.name} name={f.name} required={f.required} class="block w-full rounded-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 px-3 py-2">
-                  <option value="">Bitte wählen</option>
-                  {f.options?.map((o) => (<option value={o.value || o.label}>{o.label}</option>))}
-                </select>
-              )}
-              {f.type === 'textarea' && (
-                <textarea id={f.name} name={f.name} placeholder={f.placeholder} minlength={f.minLength} maxlength={f.maxLength} required={f.required} rows={5} class="block w-full rounded-md border-neutral-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100 shadow-sm focus:border-yellow-400 focus:ring-yellow-400 px-3 py-2"></textarea>
-              )}
-              {f.type === 'checkbox' && (
-                <div class="flex items-start gap-2">
-                  <input type="checkbox" id={f.name} name={f.name} required={f.required} class="mt-1 h-4 w-4 rounded border-neutral-300 dark:border-neutral-700 text-yellow-500 focus:ring-yellow-500" />
-                  <label for={f.name} class="text-sm text-neutral-700 dark:text-neutral-300">{f.label}</label>
-                </div>
-              )}
-            </div>
-          ))}
-          <input type="text" id={data.form.honeypotFieldName} name={data.form.honeypotFieldName} class="hidden" tabindex="-1" autocomplete="off" />
-          <div class="flex items-center justify-between gap-3">
-            <button type="submit" class="inline-flex items-center rounded-md px-4 py-2 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500" style={`background:${site.theme.buttons.secondary.bg};color:${site.theme.buttons.secondary.text}`}>Absenden</button>
-            <span id="form-status" class="text-sm text-neutral-600 dark:text-neutral-400"></span>
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
+      <div class="space-y-6">
+        <div class="rounded-2xl border border-[#E9E2D0] bg-white p-5 dark:border-neutral-800 dark:bg-neutral-900">
+          <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Adresse</h3>
+          <address class="mt-2 not-italic text-sm text-neutral-700 dark:text-neutral-300">
+            {address.street}<br />
+            {address.postalCode} {address.city}
+          </address>
+          <div class="mt-3 text-sm">
+            {phone && <a href={`tel:${phone}`} class="text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">{phone}</a>}<br />
+            {email && <a href={`mailto:${email}`} class="text-neutral-700 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white">{email}</a>}
           </div>
-          <script>
-            (function(){
-              const form = document.getElementById('{data.form.id}');
-              const status = document.getElementById('form-status');
-              if(!form) return;
-              let started = Date.now();
-              form.addEventListener('submit', async (e) => {
-                e.preventDefault();
-                const hp = (form.querySelector('#{data.form.honeypotFieldName}') as HTMLInputElement);
-                if(hp && hp.value) return; // bot
-                const delta = (Date.now() - started) / 1000;
-                if(delta < {data.form.minSubmitTimeSeconds}) {
-                  status.textContent = 'Bitte prüfen Sie Ihre Angaben...';
-                }
-                const fd = new FormData(form as HTMLFormElement);
-                const obj: Record<string, any> = {};
-                fd.forEach((v,k)=>{ obj[k]=v; });
-                try{
-                  const res = await fetch('{data.form.action}', { method: '{data.form.method}', headers: { 'Content-Type': '{data.form.encoding}' }, body: JSON.stringify(obj) });
-                  if(res.ok){ status.textContent = '{data.form.successMessage}'; form.reset(); } else { status.textContent = '{data.form.errorMessage}'; }
-                }catch(err){ status.textContent = '{data.form.errorMessage}'; }
-              });
-            })();
-          </script>
-        </form>
-      )}
+        </div>
+        {map && (
+          <div class="space-y-3">
+            <Map coordinates={map.coordinates} zoom={map.zoom} markerLabel={map.markerLabel} />
+            {directions && <p class="text-sm text-neutral-700 dark:text-neutral-300">{directions}</p>}
+          </div>
+        )}
+      </div>
+      <div class="rounded-2xl border border-[#E9E2D0] bg-white p-6 shadow-sm dark:border-neutral-800 dark:bg-neutral-900">
+        <h3 class="text-base font-semibold text-neutral-900 dark:text-neutral-100">Schreib uns</h3>
+        <div class="mt-4">
+          <ContactForm />
+        </div>
+      </div>
     </div>
   </div>
-
-  {showMap && (
-    <script>
-      (function(){
-        const tileUrl = '{site.integrations.map.tileUrl}';
-        const zoom = {site.integrations.map.defaultZoom};
-        const lat = {data.coordinates.lat};
-        const lng = {data.coordinates.lng};
-        const h = {mapHeight};
-        const el = document.getElementById('map');
-        if(!el) return;
-        // Lightweight OSM embed without external libs
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        const size = Math.min(Math.round(window.innerWidth), 1200);
-        const url = `https://maps.wikimedia.org/osm-intl/${zoom}/${lng}/${lat}.png`;
-        const img = new Image();
-        img.alt = 'Karte';
-        img.className = 'w-full h-full object-cover';
-        img.src = `https://tile.openstreetmap.org/${zoom}/${Math.floor((lng+180)/360*Math.pow(2,zoom))}/${Math.floor((1-Math.log(Math.tan(lat*Math.PI/180)+1/Math.cos(lat*Math.PI/180))/Math.PI)/2*Math.pow(2,zoom))}.png`;
-        el.appendChild(img);
-      })();
-    </script>
-  )}
 </section>
