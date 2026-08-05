@@ -4,6 +4,7 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import AnnouncementBar from "../components/AnnouncementBar.astro";
 import CookieConsent from "../components/CookieConsent.astro";
+import "../styles/global.css";
 
 const { seo, site } = siteConfig;
 const title = seo?.title ?? site?.name;
@@ -28,9 +29,7 @@ const og = seo?.openGraph ?? {};
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <script is:inline>
-      // Respect stored theme or system preference
       const stored = localStorage.getItem('theme');
       const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (stored === 'dark' || (!stored && prefersDark)) {
