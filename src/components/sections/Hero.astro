@@ -1,48 +1,55 @@
 ---
+import site from "@/config/site";
+interface CTA { label: string; href: string; style?: "primary" | "secondary" | "ghost" }
 interface Props {
   id?: string;
-  headline: string;
-  subheadline?: string;
-  image?: { src: string; alt: string };
-  primaryCta?: { label: string; href: string; style?: string };
-  secondaryCta?: { label: string; href: string; style?: string };
-  badges?: string[];
+  preheading?: string;
+  heading: string;
+  subheading?: string;
+  background?: { mode?: "color"; color?: string };
+  textColor?: string;
+  ctas?: CTA[];
 }
-const { id, headline, subheadline, image, primaryCta, secondaryCta, badges } = Astro.props as Props;
+const { id = "hero", preheading, heading, subheading, background, textColor = site.brand.colors.ink, ctas = [] } = Astro.props as Props;
 ---
-<section id={id} class="relative isolate overflow-hidden">
-  {image && (
-    <img src={image.src} alt={image.alt} class="absolute inset-0 -z-10 h-full w-full object-cover opacity-20 dark:opacity-25" />
-  )}
-  <div class="mx-auto max-w-7xl px-4 py-20 sm:px-6 md:py-28 lg:px-8">
-    <div class="grid items-center gap-10 md:grid-cols-2">
-      <div>
-        <h1 class="text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl md:text-6xl dark:text-white" style="font-family: 'Playfair Display', serif;">
-          {headline}
-        </h1>
-        {subheadline && <p class="mt-4 text-lg text-gray-700 dark:text-gray-300">{subheadline}</p>}
-        <div class="mt-8 flex flex-wrap items-center gap-3">
-          {primaryCta && (
-            <a href={primaryCta.href} class="inline-flex items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 dark:focus:ring-offset-gray-950">
-              {primaryCta.label}
-            </a>
-          )}
-          {secondaryCta && (
-            <a href={secondaryCta.href} class="inline-flex items-center justify-center rounded-full border border-gray-300 px-5 py-3 text-sm font-semibold text-gray-800 transition-colors hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-600 dark:border-gray-700 dark:text-gray-100 dark:hover:bg-gray-900">
-              {secondaryCta.label}
-            </a>
-          )}
-        </div>
-        {badges && badges.length > 0 && (
-          <div class="mt-6 flex flex-wrap gap-3">
-            {badges.map((b) => (
-              <span class="inline-flex items-center rounded-full border border-gray-200 px-3 py-1 text-xs font-medium text-gray-600 dark:border-gray-800 dark:text-gray-300">{b}</span>
-            ))}
+<section id={id} class="relative">
+  <div class="absolute inset-0 -z-10" style={background?.mode === 'color' && background?.color ? `background:${background.color}` : ''}></div>
+  <div class="mx-auto max-w-[1200px] px-6 pt-16 pb-20 sm:pt-24 sm:pb-28">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+      <div class="lg:col-span-7">
+        {preheading && (<p class="text-sm font-semibold tracking-wider uppercase text-neutral-600 dark:text-neutral-300">{preheading}</p>)}
+        <h1 class="mt-3 text-4xl sm:text-5xl font-serif font-bold tracking-tight text-neutral-900 dark:text-white" style="font-family: Merriweather, ui-serif, Georgia, Cambria, Times New Roman, Times, serif;color:{textColor}">{heading}</h1>
+        {subheading && (
+          <p class="mt-4 text-lg text-neutral-700 dark:text-neutral-300 max-w-2xl">{subheading}</p>
+        )}
+        {ctas.length > 0 && (
+          <div class="mt-8 flex flex-wrap gap-3">
+            {ctas.map((cta) => {
+              const kind = cta.style ?? 'primary';
+              const styles = site.theme.buttons as any;
+              const cfg = styles[kind];
+              return (
+                <a href={cta.href} class="inline-flex items-center rounded-md px-5 py-3 text-base font-semibold shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-colors" style={`background:${cfg.bg};color:${cfg.text}`}
+                  onMouseOver={`this.style.background='${cfg.hoverBg ?? cfg.bg}'`}
+                  onMouseOut={`this.style.background='${cfg.bg}'`}>
+                  {cta.label}
+                </a>
+              );
+            })}
           </div>
         )}
       </div>
-      <div class="hidden md:block">
-        {image && <img src={image.src} alt={image.alt} class="mx-auto rounded-xl shadow-2xl ring-1 ring-black/5" />}
+      <div class="lg:col-span-5">
+        <div class="relative rounded-2xl overflow-hidden shadow-lg ring-1 ring-neutral-200/60 dark:ring-neutral-800/60">
+          <div class="aspect-[4/3] bg-gradient-to-br from-yellow-200 via-amber-100 to-orange-100 dark:from-yellow-300/10 dark:via-amber-200/10 dark:to-orange-200/10 flex items-center justify-center">
+            <div class="text-center p-8">
+              <div class="mx-auto h-16 w-16 rounded-full flex items-center justify-center" style={`background:${site.brand.colors.sunflower}`}> 
+                <svg class="h-8 w-8 text-neutral-900" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              </div>
+              <p class="mt-4 text-sm text-neutral-600 dark:text-neutral-300">Warm. Freundlich. Hausgemacht.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
