@@ -1,0 +1,45 @@
+---
+import { siteConfig } from "../../config/site";
+const cookie = siteConfig.popups.cookieConsent;
+if (!cookie?.enabled) {
+  /* no render */
+}
+---
+{cookie?.enabled && (
+  <div id="cookie-consent" class="fixed inset-x-0 bottom-0 z-40">
+    <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 pb-4">
+      <div class="rounded-lg border border-zinc-200 dark:border-zinc-800 bg-white/95 dark:bg-zinc-900/95 shadow-lg p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
+        <p class="text-sm text-zinc-700 dark:text-zinc-300 flex-1">{cookie.content.message}</p>
+        <div class="flex gap-2">
+          <a href={cookie.content.policyLink} class="px-3 py-2 text-sm rounded-md border border-zinc-300 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:bg-zinc-50 dark:hover:bg-zinc-800">{cookie.content.policyLabel}</a>
+          <button id="cookie-reject" class="px-3 py-2 text-sm rounded-md bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-100 hover:bg-zinc-200 dark:hover:bg-zinc-700">{cookie.content.rejectLabel}</button>
+          <button id="cookie-accept" class="px-3 py-2 text-sm rounded-md bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-medium">{cookie.content.acceptLabel}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
+
+<script>
+  (function(){
+    const banner = document.getElementById('cookie-consent');
+    if (!banner) return;
+    const key = 'cookie-consent-choice';
+    try {
+      const choice = localStorage.getItem(key);
+      if (choice) {
+        banner.remove();
+        return;
+      }
+    } catch (e) {}
+
+    const accept = document.getElementById('cookie-accept');
+    const reject = document.getElementById('cookie-reject');
+    const close = (value) => {
+      try { localStorage.setItem(key, value); } catch (e) {}
+      banner.remove();
+    };
+    accept?.addEventListener('click', () => close('all'));
+    reject?.addEventListener('click', () => close('essential'));
+  })();
+</script>
