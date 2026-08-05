@@ -1,13 +1,9 @@
 import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  integrations: [tailwind({ applyBaseStyles: true })],
+  server: { host: true },
+  build: { format: 'directory' },
   vite: {
-    resolve: {
-      alias: {
-        '@': '/src'
-      }
-    }
-  }
+    css: { preprocessorOptions: {} },
+  },
 });
