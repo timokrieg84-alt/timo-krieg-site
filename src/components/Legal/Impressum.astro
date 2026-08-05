@@ -6,34 +6,40 @@ const i = siteConfig.legal.impressum;
   <div class="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-8">
     <h1 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Impressum</h1>
     <div class="mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
-      <div class="prose prose-zinc dark:prose-invert max-w-none">
-        <h2>Café Sonnenblume – Betreiber</h2>
-        <p>
-          {i.company}<br />
-          {i.legalForm}<br />
-          Inhaberin: {i.owner}
-        </p>
-        <p>
-          {i.street}<br />
-          {i.postalCode} {i.city}<br />
-          {i.country}
-        </p>
-        <p>
-          Tel.: <a href={`tel:${i.phone.replace(/\s/g,'')}`}>{i.phone}</a><br />
-          E-Mail: <a href={`mailto:${i.email}`}>{i.email}</a>
-        </p>
-        <p>USt-IdNr.: {i.vatId}</p>
+      <div class="space-y-6 text-zinc-700 dark:text-zinc-300">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Café Sonnenblume – Betreiber</h2>
+          <p class="mt-2">
+            {i.company}<br />
+            {i.legalForm}<br />
+            Inhaberin: {i.owner}
+          </p>
+          <p class="mt-2">
+            {i.street}<br />
+            {i.postalCode} {i.city}<br />
+            {i.country}
+          </p>
+          <p class="mt-2">
+            Tel.: <a href={`tel:${i.phone.replace(/\s/g,'')}`} class="underline hover:text-zinc-900 dark:hover:text-zinc-100">{i.phone}</a><br />
+            E-Mail: <a href={`mailto:${i.email}`} class="underline hover:text-zinc-900 dark:hover:text-zinc-100">{i.email}</a>
+          </p>
+          <p class="mt-2">USt-IdNr.: {i.vatId}</p>
+        </div>
 
-        <h2>Verantwortlich für den Inhalt</h2>
-        <p>{i.responsibleContent}</p>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Verantwortlich für den Inhalt</h2>
+          <p class="mt-2">{i.responsibleContent}</p>
+        </div>
 
-        <h2>Streitbeilegung</h2>
-        <p>
-          {i.disputeResolution}
-        </p>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Streitbeilegung</h2>
+          <p class="mt-2">{i.disputeResolution}</p>
+        </div>
 
-        <h2>Haftungsausschluss</h2>
-        <p>{i.liabilityNote}</p>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Haftungsausschluss</h2>
+          <p class="mt-2">{i.liabilityNote}</p>
+        </div>
       </div>
     </div>
   </div>
