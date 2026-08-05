@@ -1,0 +1,85 @@
+---
+import site from "@/config/site";
+import { formatPrice } from "@/components/Price";
+interface Price { amount: number; currency?: string }
+interface DaySpecial { title: string; description?: string; price: Price }
+interface Props { id?: string; heading?: string; subheading?: string; style?: 'card' | 'plain' }
+const { id = 'tagesangebot', heading = site.data.specials.label, subheading, style = 'card' } = Astro.props as Props;
+
+const plan = site.data.specials.weekplan;
+const week: Record<string, DaySpecial> = plan as any;
+const order = ['monday','tuesday','wednesday','thursday','friday','saturday','sunday'];
+const labels: Record<string,string> = { monday:'Montag', tuesday:'Dienstag', wednesday:'Mittwoch', thursday:'Donnerstag', friday:'Freitag', saturday:'Samstag', sunday:'Sonntag' };
+
+// Default to Monday to avoid build-time TZ issues; client JS will set correct day
+const defaultKey = 'monday';
+const current = week[defaultKey];
+---
+<section id={id} class="mx-auto max-w-[1200px] px-6 py-16">
+  {(heading || subheading) && (
+    <div class="mb-8">
+      {heading && (<h2 class="text-2xl sm:text-3xl font-serif font-bold text-neutral-900 dark:text-neutral-50" style="font-family: Merriweather, ui-serif, Georgia, Cambria, Times New Roman, Times, serif;">{heading}</h2>)}
+      {subheading && (<p class="mt-2 text-neutral-700 dark:text-neutral-300">{subheading}</p>)}
+    </div>
+  )}
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+    <div class={"lg:col-span-2 " + (style === 'card' ? 'rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm p-6' : '')}>
+      <div id="special-card" data-key={defaultKey} class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+        <div>
+          <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-50" id="special-title">{current.title}</h3>
+          {current.description && (<p class="mt-1 text-neutral-700 dark:text-neutral-300" id="special-desc">{current.description}</p>)}
+        </div>
+        <div class="text-right">
+          <span class="inline-flex items-center rounded-md bg-yellow-200/60 text-neutral-900 px-3 py-1.5 text-sm font-semibold">{formatPrice(current.price.amount)}</span>
+        </div>
+      </div>
+    </div>
+    <div class="rounded-xl border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-sm p-3">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2" id="special-tabs">
+        {order.map((key) => (
+          <button data-day={key} class={"w-full text-left px-3 py-2 rounded-md text-sm border border-transparent hover:border-yellow-300 hover:bg-yellow-50 dark:hover:bg-yellow-200/10 transition-colors " + (key === defaultKey ? 'bg-yellow-100 dark:bg-yellow-900/30 border-yellow-300' : 'bg-neutral-50 dark:bg-neutral-800')}>{labels[key]}</button>
+        ))}
+      </div>
+    </div>
+  </div>
+  <script>
+    const DAYMAP = ['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+    const specials = { ...JSON.parse(String.raw`{}`) };
+  </script>
+  <script set:html>
+    {`
+      (function(){
+        const data = ${JSON.stringify(week)};
+        const card = document.getElementById('special-card');
+        const title = document.getElementById('special-title');
+        const desc = document.getElementById('special-desc');
+        const tabs = document.getElementById('special-tabs');
+        if(!card || !title || !tabs) return;
+        function setActive(key){
+          const s = data[key];
+          if(!s) return;
+          title.textContent = s.title;
+          if(desc){ desc.textContent = s.description || ''; if(!s.description) desc.classList.add('hidden'); else desc.classList.remove('hidden'); }
+          card.dataset.key = key;
+          tabs.querySelectorAll('button').forEach(b=>{
+            if(b.getAttribute('data-day')===key){ b.classList.add('bg-yellow-100','dark:bg-yellow-900/30','border-yellow-300'); }
+            else { b.classList.remove('bg-yellow-100','dark:bg-yellow-900/30','border-yellow-300'); }
+          });
+        }
+        tabs.addEventListener('click', (e)=>{
+          const t = e.target.closest('button');
+          if(!t) return;
+          const key = t.getAttribute('data-day');
+          if(key) setActive(key);
+        });
+        try{
+          const now = new Date();
+          // Map JS getDay 0..6 -> our keys
+          const map=['sunday','monday','tuesday','wednesday','thursday','friday','saturday'];
+          const k = map[now.getDay()] || 'monday';
+          setActive(k);
+        }catch(e){ }
+      })();
+    `}
+  </script>
+</section>

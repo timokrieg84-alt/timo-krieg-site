@@ -1,52 +1,51 @@
 ---
-export interface Props {
+interface Props {
   title?: string;
   description?: string;
+  canonical?: string;
+  jsonLd?: any;
+  ogImage?: string;
 }
-const { title = 'Gylsere Januzi Krieg Online Marketing Office', description = 'High-Performance Online Marketing. SEO, GEO, Ads, Webdesign, Social, AI & mehr.' } = Astro.props;
+const {
+  title = 'Gylsere Januzi Krieg Online Marketing Office',
+  description = 'Professionelles Online-Marketing und Vertriebsmanagement.',
+  canonical = 'https://timo-krieg-site-git-preview-timo24.vercel.app/',
+  jsonLd,
+  ogImage
+} = Astro.props as Props;
 ---
-<html lang="de" class="dark">
+<!DOCTYPE html>
+<html lang="de">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#0284c7" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="canonical" href={(Astro.site ?? new URL('https://timo-krieg-site-ppkjfc45e-timo24.vercel.app')).toString()} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <style>html,body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Noto Sans,sans-serif}</style>
-    <link rel="stylesheet" href="/src/styles/tailwind.css" />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="Gylsere Januzi Krieg Online Marketing Office" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {ogImage && <meta name="twitter:image" content={ogImage} />}
+
+    <link rel="stylesheet" href="/styles/global.css" />
+    {jsonLd && (
+      <script type="application/ld+json">
+        {JSON.stringify(jsonLd)}
+      </script>
+    )}
   </head>
-  <body class="min-h-screen text-slate-300 bg-slate-950">
-    <header class="border-b border-slate-800">
-      <div class="container flex items-center justify-between py-4">
-        <nav class="flex items-center gap-6 text-slate-300">
-          <a href="/" class="hover:text-white">Home</a>
-          <a href="/leistungen" class="hover:text-white">Leistungen</a>
-          <a href="/case-studies" class="hover:text-white">Case Studies</a>
-          <a href="/wir" class="hover:text-white">Wir</a>
-          <a href="/kontakt" class="hover:text-white">Kontakt</a>
-        </nav>
-        <div class="flex items-center gap-3">
-          <a href="/kontakt#erstgespraech" class="px-3 py-2 rounded-md bg-brand-primary text-white hover:opacity-90">Erstgespräch buchen</a>
-          <a href="mailto:gjanuzikrieg@gmail.com" class="px-3 py-2 rounded-md border border-slate-700 hover:border-slate-500">E-Mail</a>
-          <a href="tel:+491756372395" class="px-3 py-2 rounded-md bg-brand-accent text-black hover:opacity-90">+49 175 6372395</a>
-        </div>
-      </div>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer class="mt-16 border-t border-slate-800">
-      <div class="container py-10 text-sm text-slate-400 flex items-center justify-between">
-        <p>© {new Date().getFullYear()} Gylsere Januzi Krieg Online Marketing Office</p>
-        <nav class="flex gap-6">
-          <a href="/impressum" class="hover:text-white">Impressum</a>
-          <a href="/datenschutz" class="hover:text-white">Datenschutz</a>
-        </nav>
-      </div>
-    </footer>
+  <body>
+    <a class="skip-link" href="#main">Zum Inhalt springen</a>
+    <slot />
   </body>
 </html>

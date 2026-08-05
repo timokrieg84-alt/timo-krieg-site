@@ -1,0 +1,76 @@
+---
+import { siteConfig } from "../config/site";
+const oh = siteConfig.openingHours;
+const specialsData = siteConfig.dynamic.dailySpecials;
+---
+<section id={oh.id} class="py-16 sm:py-20">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <h2 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{oh.title}</h2>
+      <span class="text-sm text-zinc-500">{oh.note}</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="md:col-span-2 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {oh.hours.map((h) => (
+            <li class="flex items-center justify-between rounded-lg bg-zinc-50 dark:bg-zinc-800/50 p-3 text-sm">
+              <span class="font-medium text-zinc-700 dark:text-zinc-200">{h.days.join(', ')}</span>
+              <span class="text-zinc-600 dark:text-zinc-300">{h.open} – {h.close} Uhr</span>
+            </li>
+          ))}
+        </ul>
+
+        {oh.exceptions?.length && (
+          <div class="mt-6 space-y-3">
+            {oh.exceptions.map((ex) => (
+              <div class="rounded-lg border border-zinc-200 dark:border-zinc-800 p-3 text-sm flex items-center justify-between">
+                <div>
+                  <p class="font-medium text-zinc-800 dark:text-zinc-100">{ex.title}</p>
+                  <p class="text-zinc-600 dark:text-zinc-300">{ex.message}</p>
+                </div>
+                <div class="text-right text-xs text-zinc-500">
+                  {ex.range ? (
+                    <span>{ex.range.start} – {ex.range.end}</span>
+                  ) : (
+                    <span>{ex.date}</span>
+                  )}
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+        <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">Aktuell</h3>
+        <div id="specials" class="mt-3 space-y-2 text-sm text-zinc-700 dark:text-zinc-300"></div>
+        <script>
+          (function(){
+            const specials = { data: {JSON.stringify(specialsData)} };
+            const host = document.getElementById('specials');
+            if (!host) return;
+            const now = new Date();
+            const dayMap = ['So','Mo','Di','Mi','Do','Fr','Sa'];
+            const day = dayMap[now.getDay()];
+            const pad = (n)=> String(n).padStart(2,'0');
+            const current = pad(now.getHours()) + ':' + pad(now.getMinutes());
+            const list = [];
+            specials.data.forEach(s => {
+              if (s.weekdays) {
+                if (s.weekdays.includes(day)) {
+                  if (!s.time || (current >= s.time.start && current <= s.time.end)) list.push(s);
+                }
+              } else if (s.date) {
+                const d = new Date(s.date+'T00:00:00');
+                if (d.toDateString() === now.toDateString()) list.push(s);
+              }
+            });
+            if (list.length === 0) { host.innerHTML = '<p class="text-zinc-500">Derzeit keine Specials.</p>'; return; }
+            host.innerHTML = list.map(s => `<div class="rounded-md bg-yellow-50 text-yellow-900 p-3"><p class="font-medium">${s.title}</p>${s.items?.map(i=>`<div class=\"flex items-center justify-between text-sm\"><span>${i.name}</span><span>${i.price.toFixed(2)} €</span></div>`).join('')||''}</div>`).join('');
+          })();
+        </script>
+      </div>
+    </div>
+  </div>
+</section>

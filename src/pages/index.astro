@@ -1,45 +1,95 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const services = [
-  { id: "seo", title: "SEO", subtitle: "Sichtbar werden, wenn es zählt.", description: "Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.", features: ["Technisches SEO", "Content & Keywords", "Backlink-Aufbau", "Local SEO"] },
-  { id: "seo-regio", title: "SEO-Regio", subtitle: "Die absolute Umland-Dominanz.", description: "Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.", features: ["50 Satelliten-Seiten", "Kein Risiko für Original-Site", "Umland-Abdeckung", "Local SEO Boost"] },
-  { id: "google-ads", title: "Google Ads", subtitle: "Jeder Klick mit Absicht.", description: "Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.", features: ["Search & Performance Max", "Conversion-Tracking", "Klickschutz (Click-Fraud)", "Retargeting"] },
-  { id: "geo", title: "GEO", subtitle: "Sichtbar in ChatGPT, Perplexity & Google AI.", description: "Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.", features: ["LLM-Crawling", "Entity-SEO", "Citation-Ready Content", "llms.txt & AI Overviews"] },
-  { id: "webdesign", title: "Webdesign & E-Commerce", subtitle: "Websites, die verkaufen.", description: "Maßgeschneidertes Design mit Astro & Next.js – ultraschnell, skalierbar und konversionsstark mit exzellenten Core Web Vitals, DSGVO-Sicherheit und Verkaufspsychologie.", features: ["Custom Design", "Astro & Next.js", "Core Web Vitals", "CRO & APIs"] },
-  { id: "online-terminvereinbarung", title: "Online-Terminvereinbarung", subtitle: "24/7 Terminbuchungen automatisieren.", description: "Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.", features: ["API-Schnittstellen", "24/7-Buchung", "Automatisierte Abläufe", "Echtzeit-Synchronisation"] },
-  { id: "marketing", title: "Marketing", subtitle: "Der Mix, der wirkt.", description: "Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.", features: ["Content", "Social Media", "Reporting & Analytics"] },
-  { id: "ai-automation", title: "AI & Automation", subtitle: "Prozesse, die mitdenken.", description: "Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.", features: ["Custom-AI-Agenten", "LLM-Integrationen", "Workflow-Automatisierung"] },
-  { id: "branding", title: "Branding", subtitle: "Markenbildung mit Substanz.", description: "Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.", features: ["Brand Strategy", "Visual Identity", "Logo & Design System", "Messaging"] },
-  { id: "social-media", title: "Social Media", subtitle: "Content, der Kunden bringt.", description: "Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbar Anfragen und Umsatz liefert.", features: ["Strategie & Kanalaufbau", "Foto, Video & Grafik", "Community-Management", "Paid Social"] },
-  { id: "reputation", title: "Reputation & Bewertungen", subtitle: "Automatisierte Top-Bewertungen & Schutz.", description: "Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.", features: ["Rezensionen löschen", "Review-Monitoring", "5-Sterne-System", "Reputation-Recovery"] },
-  { id: "praxis-tv", title: "Praxis- & Wartezimmer-TV", subtitle: "Hochkonvertierende Präsentationen.", description: "Visuell überragende Bildschirmpräsentationen für Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.", features: ["Wartezimmer-TV", "Patienten-Aufklärung", "Zusatzleistungen", "Visuelle Konzepte"] },
-  { id: "code-exzellenz", title: "Code-Exzellenz & Software", subtitle: "Custom Programmierarbeiten.", description: "Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.", features: ["Custom Software", "API-Integrationen", "Legacy-Modernisierung", "Prozessautomatisierung"] },
-  { id: "factoring", title: "Premium-Factoring", subtitle: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", features: ["100% Ausfallschutz", "Sofort-Liquidität", "Bessere Bonität", "Debitorenmanagement"] }
-];
----
-<BaseLayout title="Gylsere Januzi Krieg Online Marketing Office" description="High-Performance Online Marketing mit Astro: SEO, GEO, Ads, Webdesign, Social, AI & mehr.">
-  <section class="py-16">
-    <div class="container">
-      <h1 class="text-3xl md:text-4xl font-semibold text-white mb-4">Wir bringen Sichtbarkeit, Leads & Umsatz – mit einem Setup, das skaliert.</h1>
-      <p class="text-slate-400 max-w-3xl">Astro-Performance, messbares Marketing und intelligente Automatisierung. Alles fokussiert auf Ergebnis: Anfragen, ROAS und nachhaltiges Wachstum.</p>
-    </div>
-  </section>
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
 
-  <section class="py-8">
-    <div class="container">
-      <h2 class="text-2xl font-semibold text-white mb-6">Unsere Leistungen</h2>
-      <div class="grid-cards" role="list">
-        {services.map((s) => (
-          <a href={`/leistungen#${s.id}`} class="card block focus:outline-none focus:ring-2 focus:ring-brand-primary" role="listitem" id={s.id}>
-            <h3 class="text-xl font-semibold mb-1">{s.title}</h3>
-            <p class="text-slate-400 mb-2">{s.subtitle}</p>
-            <p class="mb-3">{s.description}</p>
-            <div class="features" aria-label="Highlights">
-              {s.features.map((f) => (<span class="chip">{f}</span>))}
-            </div>
-          </a>
-        ))}
+const SITE = 'https://timo-krieg-site-git-preview-timo24.vercel.app';
+
+const title = 'Gylsere Januzi Krieg Online Marketing Office – Online-Marketing & Vertriebsmanagement';
+const description = 'Professionelles Online-Marketing und Vertriebsmanagement.';
+const canonical = SITE + '/';
+const ogImage = SITE + '/images/logo-gjk.webp';
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': SITE + '/#business',
+  'name': 'Gylsere Januzi Krieg Online Marketing Office',
+  'url': SITE + '/',
+  'email': 'gjanuzikrieg@gmail.com',
+  'telephone': '+49 175 6372395',
+  'image': SITE + '/images/logo-gjk.webp',
+  'address': {
+    '@type': 'PostalAddress',
+    'streetAddress': 'Kitzingstraße 7',
+    'postalCode': '73529',
+    'addressLocality': 'Schwäbisch Gmünd',
+    'addressCountry': 'DE'
+  },
+  'areaServed': 'DE',
+  'sameAs': []
+};
+---
+<BaseLayout {title} {description} {canonical} {jsonLd} {ogImage}>
+  <Header />
+
+  <main id="main">
+    <section class="hero" aria-label="Intro">
+      <div class="container">
+        <h1>Gylsere Januzi Krieg Online Marketing Office</h1>
+        <p class="claim">Professionelles Online-Marketing und Vertriebsmanagement.</p>
+        <div class="cta">
+          <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
+          <a class="btn btn--ghost" href="/leistungen">Leistungen</a>
+        </div>
       </div>
-    </div>
-  </section>
+
+      <!-- Subtile, performante Noise-Overlay rein mit SVG -->
+      <svg class="noise" xmlns="http://www.w3.org/2000/svg">
+        <filter id="f">
+          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
+          <feColorMatrix type="saturate" values="0" />
+        </filter>
+        <rect width="100%" height="100%" filter="url(#f)"></rect>
+      </svg>
+    </section>
+
+    <section class="section" id="leistungen">
+      <div class="container">
+        <div class="section-head">
+          <h2>Leistungen</h2>
+        </div>
+        <p>Inhalt folgt. Diese Sektion zeigt später Ihre Kernangebote (z. B. Strategie, Performance Ads, SEO, Vertrieb).</p>
+      </div>
+    </section>
+
+    <section class="section" id="referenzen">
+      <div class="container">
+        <div class="section-head">
+          <h2>Referenzen</h2>
+        </div>
+        <p>Inhalt folgt. Hier platzieren wir Fallstudien, Logos und Ergebnisse – optional mit leichtem Slider.</p>
+      </div>
+    </section>
+
+    <section class="section" id="ueber-uns">
+      <div class="container">
+        <div class="section-head">
+          <h2>Über uns</h2>
+        </div>
+        <p>Inhalt folgt. Kurzprofil, Werte und Arbeitsweise – schlank und glaubwürdig im B2B‑Stil.</p>
+      </div>
+    </section>
+
+    <section class="section" id="kontakt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Kontakt</h2>
+        </div>
+        <p>Inhalt folgt. Der CTA führt vorerst zur Kontaktseite (/kontakt), die wir im nächsten Schritt bauen.</p>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </BaseLayout>

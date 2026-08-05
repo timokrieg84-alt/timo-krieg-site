@@ -1,0 +1,24 @@
+---
+---
+<nav aria-label="Skip Links">
+  <a href="#main" class="skip-link sr-only">Zum Inhalt springen</a>
+  <a href="#contact" class="skip-link sr-only">Zum Kontakt springen</a>
+</nav>
+<style>
+  .skip-link:focus-visible {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 50;
+    padding: 0.5rem 0.75rem;
+    background: white;
+    color: black;
+    border-radius: 0.5rem;
+    outline: 2px solid #F6C945;
+    outline-offset: 2px;
+    box-shadow: var(--shadow-md);
+  }
+  @media (prefers-color-scheme: dark) {
+    .skip-link:focus-visible { background: #111; color: #fff; }
+  }
+</style>

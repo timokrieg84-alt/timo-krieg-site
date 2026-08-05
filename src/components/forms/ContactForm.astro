@@ -1,0 +1,68 @@
+---
+import site from "../../config/site";
+const formCfg = site.forms.contact;
+---
+<form id="contact-form" method={formCfg.submit.method} action={formCfg.submit.endpoint} class="space-y-5">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+      <label for="vorname" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">Vorname *</label>
+      <input id="vorname" name="vorname" type="text" required minlength="2" maxlength="60" class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" />
+    </div>
+    <div>
+      <label for="nachname" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">Nachname</label>
+      <input id="nachname" name="nachname" type="text" maxlength="60" class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" />
+    </div>
+  </div>
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+    <div>
+      <label for="email" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">E-Mail *</label>
+      <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" />
+    </div>
+    <div>
+      <label for="telefon" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">Telefon</label>
+      <input id="telefon" name="telefon" type="tel" pattern="^\+?[0-9\s\-\/]{6,}$" class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100" />
+    </div>
+  </div>
+  <div>
+    <label for="betreff" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">Betreff *</label>
+    <select id="betreff" name="betreff" required class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100">
+      <option value="">Bitte wählen</option>
+      {formCfg.fields.find(f=>f.name==='betreff')?.options?.map((o:any)=> (
+        <option value={o.value}>{o.label}</option>
+      ))}
+    </select>
+  </div>
+  <div>
+    <label for="nachricht" class="block text-sm font-medium text-neutral-800 dark:text-neutral-100">Nachricht *</label>
+    <textarea id="nachricht" name="nachricht" required minlength="10" maxlength="2000" rows="5" class="mt-1 block w-full rounded-xl border border-[#E9E2D0] bg-white px-3 py-2 text-neutral-900 placeholder-neutral-400 shadow-sm focus:border-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-300 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-100"></textarea>
+  </div>
+  <div class="flex items-start gap-3">
+    <input id="datenschutz" name="datenschutz" type="checkbox" required class="mt-1 h-4 w-4 rounded border-[#E9E2D0] text-[#F2B705] focus:ring-yellow-400 dark:border-neutral-700" />
+    <label for="datenschutz" class="text-sm text-neutral-700 dark:text-neutral-300">
+      Ich habe die <a href="/datenschutz" class="underline hover:text-neutral-900 dark:hover:text-white">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Angaben zur Beantwortung der Anfrage zu.
+    </label>
+  </div>
+  {formCfg.privacy?.captcha?.enabled && (
+    <div class="rounded-xl border border-dashed border-[#E9E2D0] p-3 text-center text-xs text-neutral-600 dark:border-neutral-800 dark:text-neutral-400">
+      CAPTCHA-Platzhalter (hCaptcha)
+    </div>
+  )}
+  <div class="flex items-center justify-between">
+    <p class="text-xs text-neutral-600 dark:text-neutral-400">Wir speichern Anfragen für max. {formCfg.privacy?.dataRetentionDays} Tage.</p>
+    <button type="submit" class="inline-flex items-center rounded-full bg-[#F2B705] px-5 py-2.5 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#C28E04] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400">Senden</button>
+  </div>
+  <script is:inline>
+    (function(){
+      const form = document.getElementById('contact-form');
+      const successRedirect = {JSON.stringify(formCfg.submit.successRedirect)};
+      if(!form) return;
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form as HTMLFormElement);
+        const res = await fetch(form.getAttribute('action')!, { method: 'POST', body: fd });
+        if(res.ok){ window.location.href = successRedirect; }
+        else { alert('Senden fehlgeschlagen. Bitte später erneut versuchen.'); }
+      });
+    })();
+  </script>
+</form>

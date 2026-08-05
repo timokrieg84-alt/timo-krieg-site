@@ -1,25 +1,37 @@
-<header class="sticky top-0 z-50 bg-[#0b0f19]/90 backdrop-blur-md border-b border-gray-800">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-    <a href="/" class="text-xl font-bold tracking-tight text-white flex items-center gap-2">
-      Gylsere Januzi <span class="text-xs text-[#FF2D9A] font-normal uppercase tracking-wider hidden sm:inline">online marketing office</span>
+---
+const nav = [
+  { href: '/leistungen', label: 'Leistungen' },
+  { href: '/ueber-uns', label: 'Über uns' },
+  { href: '/referenzen', label: 'Referenzen' },
+  { href: '/kontakt', label: 'Kontakt' }
+];
+---
+<header class="site-header" role="banner">
+  <div class="container">
+    <a class="brand" href="/" aria-label="Startseite">
+      <img
+        class="brand__logo"
+        src="/images/logo-gjk.webp"
+        alt="Gylsere Januzi Krieg Online Marketing Office – Logo"
+        width="180"
+        height="120"
+        decoding="async"
+      />
+      <span class="brand__name">Gylsere Januzi Krieg Online Marketing Office</span>
     </a>
-    <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
-      <a href="/" class="hover:text-[#FF2D9A] transition-colors">Home</a>
-      <a href="/leistungen" class="hover:text-[#FF2D9A] transition-colors">Leistungen</a>
-      <a href="/case-studies" class="hover:text-[#FF2D9A] transition-colors">Case Studies</a>
-      <a href="/wir" class="hover:text-[#FF2D9A] transition-colors">Wir</a>
-      <a href="/kontakt" class="hover:text-[#FF2D9A] transition-colors">Kontakt</a>
+
+    <input id="nav-toggle" type="checkbox" class="nav-toggle" aria-label="Menü öffnen/schließen" />
+    <label for="nav-toggle" class="burger" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="nav" aria-label="Hauptnavigation">
+      <ul>
+        {nav.map((item) => (
+          <li><a href={item.href}>{item.label}</a></li>
+        ))}
+      </ul>
+      <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
     </nav>
-    <div class="flex items-center gap-4">
-      <a href="/kontakt" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#FF6A00] text-white font-medium hover:bg-[#FF6A00]/90 transition-colors">
-        Erstgespräch buchen
-      </a>
-      <a href="mailto:gjanuzikrieg@gmail.com" aria-label="E-Mail an Gylsere Januzi senden" class="hidden sm:inline-flex items-center justify-center px-4 py-2 rounded-lg border border-[#FF2D9A] text-[#FF2D9A] font-semibold hover:bg-[#FF2D9A] hover:text-white transition-colors">
-        E-Mail
-      </a>
-      <a href="tel:+491756372395" class="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-[#00C853] text-gray-950 font-semibold hover:bg-[#00C853]/90 transition-colors">
-        +49 175 6372395
-      </a>
-    </div>
   </div>
 </header>

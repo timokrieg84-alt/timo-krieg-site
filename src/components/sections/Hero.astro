@@ -1,0 +1,53 @@
+---
+interface ImageProps {
+  src: string;
+  alt: string;
+  overlay?: number; // 0..1
+  focalPoint?: string;
+}
+
+interface Cta {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  primaryCta?: Cta;
+  secondaryCta?: Cta;
+  image?: ImageProps;
+}
+
+const { eyebrow, title, subtitle, primaryCta, secondaryCta, image } = Astro.props as Props;
+const overlay = typeof image?.overlay === 'number' ? Math.min(0.9, Math.max(0, image.overlay)) : 0.25;
+---
+<section aria-labelledby="hero-title" class="relative isolate overflow-hidden">
+  {image && (
+    <div class="absolute inset-0 -z-10">
+      <img src={image.src} alt={image.alt} class="h-full w-full object-cover" loading="eager" fetchpriority="high" decoding="async" />
+      <div class="absolute inset-0" style={`background: linear-gradient(to bottom, rgba(0,0,0,${overlay}) 0%, rgba(0,0,0,${overlay}) 100%)`}></div>
+    </div>
+  )}
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
+    {eyebrow && <p class="mb-3 text-sm font-medium uppercase tracking-wide text-yellow-300">{eyebrow}</p>}
+    <h1 id="hero-title" class="max-w-3xl text-4xl font-bold leading-tight text-white sm:text-5xl" style="font-family: 'Playfair Display', serif;">
+      {title}
+    </h1>
+    {subtitle && <p class="mt-4 max-w-2xl text-lg text-neutral-100">{subtitle}</p>}
+    <div class="mt-8 flex flex-wrap gap-3">
+      {primaryCta && (
+        <a href={primaryCta.href} class="inline-flex items-center rounded-full bg-[#F2B705] px-5 py-3 text-sm font-semibold text-neutral-900 shadow-sm hover:bg-[#C28E04] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300">
+          {primaryCta.label}
+        </a>
+      )}
+      {secondaryCta && (
+        <a href={secondaryCta.href} class="inline-flex items-center rounded-full border border-white/60 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-300">
+          {secondaryCta.label}
+        </a>
+      )}
+    </div>
+  </div>
+  <div aria-hidden="true" class="pointer-events-none absolute -bottom-16 -right-16 -z-10 h-64 w-64 rounded-full bg-[#F2B705]/40 blur-2xl"></div>
+</section>

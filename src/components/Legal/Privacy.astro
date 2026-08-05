@@ -1,0 +1,37 @@
+---
+import { siteConfig } from "../../config/site";
+const p = siteConfig.legal.privacy;
+---
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Datenschutzerklärung</h1>
+    <div class="mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+      <div class="space-y-6 text-zinc-700 dark:text-zinc-300">
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Verantwortliche Stelle</h2>
+          <p class="mt-2">{p.controller} – Kontakt: <a href={`mailto:${p.contact}`} class="underline hover:text-zinc-900 dark:hover:text-zinc-100">{p.contact}</a></p>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Datenverarbeitung</h2>
+          <ul class="mt-2 list-disc pl-5 space-y-1">
+            {p.dataProcessing.map((d) => (<li>{d}</li>))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Rechtsgrundlagen</h2>
+          <ul class="mt-2 list-disc pl-5 space-y-1">
+            {p.legalBases.map((d) => (<li>{d}</li>))}
+          </ul>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Aufbewahrung</h2>
+          <p class="mt-2">{p.retention}</p>
+        </div>
+        <div>
+          <h2 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">Deine Rechte</h2>
+          <p class="mt-2">{p.rights}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

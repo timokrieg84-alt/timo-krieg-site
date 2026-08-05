@@ -1,0 +1,7 @@
+---
+import BaseLayout from './BaseLayout.astro';
+const { title, description, canonical, jsonLd, ogImage } = Astro.props;
+---
+<BaseLayout {title} {description} {canonical} {jsonLd} {ogImage}>
+  <slot />
+</BaseLayout>

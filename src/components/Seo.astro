@@ -1,0 +1,26 @@
+---
+import site from "../config/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+}
+const { title, description, image } = Astro.props as Props;
+const metaTitle = title || site.seo.defaultTitle;
+const metaDescription = description || site.seo.defaultDescription;
+const ogImage = image || site.seo.openGraph.image || site.brand.images?.defaultOg;
+---
+<title>{metaTitle}</title>
+<meta name="description" content={metaDescription} />
+<meta name="keywords" content={site.seo.keywords.join(", ")} />
+<meta property="og:type" content={site.seo.openGraph.type} />
+<meta property="og:title" content={metaTitle} />
+<meta property="og:description" content={metaDescription} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={site.seo.openGraph.siteName} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={metaTitle} />
+<meta name="twitter:description" content={metaDescription} />
+<meta name="twitter:image" content={ogImage} />
+<script type="application/ld+json">{JSON.stringify(site.seo.jsonLd)}</script>

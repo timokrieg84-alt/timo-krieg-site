@@ -1,0 +1,19 @@
+---
+import { siteConfig } from "../config/site";
+const gallery = siteConfig.content.gallery;
+const spacingY = siteConfig.layout.sectionSpacing.y;
+---
+<section id={gallery.id} class="py-16 sm:py-20" style={`padding-top:${spacingY}px;padding-bottom:${spacingY}px`}>
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-8">
+      <h2 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{gallery.title}</h2>
+    </div>
+    <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]"><!-- masonry -->
+      {gallery.images.map((img) => (
+        <figure class="mb-4 break-inside-avoid rounded-xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
+          <img src={img.src} alt={img.alt} class="w-full h-auto object-cover" loading="lazy" />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

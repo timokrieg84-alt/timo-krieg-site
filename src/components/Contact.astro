@@ -1,0 +1,172 @@
+---
+import { siteConfig } from "../config/site";
+const c = siteConfig.contact;
+const formCfg = siteConfig.forms.contactReservation;
+---
+<section id={c.id} class="py-16 sm:py-20">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-10 items-start">
+    <div class="space-y-5">
+      <h2 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{c.title}</h2>
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm space-y-4">
+        <div class="flex items-start gap-3">
+          <div class="h-10 w-10 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M1.5 8.25l10.5 7.5 10.5-7.5"/><path d="M3 6.75h18v10.5A2.25 2.25 0 0118.75 19.5H5.25A2.25 2.25 0 013 17.25V6.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-medium text-zinc-800 dark:text-zinc-100">E-Mail</p>
+            <a href={`mailto:${c.email}`} class="text-zinc-600 dark:text-zinc-300 hover:underline">{c.email}</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="h-10 w-10 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M2.25 6.75A2.25 2.25 0 014.5 4.5h2.148a2.25 2.25 0 012.08 1.434l.638 1.595a2.25 2.25 0 01-.52 2.41l-.93.93a14.25 14.25 0 006.818 6.818l.93-.93a2.25 2.25 0 012.41-.52l1.595.638A2.25 2.25 0 0119.5 19.5V21.75A2.25 2.25 0 0117.25 24H16.5C8.492 24 2.25 17.758 2.25 9.75V9a2.25 2.25 0 010-.75z"/></svg>
+          </div>
+          <div>
+            <p class="font-medium text-zinc-800 dark:text-zinc-100">Telefon</p>
+            <a href={`tel:${c.phone.replace(/\s/g,'')}`} class="text-zinc-600 dark:text-zinc-300 hover:underline">{c.phone}</a>
+          </div>
+        </div>
+        <div class="flex items-start gap-3">
+          <div class="h-10 w-10 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2.25c-4.832 0-8.75 3.918-8.75 8.75 0 6.563 8.75 10.75 8.75 10.75s8.75-4.188 8.75-10.75c0-4.832-3.918-8.75-8.75-8.75zm0 11.5a2.75 2.75 0 110-5.5 2.75 2.75 0 010 5.5z"/></svg>
+          </div>
+          <div>
+            <p class="font-medium text-zinc-800 dark:text-zinc-100">Adresse</p>
+            <a href={c.social.googleMaps} target="_blank" rel="noopener noreferrer" class="text-zinc-600 dark:text-zinc-300 hover:underline">{c.address.street}, {c.address.postalCode} {c.address.city}</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 shadow-sm">
+        <div class="aspect-[16/9] w-full">
+          <iframe title={c.map.markerTitle} class="w-full h-full" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src={`https://www.openstreetmap.org/export/embed.html?bbox=${(c.map.longitude-0.01).toFixed(4)},${(c.map.latitude-0.01).toFixed(4)},${(c.map.longitude+0.01).toFixed(4)},${(c.map.latitude+0.01).toFixed(4)}&layer=mapnik&marker=${c.map.latitude},${c.map.longitude}`}></iframe>
+        </div>
+        <div class="p-3 text-right text-xs text-zinc-500">
+          <a href={c.social.googleMaps} target="_blank" rel="noopener noreferrer" class="hover:underline">Auf Karte öffnen</a>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+        <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">{formCfg.title}</h3>
+        <p class="mt-1 text-sm text-zinc-600 dark:text-zinc-400">{formCfg.description}</p>
+
+        <form id="contact-form" class="mt-6 space-y-4" novalidate>
+          <div>
+            <label for="anliegen" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Anliegen</label>
+            <select id="anliegen" name="anliegen" required class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400">
+              {formCfg.fields.find(f=>f.name==='anliegen')?.options?.map((o) => (
+                <option value={o}>{o}</option>
+              ))}
+            </select>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="name" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Name</label>
+              <input id="name" name="name" type="text" required minlength="2" maxlength="80" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+            </div>
+            <div>
+              <label for="email" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">E-Mail</label>
+              <input id="email" name="email" type="email" required class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+            </div>
+          </div>
+
+          <div>
+            <label for="telefon" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Telefon (optional)</label>
+            <input id="telefon" name="telefon" type="tel" pattern="^[0-9+()\-\s]{6,}$" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+          </div>
+
+          <div id="reservierung-fields" class="grid grid-cols-1 sm:grid-cols-3 gap-4 hidden">
+            <div>
+              <label for="datum" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Datum</label>
+              <input id="datum" name="datum" type="date" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+            </div>
+            <div>
+              <label for="uhrzeit" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Uhrzeit</label>
+              <input id="uhrzeit" name="uhrzeit" type="time" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+            </div>
+            <div>
+              <label for="personen" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Personen</label>
+              <input id="personen" name="personen" type="number" min="1" max="10" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400" />
+            </div>
+          </div>
+
+          <div>
+            <label for="nachricht" class="block text-sm font-medium text-zinc-700 dark:text-zinc-300">Nachricht</label>
+            <textarea id="nachricht" name="nachricht" required minlength="10" maxlength="1000" rows="5" class="mt-1 block w-full rounded-md border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 focus:ring-yellow-400 focus:border-yellow-400"></textarea>
+          </div>
+
+          <div class="flex items-start gap-2">
+            <input id="datenschutz" name="datenschutz" type="checkbox" required class="mt-1 rounded border-zinc-300 dark:border-zinc-700 text-yellow-500 focus:ring-yellow-400" />
+            <label for="datenschutz" class="text-sm text-zinc-700 dark:text-zinc-300">Ich stimme der Verarbeitung meiner Daten gemäß der <a href="/datenschutz" class="underline">Datenschutzerklärung</a> zu.</label>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button type="submit" class="inline-flex items-center gap-2 rounded-md bg-yellow-400 hover:bg-yellow-500 text-zinc-900 font-medium px-5 py-2.5 shadow-sm transition-colors">Senden</button>
+            <span id="form-status" class="text-sm"></span>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const sel = document.getElementById('anliegen');
+      const res = document.getElementById('reservierung-fields');
+      const datum = document.getElementById('datum');
+      const uhrzeit = document.getElementById('uhrzeit');
+      const personen = document.getElementById('personen');
+      const cfg = {JSON.stringify(formCfg)};
+
+      function toggleReservationFields(){
+        const isRes = sel.value === 'Reservierung';
+        res.classList.toggle('hidden', !isRes);
+        datum.required = isRes;
+        uhrzeit.required = isRes;
+        personen.required = isRes;
+      }
+      sel.addEventListener('change', toggleReservationFields);
+      toggleReservationFields();
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        status.textContent = '';
+        const fd = new FormData(form);
+        // Basic HTML5 validation
+        if (!form.reportValidity()) return;
+        const entries = Object.fromEntries(fd.entries());
+        const lines = [];
+        lines.push(`Anliegen: ${entries.anliegen}`);
+        lines.push(`Name: ${entries.name}`);
+        lines.push(`E-Mail: ${entries.email}`);
+        if (entries.telefon) lines.push(`Telefon: ${entries.telefon}`);
+        if (entries.anliegen === 'Reservierung') {
+          if (entries.datum) lines.push(`Datum: ${entries.datum}`);
+          if (entries.uhrzeit) lines.push(`Uhrzeit: ${entries.uhrzeit}`);
+          if (entries.personen) lines.push(`Personen: ${entries.personen}`);
+        }
+        lines.push('');
+        lines.push('Nachricht:');
+        lines.push(String(entries.nachricht));
+        const body = encodeURIComponent(lines.join('\n'));
+        const subject = encodeURIComponent(cfg.endpoint.subject);
+        const mailto = `mailto:${cfg.endpoint.to}?subject=${subject}&body=${body}`;
+        try {
+          window.location.href = mailto;
+          status.className = 'text-sm text-emerald-600';
+          status.textContent = cfg.successMessage;
+          form.reset();
+          toggleReservationFields();
+        } catch (err) {
+          status.className = 'text-sm text-red-600';
+          status.textContent = cfg.errorMessage;
+        }
+      });
+    })();
+  </script>
+</section>
