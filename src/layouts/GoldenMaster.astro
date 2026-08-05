@@ -1,0 +1,105 @@
+---
+import siteConfig from "../site-config";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AnnouncementModal from "../components/AnnouncementModal.astro";
+import ConsentBanner from "../components/ConsentBanner.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  pageId?: string;
+}
+
+const {
+  site: { name, tagline, language, brand, seo },
+  integrations,
+} = siteConfig;
+
+const pageTitle = Astro.props.title || seo.defaultTitle;
+const metaDesc = Astro.props.description || seo.defaultDescription;
+const ogImage = Astro.props.ogImage || seo.ogImage;
+const pageId = Astro.props.pageId;
+---
+<!DOCTYPE html>
+<html lang={language} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seo.titleTemplate.replace("%s", pageTitle)}</title>
+    <meta name="description" content={metaDesc} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={ogImage} />
+    <link rel="icon" type="image/png" href={brand.favicon} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <!-- JSON-LD Organization -->
+    <script type="application/ld+json">{JSON.stringify(seo.schema.organization)}</script>
+
+    <style>
+      :root { color-scheme: light dark; }
+      html { scroll-padding-top: 84px; }
+      body { font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      h1, h2, h3, .font-display { font-family: "Playfair Display", Times New Roman, serif; }
+    </style>
+
+    <script>
+      (function() {
+        const ls = typeof window !== 'undefined' ? window.localStorage : null;
+        const preferred = ls && ls.getItem('theme');
+        const mql = window.matchMedia('(prefers-color-scheme: dark)');
+        if (preferred === 'dark' || (!preferred && mql.matches)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="antialiased bg-white text-gray-800 dark:bg-gray-950 dark:text-gray-100">
+    <Header />
+
+    <main id="main" class="min-h-[60vh]">
+      <slot />
+    </main>
+
+    <Footer />
+
+    {pageId && <AnnouncementModal pageId={pageId} />}
+
+    <ConsentBanner />
+
+    <script>
+      // Matomo (only if consent given for analytics)
+      (function() {
+        const cfg = { url: {integrations.analytics.url}, siteId: '{integrations.analytics.siteId}', anonymizeIp: {String(integrations.analytics.anonymizeIp)} };
+        const consentRaw = localStorage.getItem('cookie_consent_v1');
+        const consent = consentRaw ? JSON.parse(consentRaw) : null;
+        const analyticsAllowed = consent && consent.analytics === true;
+        if (!analyticsAllowed) return;
+        var _paq = window._paq = window._paq || [];
+        _paq.push(['disableCookies']);
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function() {
+          var u= cfg.url + '/';
+          _paq.push(['setTrackerUrl', u+'matomo.php']);
+          _paq.push(['setSiteId', cfg.siteId]);
+          var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+          g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+        })();
+      })();
+    </script>
+  </body>
+</html>
