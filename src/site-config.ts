@@ -242,7 +242,8 @@ export const siteConfig = {
                 {
                   id: "heisse-schokolade",
                   name: "Heiße Schokolade",
-                  description: "Vollmundige Trinkschokolade.",n                  price: 3.9,
+                  description: "Vollmundige Trinkschokolade.",
+                  price: 3.9,
                   dietary: ["vegetarisch"],
                   contains: ["laktose"],
                 },
@@ -282,7 +283,7 @@ export const siteConfig = {
                   description: "Naturjoghurt, knuspriges Granola, saisonales Obst.",
                   price: 5.2,
                   dietary: ["vegetarisch"],
-                  contains: ["laktose", "nüsse", "gluten"],
+                  contains: ["laktose", "nüsse", "gluten"],
                 },
                 {
                   id: "avocado-toast",
@@ -328,7 +329,7 @@ export const siteConfig = {
                   description: "Saftig, schokoladig.",
                   price: 3.2,
                   dietary: [],
-                  contains: ["gluten", "ei", "nüsse"],
+                  contains: ["gluten", "ei", "nüsse"],
                 },
                 {
                   id: "zimtschnecke",
@@ -366,7 +367,7 @@ export const siteConfig = {
                   description: "Mit Basilikum-Pesto.",
                   price: 6.9,
                   dietary: ["vegetarisch"],
-                  contains: ["gluten", "laktose", "nüsse"],
+                  contains: ["gluten", "laktose", "nüsse"],
                 },
                 {
                   id: "tomatensuppe",
