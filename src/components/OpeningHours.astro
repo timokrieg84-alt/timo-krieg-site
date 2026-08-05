@@ -47,7 +47,7 @@ const specialsData = siteConfig.dynamic.dailySpecials;
         <div id="specials" class="mt-3 space-y-2 text-sm text-zinc-700 dark:text-zinc-300"></div>
         <script>
           (function(){
-            const specials = {data: %s};
+            const specials = { data: {JSON.stringify(specialsData)} };
             const host = document.getElementById('specials');
             if (!host) return;
             const now = new Date();
