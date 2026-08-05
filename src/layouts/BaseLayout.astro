@@ -10,12 +10,7 @@ interface Props {
   pagePath?: string;
 }
 
-const {
-  project,
-  seo,
-  branding,
-} = siteConfig;
-
+const { project, seo, branding } = siteConfig;
 const { defaultTitle, titleTemplate, metaDescription, openGraph, twitter } = seo;
 const pageTitle = Astro.props.title
   ? titleTemplate.replace("%s", Astro.props.title)
@@ -24,6 +19,8 @@ const pageDescription = Astro.props.description ?? metaDescription;
 const pagePath = Astro.props.pagePath ?? Astro.url.pathname;
 const ogImage = openGraph?.image?.src ?? "/og.jpg";
 const ogAlt = openGraph?.image?.alt ?? project.name;
+const site = Astro.site?.toString?.();
+const ogUrl = site ? new URL(pagePath, site).toString() : undefined;
 ---
 <!DOCTYPE html>
 <html lang={project.language} class="scroll-smooth">
@@ -48,7 +45,7 @@ const ogAlt = openGraph?.image?.alt ?? project.name;
     <meta property="og:image" content={ogImage} />
     <meta property="og:image:alt" content={ogAlt} />
     <meta property="og:locale" content={project.locale} />
-    <meta property="og:url" content={new URL(pagePath, Astro.site)} />
+    {ogUrl && <meta property="og:url" content={ogUrl} />}
 
     <!-- Twitter -->
     <meta name="twitter:card" content={twitter.card} />
@@ -61,7 +58,7 @@ const ogAlt = openGraph?.image?.alt ?? project.name;
       {JSON.stringify({
         '@context': 'https://schema.org',
         ...seo.schema,
-        url: new URL(pagePath, Astro.site)?.toString?.(),
+        url: ogUrl,
       })}
     </script>
 
