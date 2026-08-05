@@ -1,3 +1,4 @@
-// Slim PostCSS config for Astro without Tailwind
-// We currently ship handcrafted CSS; Tailwind is intentionally not loaded.
-module.exports = { plugins: [] };
+/** Neutral PostCSS config: no Tailwind required */
+module.exports = {
+  plugins: []
+};
