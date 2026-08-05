@@ -1,787 +1,500 @@
-export const siteConfig = {
-  configVersion: "1.0.0",
-  project: {
+export const site = {
+  projectName: "cafe-sonnenblume",
+  brand: {
     name: "Café Sonnenblume",
-    slug: "cafe-sonnenblume",
-    language: "de",
-    locale: "de-DE",
-    timezone: "Europe/Berlin",
-    industry: "Gastronomie",
-    brandTone: "warm, freundlich, einladend",
-  },
-  branding: {
+    tagline: "Warm. Freundlich. Lieblingskaffee in Berlin.",
     logo: {
-      src: "/assets/branding/logo-cafe-sonnenblume.svg",
+      type: "text",
+      text: "Café Sonnenblume",
       alt: "Logo Café Sonnenblume",
     },
-    favicon: "/assets/branding/favicon-cafe-sonnenblume.png",
-    colors: {
-      primary: "#F2C94C",
-      primaryDark: "#D9A72C",
-      secondary: "#8B5E3C",
-      accent: "#F2994A",
-      text: "#3A2F28",
-      mutedText: "#6B5B52",
-      background: "#FFF9ED",
-      surface: "#FFFFFF",
-      success: "#2EB872",
-      warning: "#E6A23C",
-      error: "#E74C3C",
-    },
-    typography: {
-      heading: {
-        fontFamily: "Poppins",
-        weights: [400, 600, 700],
-      },
-      body: {
-        fontFamily: "Inter",
-        weights: [300, 400, 500],
-      },
-      baseSizePx: 16,
-    },
-    radii: {
-      sm: 6,
-      md: 12,
-      lg: 20,
-      xl: 28,
-    },
-    shadows: {
-      card: "0 6px 24px rgba(0,0,0,0.08)",
-      elevated: "0 10px 36px rgba(0,0,0,0.12)",
-    },
-    illustrationStyle: "warm-natural",
   },
-  routing: {
-    pages: [
-      { path: "/", title: "Start" },
-      { path: "/impressum", title: "Impressum" },
-      { path: "/datenschutz", title: "Datenschutz" },
-    ],
-    anchors: [
-      { id: "home", hash: "#home", title: "Start" },
-      { id: "ueber-uns", hash: "#ueber-uns", title: "Über uns" },
-      { id: "menu", hash: "#menu", title: "Speisekarte" },
-      { id: "zeiten", hash: "#zeiten", title: "Öffnungszeiten" },
-      { id: "galerie", hash: "#galerie", title: "Galerie" },
-      { id: "kontakt", hash: "#kontakt", title: "Kontakt" },
-    ],
-  },
-  navigation: {
-    main: [
-      { label: "Über uns", href: "#ueber-uns" },
-      { label: "Speisekarte", href: "#menu" },
-      { label: "Öffnungszeiten", href: "#zeiten" },
-      { label: "Galerie", href: "#galerie" },
-      { label: "Kontakt", href: "#kontakt" },
-    ],
-    cta: {
-      label: "Tisch reservieren",
-      href: "#kontakt",
-      variant: "primary",
-    },
-    mobile: {
-      collapseBreakpoint: "lg",
-    },
-    a11y: {
-      skipToContentLabel: "Zum Inhalt springen",
-    },
-  },
-  seo: {
-    defaultTitle: "Café Sonnenblume | Berlin Neukölln",
-    titleTemplate: "%s | Café Sonnenblume Berlin",
-    metaDescription:
-      "Warm, freundlich und lecker: Das Café Sonnenblume in Berlin-Neukölln bietet frisch gerösteten Kaffee, hausgemachte Kuchen, Frühstück, Brunch und vegane Optionen.",
+  meta: {
+    locale: "de-DE",
+    language: "de",
+    title: "Café Sonnenblume – Warmes, freundliches Café in Berlin",
+    description:
+      "Café Sonnenblume in Berlin: Frischer Kaffee, hausgebackener Kuchen und liebevolles Frühstück. Entdecke unsere Speisekarte, Öffnungszeiten und kontaktiere uns direkt.",
     keywords: [
       "Café Berlin",
-      "Neukölln Café",
-      "Frühstück Berlin",
-      "Brunch Berlin",
       "Kaffee",
-      "Hausgemachter Kuchen",
-      "Vegane Optionen",
+      "Kuchen",
+      "Frühstück",
+      "Spezialitätenkaffee",
+      "Sonnenblume",
+      "Nachbarschaftscafé",
     ],
-    openGraph: {
-      type: "website",
-      image: {
-        src: "/assets/og/cafe-sonnenblume-og.jpg",
-        alt: "Gemütliches Café Sonnenblume mit sonnigem Interieur",
-      },
-    },
-    twitter: {
-      card: "summary_large_image",
-      image: "/assets/og/cafe-sonnenblume-og.jpg",
-    },
-    schema: {
-      type: "CafeOrCoffeeShop",
-      name: "Café Sonnenblume",
-      image: "/assets/og/cafe-sonnenblume-og.jpg",
-      address: {
-        streetAddress: "Sonnenallee 75",
-        postalCode: "12045",
-        addressLocality: "Berlin",
-        addressRegion: "Berlin",
-        addressCountry: "DE",
-      },
-      geo: {
-        latitude: 52.4866,
-        longitude: 13.4364,
-      },
-      telephone: "+49 30 5490 1234",
-      email: "hallo@cafe-sonnenblume.berlin",
-      servesCuisine: ["Cafe", "Frühstück", "Kuchen", "Vegetarisch", "Vegan"],
-      priceRange: "€€",
-      openingHoursSpecification: [
-        {
-          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-          opens: "08:00",
-          closes: "18:00",
-        },
-        { dayOfWeek: ["Saturday", "Sunday"], opens: "09:00", closes: "18:00" },
-      ],
-      sameAs: [
-        "https://www.instagram.com/cafesonnenblume.berlin",
-        "https://www.facebook.com/cafesonnenblume.berlin",
-        "https://maps.app.goo.gl/5m2jQxCafSonnenblume",
-      ],
+    canonicalPath: "/",
+    og: {
+      title: "Café Sonnenblume – Dein Nachbarschaftscafé in Berlin",
+      description:
+        "Warmes, freundliches Café mit Kaffee, Kuchen, Frühstück und veganen Optionen.",
+      image: null,
     },
   },
-  assets: {
-    images: [
-      {
-        src: "/assets/images/hero/sonnenblume-hero.jpg",
-        alt: "Sonnendurchfluteter Innenraum des Café Sonnenblume",
+  theme: {
+    colors: {
+      primary: "#F6C945",
+      primaryDark: "#C99E15",
+      secondary: "#386641",
+      accent: "#E08E45",
+      background: "#FFF9E9",
+      surface: "#FFFFFF",
+      text: "#2F2A1F",
+      muted: "#8A7F6A",
+      border: "#E8DFC8",
+      success: "#2E7D32",
+      warning: "#E65100",
+      error: "#C62828",
+    },
+    typography: {
+      fontFamily:
+        "Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Noto Sans, Apple Color Emoji, Segoe UI Emoji",
+      baseSize: 16,
+      scale: {
+        h1: 40,
+        h2: 28,
+        h3: 22,
+        body: 16,
+        small: 14,
       },
-      { src: "/assets/images/galerie/kaffee-latte-art.jpg", alt: "Latte Art im Cappuccino" },
-      {
-        src: "/assets/images/galerie/hausgemachter-kuchen.jpg",
-        alt: "Hausgemachter Käsekuchen auf einem Holzteller",
+      lineHeights: {
+        heading: 1.2,
+        body: 1.6,
       },
-      {
-        src: "/assets/images/galerie/fruehstueck-teller.jpg",
-        alt: "Frühstücksteller mit frischem Obst und Brot",
+    },
+    radius: {
+      sm: 6,
+      md: 10,
+      lg: 16,
+      xl: 24,
+    },
+    shadows: {
+      sm: "0 1px 2px rgba(0,0,0,0.06)",
+      md: "0 6px 16px rgba(0,0,0,0.08)",
+      lg: "0 12px 28px rgba(0,0,0,0.12)",
+    },
+    layout: {
+      containerWidth: 1140,
+      sectionSpacing: 72,
+      gridGap: 24,
+    },
+    buttons: {
+      primary: {
+        bg: "#386641",
+        text: "#FFFFFF",
+        hoverBg: "#2F5436",
       },
-      {
-        src: "/assets/images/galerie/aussenbereich.jpg",
-        alt: "Außenbereich des Cafés an der Sonnenallee",
+      secondary: {
+        bg: "#F6C945",
+        text: "#2F2A1F",
+        hoverBg: "#EABA2D",
       },
+    },
+  },
+  navigation: {
+    primary: [
+      { label: "Start", target: "#hero" },
+      { label: "Speisekarte", target: "#menu" },
+      { label: "Öffnungszeiten", target: "#hours" },
+      { label: "Über uns", target: "#about" },
+      { label: "Galerie", target: "#gallery" },
+      { label: "Kontakt", target: "#contact" },
     ],
-  },
-  content: {
-    hero: {
-      id: "home",
-      headline: "Willkommen im Café Sonnenblume",
-      subheadline: "Kaffee, Kuchen und gute Laune – mitten in Neukölln.",
-      primaryCta: { label: "Speisekarte ansehen", href: "#menu" },
-      secondaryCta: { label: "Tisch reservieren", href: "#kontakt" },
-      bgImage: "/assets/images/hero/sonnenblume-hero.jpg",
-      badge: {
-        text: "Frühstück täglich",
-        icon: "sun",
-      },
-    },
-    highlights: [
-      {
-        icon: "coffee",
-        title: "Frisch gerösteter Kaffee",
-        text: "Sorgfältig ausgewählte Bohnen, fair gehandelt und perfekt zubereitet.",
-      },
-      {
-        icon: "cake",
-        title: "Hausgemachte Kuchen",
-        text: "Täglich frisch gebacken – klassisch und vegan.",
-      },
-      {
-        icon: "leaf",
-        title: "Vegane Optionen",
-        text: "Leckere pflanzliche Alternativen für jeden Geschmack.",
-      },
-      {
-        icon: "sun",
-        title: "Frühstück & Brunch",
-        text: "Herzhafte und süße Favoriten – den ganzen Vormittag.",
-      },
+    footer: [
+      { label: "Speisekarte", target: "#menu" },
+      { label: "Kontakt", target: "#contact" },
     ],
-    about: {
-      id: "ueber-uns",
-      title: "Über uns",
-      intro:
-        "Café Sonnenblume ist ein familiengeführtes Nachbarschaftscafé – warm, freundlich und mit viel Liebe zum Detail.",
-      text:
-        "Wir glauben an ehrliche Zutaten, Handwerk und Zeit für einen guten Kaffee. Unsere Kuchen backen wir täglich in unserer kleinen Küche. Ob zum Frühstück, für die Arbeitspause oder den gemütlichen Nachmittag – bei uns findest du einen Ort zum Wohlfühlen.",
-      image: "/assets/images/galerie/aussenbereich.jpg",
-      values: [
-        { title: "Nachhaltig", detail: "Mehrweg, lokale Lieferanten und Ökostrom." },
-        { title: "Saisonal", detail: "Zutaten nach Saison – frisch und geschmackvoll." },
-        { title: "Gemeinschaft", detail: "Ein Ort für Nachbarschaft, Gespräche und Kultur." },
-      ],
-    },
-    gallery: {
-      id: "galerie",
-      title: "Einblicke",
-      images: [
-        { src: "/assets/images/galerie/kaffee-latte-art.jpg", alt: "Latte Art – Herz im Cappuccino" },
-        { src: "/assets/images/galerie/hausgemachter-kuchen.jpg", alt: "Käsekuchen mit Beeren" },
-        { src: "/assets/images/galerie/fruehstueck-teller.jpg", alt: "Frühstücksteller mit Granola und Obst" },
-      ],
-      layout: "masonry",
+    cta: {
+      label: "Kontakt",
+      target: "#contact",
     },
   },
-  menu: {
-    id: "menu",
-    title: "Speisekarte",
-    currency: "EUR",
-    note: "Alle Preise in Euro. Hafer-, Soja- oder Mandelmilch als Alternative erhältlich.",
-    categories: [
-      {
-        id: "hot-drinks",
-        title: "Kaffee & Heißgetränke",
-        items: [
-          {
-            id: "espresso",
-            name: "Espresso",
-            description: "Kräftig und aromatisch",
-            variants: [
-              { name: "einfach", price: 2.2 },
-              { name: "doppio", price: 3.6 },
-            ],
-            tags: ["vegan", "glutenfrei"],
-          },
-          {
-            id: "cappuccino",
-            name: "Cappuccino",
-            description: "Mit cremigem Milchschaum",
-            variants: [
-              { name: "klein", price: 3.5 },
-              { name: "groß", price: 4.2 },
-            ],
-            tags: ["vegetarisch"],
-            addOns: [
-              { name: "Hafermilch", price: 0.5, tags: ["vegan"] },
-              { name: "Sirup (Vanille/Haselnuss/Karamell)", price: 0.4 },
-            ],
-          },
-          {
-            id: "flat-white",
-            name: "Flat White",
-            description: "Doppio mit samtigem Mikroschaum",
-            price: 4.2,
-            tags: ["vegetarisch"],
-          },
-          {
-            id: "latte-macchiato",
-            name: "Latte Macchiato",
-            description: "Sanft und milchig",
-            variants: [
-              { name: "klein", price: 4.0 },
-              { name: "groß", price: 4.8 },
-            ],
-            tags: ["vegetarisch"],
-          },
-          {
-            id: "filterkaffee",
-            name: "Filterkaffee",
-            description: "Hell geröstet, klar im Geschmack",
-            price: 3.0,
-            tags: ["vegan", "glutenfrei"],
-          },
-          {
-            id: "heisse-schokolade",
-            name: "Heiße Schokolade",
-            description: "Feine Schokolade mit Sahne optional",
-            price: 3.8,
-            tags: ["vegetarisch"],
-          },
-          {
-            id: "tee-auswahl",
-            name: "Tee-Auswahl",
-            description: "Pfefferminz, Kräuter, Earl Grey, Grüntee",
-            price: 3.2,
-            tags: ["vegan", "glutenfrei"],
-          },
-        ],
-      },
-      {
-        id: "cold-drinks",
-        title: "Kaltgetränke",
-        items: [
-          {
-            id: "hauslimonade",
-            name: "Hausgemachte Limonade",
-            description: "Zitrone-Ingwer, frisch und spritzig",
-            price: 4.5,
-            tags: ["vegan", "glutenfrei"],
-          },
-          {
-            id: "eiskaffee",
-            name: "Eiskaffee",
-            description: "Mit Vanilleeis und Sahne",
-            price: 4.8,
-            tags: ["vegetarisch"],
-          },
-          {
-            id: "iced-latte",
-            name: "Iced Latte",
-            description: "Gekühlter Espresso mit Milch",
-            price: 4.5,
-            tags: ["vegetarisch"],
-          },
-          {
-            id: "rhabarberschorle",
-            name: "Rhabarberschorle",
-            description: "Fruchtig und prickelnd",
-            price: 3.2,
-            tags: ["vegan", "glutenfrei"],
-          },
-          {
-            id: "wasser",
-            name: "Wasser 0,33 l",
-            description: "Still oder sprudelnd",
-            price: 2.5,
-            tags: ["vegan", "glutenfrei"],
-          },
-        ],
-      },
-      {
-        id: "breakfast",
-        title: "Frühstück",
-        items: [
-          {
-            id: "sonnenblumen-fruehstueck",
-            name: "Sonnenblumen-Frühstück",
-            description: "Brotkorb, Konfitüre, Käse, Obst und Butter",
-            price: 9.5,
-            tags: ["vegetarisch"],
-            allergens: ["Gluten", "Milch"],
-          },
-          {
-            id: "veganes-fruehstueck",
-            name: "Veganes Frühstück",
-            description:
-              "Hummus, Avocado, Tomate, Gurke, Oliven, Saaten und Brot",
-            price: 9.8,
-            tags: ["vegan"],
-            allergens: ["Gluten", "Sesam"],
-          },
-          {
-            id: "joghurt-granola",
-            name: "Joghurt mit Granola & Beeren",
-            description:
-              "Naturjoghurt, hausgemachtes Granola, saisonale Beeren",
-            price: 5.8,
-            tags: ["vegetarisch"],
-            allergens: ["Milch", "Schalenfrüchte"],
-          },
-          {
-            id: "ruehrei",
-            name: "Rührei von Bio-Eiern",
-            description: "Mit Kräutern und Landbrot",
-            price: 6.2,
-            tags: ["vegetarisch"],
-            addOns: [
-              { name: "Speck", price: 1.5 },
-              { name: "Avocado", price: 1.5 },
-            ],
-            allergens: ["Ei", "Gluten"],
-          },
-        ],
-      },
-      {
-        id: "lunch",
-        title: "Mittag",
-        items: [
-          {
-            id: "tagessuppe",
-            name: "Tagessuppe",
-            description: "Saisonal wechselnd, mit Brot",
-            price: 6.5,
-            tags: ["vegetarisch"],
-            note: "Frage nach der veganen Option",
-          },
-          {
-            id: "quiche",
-            name: "Quiche des Tages mit Salat",
-            description: "Hausgemacht, mit kleinem Beilagensalat",
-            price: 8.5,
-            tags: ["vegetarisch"],
-            allergens: ["Milch", "Ei", "Gluten"],
-          },
-          {
-            id: "avocado-sandwich",
-            name: "Avocado-Sandwich",
-            description: "Sauerteigbrot, Avocado, Tomate, Rucola",
-            price: 7.9,
-            tags: ["vegan möglich"],
-            allergens: ["Gluten"],
-          },
-          {
-            id: "salat-feta",
-            name: "Gemischter Salat mit Feta",
-            description: "Bunt gemischt, Zitronen-Olivenöl-Dressing",
-            price: 7.5,
-            tags: ["vegetarisch"],
-            allergens: ["Milch"],
-          },
-        ],
-      },
-      {
-        id: "cakes",
-        title: "Kuchen & Gebäck",
-        items: [
-          {
-            id: "kaesekuchen",
-            name: "Käsekuchen",
-            description: "Klassisch, cremig",
-            price: 3.8,
-            tags: ["vegetarisch"],
-            allergens: ["Milch", "Ei", "Gluten"],
-          },
-          {
-            id: "apfelkuchen",
-            name: "Apfelkuchen",
-            description: "Mit Zimt und Streuseln",
-            price: 3.6,
-            tags: ["vegetarisch"],
-            allergens: ["Gluten"],
-          },
-          {
-            id: "brownie",
-            name: "Schoko-Brownie",
-            description: "Saftig, intensiver Kakao",
-            price: 3.2,
-            tags: ["vegetarisch"],
-            allergens: ["Gluten", "Ei"],
-          },
-          {
-            id: "zimtschnecke",
-            name: "Zimtschnecke",
-            description: "Zimtig, weich und buttrig",
-            price: 3.4,
-            tags: ["vegetarisch"],
-            allergens: ["Gluten", "Milch"],
-          },
-          {
-            id: "karottenkuchen",
-            name: "Karottenkuchen",
-            description: "Mit Frischkäsefrosting",
-            price: 3.8,
-            tags: ["vegetarisch"],
-            allergens: ["Gluten", "Milch", "Schalenfrüchte"],
-          },
-        ],
-      },
-      {
-        id: "extras",
-        title: "Extras",
-        items: [
-          {
-            id: "hafermilch",
-            name: "Hafermilch",
-            description: "Pflanzliche Milchalternative",
-            price: 0.5,
-            tags: ["vegan"],
-          },
-          {
-            id: "sojamilch",
-            name: "Sojamilch",
-            description: "Pflanzliche Milchalternative",
-            price: 0.4,
-            tags: ["vegan"],
-          },
-          { id: "sirup", name: "Sirup", description: "Vanille / Haselnuss / Karamell", price: 0.4 },
-          {
-            id: "extra-shot",
-            name: "Extra Espresso Shot",
-            description: "Mehr Kaffeepower",
-            price: 1.2,
-            tags: ["vegan", "glutenfrei"],
-          },
-        ],
-      },
-    ],
-  },
-  openingHours: {
-    id: "zeiten",
-    title: "Öffnungszeiten",
-    timezone: "Europe/Berlin",
-    hours: [
-      { days: ["Mo", "Di", "Mi", "Do", "Fr"], open: "08:00", close: "18:00" },
-      { days: ["Sa", "So"], open: "09:00", close: "18:00" },
-    ],
-    exceptions: [
-      {
-        title: "Sommerpause",
-        range: { start: "2026-08-19", end: "2026-08-25" },
-        status: "closed",
-        message:
-          "Wir machen eine kurze Sommerpause. Ab 26.08. sind wir wieder für euch da.",
-      },
-      {
-        title: "Heiligabend",
-        date: "2026-12-24",
-        status: "closed",
-        message: "Am 24.12. bleibt das Café geschlossen.",
-      },
-      {
-        title: "Silvester",
-        date: "2026-12-31",
-        status: "open",
-        open: "09:00",
-        close: "14:00",
-        message: "Am 31.12. haben wir bis 14:00 Uhr geöffnet.",
-      },
-    ],
-    note: "Küche schließt 30 Minuten vor Ladenschluss.",
-  },
-  dynamic: {
-    dailySpecials: [
-      {
-        weekdays: ["Mo", "Di", "Mi", "Do", "Fr"],
-        title: "Mittagsdeal",
-        time: { start: "12:00", end: "15:00" },
-        items: [
-          { name: "Quiche + kleiner Salat", price: 9.5 },
-          { name: "Tagessuppe + Brot", price: 6.5 },
-        ],
-      },
-      {
-        date: "2026-08-15",
-        title: "Sommer-Special",
-        items: [
-          { name: "Eiskaffee", price: 4.5 },
-          { name: "Zitrone-Ingwer-Limo", price: 4.0 },
-        ],
-      },
-    ],
-  },
-  contact: {
-    id: "kontakt",
-    title: "Kontakt",
-    address: {
-      street: "Sonnenallee 75",
-      postalCode: "12045",
-      city: "Berlin",
-      district: "Neukölln",
-      country: "Deutschland",
-      geo: { lat: 52.4866, lng: 13.4364 },
-    },
-    phone: "+49 30 5490 1234",
-    email: "hallo@cafe-sonnenblume.berlin",
-    map: {
-      provider: "openstreetmap",
-      latitude: 52.4866,
-      longitude: 13.4364,
-      zoom: 16,
-      markerTitle: "Café Sonnenblume",
-    },
-    social: {
-      instagram: "https://www.instagram.com/cafesonnenblume.berlin",
-      facebook: "https://www.facebook.com/cafesonnenblume.berlin",
-      googleMaps: "https://maps.app.goo.gl/5m2jQxCafSonnenblume",
-    },
-  },
-  forms: {
-    contactReservation: {
-      id: "contact-reservation",
-      title: "Schreib uns – Reservierung oder Frage",
-      description: "Wir melden uns so schnell wie möglich.",
-      endpoint: {
-        type: "email",
-        to: "hallo@cafe-sonnenblume.berlin",
-        subject: "Neue Nachricht von der Website (Café Sonnenblume)",
-      },
-      autoresponse: {
-        enabled: true,
-        from: "hallo@cafe-sonnenblume.berlin",
-        subject: "Danke für deine Nachricht an das Café Sonnenblume",
-        body:
-          "Hallo,\n\nDanke für deine Nachricht an das Café Sonnenblume. Wir melden uns in der Regel innerhalb von 24 Stunden. Für kurzfristige Reservierungen ruf uns bitte an: +49 30 5490 1234.\n\nSonnige Grüße\nCafé Sonnenblume",
-      },
-      fields: [
-        { name: "anliegen", type: "select", label: "Anliegen", required: true, options: ["Reservierung", "Allgemeine Anfrage"] },
-        { name: "name", type: "text", label: "Name", required: true, minLength: 2, maxLength: 80 },
-        { name: "email", type: "email", label: "E-Mail", required: true },
-        { name: "telefon", type: "tel", label: "Telefon (optional)", required: false, pattern: "^[0-9+()\\-\\s]{6,}$" },
-        {
-          name: "datum",
-          type: "date",
-          label: "Datum",
-          required: false,
-          visibleIf: { field: "anliegen", equals: "Reservierung" },
-        },
-        {
-          name: "uhrzeit",
-          type: "time",
-          label: "Uhrzeit",
-          required: false,
-          visibleIf: { field: "anliegen", equals: "Reservierung" },
-        },
-        {
-          name: "personen",
-          type: "number",
-          label: "Personenanzahl",
-          required: false,
-          min: 1,
-          max: 10,
-          visibleIf: { field: "anliegen", equals: "Reservierung" },
-        },
-        { name: "nachricht", type: "textarea", label: "Nachricht", required: true, minLength: 10, maxLength: 1000 },
-        {
-          name: "datenschutz",
-          type: "checkbox",
-          label: "Ich stimme der Verarbeitung meiner Daten gemäß der Datenschutzerklärung zu.",
-          required: true,
-          link: "/datenschutz",
-        },
-      ],
-      successMessage: "Danke! Deine Nachricht wurde verschickt.",
-      errorMessage: "Leider ist ein Fehler aufgetreten. Bitte versuche es erneut oder ruf uns an.",
-    },
-  },
-  popups: {
-    vacationNotice: {
-      enabled: true,
-      schedule: { start: "2026-08-19", end: "2026-08-25" },
-      display: {
-        showFrom: "2026-08-01",
-        showOnPages: ["/"],
-        position: "center",
-        dismissible: true,
-      },
+  sections: [
+    {
+      id: "hero",
+      type: "hero",
       content: {
-        title: "Sommerpause 19.–25. August",
-        message:
-          "Wir machen eine kurze Pause und sind ab dem 26. August wieder da. Danke für euer Verständnis!",
-        buttons: [
-          { label: "Verstanden", action: "dismiss", variant: "ghost" },
-          { label: "Kontakt", action: "scrollTo", target: "#kontakt", variant: "primary" },
-        ],
-      },
-    },
-    cookieConsent: {
-      enabled: true,
-      type: "banner",
-      position: "bottom",
-      content: {
-        message:
-          "Wir verwenden nur essenzielle Cookies und anonyme Statistiken, um dein Erlebnis zu verbessern.",
-        acceptLabel: "Alle akzeptieren",
-        rejectLabel: "Nur Essenzielles",
-        policyLabel: "Details",
-        policyLink: "/datenschutz",
-      },
-    },
-    specialsBanner: {
-      enabled: true,
-      showOn: ["Mo", "Di", "Mi", "Do", "Fr"],
-      timeWindow: { start: "11:30", end: "14:30" },
-      text: "Mittagsdeal: Quiche + Salat oder Tagessuppe – jetzt probieren!",
-    },
-  },
-  layout: {
-    containerWidth: 1200,
-    sectionSpacing: {
-      y: 72,
-    },
-    heroHeight: "70vh",
-    animations: {
-      enableFadeIn: true,
-      enableParallaxHero: false,
-    },
-  },
-  footer: {
-    columns: [
-      {
+        eyebrow: "Willkommen im",
         title: "Café Sonnenblume",
-        items: [
-          { label: "Über uns", href: "#ueber-uns" },
-          { label: "Speisekarte", href: "#menu" },
-          { label: "Öffnungszeiten", href: "#zeiten" },
-          { label: "Galerie", href: "#galerie" },
+        subtitle:
+          "Dein warmes, freundliches Nachbarschaftscafé in Berlin – mit frischem Kaffee, hausgebackenem Kuchen und einem Lächeln.",
+        ctas: [
+          { label: "Speisekarte ansehen", style: "primary", target: "#menu" },
+          { label: "Kontakt", style: "secondary", target: "#contact" },
         ],
-      },
-      {
-        title: "Rechtliches",
-        items: [
-          { label: "Impressum", href: "/impressum" },
-          { label: "Datenschutz", href: "/datenschutz" },
+        uspBadges: [
+          "Fair gehandelter Kaffee",
+          "Hausgemachte Kuchen",
+          "Vegetarische & vegane Optionen",
+          "Hunde willkommen",
         ],
+        media: {
+          type: "image",
+          src: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=1600&auto=format&fit=crop",
+          alt: "Sonniges Café-Ambiente mit Kaffee und Gebäck auf Holztisch",
+          overlay: 0.25,
+          focal: "center",
+        },
       },
-      {
-        title: "Kontakt",
-        items: [
-          {
-            label: "Sonnenallee 75, 12045 Berlin",
-            href: "https://maps.app.goo.gl/5m2jQxCafSonnenblume",
-            external: true,
-          },
-          { label: "+49 30 5490 1234", href: "tel:+493054901234" },
-          { label: "hallo@cafe-sonnenblume.berlin", href: "mailto:hallo@cafe-sonnenblume.berlin" },
-        ],
-      },
-    ],
-    social: [
-      { label: "Instagram", href: "https://www.instagram.com/cafesonnenblume.berlin" },
-      { label: "Facebook", href: "https://www.facebook.com/cafesonnenblume.berlin" },
-    ],
-    copyright: "© 2026 Café Sonnenblume. Alle Rechte vorbehalten.",
-  },
-  legal: {
-    impressum: {
-      company: "Café Sonnenblume – Anna Müller",
-      legalForm: "Einzelunternehmen",
-      owner: "Anna Müller",
-      street: "Sonnenallee 75",
-      postalCode: "12045",
-      city: "Berlin",
-      country: "Deutschland",
-      phone: "+49 30 5490 1234",
-      email: "hallo@cafe-sonnenblume.berlin",
-      vatId: "DE309876543",
-      responsibleContent: "Anna Müller (Anschrift wie oben)",
-      disputeResolution:
-        "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/",
-      liabilityNote:
-        "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für Inhalte externer Links. Für den Inhalt verlinkter Seiten sind ausschließlich deren Betreiber verantwortlich.",
     },
-    privacy: {
-      controller: "Café Sonnenblume – Anna Müller",
-      contact: "hallo@cafe-sonnenblume.berlin",
-      dataProcessing: [
-        "Betrieb der Website (Server-Logs, essenzielle Cookies).",
-        "Kontaktanfragen/Reservierungen (Bearbeitung und Rückmeldung per E-Mail/Telefon).",
-        "Anonyme Nutzungsstatistiken (ohne Tracking-Cookies).",
+    {
+      id: "menu",
+      type: "menu",
+      title: "Speisekarte",
+      currency: "EUR",
+      vatIncluded: true,
+      notes: "Alle Preise in EUR inkl. MwSt. Änderungen vorbehalten.",
+      categories: [
+        {
+          id: "hot-drinks",
+          name: "Heißgetränke",
+          items: [
+            {
+              name: "Espresso",
+              description: "Kräftig und aromatisch, Single Shot",
+              priceCents: 220,
+              tags: ["vegetarisch", "vegan"],
+            },
+            {
+              name: "Cappuccino",
+              description: "Mit feinporigem Milchschaum",
+              priceCents: 320,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Latte Macchiato",
+              description: "Sanft und milchig",
+              priceCents: 360,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Filterkaffee",
+              description: "Schonend gefiltert, schwarz",
+              priceCents: 280,
+              tags: ["vegetarisch", "vegan"],
+            },
+            {
+              name: "Heiße Schokolade",
+              description: "Kräftige Kakaonote, mit Sahne auf Wunsch",
+              priceCents: 350,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Tee-Auswahl",
+              description: "Verschiedene Sorten, lose aufgebrüht",
+              priceCents: 290,
+              tags: ["vegetarisch", "vegan"],
+            },
+          ],
+        },
+        {
+          id: "cold-drinks",
+          name: "Kaltgetränke",
+          items: [
+            {
+              name: "Hausgemachte Limonade",
+              description: "Zitrone–Ingwer, erfrischend",
+              priceCents: 390,
+              tags: ["vegetarisch", "vegan"],
+            },
+            {
+              name: "Eiskaffee",
+              description: "Mit Vanilleeis und kaltem Kaffee",
+              priceCents: 450,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Schorle",
+              description: "Apfel oder Rhabarber",
+              priceCents: 320,
+              tags: ["vegetarisch", "vegan"],
+            },
+            {
+              name: "Mineralwasser 0,33 l",
+              description: "Prickelnd oder still",
+              priceCents: 220,
+              tags: ["vegetarisch", "vegan"],
+            },
+          ],
+        },
+        {
+          id: "breakfast",
+          name: "Frühstück",
+          items: [
+            {
+              name: "Croissant mit Butter & Marmelade",
+              description: "Frisch gebacken",
+              priceCents: 350,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Joghurt mit Granola & Obst",
+              description: "Hausgemachtes Knuspermüsli, saisonales Obst",
+              priceCents: 480,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Avocado-Stulle mit Kresse",
+              description: "Auf Sauerteigbrot, Sesam",
+              priceCents: 620,
+              tags: ["vegan"],
+            },
+            {
+              name: "Rührei auf Sauerteigbrot",
+              description: "Mit Schnittlauch",
+              priceCents: 650,
+              tags: ["vegetarisch"],
+            },
+          ],
+        },
+        {
+          id: "cakes",
+          name: "Kuchen & Gebäck",
+          items: [
+            {
+              name: "Käsekuchen",
+              description: "Cremig, klassisch",
+              priceCents: 380,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Zimtschnecke",
+              description: "Saftig, mit Zuckerguss",
+              priceCents: 320,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Möhrenkuchen",
+              description: "Mit Frischkäse-Topping",
+              priceCents: 390,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Schokokuchen (glutenfrei)",
+              description: "Intensiv schokoladig",
+              priceCents: 420,
+              tags: ["vegetarisch", "glutenfrei"],
+            },
+          ],
+        },
+        {
+          id: "snacks",
+          name: "Snacks",
+          items: [
+            {
+              name: "Quiche des Tages",
+              description: "Wechselnde Sorte, vegetarisch",
+              priceCents: 520,
+              tags: ["vegetarisch"],
+            },
+            {
+              name: "Tagessuppe",
+              description: "Saisonal, mit Brot",
+              priceCents: 490,
+              tags: ["vegan"],
+            },
+          ],
+        },
       ],
-      legalBases: [
-        "Art. 6 Abs. 1 lit. b DSGVO (Vertrag/Anbahnung) für Anfragen/Reservierungen.",
-        "Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse) für sichere, stabile Website.",
+    },
+    {
+      id: "hours",
+      type: "hours",
+      title: "Öffnungszeiten",
+      regular: {
+        monday: { label: "Montag", open: "08:00", close: "18:00", closed: false },
+        tuesday: { label: "Dienstag", open: "08:00", close: "18:00", closed: false },
+        wednesday: { label: "Mittwoch", open: "08:00", close: "18:00", closed: false },
+        thursday: { label: "Donnerstag", open: "08:00", close: "18:00", closed: false },
+        friday: { label: "Freitag", open: "08:00", close: "18:00", closed: false },
+        saturday: { label: "Samstag", open: "09:00", close: "17:00", closed: false },
+        sunday: { label: "Sonntag", open: "09:00", close: "17:00", closed: false },
+      },
+      exceptions: [],
+      notes: "Feiertage können abweichen.",
+    },
+    {
+      id: "about",
+      type: "text-media",
+      title: "Über uns",
+      content: {
+        text:
+          "Im Café Sonnenblume dreht sich alles um Wärme, Qualität und Gemeinschaft. Wir brühen fair gehandelten Kaffee, backen Kuchen mit viel Liebe und servieren Frühstück, das glücklich macht – vegetarisch und vegan inklusive. Komm vorbei, fühl dich wie zuhause und genieß eine kleine Auszeit vom Alltag.",
+        highlights: [
+          "Saisonal & hausgemacht",
+          "Regionale Lieferanten",
+          "Herzliches Team",
+        ],
+      },
+      media: {
+        type: "image",
+        src: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop",
+        alt: "Barista bereitet Kaffee an einer Siebträgermaschine zu",
+      },
+      layout: "media-right",
+    },
+    {
+      id: "gallery",
+      type: "gallery",
+      title: "Ein Blick ins Café",
+      items: [
+        {
+          src: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?q=80&w=1400&auto=format&fit=crop",
+          alt: "Tasse Cappuccino mit Latte Art auf Holztisch",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1483695028939-5bb13f8648b0?q=80&w=1400&auto=format&fit=crop",
+          alt: "Frisch gebackene Zimtschnecken auf Blech",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?q=80&w=1400&auto=format&fit=crop",
+          alt: "Frühstücksteller mit Avocado-Stulle und Kaffee",
+        },
+        {
+          src: "https://images.unsplash.com/photo-1470337458703-46ad1756a187?q=80&w=1400&auto=format&fit=crop",
+          alt: "Helles, freundliches Café-Interieur mit Pflanzen",
+        },
       ],
-      retention:
-        "Kontakt-/Reservierungsdaten werden nach abschließender Bearbeitung und gesetzlichen Aufbewahrungsfristen gelöscht.",
-      rights:
-        "Du hast das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit sowie Beschwerde bei einer Aufsichtsbehörde.",
+      columns: 2,
+    },
+    {
+      id: "contact",
+      type: "contact-form",
+      title: "Kontakt",
+      intro:
+        "Hast du eine Frage, möchtest reservieren oder Feedback geben? Schreib uns – wir freuen uns auf deine Nachricht.",
+      form: {
+        method: "POST",
+        action: "/api/contact",
+        submitLabel: "Nachricht senden",
+        successMessage:
+          "Danke! Deine Nachricht wurde erfolgreich versendet. Wir melden uns zeitnah.",
+        errorMessage:
+          "Ups, da ist etwas schiefgelaufen. Bitte versuche es später erneut.",
+        fields: [
+          {
+            type: "text",
+            name: "name",
+            label: "Name",
+            placeholder: "Dein Name",
+            required: true,
+            minLength: 2,
+            maxLength: 80,
+          },
+          {
+            type: "email",
+            name: "email",
+            label: "E-Mail",
+            placeholder: "deine@mail.de",
+            required: true,
+          },
+          {
+            type: "textarea",
+            name: "message",
+            label: "Nachricht",
+            placeholder: "Wie können wir helfen?",
+            required: true,
+            minLength: 10,
+            maxLength: 2000,
+          },
+          {
+            type: "checkbox",
+            name: "consent",
+            label:
+              "Ich stimme der Verarbeitung meiner Angaben zum Zweck der Kontaktaufnahme zu.",
+            required: true,
+          },
+        ],
+        privacyNote:
+          "Hinweis: Deine Daten werden ausschließlich zur Bearbeitung deiner Anfrage verwendet.",
+      },
+    },
+    {
+      id: "footer",
+      type: "footer",
+      content: {
+        columns: [
+          {
+            title: "Café Sonnenblume",
+            items: [
+              "Warmes, freundliches Nachbarschaftscafé in Berlin.",
+              "Fairer Kaffee • Hausgemachte Kuchen • Vegane Optionen",
+            ],
+          },
+          {
+            title: "Kontakt",
+            items: ["Berlin, Deutschland", "Kontakt über das Formular"],
+          },
+          {
+            title: "Navigation",
+            links: [
+              { label: "Speisekarte", target: "#menu" },
+              { label: "Öffnungszeiten", target: "#hours" },
+              { label: "Über uns", target: "#about" },
+              { label: "Kontakt", target: "#contact" },
+            ],
+          },
+        ],
+        legal: {
+          copyright: "© Café Sonnenblume",
+          year: 2026,
+        },
+      },
+    },
+  ],
+  features: {
+    holidayNotice: {
+      enabled: false,
+      variant: "popup",
+      message: "",
+      period: null,
+      dismissForDays: 7,
+    },
+    dynamicSections: {
+      menu: {
+        grouping: "categories",
+        showTagsLegend: true,
+        tagsLegend: {
+          vegetarisch: "Vegetarisch",
+          vegan: "Vegan",
+          glutenfrei: "Glutenfrei",
+        },
+      },
+      hours: {
+        showTodayHighlight: true,
+        showExceptions: true,
+      },
+    },
+    performance: {
+      lazyLoadImages: true,
+      preloadHeroMedia: true,
+      optimizeFonts: false,
+    },
+    analytics: {
+      enabled: false,
+      provider: null,
+    },
+    cookieBanner: {
+      enabled: false,
+      region: "DE",
+      text: "Wir verwenden Cookies für eine bessere Nutzungserfahrung.",
+      actions: {
+        accept: "Akzeptieren",
+        decline: "Ablehnen",
+      },
+    },
+    structuredData: {
+      enabled: false,
+      type: "LocalBusiness",
     },
   },
   accessibility: {
-    contrastRatioMin: 4.5,
-    focusVisible: true,
-    altTextPolicy: "Alle Bilder haben beschreibende Alt-Texte.",
-  },
-  performance: {
-    imageOptimization: {
-      lazyLoad: true,
-      formats: ["webp", "avif", "jpeg"],
-      responsiveBreakpoints: [480, 768, 1024, 1440],
-    },
-    cache: {
-      staticMaxAgeSeconds: 86400,
-    },
-  },
-  integrations: {
-    analytics: {
-      enabled: false,
-      provider: "none",
-    },
+    skipLinks: true,
+    focusStyle: "outline-2px",
+    altTextPolicy: "required",
+    ariaLandmarks: true,
   },
 } as const;
 
-export type SiteConfig = typeof siteConfig;
+export default site;
