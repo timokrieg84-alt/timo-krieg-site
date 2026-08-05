@@ -1,0 +1,10 @@
+---
+import site from "../config/site";
+import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
+import ContentSimple from "../components/ContentSimple.astro";
+
+const page = site.pages.find((p) => p.path === "/danke");
+---
+<GoldenMasterLayout title={page?.title || site.seo.defaultTitle} variant="default">
+  <ContentSimple heading={page?.content?.heading} text={page?.content?.text} cta={page?.content?.cta} />
+</GoldenMasterLayout>
