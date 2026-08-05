@@ -1,0 +1,31 @@
+---
+import { siteConfig } from "../../config/site";
+const p = siteConfig.legal.privacy;
+---
+<section class="py-16 sm:py-20">
+  <div class="mx-auto max-w-[800px] px-4 sm:px-6 lg:px-8">
+    <h1 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">Datenschutzerklärung</h1>
+    <div class="mt-6 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+      <div class="prose prose-zinc dark:prose-invert max-w-none">
+        <h2>Verantwortliche Stelle</h2>
+        <p>{p.controller} – Kontakt: <a href={`mailto:${p.contact}`}>{p.contact}</a></p>
+
+        <h2>Datenverarbeitung</h2>
+        <ul>
+          {p.dataProcessing.map((d) => (<li>{d}</li>))}
+        </ul>
+
+        <h2>Rechtsgrundlagen</h2>
+        <ul>
+          {p.legalBases.map((d) => (<li>{d}</li>))}
+        </ul>
+
+        <h2>Aufbewahrung</h2>
+        <p>{p.retention}</p>
+
+        <h2>Deine Rechte</h2>
+        <p>{p.rights}</p>
+      </div>
+    </div>
+  </div>
+</section>
