@@ -1,68 +1,55 @@
 ---
-import site from "@/config/site";
-import Header from "@/components/Header.astro";
-import Footer from "@/components/Footer.astro";
-import CookieConsent from "@/components/CookieConsent.astro";
-import "@/styles/global.css";
+import siteConfig from "../site-config";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import AnnouncementBar from "../components/AnnouncementBar.astro";
+import CookieConsent from "../components/CookieConsent.astro";
 
-const { seo, project, schema } = site;
-const { defaultTitle, description, openGraph, twitter, canonical } = seo;
-const title = Astro.props.title ?? defaultTitle;
-const metaDescription = Astro.props.description ?? description;
+const { seo, site } = siteConfig;
+const title = seo?.title ?? site?.name;
+const description = seo?.description ?? site?.tagline;
+const og = seo?.openGraph ?? {};
 ---
-<!DOCTYPE html>
-<html lang={project.language} class="scroll-smooth">
+<html lang="de" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
-    <meta name="description" content={metaDescription} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={(seo?.keywords || []).join(", ")} />
+    <meta property="og:type" content={og.type || 'website'} />
+    <meta property="og:site_name" content={og.siteName || site.name} />
+    <meta property="og:locale" content={og.locale || 'de_DE'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta name="theme-color" content="#F2C94C" />
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+Pro:wght@600;700&display=swap" rel="stylesheet" />
 
-    <!-- Theme color -->
-    <meta name="theme-color" content={site.brand.colors.sunflower} />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content={openGraph.type} />
-    <meta property="og:site_name" content={openGraph.siteName} />
-    <meta property="og:title" content={openGraph.title} />
-    <meta property="og:description" content={openGraph.description} />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content={twitter.card} />
-    <meta name="twitter:title" content={twitter.title} />
-    <meta name="twitter:description" content={twitter.description} />
-
-    <link rel="canonical" href={canonical} />
-
-    <script>
-      try {
-        const saved = localStorage.getItem('theme');
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isDark = saved ? saved === 'dark' : prefersDark;
-        document.documentElement.classList.toggle('dark', isDark);
-      } catch (e) {}
+    <link rel="stylesheet" href="/src/styles/global.css" />
+    <script is:inline>
+      // Respect stored theme or system preference
+      const stored = localStorage.getItem('theme');
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'dark' || (!stored && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
     </script>
   </head>
-  <body class="bg-white text-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 antialiased selection:bg-yellow-300 selection:text-neutral-900" style="font-family: Quicksand, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white px-3 py-2 rounded-md shadow">Zum Inhalt springen</a>
-
+  <body class="min-h-screen font-[Inter] text-[var(--color-text)] bg-[var(--color-surface)] antialiased">
+    {siteConfig.features?.announcementBar?.enabled && (
+      <AnnouncementBar />
+    )}
     <Header />
-
-    <main id="main" class="min-h-[60vh]">
+    <main>
       <slot />
     </main>
-
     <Footer />
 
-    {site.schema?.localBusiness && (
-      <script type="application/ld+json">{JSON.stringify(site.schema.localBusiness)}</script>
+    {siteConfig.features?.cookieConsent?.enabled && (
+      <CookieConsent />
     )}
-
-    {site.features?.cookieConsent?.enabled && <CookieConsent />}
   </body>
 </html>
