@@ -1,0 +1,20 @@
+---
+interface Coordinates { lat: number; lng: number }
+interface Props {
+  coordinates: Coordinates;
+  zoom?: number;
+  title?: string;
+  markerLabel?: string;
+}
+const { coordinates, zoom = 15, title = 'Karte', markerLabel } = Astro.props as Props;
+---
+<div class="relative h-64 w-full overflow-hidden rounded-xl border border-[#E9E2D0] bg-neutral-100 dark:border-neutral-800 dark:bg-neutral-800">
+  <iframe
+    title={title}
+    src={`https://www.openstreetmap.org/export/embed.html?bbox=${coordinates.lng-0.01}%2C${coordinates.lat-0.01}%2C${coordinates.lng+0.01}%2C${coordinates.lat+0.01}&layer=mapnik&marker=${coordinates.lat}%2C${coordinates.lng}`}
+    class="h-full w-full"
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+  {markerLabel && <div class="pointer-events-none absolute left-3 top-3 rounded bg-white/90 px-2 py-1 text-xs font-medium text-neutral-800 shadow dark:bg-neutral-900/80 dark:text-neutral-100">{markerLabel}</div>}
+</div>
