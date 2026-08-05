@@ -1,10 +1,33 @@
 ---
-import site from "../config/site";
-import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
-import RenderSections from "../components/RenderSections.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import Highlights from "../components/Highlights.astro";
+import About from "../components/About.astro";
+import MenuSection from "../components/Menu/MenuSection.astro";
+import OpeningHours from "../components/OpeningHours.astro";
+import Gallery from "../components/Gallery.astro";
+import Contact from "../components/Contact.astro";
+import VacationNotice from "../components/Popups/VacationNotice.astro";
+import SpecialsBanner from "../components/Popups/SpecialsBanner.astro";
+import { siteConfig } from "../config/site";
 
-const page = site.pages.find((p) => p.path === "/");
+const specialsCfg = siteConfig.popups.specialsBanner;
 ---
-<GoldenMasterLayout title={site.seo.defaultTitle} description={site.seo.defaultDescription} ogImage={site.brand.images.defaultOg} variant="default">
-  <RenderSections ids={page?.sections || []} />
-</GoldenMasterLayout>
+<BaseLayout>
+  <SpecialsBanner client:load />
+  <VacationNotice client:load />
+  <Hero />
+  <Highlights />
+  <About />
+  <MenuSection />
+  <OpeningHours />
+  <Gallery />
+  <Contact />
+
+  <script>
+    // Inject dynamic config for some embedded scripts in components
+    {
+      const specialsStart = {start: specialsCfg?.timeWindow?.start || ''};
+    }
+  </script>
+</BaseLayout>
