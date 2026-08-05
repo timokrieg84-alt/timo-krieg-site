@@ -1,0 +1,54 @@
+---
+import { siteConfig } from "../../config/site";
+const menu = siteConfig.menu;
+interface Props { categoryId?: string }
+const { categoryId } = Astro.props as Props;
+const categories = categoryId ? menu.categories.filter(c => c.id === categoryId) : menu.categories;
+---
+<section id={menu.id} class="py-16 sm:py-20 bg-white dark:bg-zinc-950">
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="mb-8 flex items-end justify-between gap-4">
+      <h2 class="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{menu.title}</h2>
+      <span class="text-sm text-zinc-500">{menu.note}</span>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      {categories.map((cat) => (
+        <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-900 p-6 shadow-sm">
+          <h3 class="text-xl font-semibold text-zinc-900 dark:text-zinc-100">{cat.title}</h3>
+          <ul class="mt-4 divide-y divide-zinc-200/60 dark:divide-zinc-800/80">
+            {cat.items.map((it) => (
+              <li class="py-4">
+                <div class="flex items-baseline justify-between gap-4">
+                  <div>
+                    <p class="font-medium text-zinc-800 dark:text-zinc-200">{it.name}</p>
+                    <p class="text-sm text-zinc-500">{it.description}</p>
+                  </div>
+                  <div class="text-right text-zinc-800 dark:text-zinc-100 font-medium">
+                    {it.variants ? (
+                      <div class="space-y-1">
+                        {it.variants.map((v) => (
+                          <div class="text-sm">{v.name} · {v.price.toFixed(2)} €</div>
+                        ))}
+                      </div>
+                    ) : (
+                      <span>{it.price?.toFixed(2)} €</span>
+                    )}
+                  </div>
+                </div>
+                {(it.tags || it.addOns || it.allergens || it.note) && (
+                  <div class="mt-2 flex flex-wrap items-center gap-2 text-xs text-zinc-500">
+                    {it.tags?.map((t) => (<span class="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5">{t}</span>))}
+                    {it.addOns?.map((a) => (<span class="rounded-full bg-yellow-50 text-yellow-800 px-2 py-0.5">+ {a.name} {a.price.toFixed(2)} €</span>))}
+                    {it.allergens?.length && (<span class="ml-auto text-[11px] italic">Allergene: {it.allergens.join(', ')}</span>)}
+                    {it.note && (<span class="ml-auto text-[11px] italic">{it.note}</span>)}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
