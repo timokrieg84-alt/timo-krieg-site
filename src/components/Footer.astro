@@ -1,51 +1,18 @@
----
-import { site } from "../config/site";
-const footer = site.sections.find((s: any) => s.id === "footer") as any;
-const content = footer?.content;
----
-<footer class="border-t border-[#E8DFC8] dark:border-[#2a281f] bg-white/70 dark:bg-[#151513]/70 backdrop-blur mt-24" id="footer">
-  <div class="max-w-[1140px] mx-auto px-4 py-12">
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 text-sm">
-      {content?.columns?.[0] && (
-        <div>
-          <h3 class="text-base font-semibold text-[#2F2A1F] dark:text-[#f6f0e0] mb-3">{content.columns[0].title}</h3>
-          <ul class="space-y-2 text-[#8A7F6A] dark:text-[#b7ad98]">
-            {content.columns[0].items.map((i: string) => (
-              <li>{i}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {content?.columns?.[1] && (
-        <div>
-          <h3 class="text-base font-semibold text-[#2F2A1F] dark:text-[#f6f0e0] mb-3">{content.columns[1].title}</h3>
-          <ul class="space-y-2 text-[#8A7F6A] dark:text-[#b7ad98]">
-            {content.columns[1].items.map((i: string) => (
-              <li>{i}</li>
-            ))}
-          </ul>
-        </div>
-      )}
-      {content?.columns?.[2] && (
-        <div>
-          <h3 class="text-base font-semibold text-[#2F2A1F] dark:text-[#f6f0e0] mb-3">{content.columns[2].title}</h3>
-          <ul class="space-y-2">
-            {content.columns[2].links.map((l: any) => (
-              <li>
-                <a href={l.target} class="text-[#8A7F6A] hover:text-[#2F2A1F] dark:text-[#b7ad98] dark:hover:text-white transition-colors">{l.label}</a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <strong>Gylsere Januzi Krieg Online Marketing Office</strong>
+      <p>Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+      <p>E-Mail: <a href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a> · Tel.: <a href="tel:+491756372395">+49 175 6372395</a></p>
     </div>
-    <div class="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs text-[#8A7F6A] dark:text-[#b7ad98]">
-      <p>{content?.legal?.copyright} · {content?.legal?.year}</p>
-      <div class="flex gap-4">
-        <a href="#menu" class="hover:text-[#2F2A1F] dark:hover:text-white">Speisekarte</a>
-        <a href="#hours" class="hover:text-[#2F2A1F] dark:hover:text-white">Öffnungszeiten</a>
-        <a href="#contact" class="hover:text-[#2F2A1F] dark:hover:text-white">Kontakt</a>
-      </div>
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/impressum">Impressum</a>
+      <a href="/datenschutz">Datenschutz</a>
+    </nav>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">
+      <small>© {new Date().getFullYear()} Gylsere Januzi Krieg. Alle Rechte vorbehalten.</small>
     </div>
   </div>
 </footer>
