@@ -1,3 +1,4 @@
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: 'class',
   content: [
@@ -6,35 +7,30 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        sunflower: '#F6C453',
-        earth: '#6B4F2A',
-        leaf: '#2E5E2A',
-        cream: '#FFF7E6',
-        accent: '#FF9F1C',
-        ink: '#2B2B2B',
-      },
-      fontFamily: {
-        serif: ['Merriweather', 'ui-serif', 'Georgia', 'Cambria', 'Times New Roman', 'Times', 'serif'],
-        sans: ['Quicksand', 'ui-sans-serif', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', 'Apple Color Emoji', 'Segoe UI Emoji'],
-      },
-      maxWidth: {
-        container: '1200px',
-      },
-      boxShadow: {
-        sm: '0 1px 3px rgba(0,0,0,0.08)',
-        md: '0 6px 18px rgba(0,0,0,0.12)',
-        lg: '0 14px 30px rgba(0,0,0,0.18)',
+        brand: {
+          primary: '#F2B705',
+          primaryDark: '#C28E04',
+          secondary: '#6B8E23',
+          accent: '#E07A5F',
+          text: '#3B3B3B',
+          mutedText: '#666666',
+          background: '#FFF9EC',
+          surface: '#FFFFFF',
+          border: '#E9E2D0',
+        }
       },
       borderRadius: {
-        sm: '6px',
-        md: '10px',
-        lg: '16px',
-        xl: '24px',
+        'xl': '1rem',
+        '2xl': '1.25rem',
       },
-    },
+      fontFamily: {
+        display: ['Playfair Display', 'serif'],
+        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+      }
+    }
   },
   plugins: [
-    require('@tailwindcss/forms')({ strategy: 'class' }),
-    require('@tailwindcss/typography'),
-  ],
-};
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/typography')
+  ]
+}
