@@ -1,0 +1,25 @@
+---
+import { siteConfig } from "../config/site";
+const items = siteConfig.content.highlights;
+const spacingY = siteConfig.layout.sectionSpacing.y;
+---
+<section class="py-16 sm:py-20" style={`padding-top:${spacingY}px;padding-bottom:${spacingY}px`}>
+  <div class="mx-auto max-w-[1200px] px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {items.map((it) => (
+        <div class="rounded-xl bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 p-5 shadow-sm">
+          <div class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-full bg-yellow-100 text-yellow-700 flex items-center justify-center">
+              {it.icon === 'coffee' && (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M3 8.25A.75.75 0 013.75 7.5h12a.75.75 0 01.75.75v3a4.5 4.5 0 01-4.5 4.5H8.25A4.5 4.5 0 013.75 11.25v-3z"/><path d="M18.75 8.25h1.5a2.25 2.25 0 010 4.5h-1.5v-4.5z"/></svg>)}
+              {it.icon === 'cake' && (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1z"/><path d="M4 9a4 4 0 014-4h8a4 4 0 014 4v2H4V9z"/><path d="M4 12h16v7a1 1 0 01-1 1H5a1 1 0 01-1-1v-7z"/></svg>)}
+              {it.icon === 'leaf' && (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 2C7 2 4 6 4 10c0 6 8 12 8 12s8-6 8-12c0-4-3-8-8-8z"/></svg>)}
+              {it.icon === 'sun' && (<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5"><path d="M12 18a6 6 0 100-12 6 6 0 000 12z"/></svg>)}
+            </div>
+            <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">{it.title}</h3>
+          </div>
+          <p class="mt-3 text-sm text-zinc-600 dark:text-zinc-400">{it.text}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
