@@ -1,9 +1,7 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  server: { host: true },
-  build: { format: 'directory' },
-  vite: {
-    css: { preprocessorOptions: {} },
-  },
+  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
+  vite: { resolve: { alias: { '@': '/src' } } }
 });
