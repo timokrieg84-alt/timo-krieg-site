@@ -1,7 +1,13 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
 export default defineConfig({
-  site: 'https://timo-krieg-site-ppkjfc45e-timo24.vercel.app',
-  integrations: [],
-  scopedStyleStrategy: 'where',
+  integrations: [tailwind({ applyBaseStyles: true })],
+  vite: {
+    resolve: {
+      alias: {
+        '@': '/src'
+      }
+    }
+  }
 });
