@@ -3,8 +3,9 @@ import site from "../config/site";
 import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
 import ContentSimple from "../components/ContentSimple.astro";
 
-const page = site.pages.find((p) => p.path === "/danke");
+const page = (site?.pages || []).find((p) => p.path === "/danke");
+const defaultTitle = site?.seo?.defaultTitle || "Danke";
 ---
-<GoldenMasterLayout title={page?.title || site.seo.defaultTitle} variant="default">
+<GoldenMasterLayout title={page?.title || defaultTitle} variant="default">
   <ContentSimple heading={page?.content?.heading} text={page?.content?.text} cta={page?.content?.cta} />
 </GoldenMasterLayout>
