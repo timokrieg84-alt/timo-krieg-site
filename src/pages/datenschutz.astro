@@ -1,15 +1,29 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { site } from "../data/site";
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 ---
-<Layout>
-  <section class="py-16 sm:py-24 lg:py-28">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl sm:text-5xl font-semibold text-[#1A1A1A] mb-6">Datenschutzerklärung</h1>
-      <div class="whitespace-pre-line text-[#1A1A1A]/80 bg-[#F5F1E9] rounded-2xl border border-[#123D2A]/10 p-6">{site.legal.datenschutz}</div>
-      <div class="mt-8">
-        <a href="/" class="text-sm text-[#123D2A] hover:text-[#C8501E]">← Zurück zur Startseite</a>
-      </div>
+<Layout title="Datenschutz | Gylsere Januzi Krieg – Online Marketing Office" description="Datenschutzerklärung (DSGVO)">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <main class="container py-16 md:py-24">
+    <h1 class="h1">Datenschutzerklärung</h1>
+    <div class="mt-6 card p-6 text-txt-2 grid gap-4">
+      <p>Wir verarbeiten personenbezogene Daten ausschließlich im Rahmen der geltenden Datenschutzgesetze (DSGVO, BDSG). Diese Erklärung informiert Sie über Art, Umfang und Zwecke der Verarbeitung sowie Ihre Rechte.</p>
+      <h2 class="h3">1. Verantwortlicher</h2>
+      <p>Gylsere Januzi Krieg – Online Marketing Office, Kitzingstraße 7, 73529 Schwäbisch Gmünd · E‑Mail: <a class="underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
+      <h2 class="h3">2. Zweck der Verarbeitung</h2>
+      <p>Websitebetrieb, Kommunikation, Angebots- und Vertragsabwicklung, Sicherheit.</p>
+      <h2 class="h3">3. Rechtsgrundlagen</h2>
+      <p>Art. 6 Abs. 1 lit. a) Einwilligung, b) Vertrag, f) berechtigtes Interesse.</p>
+      <h2 class="h3">4. Kontaktformular</h2>
+      <p>Übermittelte Daten (Name, E‑Mail, Telefon, Nachricht) nutzen wir zur Bearbeitung Ihrer Anfrage. Pflichtangaben sind gekennzeichnet. Ohne Einwilligung keine Weitergabe an Dritte.</p>
+      <h2 class="h3">5. Speicherung & Löschung</h2>
+      <p>Daten werden nur so lange gespeichert, wie der Zweck dies erfordert oder gesetzliche Pflichten bestehen.</p>
+      <h2 class="h3">6. Ihre Rechte</h2>
+      <p>Auskunft, Berichtigung, Löschung, Einschränkung, Widerspruch, Datenübertragbarkeit, Beschwerde bei einer Aufsichtsbehörde.</p>
+      <h2 class="h3">7. Sicherheit</h2>
+      <p>Technisch-organisatorische Maßnahmen schützen Ihre Daten vor Verlust, Missbrauch und unbefugtem Zugriff.</p>
     </div>
-  </section>
+  </main>
+  <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
