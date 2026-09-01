@@ -1,57 +1,74 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "SEO‑Regio System | Skalierbare Stadt‑Landings für BW & DACH",
-  description: "Rollout‑Framework für Aalen, Heidenheim, Göppingen u. a. Saubere Architektur, interne Verlinkung, konsistente NAP‑Signale.",
-  url: "https://example.com/leistungen/seo-regio/",
-  canonical: "https://example.com/leistungen/seo-regio/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Layout from "../../layouts/Layout.astro";
+import { brand, colors, services } from "../../data/site";
+const service = services.find(s => s.slug === 'seo-regio');
+const others = services.filter(s => s.slug !== 'seo-regio');
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-    <script type="application/ld+json">
-      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/seo-regio/#service","name":"SEO‑Regio","serviceType":"Regional SEO Rollout","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"State","name":"Baden-Württemberg"},{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
-    </script>
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="intro" title="50 Satelliten‑Seiten für die ganze Region." intro="Ein eigenes Netzwerk aus 50 ortsspezifischen Seiten fängt regionale Suchanfragen ab und leitet qualifizierte Leads direkt zu Ihnen.">
-        <div class="grid md:grid-cols-2 gap-8">
-          <article class="card p-6">
-            <h3 class="h3">Leistungspaket</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• 50 eigenständige Ortschaften‑Webseiten</li>
-              <li>• Individuelle, einzigartige Texte je Ort</li>
-              <li>• Ihre bestehende Website bleibt unberührt</li>
-              <li>• Flächendeckende lokale Rankings</li>
+<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
+  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
+      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
+      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
+      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Projekt starten</a>
+        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class={`bg-[${colors.background}]`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2">
+        <div>
+          <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Regionale Nachfrage systematisch abfangen</h2>
+          <p class={`mt-4 text-[${colors.text}]/90`}>Mit SEO-Regio erschließen Sie Ihr komplettes Einzugsgebiet. Statt einer generischen Unterseite entstehen dutzende redaktionell eigenständige Microsites – jede mit lokalem Bezug, eigenen FAQs und klaren CTAs. So treffen Sie Suchintention präzise und ohne Duplicate-Content-Risiken.</p>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>So funktioniert das Netzwerk</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Eigenständige Ortschafts-Seiten mit individueller Ansprache und Assets</li>
+            <li>Lokale Belege: Landmarks, Anfahrtszeiten, regionale Cases und Bewertungen</li>
+            <li>Technisch sauber getrennt, zentrale Lead-Zufuhr an Ihre Wunschkanäle</li>
+            <li>Keine Änderungen an Ihrer bestehenden Website nötig</li>
+          </ul>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
+          {service?.features && (
+            <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+              {service.features.map((f) => (<li>{f}</li>))}
             </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
-              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
-            </div>
-          </article>
-          <article class="card p-6">
-            <h3 class="h3">Messpunkte</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Rankings & Sichtbarkeit je Stadt</li>
-              <li>• Leads/Anfragen pro Stadt</li>
-              <li>• GBP‑Signals & NAP‑Konsistenz</li>
-              <li>• Interne Verlinkung & Crawl‑Tiefe</li>
-            </ul>
-          </article>
+          )}
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Was Sie erhalten</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Standort-Analyse, Ortschaften-Plan und Content-Guidelines</li>
+            <li>Aufbau von 50 Microsites inkl. Tracking und rechtssicheren Impressen</li>
+            <li>Individuelle Texte je Ort, strukturierte Daten und interne Verlinkung</li>
+            <li>Monatliche Pflege und Reporting mit lokalen Rankings und Leads</li>
+          </ul>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Ergebnis</h3>
+          <p class={`mt-3 text-[${colors.text}]/90`}>Sie sichern sich Nachfrage aus der gesamten Region – planbar, messbar, skalierbar. Besonders wirksam für Handwerk, Services mit Anfahrt und medizinische Leistungen.</p>
         </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
+          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Wir prüfen Potenzial, Prioritäten und Timing und legen transparent Aufwand und Budget offen.</p>
+          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Kostenloses Gespräch</a>
+        </div>
+      </div>
+      <aside class="lg:col-span-1">
+        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
+          <ul class="mt-3 space-y-2">
+            {others.map((o) => (
+              <li>
+                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
+                  <span class="font-medium">{o.title}</span>
+                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
