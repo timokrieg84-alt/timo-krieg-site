@@ -1,21 +1,42 @@
 ---
 const stats = [
-  { n: 98, l: 'Kundenzufriedenheit (%)' },
-  { n: 150, l: 'Projekte in DACH' },
-  { n: 7, l: 'Ø ROI-Faktor (x)' },
-  { n: 1, l: 'Sek. LCP bei neuen Websites' },
+  { label: "Branchenportale", value: 30, suffix: "+" },
+  { label: "Satelliten-Seiten", value: 50, suffix: "" },
+  { label: "DSGVO-konform", value: 100, suffix: "%" },
 ];
 ---
-<section id="zahlen" class="py-16 md:py-24">
-  <div class="container">
-    <h2 class="text-3xl md:text-4xl font-semibold">Zahlen & Fakten</h2>
-    <div class="mt-8 grid gap-6 grid-cols-2 md:grid-cols-4">
-      {stats.map(s => (
-        <div class="card text-center">
-          <div class="stat tabular-nums">{s.n}</div>
-          <div class="stat-label mt-2">{s.l}</div>
-        </div>
-      ))}
+<div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+  {stats.map((s) => (
+    <div class="card p-6 reveal-up">
+      <div class="text-4xl font-extrabold">
+        <span class="stat" data-target={s.value} aria-live="polite">0</span>{s.suffix}
+      </div>
+      <div class="text-txt-2 mt-1">{s.label}</div>
     </div>
-  </div>
-</section>
+  ))}
+</div>
+
+<script is:client="visible">
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const els = document.querySelectorAll('.stat');
+  const duration = 1.2;
+  (async () => {
+    if (reduce) { els.forEach(el => el.textContent = el.dataset.target); return; }
+    const [{ gsap }, { ScrollTrigger }] = await Promise.all([
+      import('gsap/dist/gsap'),
+      import('gsap/dist/ScrollTrigger'),
+    ]);
+    gsap.registerPlugin(ScrollTrigger);
+    els.forEach((el) => {
+      const end = parseFloat(el.dataset.target || '0');
+      const obj = { val: 0 };
+      ScrollTrigger.create({
+        trigger: el, start: 'top 85%', once: true,
+        onEnter: () => gsap.to(obj, {
+          val: end, duration, ease: 'power2.out',
+          onUpdate: () => { el.textContent = Math.floor(obj.val).toString(); }
+        })
+      });
+    });
+  })();
+</script>
