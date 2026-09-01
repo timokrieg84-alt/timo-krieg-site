@@ -15,7 +15,7 @@ interface Props {
 }
 const { service } = Astro.props as Props;
 ---
-<article class={`group relative flex flex-col justify-between rounded-2xl border border-[${colors.muted}]/20 bg-white p-6 shadow-sm transition-shadow hover:shadow-md`}
+<article class={`group relative flex flex-col justify-between rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 shadow-sm transition-shadow hover:shadow-md`}
   id={service.slug}>
   <div>
     <h3 class={`text-lg font-semibold text-[${colors.text}]`}>{service.title}</h3>
@@ -26,7 +26,7 @@ const { service } = Astro.props as Props;
     {service.features && service.features.length > 0 && (
       <ul class="mt-4 space-y-2">
         {service.features.slice(0, 4).map((f) => (
-          <li class="flex items-start gap-2 text-sm text-[black]/70"><span class={`mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.secondary}]`}></span>{f}</li>
+          <li class={`flex items-start gap-2 text-sm text-[${colors.text}]/70`}><span class={`mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.secondary}]`}></span>{f}</li>
         ))}
       </ul>
     )}
