@@ -1,20 +1,60 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-const title = 'Impressum | Gylsere Januzi Krieg – Online Marketing Office';
-const description = 'Rechtliche Angaben zum Online Marketing Office. Anbieter, Anschrift, Kontakt, Verantwortliche nach § 5 TMG.';
-const canonical = 'https://online-marketing-office.de/impressum';
+import Layout from "../layouts/Layout.astro";
+import { brand, colors, legal } from "../data/site";
+const imp = legal.impressum;
 ---
-<Base {title} {description} {canonical}>
-  <Header />
-  <main class="section container flow">
-    <h1>Impressum</h1>
-    <p><strong>Anbieter:</strong> Gylsere Januzi Krieg – Online Marketing Office</p>
-    <p><strong>Anschrift:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
-    <p><strong>Kontakt:</strong> Tel. +49 175 6372395 · E-Mail: <a href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
-    <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Gylsere Januzi Krieg</p>
-    <p>USt‑ID: wird ergänzt</p>
-  </main>
-  <Footer />
-</Base>
+<Layout title={`${imp.title} – ${brand.name}`} description={`${brand.name} – ${imp.title}`}>
+  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <nav class="text-sm">
+        <a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a>
+        <span class={`mx-2 text-[${colors.text}]/40`}>/</span>
+        <span class={`text-[${colors.text}]/60`}>{imp.title}</span>
+      </nav>
+      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{imp.title}</h1>
+      <p class={`mt-2 text-[${colors.muted}]`}>Angaben gemäß § 5 TMG/§ 5 DDG</p>
+    </div>
+  </section>
+  <section class={`bg-[${colors.background}]`}>
+    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Diensteanbieter</h2>
+        <p class={`mt-3 text-[${colors.text}]/90`}>
+          {imp.provider.unternehmen}<br />
+          Inhaberin: {imp.provider.inhaberin}<br />
+          {imp.provider.anschrift}
+        </p>
+        <p class={`mt-3 text-[${colors.text}]/90`}>
+          Telefon: <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="tel:+491756372395">{imp.provider.kontakt.telefon}</a><br />
+          E-Mail: <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="mailto:{imp.provider.kontakt.eMail}">{imp.provider.kontakt.eMail}</a>
+        </p>
+        <p class={`mt-3 text-[${colors.text}]/90`}>Vertretungsberechtigt: {imp.vertretungsberechtigt}</p>
+        <p class={`mt-1 text-[${colors.text}]/90`}>Verantwortlich nach § 18 Abs. 2 MStV: {imp.verantwortlichNachMStV}</p>
+      </div>
+
+      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
+        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Verbraucherstreitbeilegung/OS-Plattform</h2>
+        <p class={`text-[${colors.text}]/90`}>{imp.verbraucherstreitbeilegung}</p>
+      </div>
+
+      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
+        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Haftung für Inhalte</h2>
+        <p class={`text-[${colors.text}]/90`}>{imp.haftungFuerInhalte}</p>
+      </div>
+
+      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
+        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Haftung für Links</h2>
+        <p class={`text-[${colors.text}]/90`}>{imp.haftungFuerLinks}</p>
+      </div>
+
+      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
+        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Urheberrecht</h2>
+        <p class={`text-[${colors.text}]/90`}>{imp.urheberrecht}</p>
+      </div>
+
+      <div class="pt-4">
+        <a href="/" class={`text-sm text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Zur Startseite</a>
+      </div>
+    </div>
+  </section>
+</Layout>
