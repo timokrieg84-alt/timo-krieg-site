@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/Card.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+---
+<Layout title="Prozess & Methode | Von Audit zu Wachstum in 90 Tagen" description="Klarer Fahrplan: Audit, Roadmap, Setup, Sprints. Transparente KPIs, sauberes Tracking, schneller ROI für KMU, Praxen & B2B.">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <Section title="In 6 Schritten zu mehr Sichtbarkeit, Anfragen und Wachstum">
+    <div class="grid md:grid-cols-3 gap-6">
+      <Card title="1) Analyse & Zielbild" text="Geschäftsmodell, Zielgruppen, Wettbewerb, Status‑Quo analysieren. Messbare Ziele definieren: Leads, Termine, Anfragen." />
+      <Card title="2) Strategie & Informationsarchitektur" text="Positionierung schärfen, Angebotsstruktur klären. SEO‑ und Content‑Plan mit Themen, Keywords, Struktur." />
+      <Card title="3) UX & Design" text="Nutzerführung für Conversion: klare Wege, klare Botschaften. Markenstark, barrierearm, mobil‑optimiert." />
+      <Card title="4) Entwicklung mit Astro" text="High‑Performance‑Setup, saubere Codebasis, exzellente Core Web Vitals. Headless/CMS nach Bedarf." />
+      <Card title="5) Tracking, DSGVO & Launch" text="Consent‑Management (CMP), Data Layer, Events, KPIs. Qualitätssicherung, Go‑Live, Übergabe & Schulung." />
+      <Card title="6) Skalierung & Reporting" text="SEO‑Feintuning, Performance‑Kampagnen, A/B‑Tests. Monatliche Reports, klare Maßnahmenpläne." />
+    </div>
+  </Section>
+  <CTA />
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>
