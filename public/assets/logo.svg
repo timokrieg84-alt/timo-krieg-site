@@ -1,5 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="96" height="96" viewBox="0 0 96 96" fill="none">
-  <rect width="96" height="96" rx="20" fill="#0f172a"/>
-  <path d="M22 60 L40 22 H52 L34 60 Z" fill="#6366f1"/>
-  <path d="M44 60 L62 22 H74 L56 60 Z" fill="#22d3ee"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200" role="img" aria-labelledby="title">
+  <title id="title">GJK Online Marketing Office Logo</title>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="45%" stop-color="#1c8cff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#1c8cff" stop-opacity="0.2"/>
+    </radialGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+  </defs>
+  <rect width="200" height="200" fill="#ffffff" rx="24" ry="24"/>
+  <circle cx="100" cy="80" r="24" fill="url(#g)" filter="url(#blur)"/>
+  <text x="100" y="140" text-anchor="middle" font-family="Sora, Inter, system-ui, sans-serif" font-weight="700" font-size="16" fill="#0f1720">GJK</text>
 </svg>
