@@ -26,7 +26,7 @@ const items = [
 
 <script is:client="visible">
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const init = async () => {
+  (async () => {
     const { default: Swiper } = await import('swiper');
     const { Pagination, A11y } = await import('swiper/modules');
     new Swiper('.swiper', {
@@ -39,6 +39,5 @@ const items = [
       allowTouchMove: true,
       breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
     });
-  };
-  init();
+  })();
 </script>
