@@ -1,101 +1,44 @@
 ---
-import '../styles/global.css';
-const title = 'Über uns – B2B Performance Marketing aus Schwäbisch Gmünd | Timo Krieg';
-const description = 'Wir verbinden High‑Performance‑Webentwicklung (Astro/Tailwind) mit SEO/SEA, LinkedIn Ads & CRO – für messbare Ergebnisse im Mittelstand.';
-const canonical = '/ueber-uns';
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
 ---
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content="/og-default.jpg" />
-  <script type="application/ld+json">{JSON.stringify({
-    '@context':'https://schema.org', '@type':['Organization','LocalBusiness','ProfessionalService'], name:'Timo Krieg', url:'/',
-    address:{'@type':'PostalAddress', streetAddress:'Kitzingstraße 7', postalCode:'73529', addressLocality:'Schwäbisch Gmünd', addressRegion:'Baden-Württemberg', addressCountry:'DE'},
-    telephone:'+49-160-4365363'
-  })}</script>
-  <script type="application/ld+json">{JSON.stringify({
-    '@context':'https://schema.org','@type':'WebPage', name:title, description, url: canonical, inLanguage:'de',
-    breadcrumb:{'@type':'BreadcrumbList', itemListElement:[{'@type':'ListItem', position:1, name:'Start', item:'/'},{'@type':'ListItem', position:2, name:'Über uns', item: canonical}]}
-  })}</script>
-</head>
-<body>
-  <header class="border-b border-slate-200 bg-white/70 backdrop-blur sticky top-0 z-50">
-    <div class="container py-4 flex items-center justify-between gap-4">
-      <a href="/" class="font-semibold tracking-tight">Timo Krieg</a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="/leistungen/" class="nav-link">Leistungen</a>
-        <a href="/ueber-uns" class="nav-link">Über uns</a>
-        <a href="/kontakt" class="nav-link">Kontakt</a>
-        <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-      </nav>
-      <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container grid gap-10 lg:grid-cols-2 items-start">
-        <div>
-          <span class="badge">Philosophie</span>
-          <h1 class="mt-3 text-4xl md:text-5xl font-semibold tracking-tight">Klarheit vor Komplexität. Ergebnisse vor Eitelkeit.</h1>
-          <p class="mt-4 text-lg text-slate-600">Ich baue Performance‑Marketing, das im Vertrieb ankommt – für Unternehmen aus Schwäbisch Gmünd, Ostwürttemberg und der DACH‑Region.</p>
-          <ul class="mt-6 list-disc pl-5 text-slate-700 space-y-1">
-            <li>Fokus auf KPIs: Leads, CPL, Conversion‑Rate, Umsatzbezug</li>
-            <li>Schlanke Technik: Webentwicklung mit Astro/Tailwind</li>
-            <li>Transparente Kommunikation & saubere Doku</li>
-            <li>DSGVO‑konforme Setups & nachhaltige Skalierung</li>
-          </ul>
-          <div class="mt-8 flex gap-3">
-            <a href="/leistungen/" class="btn btn-secondary">Leistungen ansehen</a>
-            <a href="/kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a>
-          </div>
-        </div>
-        <div class="card">
-          <h2 class="text-2xl font-semibold">Meilensteine</h2>
-          <dl class="mt-3 space-y-3 text-slate-700">
-            <div><dt class="font-medium">2017</dt><dd>Erste B2B‑Projekte im Performance Marketing</dd></div>
-            <div><dt class="font-medium">2020</dt><dd>Spezialisierung auf Mittelstand & DACH</dd></div>
-            <div><dt class="font-medium">2022</dt><dd>Astro/Tailwind als Standard‑Stack</dd></div>
-            <div><dt class="font-medium">2024</dt><dd>95% Kundentreue in Ostwürttemberg</dd></div>
-          </dl>
-        </div>
+<Layout title="Über uns | Gylsere Januzi Krieg – Online Marketing Office" description="Strategen, Tech‑Nerds & Kreative aus Schwäbisch Gmünd. Wir verbinden Performance, Marke und High‑Performance Webdesign für messbares Wachstum.">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <Section title="Premium‑Online‑Marketing aus Schwäbisch Gmünd" intro="Wir entwickeln High‑Performance‑Websites und messbares Online‑Marketing für Unternehmen, die wachsen wollen – mit Fokus auf Sichtbarkeit, Anfragen und Umsatz.">
+    <div class="grid md:grid-cols-2 gap-8 items-start">
+      <div class="card p-6">
+        <h3 class="h3">Werte</h3>
+        <ul class="mt-3 text-txt-2 grid gap-2 list-disc pl-5">
+          <li>Klarheit: Ziele, KPIs und Erwartungen sind von Beginn an definiert</li>
+          <li>Qualität: saubere Codebasis, schnelle Ladezeiten, starke UX</li>
+          <li>Verantwortung: DSGVO und Consent‑Management ohne Kompromisse</li>
+          <li>Partnerschaft: langfristige Zusammenarbeit auf Augenhöhe</li>
+        </ul>
       </div>
-    </section>
-
-    <section class="section bg-slate-50">
-      <div class="container grid gap-8 md:grid-cols-2 items-start">
-        <div class="card">
-          <h2 class="text-2xl font-semibold">Timo Krieg – persönlich</h2>
-          <p class="mt-3 text-slate-700">Ich kombiniere technische Präzision mit klarem Marketing‑Verständnis. Kein Buzzword‑Bingo, sondern ehrliche Arbeit, pragmatische Lösungen und Verantwortung für Ergebnisse.</p>
-        </div>
-        <div class="card">
-          <h2 class="text-2xl font-semibold">Qualitätsversprechen</h2>
-          <ul class="mt-3 list-disc pl-5 text-slate-700 space-y-1">
-            <li>Performance by default – Speed, SEO, Conversion</li>
-            <li>Verbindliche Kommunikation, kurze Reaktionszeiten</li>
-            <li>Transparente Budgets & Reporting</li>
-            <li>Langfristige Partnerschaft statt Strohfeuer</li>
-          </ul>
-        </div>
+      <div class="card p-6">
+        <h3 class="h3">Arbeitsweise</h3>
+        <p class="text-txt-2 mt-2">Strategisch, datenbasiert, effizient. Moderne Tech‑Stacks (Astro, Headless, Tracking) treffen erprobte SEO‑ & Performance‑Playbooks. Jede Maßnahme zahlt auf Ihre KPIs ein – kein Overhead.</p>
       </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-slate-200">
-    <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
-      <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
-      <nav class="flex items-center gap-4">
-        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
-        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
-      </nav>
     </div>
-  </footer>
-</body>
-</html>
+    <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <div class="card p-6"><strong>+30</strong><div class="text-txt-2">Branchenportale</div></div>
+      <div class="card p-6"><strong>50</strong><div class="text-txt-2">Satelliten‑Seiten</div></div>
+      <div class="card p-6"><strong>100%</strong><div class="text-txt-2">DSGVO‑konform</div></div>
+    </div>
+  </Section>
+  <Section title="Ihre Ansprechpartnerin" intro="Ein fester Kontakt – von der Idee bis zur Skalierung.">
+    <div class="grid md:grid-cols-[2fr,1fr] gap-8 items-center">
+      <div class="card p-6">
+        <p>Gylsere begleitet Ihr Projekt persönlich: verbindlich, erreichbar, lösungsorientiert. Kurze Wege, schnelle Entscheidungen – für Tempo und Qualität.</p>
+      </div>
+      <figure class="card overflow-hidden">
+        <img src="/images/portrait-gylsere.webp" alt="Porträt von Gylsere Januzi Krieg im dunklen Studio‑Look mit Cyan‑Licht" class="w-full h-full object-cover" loading="lazy" />
+      </figure>
+    </div>
+  </Section>
+  <CTA />
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>
