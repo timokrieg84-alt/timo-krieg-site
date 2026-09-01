@@ -1,35 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Impressum | Gylsere Januzi Krieg – Online Marketing Office",
-  description: "Impressum und gesetzliche Angaben.",
-  url: "https://example.com/impressum/",
-  canonical: "https://example.com/impressum/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const title = 'Impressum | Gylsere Januzi Krieg – Online Marketing Office';
+const description = 'Rechtliche Angaben zum Online Marketing Office. Anbieter, Anschrift, Kontakt, Verantwortliche nach § 5 TMG.';
+const canonical = 'https://online-marketing-office.de/impressum';
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <main class="container py-16">
-        <h1 class="h1">Impressum</h1>
-        <div class="mt-6 text-txt-2 grid gap-2">
-          <p><strong>Dienstanbieter</strong><br/>Gylsere Januzi Krieg – Online Marketing Office<br/>Kitzingstraße 7<br/>73529 Schwäbisch Gmünd</p>
-          <p><strong>Kontakt</strong><br/>Telefon: +49 175 6372395<br/>E-Mail: gjanuzikrieg@gmail.com</p>
-          <p><strong>Umsatzsteuer-ID</strong><br/>Wird nachgereicht.</p>
-          <p><strong>Inhaltlich Verantwortliche</strong><br/>Gylsere Januzi Krieg</p>
-          <p><strong>Haftung für Inhalte</strong><br/>Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links.</p>
-        </div>
-      </main>
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+<Base {title} {description} {canonical}>
+  <Header />
+  <main class="section container flow">
+    <h1>Impressum</h1>
+    <p><strong>Anbieter:</strong> Gylsere Januzi Krieg – Online Marketing Office</p>
+    <p><strong>Anschrift:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+    <p><strong>Kontakt:</strong> Tel. +49 175 6372395 · E-Mail: <a href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
+    <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Gylsere Januzi Krieg</p>
+    <p>USt‑ID: wird ergänzt</p>
+  </main>
+  <Footer />
+</Base>
