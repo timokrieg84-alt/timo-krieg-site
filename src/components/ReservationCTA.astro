@@ -1,0 +1,28 @@
+---
+interface Action { label: string; href: string; ariaLabel?: string; variant?: 'primary' | 'secondary' }
+export interface Props {
+  title: string;
+  text?: string;
+  actions?: Action[];
+  notes?: string;
+}
+const { title, text, actions = [], notes } = Astro.props as Props;
+---
+<section id="reservierung" class="scroll-mt-28 py-20 md:py-24 bg-gradient-to-b from-white to-bg">
+  <div class="container">
+    <div class="rounded-xl border border-divider bg-white p-8 md:p-10 shadow-brandMd text-center">
+      <h2 class="font-heading text-[32px] md:text-[40px] leading-tight text-text">{title}</h2>
+      {text && <p class="mt-3 text-textSecondary max-w-2xl mx-auto">{text}</p>}
+      {actions.length > 0 && (
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+          {actions.map((a) => (
+            <a href={a.href} aria-label={a.ariaLabel} class={['px-5 py-3 rounded-md shadow-brandSm', a.variant === 'secondary' ? 'bg-white text-brand border border-brand hover:bg-[#F4E8DB]' : 'bg-brand text-white hover:bg-linkHover'].join(' ')}>
+              {a.label}
+            </a>
+          ))}
+        </div>
+      )}
+      {notes && <p class="mt-4 text-sm text-textSecondary">{notes}</p>}
+    </div>
+  </div>
+</section>
