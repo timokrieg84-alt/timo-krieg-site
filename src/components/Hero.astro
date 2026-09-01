@@ -1,49 +1,48 @@
 ---
-interface Cta {
-  label: string;
-  to: string; // will be normalized to anchor links
-  style?: 'primary' | 'secondary';
-}
-interface Props {
-  id?: string;
+interface Badge { text: string; icon?: string }
+interface Action { label: string; href: string; ariaLabel?: string }
+export interface Props {
+  eyebrow: string;
   title: string;
-  subtitle?: string;
-  image?: string;
-  overlay?: number; // 0..1
-  primaryCta?: Cta;
-  secondaryCta?: Cta;
+  slogan: string;
+  description?: string;
+  primaryAction?: Action;
+  secondaryAction?: Action;
+  badges?: Badge[];
 }
-const {
-  id = 'hero',
-  title,
-  subtitle = '',
-  image = '/assets/images/hero/restaurant-innenraum.jpg',
-  overlay = 0.35,
-  primaryCta,
-  secondaryCta
-} = Astro.props as Props;
+const { eyebrow, title, slogan, description, primaryAction, secondaryAction, badges = [] } = Astro.props as Props;
 ---
-<section id={id} class="relative isolate w-full">
-  <div class="absolute inset-0 -z-10">
-    <img src={image} alt="" class="h-[70vh] w-full object-cover" loading="eager" />
-    <div class="absolute inset-0" style={`background:linear-gradient(rgba(0,0,0,${overlay}), rgba(0,0,0,${overlay}))`}></div>
-  </div>
-  <div class="mx-auto max-w-[1200px] px-4 py-20 md:py-28 lg:py-32 text-white">
-    <div class="max-w-3xl">
-      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">{title}</h1>
-      {subtitle && <p class="mt-4 text-lg md:text-xl text-white/90">{subtitle}</p>}
+<section id="hero" class="relative overflow-hidden bg-gradient-to-br from-[#FAF4E8] to-[#F1E2D3]">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0" style="background-image:url('data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%\' height=\'100%\'><filter id=\'n\'><feTurbulence type=\'fractalNoise\' baseFrequency=\'0.8\' numOctaves=\'2\' stitchTiles=\'stitch\'/><feColorMatrix type=\'saturate\' values=\'0\'/><feComponentTransfer><feFuncA type=\'table\' tableValues=\'0 0.06\'/></feComponentTransfer></filter><rect width=\'100%\' height=\'100%\' filter=\'url(%23n)\' /></svg>');"></div>
+  <div class="container py-24 md:py-32 relative z-10 grid md:grid-cols-2 gap-10 items-center">
+    <div>
+      <p class="font-body uppercase tracking-widest text-[12px] text-textSecondary">{eyebrow}</p>
+      <h1 class="mt-3 font-heading text-[40px] md:text-[56px] leading-tight text-text">{title}</h1>
+      <p class="mt-2 font-accent text-[28px] text-brand">{slogan}</p>
+      {description && <p class="mt-5 text-lg text-textSecondary max-w-prose">{description}</p>}
       <div class="mt-8 flex flex-wrap gap-3">
-        {primaryCta && (
-          <a href={primaryCta.to.startsWith('#') ? primaryCta.to : '#contact'} class="inline-flex items-center justify-center rounded-md bg-[#2E7D32] text-white px-5 py-3 text-base font-medium shadow hover:bg-emerald-700 focus:outline-none focus:ring-2 focus:ring-white/70">
-            {primaryCta.label}
-          </a>
+        {primaryAction && (
+          <a href={primaryAction.href} aria-label={primaryAction.ariaLabel} class="px-5 py-3 rounded-md bg-brand text-white hover:bg-linkHover shadow-brandMd">{primaryAction.label}</a>
         )}
-        {secondaryCta && (
-          <a href={secondaryCta.to.startsWith('#') ? secondaryCta.to : '#menu'} class="inline-flex items-center justify-center rounded-md border border-white/70 text-white px-5 py-3 text-base font-medium hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/70">
-            {secondaryCta.label}
-          </a>
+        {secondaryAction && (
+          <a href={secondaryAction.href} aria-label={secondaryAction.ariaLabel} class="px-5 py-3 rounded-md bg-white text-brand border border-brand hover:bg-[#F4E8DB] shadow-brandSm">{secondaryAction.label}</a>
         )}
       </div>
+      {badges.length > 0 && (
+        <ul class="mt-8 flex flex-wrap gap-3 text-sm text-textSecondary">
+          {badges.map((b) => (
+            <li class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/70 border border-divider">
+              <span class="inline-block w-5 h-5 text-brand" aria-hidden="true">★</span>
+              <span>{b.text}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+    <div class="relative">
+      <div class="absolute -top-10 -right-6 w-40 h-40 bg-accent/20 rounded-full blur-2xl" aria-hidden="true"></div>
+      <img src="https://images.unsplash.com/photo-1604908176997-43162b81de58?q=80&w=1400&auto=format&fit=crop" alt="Italienische Speisen in warmem Ambiente" class="rounded-xl shadow-brandLg border border-divider" loading="lazy" />
     </div>
   </div>
+  <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#FAF4E8] to-transparent" aria-hidden="true"></div>
 </section>
