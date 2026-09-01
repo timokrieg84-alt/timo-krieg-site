@@ -15,20 +15,20 @@ const meta = {
   type: "article"
 };
 const items = [
-  { title: 'SEO & Local SEO', text: 'Technisches SEO, Content & Local Packs – inklusive Google Business Profil und 30+ Portale.' },
-  { title: 'Google Ads', text: 'Strukturierte Kampagnen, Conversion‑Tracking & Landingpages. Mehr Anfragen, weniger Streuverlust.' },
-  { title: 'SEO‑Regio – Umland‑Dominanz', text: '50 eigenständige Ortschaften‑Webseiten, einzigartige Texte, flächendeckende lokale Rankings.' },
-  { title: 'GEO – Generative Engine Optimization', text: 'Zitierfähig in AI‑Antworten: Entities, Quellenautorität, LLM‑lesbare Inhalte.' },
-  { title: 'Webdesign (Astro) & E‑Commerce', text: 'Astro‑Websites und Shops – Core Web Vitals exzellent, conversion‑stark, DSGVO‑sicher.' },
-  { title: 'AI & Automation', text: 'Custom AI Agents, LLM‑Integration, Workflow‑Automation, Chatbots.' },
-  { title: 'Online‑Terminbuchung', text: 'Doctolib/Jameda‑Integrationen, Echtzeit‑APIs, Suchmaschinen‑/Portal‑Platzierung.' },
-  { title: 'Reputation & Bewertungen', text: 'Mehr echte Top‑Bewertungen, Review‑Monitoring, Antwort‑Management, Melden/Entfernen.' },
-  { title: 'Social Media', text: 'Strategie, Content‑Produktion, Community‑Management, Paid Social.' },
-  { title: 'Premium‑Fotografie & Image‑Videos', text: 'Team‑/Businessfotos, Imagefilme & Recruiting‑Videos in 4K/8K, Drohnenaufnahmen.' },
-  { title: 'Branding', text: 'Brand Strategy, Visual Identity, Logo & Design System, Messaging.' },
-  { title: 'Praxis‑TV', text: 'Kuratiertes Wartezimmer‑TV: Inhalte, Visuals, Darstellung von IGeL & Methoden.' },
-  { title: 'Code‑Exzellenz & Programmierung', text: 'Skalierbare Software, APIs, Modernisierung, Audits & Refactoring.' },
-  { title: 'Premium‑Factoring', text: 'B2B‑Forderungen verkaufen: Auszahlung in 24–48 Std., Ausfallschutz, Debitorenmanagement.' },
+  { href: '/leistungen/seo-local-seo/', title: 'SEO & Local SEO', text: 'Technisches SEO, Content & Local Packs – inklusive Google Business Profil und 30+ Portale.' },
+  { href: '/leistungen/google-ads/', title: 'Google Ads', text: 'Strukturierte Kampagnen, Conversion‑Tracking & Landingpages. Mehr Anfragen, weniger Streuverlust.' },
+  { href: '/leistungen/seo-regio/', title: 'SEO‑Regio – Umland‑Dominanz', text: '50 eigenständige Ortschaften‑Webseiten, einzigartige Texte, flächendeckende lokale Rankings.' },
+  { href: '/leistungen/geo-generative-engine-optimization/', title: 'GEO – Generative Engine Optimization', text: 'Zitierfähig in AI‑Antworten: Entities, Quellenautorität, LLM‑lesbare Inhalte.' },
+  { href: '/leistungen/webdesign-e-commerce/', title: 'Webdesign (Astro) & E‑Commerce', text: 'Astro‑Websites und Shops – Core Web Vitals exzellent, conversion‑stark, DSGVO‑sicher.' },
+  { href: '/leistungen/ai-automation/', title: 'AI & Automation', text: 'Custom AI Agents, LLM‑Integration, Workflow‑Automation, Chatbots.' },
+  { href: '/leistungen/online-terminbuchung/', title: 'Online‑Terminbuchung', text: 'Doctolib/Jameda‑Integrationen, Echtzeit‑APIs, Suchmaschinen‑/Portal‑Platzierung.' },
+  { href: '/leistungen/reputation-bewertungen/', title: 'Reputation & Bewertungen', text: 'Mehr echte Top‑Bewertungen, Review‑Monitoring, Antwort‑Management, Melden/Entfernen.' },
+  { href: '/leistungen/social-media/', title: 'Social Media', text: 'Strategie, Content‑Produktion, Community‑Management, Paid Social.' },
+  { href: '/leistungen/premium-fotografie-image-videos/', title: 'Premium‑Fotografie & Image‑Videos', text: 'Team‑/Businessfotos, Imagefilme & Recruiting‑Videos in 4K/8K, Drohnenaufnahmen.' },
+  { href: '/leistungen/branding/', title: 'Branding', text: 'Brand Strategy, Visual Identity, Logo & Design System, Messaging.' },
+  { href: '/leistungen/praxis-tv/', title: 'Praxis‑TV', text: 'Kuratiertes Wartezimmer‑TV: Inhalte, Visuals, Darstellung von IGeL & Methoden.' },
+  { href: '/leistungen/code-exzellenz-programmierung/', title: 'Code‑Exzellenz & Programmierung', text: 'Skalierbare Software, APIs, Modernisierung, Audits & Refactoring.' },
+  { href: '/leistungen/premium-factoring/', title: 'Premium‑Factoring', text: 'B2B‑Forderungen verkaufen: Auszahlung in 24–48 Std., Ausfallschutz, Debitorenmanagement.' },
 ];
 ---
 <html lang="de" class="dark">
@@ -41,7 +41,9 @@ const items = [
       <Section id="leistungen" title="Strategie, Umsetzung und laufende Optimierung" intro="Jede Leistung mit klarer Verantwortung und Messpunkten.">
         <div class="grid-12">
           {items.map((i) => (
-            <div class="col-span-12 md:col-span-4"><Card title={i.title} text={i.text} /></div>
+            <a class="col-span-12 md:col-span-4 block" href={i.href}>
+              <Card title={i.title} text={i.text} />
+            </a>
           ))}
         </div>
       </Section>
