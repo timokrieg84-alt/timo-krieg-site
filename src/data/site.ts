@@ -1,155 +1,498 @@
-export const projectInfo = {
-  company_name: "Gylsere Januzi",
-  location: "Kitzingstraße 7, 73529 Schwäbisch Gmünd",
-  phone: "+49 175 6372395",
-  phone_href: "+491756372395",
-  email: "info@januzi-bau.de",
-  google_maps_embed: true,
-};
-
-export const navigation = {
-  logo_text: "Gylsere Januzi",
-  links: [
-    { label: "Home", target: "#home" },
-    {
-      label: "Leistungen",
-      type: "dropdown_interactive",
-      sub_links: [
-        { label: "SEO", target: "/leistungen/seo" },
-        { label: "SEO-Regio (Umland-Dominanz)", target: "/leistungen/seo-regio" },
-        { label: "Google Ads", target: "/leistungen/google-ads" },
-        { label: "GEO (AI-Search & ChatGPT)", target: "/leistungen/geo" },
-        { label: "Webdesign & E-Commerce", target: "/leistungen/webdesign" },
-        { label: "Online-Terminvereinbarungen", target: "/leistungen/terminbuchung" },
-        { label: "Marketing", target: "/leistungen/marketing" },
-        { label: "AI & Automation", target: "/leistungen/ai-automation" },
-        { label: "Branding", target: "/leistungen/branding" },
-        { label: "Social Media", target: "/leistungen/social-media" },
-        { label: "Reputation & Bewertungen", target: "/leistungen/reputation" },
-        { label: "Praxis-TV / Display-Systeme", target: "/leistungen/praxis-tv" },
-        { label: "Code-Exzellenz & Programmierung", target: "/leistungen/programmierung" },
-        { label: "Premium-Factoring", target: "/leistungen/factoring" }
-      ]
+export const site = {
+  brand: {
+    name: "Gylsere Januzi Krieg",
+    tagline: "Online Marketing Office",
+    logoText: "GYLSERE JANUZI KRIEG",
+    colors: {
+      primary: "#123D2A",
+      secondary: "#C8501E",
+      accent: "#E58AA0",
+      background: "#F5F1E9",
+      text: "#1A1A1A",
+      muted: "#6B7280",
+      gold: "#C8A24B",
     },
-    { label: "Case Studies", target: "#case-studies" },
-    { label: "Wir", target: "#ueber-uns" },
-    { label: "Kontakt", target: "#kontakt" }
-  ],
-  actions: [
-    { type: "theme_toggle", icon: "☼" },
-    { type: "cta_button", text: "Erstgespräch buchen", style: "glowing_border" },
-    { type: "direct_call_button", text: "+49 175 6372395", phone_number: "+491756372395" }
-  ]
-};
-
-export const hero = {
-  kicker_label: "— FACHBETRIEB & DIGITAL-PRÄSENZ SCHWÄBISCH GMÜND",
-  headline_h1: "Die richtige Prise Perfektion",
-  slogan_styled: "Gylsere • Januzi",
-  value_proposition: "Wir machen dein Unternehmen sichtbar – bei Google, bei ChatGPT, auf Instagram. Messbar, persönlich, ohne Agentur-Blabla.",
-  cta_area: {
-    primary_button: "Kostenloses Erstgespräch",
-    secondary_action: { icon: "phone", text: "DIREKT DURCHSTELLEN", phone_number: "+49 175 6372395", phone_href: "+491756372395" },
   },
-  bottom_trust_ticker: {
-    response_time: "Antworten meist in unter 2h",
-    active_clients: "50+ Mandate in DACH",
-    news_tag: "➔ Neue Social Media Management & Digital-Lösungen"
-  }
-};
+  contact: {
+    company: "Gylsere Januzi Krieg – Online Marketing Office",
+    owner: "Gylsere Januzi Krieg",
+    street: "Kitzingstraße 7",
+    zip: "73529",
+    city: "Schwäbisch Gmünd",
+    phone: "+49 175 6372395",
+    email: "gjanuzikrieg@gmail.com",
+  },
+  legal: {
+    impressum: `Angaben gemäß § 5 TMG
 
-export const trustBar = {
-  badges: [
-    { type: "google_partner", text: "ZERTIFIZIERT Google Partner" },
-    { type: "reviews", text: "★ ★ ★ ★ ★ Google Bewertungen" },
+Gylsere Januzi Krieg
+Online Marketing Office
+Kitzingstraße 7
+73529 Schwäbisch Gmünd
+Deutschland
+
+Kontakt
+Telefon: +49 175 6372395
+E-Mail: gjanuzikrieg@gmail.com
+
+Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
+Gylsere Januzi Krieg, Anschrift wie oben.
+
+Haftung für Inhalte
+Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+
+Haftung für Links
+Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.
+
+Urheberrecht
+Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechts bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.
+
+Hinweis: Diese Vorlage ersetzt keine individuelle Rechtsberatung. Bitte vor Livegang rechtlich prüfen lassen.`,
+    datenschutz: `Datenschutzerklärung
+
+1. Verantwortlicher
+Gylsere Januzi Krieg – Online Marketing Office
+Kitzingstraße 7, 73529 Schwäbisch Gmünd
+Telefon: +49 175 6372395
+E-Mail: gjanuzikrieg@gmail.com
+
+2. Allgemeines zur Datenverarbeitung
+Wir verarbeiten personenbezogene Daten unserer Nutzer grundsätzlich nur, soweit dies zur Bereitstellung einer funktionsfähigen Website sowie unserer Inhalte und Leistungen erforderlich ist. Die Verarbeitung erfolgt regelmäßig nur nach Einwilligung (Art. 6 Abs. 1 lit. a DSGVO) oder auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO).
+
+3. Hosting
+Diese Website wird bei einem externen Dienstleister (Vercel) gehostet. Beim Aufruf werden technisch notwendige Server-Logfiles (z. B. IP-Adresse, Datum/Uhrzeit, aufgerufene Seite, Browsertyp) verarbeitet. Rechtsgrundlage ist unser berechtigtes Interesse an einer sicheren, stabilen Bereitstellung (Art. 6 Abs. 1 lit. f DSGVO).
+
+4. Kontaktaufnahme
+Wenn Sie uns über das Kontaktformular oder per E-Mail kontaktieren, werden Ihre Angaben zur Bearbeitung der Anfrage gespeichert. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Die Daten werden gelöscht, sobald sie nicht mehr erforderlich sind.
+
+5. Cookies & Reichweitenmessung
+Technisch notwendige Cookies werden ohne Einwilligung gesetzt. Optionale Cookies (Statistik/Marketing) nur nach Ihrer ausdrücklichen Einwilligung über unser Consent-Management (Art. 6 Abs. 1 lit. a DSGVO). Der Widerruf ist jederzeit mit Wirkung für die Zukunft möglich.
+
+6. Ihre Rechte
+Sie haben das Recht auf Auskunft (Art. 15), Berichtigung (Art. 16), Löschung (Art. 17), Einschränkung (Art. 18), Datenübertragbarkeit (Art. 20) sowie Widerspruch (Art. 21 DSGVO) und das Recht auf Beschwerde bei einer Aufsichtsbehörde.
+
+7. Speicherdauer
+Personenbezogene Daten werden gelöscht, sobald der Zweck entfällt und keine gesetzlichen Aufbewahrungspflichten entgegenstehen.
+
+Hinweis: Diese Vorlage ersetzt keine individuelle Rechtsberatung. Bitte vor Livegang rechtlich prüfen lassen.`,
+  },
+  sections: {
+    hero: {
+      eyebrow: "Online Marketing Office · Schwäbisch Gmünd",
+      headline: "Mehr Sichtbarkeit. Mehr Anfragen. Mehr Wachstum.",
+      subheadline:
+        "Premium-Online-Marketing aus einer Hand: SEO, Google Ads, Webdesign, Automation und mehr – messbar, DSGVO-sicher und auf nachhaltiges Wachstum ausgelegt.",
+      ctaPrimary: { label: "Projekt anfragen", href: "/#contact" },
+      ctaSecondary: { label: "Leistungen ansehen", href: "/leistungen" },
+      trust: [
+        "Über 30 Branchenportale synchronisiert",
+        "DSGVO-konform inkl. Consent-Management",
+        "Transparente KPIs und Reportings",
+        "Ein fester Ansprechpartner",
+      ],
+    },
+    about: {
+      title: "Ihre Agentur für messbares digitales Wachstum",
+      text: "Wir verbinden Strategie, Technik und Content zu einem System, das messbar mehr Kunden bringt. Statt Insellösungen erhalten Sie ein aufeinander abgestimmtes Setup – von der Sichtbarkeit in Suchmaschinen über performante Websites bis zu Automatisierung und Reputation.",
+      bullets: [
+        "Ganzheitliche Strategie statt Einzelmaßnahmen",
+        "High-End-Websites mit Astro & Tailwind",
+        "Datengetriebene Kampagnen mit klarem ROI",
+        "Rechtssichere Umsetzung nach DSGVO",
+      ],
+      metrics: [
+        { value: "+30", label: "Branchenportale" },
+        { value: "50", label: "Satelliten-Seiten" },
+        { value: "100%", label: "DSGVO-konform" },
+      ],
+    },
+    process: {
+      title: "So arbeiten wir",
+      steps: [
+        { title: "Analyse & Zielbild", text: "Audit von Markt, Wettbewerb und Daten – wir definieren klare, messbare Ziele." },
+        { title: "Strategie & Fahrplan", text: "Priorisierter Maßnahmenplan über alle relevanten Kanäle." },
+        { title: "Umsetzung & Launch", text: "Design, Content, Technik und Kampagnen – sauber umgesetzt." },
+        { title: "Optimierung & Reporting", text: "Kontinuierliche Verbesserung mit transparenten KPIs." },
+        { title: "Skalierung", text: "Erfolgreiche Kanäle gezielt ausbauen und automatisieren." },
+        { title: "Betreuung", text: "Ein fester Ansprechpartner – laufend an Ihrer Seite." },
+      ],
+    },
+    contact: {
+      title: "Lassen Sie uns über Ihr Projekt sprechen",
+      intro:
+        "Erzählen Sie uns kurz von Ihrem Vorhaben – wir melden uns zeitnah mit einer ehrlichen Einschätzung und den nächsten Schritten.",
+      address: {
+        company: "Gylsere Januzi Krieg – Online Marketing Office",
+        street: "Kitzingstraße 7",
+        zip: "73529",
+        city: "Schwäbisch Gmünd",
+        phone: "+49 175 6372395",
+        email: "gjanuzikrieg@gmail.com",
+      },
+      form: {
+        fields: [
+          { name: "name", label: "Name", type: "text", required: true },
+          { name: "email", label: "E-Mail", type: "email", required: true },
+          { name: "phone", label: "Telefon", type: "tel", required: false },
+          { name: "message", label: "Ihre Nachricht", type: "textarea", required: true },
+          { name: "gdpr", label: "Ich habe die Datenschutzerklärung gelesen und stimme der Verarbeitung meiner Daten zu.", type: "checkbox", required: true },
+        ],
+        gdprNote:
+          "Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Details in der Datenschutzerklärung.",
+        submitLabel: "Nachricht senden",
+        successMessage: "Danke! Wir haben Ihre Nachricht erhalten und melden uns zeitnah.",
+      },
+    },
+  },
+  nav: {
+    primary: [
+      { label: "Start", href: "/" },
+      { label: "Über uns", href: "/#about" },
+      { label: "Prozess", href: "/#process" },
+      { label: "Kontakt", href: "/#contact" },
+    ],
+    services: [
+      { label: "SEO & Local SEO", href: "/leistungen/seo" },
+      { label: "Google Ads", href: "/leistungen/google-ads" },
+      { label: "SEO-Regio – Umland-Dominanz", href: "/leistungen/seo-regio" },
+      { label: "GEO – Generative Engine Optimization", href: "/leistungen/geo" },
+      { label: "Webdesign & E-Commerce", href: "/leistungen/webdesign" },
+      { label: "AI & Automation", href: "/leistungen/ai-automation" },
+      { label: "Online-Terminbuchung", href: "/leistungen/online-terminbuchung" },
+      { label: "Reputation & Bewertungen", href: "/leistungen/reputation" },
+      { label: "Social Media", href: "/leistungen/social-media" },
+      { label: "Premium-Fotografie & Image-Videos", href: "/leistungen/foto-video" },
+      { label: "Branding", href: "/leistungen/branding" },
+      { label: "Praxis-TV (exklusiv für Mediziner)", href: "/leistungen/praxis-tv" },
+      { label: "Code-Exzellenz & Programmierung", href: "/leistungen/programmierung" },
+      { label: "Premium-Factoring", href: "/leistungen/factoring" },
+    ],
+    legal: [
+      { label: "Impressum", href: "/impressum" },
+      { label: "Datenschutz", href: "/datenschutz" },
+    ],
+    footer: {
+      sections: [
+        { label: "Start", href: "/" },
+        { label: "Über uns", href: "/#about" },
+        { label: "Prozess", href: "/#process" },
+        { label: "Kontakt", href: "/#contact" },
+      ],
+      services: [
+        { label: "SEO & Local SEO", href: "/leistungen/seo" },
+        { label: "Google Ads", href: "/leistungen/google-ads" },
+        { label: "SEO-Regio – Umland-Dominanz", href: "/leistungen/seo-regio" },
+        { label: "GEO – Generative Engine Optimization", href: "/leistungen/geo" },
+        { label: "Webdesign & E-Commerce", href: "/leistungen/webdesign" },
+        { label: "AI & Automation", href: "/leistungen/ai-automation" },
+        { label: "Online-Terminbuchung", href: "/leistungen/online-terminbuchung" },
+        { label: "Reputation & Bewertungen", href: "/leistungen/reputation" },
+        { label: "Social Media", href: "/leistungen/social-media" },
+        { label: "Premium-Fotografie & Image-Videos", href: "/leistungen/foto-video" },
+        { label: "Branding", href: "/leistungen/branding" },
+        { label: "Praxis-TV (exklusiv für Mediziner)", href: "/leistungen/praxis-tv" },
+        { label: "Code-Exzellenz & Programmierung", href: "/leistungen/programmierung" },
+        { label: "Premium-Factoring", href: "/leistungen/factoring" },
+      ],
+      legal: [
+        { label: "Impressum", href: "/impressum" },
+        { label: "Datenschutz", href: "/datenschutz" },
+      ],
+    },
+  },
+  services: [
+    {
+      slug: "seo",
+      title: "SEO & Local SEO",
+      subtitle: "Sichtbar werden, wenn es zählt.",
+      features: [
+        "Technisches SEO",
+        "Content & Keywords",
+        "Backlink-Aufbau",
+        "Local SEO",
+        "Online-Listing in über 30 Portalen (Google, Bing, Apple Maps u.a.)",
+        "Google Business Profil-Betreuung inkl. regelmäßiger Google Posts",
+      ],
+      shortDescription:
+        "Ganzheitliches SEO mit Fokus auf Technik, Content, Backlinks und lokaler Sichtbarkeit – inklusive Google Business Profil und über 30 Branchenportalen.",
+      longDescription:
+        "Wir bringen Ihre Sichtbarkeit dorthin, wo Nachfrage entsteht: an die Spitze der organischen Suche. Nach einem präzisen SEO-Audit optimieren wir technische Grundlagen und erstellen eine Keyword- und Content-Strategie. Lokale Auffindbarkeit verankern wir mit einem gepflegten Google Business Profil und über 30 Branchenverzeichnissen.",
+      related: ["seo-regio", "geo", "google-ads", "webdesign"],
+    },
+    {
+      slug: "google-ads",
+      title: "Google Ads",
+      subtitle: "Jeder Klick mit Absicht.",
+      features: [
+        "Search & Performance Max",
+        "YouTube Ads",
+        "Conversion Tracking",
+        "Landing Pages",
+        "Retargeting",
+        "Klickschutz gegen Mitbewerber- und Fehlklicks",
+        "Transparente Budgetstufen ab 200 € mtl.",
+      ],
+      shortDescription:
+        "Performance-getriebene Kampagnen für messbaren ROAS – von Search über PMax bis YouTube. Skalierbar, transparent, sicher.",
+      longDescription:
+        "Wir schalten Anzeigen genau dort, wo Kaufabsicht auftritt. Von Search bis Performance Max kombinieren wir datengetriebene Gebotsstrategien mit präzisen Zielgruppen-Signalen und sauberem Conversion-Tracking. Hochkonvertierende Landingpages und Retargeting senken die Kosten pro Conversion.",
+      related: ["seo", "webdesign", "reputation", "social-media"],
+    },
+    {
+      slug: "seo-regio",
+      title: "SEO-Regio – Umland-Dominanz",
+      subtitle: "50 Satelliten-Seiten für die ganze Region.",
+      features: [
+        "50 eigenständige Ortschaften-Webseiten",
+        "Individuelle, einzigartige Texte je Ort",
+        "Ihre bestehende Website bleibt zu 100% unangetastet",
+        "Flächendeckende lokale Rankings",
+      ],
+      shortDescription:
+        "Ein eigenes Netzwerk aus 50 ortsspezifischen Seiten fängt regionale Suchanfragen ab und leitet qualifizierte Leads direkt zu Ihnen.",
+      longDescription:
+        "Mit SEO-Regio dominieren Sie Ihr Einzugsgebiet: ein Netzwerk aus 50 eigenständigen Ortschafts-Seiten mit einzigartigen Inhalten. Ihre bestehende Website bleibt unberührt – das System arbeitet parallel und leitet Anfragen nahtlos in Ihren Betrieb.",
+      related: ["seo", "geo", "online-terminbuchung"],
+    },
+    {
+      slug: "geo",
+      title: "GEO – Generative Engine Optimization",
+      subtitle: "Sichtbar in ChatGPT, Perplexity & Google AI.",
+      features: ["LLM-Crawling", "Entity-SEO", "Citation-Ready Content", "llms.txt & AI Overviews"],
+      shortDescription:
+        "Wir machen Ihre Marke zitierfähig für generative Antworten – über saubere Entities, Quellenautorität und LLM-lesbare Inhalte.",
+      longDescription:
+        "GEO sorgt dafür, dass Ihre Inhalte in ChatGPT, Perplexity und Google AI Overviews erscheinen. Wir modellieren Ihre Marke als Entity, strukturieren Inhalte semantisch (Schema.org, JSON-LD) und implementieren Protokolle wie llms.txt.",
+      related: ["seo", "webdesign", "branding"],
+    },
+    {
+      slug: "webdesign",
+      title: "Webdesign & E-Commerce",
+      subtitle: "Websites, die verkaufen.",
+      features: [
+        "Custom Design",
+        "Next.js & WordPress",
+        "Core Web Vitals",
+        "Conversion-Rate-Optimierung (CRO)",
+        "DSGVO-Rechtssicherheit",
+        "CRM-/Shop-Anbindung via API",
+      ],
+      shortDescription:
+        "Maßgeschneiderte, ultraschnelle Websites und Shops – konversionsstark, DSGVO-sicher und tief in Ihre Systeme integriert.",
+      longDescription:
+        "Ihr digitaler Auftritt wird zur Vertriebsplattform: individuelle Interfaces, Bestwerte bei Core Web Vitals und CRO von Anfang an. Dank API-First binden wir CRM, Marketing-Automation und Shopsysteme nahtlos an – DSGVO-konform.",
+      related: ["google-ads", "seo", "ai-automation", "branding"],
+    },
+    {
+      slug: "ai-automation",
+      title: "AI & Automation",
+      subtitle: "Prozesse, die mitdenken.",
+      features: ["Custom AI Agents", "LLM Integration", "Workflow-Automation", "Chatbots"],
+      shortDescription:
+        "Wir automatisieren wiederkehrende Aufgaben mit intelligenten Agenten, LLMs und integrierten Workflows – für echte Effizienzgewinne.",
+      longDescription:
+        "Wir entwickeln maßgeschneiderte AI-Agents und LLM-Integrationen, verbinden Ihre Tools über robuste Schnittstellen und bauen Chatbots mit natürlicher Sprache. Governance, Datenschutz und Monitoring sind von Anfang an sichergestellt.",
+      related: ["webdesign", "programmierung", "online-terminbuchung"],
+    },
+    {
+      slug: "online-terminbuchung",
+      title: "Online-Terminbuchung",
+      subtitle: "Termine rund um die Uhr per Klick.",
+      features: [
+        "Jameda & Doctolib Integration",
+        "Echtzeit-API-Anbindung",
+        "Platzierung in Suchmaschinen & Branchenportalen",
+        "Schlüsselfertige Einrichtung",
+      ],
+      shortDescription:
+        "Reibungslose Online-Terminvergabe – integriert in Website und Portale, vollständig automatisiert und messbar.",
+      longDescription:
+        "Wir richten moderne Terminbuchungssysteme ein: Integration in Jameda, Doctolib oder branchenspezifische Lösungen über stabile APIs, inkl. Kalender-Sync und Erinnerungen. So gewinnen Sie mehr Termine bei weniger Verwaltungsaufwand.",
+      related: ["seo", "seo-regio", "webdesign"],
+    },
+    {
+      slug: "reputation",
+      title: "Reputation & Bewertungen",
+      subtitle: "Ihr guter Name, makellos geschützt.",
+      features: [
+        "Automatisiertes 5-Sterne-Bewertungssystem",
+        "Review-Monitoring in Echtzeit",
+        "Antwort-Management",
+        "Melden & Entfernen ungerechtfertigter Rezensionen",
+        "Reputation-Recovery",
+      ],
+      shortDescription:
+        "Mehr echte Top-Bewertungen, aktiver Schutz vor Rufschädigung und ein System, das positives Feedback skaliert.",
+      longDescription:
+        "Wir bauen ein automatisiertes Bewertungssystem auf, das zufriedene Kunden zum richtigen Zeitpunkt zum Feedback führt – rechtssicher. Zentrales Monitoring und Antwortvorlagen helfen, souverän zu reagieren; ungerechtfertigte Rezensionen gehen wir strukturiert an.",
+      related: ["seo", "social-media", "google-ads"],
+    },
+    {
+      slug: "social-media",
+      title: "Social Media",
+      subtitle: "Content, der Kunden bringt.",
+      features: [
+        "Strategie & Kanalaufbau",
+        "Foto, Video & Grafik",
+        "Community-Management",
+        "Paid Social",
+      ],
+      shortDescription:
+        "Von Strategie bis Produktion: Social Media, das Reichweite in Anfragen verwandelt – auf Instagram, TikTok, LinkedIn & Co.",
+      longDescription:
+        "Wir entwickeln eine Content-Strategie, die Markenbotschaft und Funnel-Logik verbindet: Redaktionspläne, Creatives und Community-Management. Mit Paid Social skalieren wir die Topseller-Formate effizient über Kampagnen und Zielgruppen.",
+      related: ["foto-video", "branding", "google-ads"],
+    },
+    {
+      slug: "foto-video",
+      title: "Premium-Fotografie & Image-Videos",
+      subtitle: "Echte Bildgewalt schafft Vertrauen.",
+      features: [
+        "Team- & Businessfotos vor Ort",
+        "Geschäftsführer-Porträts",
+        "Imagefilme & Recruiting-Videos in 4K/8K",
+        "Lizenzierte Drohnenaufnahmen",
+      ],
+      shortDescription:
+        "Hochwertige Foto- und Videoproduktion on location – für Authentizität, die überzeugt und konvertiert.",
+      longDescription:
+        "Wir produzieren Businessporträts, Team- und Praxisaufnahmen sowie Image- und Recruitingfilme in 4K/8K – inkl. Drehplanung, Regie, Licht, Ton und Postproduktion. Lizenzierte Drohnenaufnahmen erweitern die Perspektive.",
+      related: ["social-media", "branding", "webdesign"],
+    },
+    {
+      slug: "branding",
+      title: "Branding",
+      subtitle: "Markenbildung mit Substanz.",
+      features: ["Brand Strategy", "Visual Identity", "Logo & Design System", "Messaging"],
+      shortDescription:
+        "Von der Marken-DNA bis zum Design System – Positionierung, die Wiedererkennung und Präzision in der Kommunikation schafft.",
+      longDescription:
+        "Wir schärfen Ihre Marke strategisch und entwickeln eine visuelle Identität mit Logo, Farbwelt, Typografie und UI-Komponenten – skalierbar als Design System. Messaging-Guides definieren Tonalität, Narrative und Claims.",
+      related: ["webdesign", "foto-video", "social-media"],
+    },
+    {
+      slug: "praxis-tv",
+      title: "Praxis-TV (exklusiv für Mediziner)",
+      subtitle: "Wartezeit wird Aufklärungszeit.",
+      features: ["Konzeption & Text", "Visuelle Bildschirmpräsentationen", "Darstellung von IGeL & Behandlungsmethoden"],
+      shortDescription:
+        "Kuratiertes Wartezimmer-TV, das informiert, Vertrauen aufbaut und Nachfrage für Wunschleistungen steigert.",
+      longDescription:
+        "Wir konzipieren ein individuelles Praxis-TV-Programm: leicht verständliche Visuals, klare Texte und seriöse Aufklärung zu Schwerpunkten und IGeL-Leistungen – CI-konform und rechtlich sensibel formuliert.",
+      related: ["online-terminbuchung", "reputation", "foto-video"],
+    },
+    {
+      slug: "programmierung",
+      title: "Code-Exzellenz & Programmierung",
+      subtitle: "Fehlerfreier, perfekter Code.",
+      features: [
+        "Individuelle Softwarelösungen",
+        "API-Schnittstellen & CRM-Verknüpfungen",
+        "Optimierung von Altsystemen",
+        "Code-Audits & Refactoring",
+        "Automatisierte Tests & CI/CD",
+      ],
+      shortDescription:
+        "Skalierbare Software, saubere Schnittstellen und modernisierte Legacy-Systeme – entwickelt nach Best Practices.",
+      longDescription:
+        "Wir entwickeln robuste Anwendungen und Services, verbinden Systeme über dokumentierte APIs und automatisieren kritische Prozesse. Legacy-Code bringen wir mit Audits, Refactoring und Tests auf ein zukunftsfähiges Niveau.",
+      related: ["ai-automation", "webdesign", "google-ads"],
+    },
+    {
+      slug: "factoring",
+      title: "Premium-Factoring",
+      subtitle: "Sofortige Liquidität & Ausfallschutz.",
+      features: [
+        "Auszahlung in 24–48 Stunden",
+        "Bis zu 100% des Rechnungsbetrages",
+        "100% Schutz vor Forderungsausfall",
+        "Übernahme des Debitorenmanagements",
+        "Bessere Bonität durch Bilanzverkürzung",
+      ],
+      shortDescription:
+        "Verkaufen Sie offene B2B-Forderungen und erhalten Sie Ihr Geld sofort – mit Ausfallschutz und professionellem Debitorenmanagement.",
+      longDescription:
+        "Über unser Partnernetzwerk sichern Sie sich Liquidität: Rechnungen werden binnen 24–48 Stunden vorfinanziert, Ausfallrisiken abgesichert und das Debitorenmanagement ausgelagert – transparent und rechtssicher.",
+      related: ["webdesign", "ai-automation", "google-ads"],
+    },
   ],
-  section_headline: "VERTRAUEN VON 50+ UNTERNEHMEN",
-  grayscale_logos: [
-    "Maler Gerber",
-    "MEISTER-FAMILIENBETRIEB GENSMANTEL BAUGESELLSCHAFT",
-    "rb=",
-    "Cleaning Service",
-    "Weitere Partnerunternehmen"
-  ]
-};
+} as const
+
+export type Site = typeof site
+export type Service = (typeof site.services)[number]
+
+export const projectInfo = {
+  name: site.brand.name,
+  tagline: site.brand.tagline,
+  company_name: site.contact.company,
+  company: site.contact.company,
+  owner: site.contact.owner,
+  street: site.contact.street,
+  zip: site.contact.zip,
+  city: site.contact.city,
+  phone: site.contact.phone,
+  email: site.contact.email,
+}
 
 export const servicesGrid = {
   kicker_label: "LEISTUNGEN",
-  headline_h2: "Was wir für dich tun.",
-  grid_cards: [
-    { card_id: "service_1", title: "SEO", icon: "🔍", sub_headline: "Sichtbar werden, wenn es zählt.", description: "Technisches SEO, Content-Strategie und Backlinks – damit Ihre Kunden Sie finden, bevor es Ihre Wettbewerber tun.", tags: ["Technisches SEO","Content & Keywords","Backlink-Aufbau","Local SEO"], link: "/leistungen/seo", slug: "seo" },
-    { card_id: "service_2", title: "SEO-Regio", icon: "🟢", sub_headline: "Die absolute Umland-Dominanz.", description: "Das geniale Prinzip: Ihre Original-Website bleibt zu 100% unangetastet! Wir erstellen ein Netzwerk aus 50 zusätzlichen, eigenständigen Webseiten für 50 umliegende Ortschaften mit individuell maßgeschneiderten Texten.", tags: ["50 Satelliten-Seiten","Kein Risiko für Original-Site","Umland-Abdeckung","Local SEO Boost"], link: "/leistungen/seo-regio", slug: "seo-regio" },
-    { card_id: "service_3", title: "Google Ads", icon: "🌐", sub_headline: "Jeder Klick mit Absicht.", description: "Performance Max, Search, YouTube – mit messbarem ROAS, exklusivem Klickschutz gegen Mitbewerber und ohne Budgetverschwendung.", tags: ["Search & PMax","Conversion Tracking","Klickschutz","Retargeting"], link: "/leistungen/google-ads", slug: "google-ads" },
-    { card_id: "service_4", title: "GEO", icon: "📱", sub_headline: "Sichtbar in ChatGPT, Perplexity & Google AI.", description: "Generative Engine Optimization – deine Marke wird in AI-Antworten zitiert, nicht nur bei Google gerankt. LLM-crawlbare Inhalte, Entity-SEO, llms.txt und Citation-Ready Content.", tags: ["LLM-Crawling","Entity-SEO","Citation-Ready Content","llms.txt & AI Overviews"], link: "/leistungen/geo", slug: "geo" },
-    { card_id: "service_5", title: "Webdesign & E-Commerce", icon: "💻", sub_headline: "Websites, die verkaufen.", description: "Maßgeschneidertes Design mit Next.js – schnell, skalierbar, konversionsstark mit blitzschnellen Ladezeiten, DSGVO-Rechtssicherheit und Verkaufspsychologie.", tags: ["Custom Design","Next.js & WordPress","Core Web Vitals","CRO & APIs"], link: "/leistungen/webdesign", slug: "webdesign" },
-    { card_id: "service_6", title: "Online-Terminvereinbarung", icon: "📅", sub_headline: "24/7 Terminbuchungen automatisieren.", description: "Einbindung professioneller Online-Terminbuchungssysteme (inkl. Jameda & Doctolib Schnittstellen) direkt in Ihre Webpräsenz und Suchmaschinen für lückenlose Auslastung.", tags: ["API-Schnittstellen","24/7 Buchung","Automatisierte Abläufe","Echtzeit-Synch"], link: "/leistungen/terminbuchung", slug: "terminbuchung" },
-    { card_id: "service_7", title: "Marketing", icon: "📣", sub_headline: "Der Mix, der wirkt.", description: "Von Content über Social bis Email – ganzheitliches Marketing, das auf Ihre Zahlen einzahlt.", tags: ["Content","Social Media","Analytics"], link: "/leistungen/marketing", slug: "marketing" },
-    { card_id: "service_8", title: "AI & Automation", icon: "✨", sub_headline: "Prozesse, die mitdenken.", description: "Custom-AI-Agenten, LLM-Integrationen und Workflow-Automation – damit Sie Zeit für das Wesentliche haben.", tags: ["Custom-AI-Agenten","LLM-Integrationen","Workflow-Automation"], link: "/leistungen/ai-automation", slug: "ai-automation" },
-    { card_id: "service_9", title: "Branding", icon: "✏️", sub_headline: "Markenbildung mit Substanz.", description: "Brand DNA, Visual Identity und Messaging – eine Marke, die bleibt.", tags: ["Brand Strategy","Visual Identity","Logo & Design System","Messaging"], link: "/leistungen/branding", slug: "branding" },
-    { card_id: "service_10", title: "Social Media", badge: "● NEU", icon: "🔗", sub_headline: "Content, der Kunden bringt.", description: "Strategie, Content-Produktion und Kanal-Management für Instagram, TikTok, LinkedIn & Co. – Social Media, das messbar Anfragen und Umsatz liefert.", tags: ["Strategie & Kanalaufbau","Foto, Video & Grafik","Community-Management","Paid Social"], link: "/leistungen/social-media", slug: "social-media" },
-    { card_id: "service_11", title: "Reputation & Bewertungen", icon: "🛡️", sub_headline: "Automatisierte Top-Bewertungen & Schutz.", description: "Google-Rezensionen vollautomatisch sammeln sowie unfaire, böswillige oder gefälschte Bewertungen prüfen, melden und rechtskonform entfernen lassen.", tags: ["Rezensionen löschen","Review-Monitoring","5-Sterne-System","Reputation-Recovery"], link: "/leistungen/reputation", slug: "reputation" },
-    { card_id: "service_12", title: "Praxis- & Wartezimmer-TV", icon: "📺", sub_headline: "Hochkonvertierende Präsentationen.", description: "Visuell überragende Bildschirmpräsentationen für Wartezimmer zur Patientenaufklärung und Förderung von Zusatzleistungen.", tags: ["Wartezimmer-TV","Patienten-Aufklärung","Zusatzleistungen","Visuelle Konzepte"], link: "/leistungen/praxis-tv", slug: "praxis-tv" },
-    { card_id: "service_13", title: "Code-Exzellenz & Software", icon: "💻", sub_headline: "Custom Programmierarbeiten.", description: "Entwicklung individueller Softwarelösungen, Custom-Tools, API-Schnittstellen, CRM-Verknüpfungen und Erneuerung von Altsystemen.", tags: ["Custom Software","API Integration","Logo & Briefköpfe","Prozessautomatisierung"], link: "/leistungen/programmierung", slug: "programmierung" },
-    { card_id: "service_14", title: "Premium-Factoring", badge: "● NEU", icon: "💶", sub_headline: "Sofortige Liquidität & Ausfallschutz.", description: "Verkauf offener B2B-Forderungen für Geldeingang innerhalb von 24–48 Stunden inkl. 100% Übernahme des Ausfallrisikos.", tags: ["100% Ausfallschutz","Sofort-Liquidität","Bessere Bonität","Debitorenmanagement"], link: "/leistungen/factoring", slug: "factoring" },
-  ]
-};
-
-export const resultsProcess = {
-  kicker_label: "ERGEBNISSE",
-  headline_h2: "Handwerk, nicht Highlight-Reel.",
-  intro_text: "Einzelne Case-Studies beeindrucken niemanden mehr – jede Agentur hat sie. Wir zeigen lieber wie wir arbeiten und was über alle Mandate hinweg entsteht. Aggregate statt Anekdoten.",
-  left_column_steps: [
-    { step_number: "01", title: "Audit", description: "Bestandsaufnahme in Zahlen. GSC, GA4, Ads-Accounts, Backlinks, technisches SEO. Wir finden was blockiert, bevor wir skalieren.", duration: "— DAUER 5-10 TAGE" },
-    { step_number: "02", title: "Strategie", description: "Priorisierung nach Impact, nicht nach Buzzword-Trend. Klare Roadmap mit messbaren Zielen und Budget-Empfehlung.", duration: "— WORKSHOP 1 TAG" },
-    { step_number: "03", title: "Umsetzung", description: "Sprints à 2 Wochen, wöchentliche Syncs, gemeinsamer Linear-Zugang. Du siehst live was läuft, keine Blackbox.", duration: "— LAUFEND" }
-  ],
-  right_column_stats: [
-    { value: "50+", text: "aktive Mandate in DACH, Schweiz und International", tag: "● STAND APR 2026" },
-    { value: "12M+", text: "organische Impressionen pro Monat über alle Mandate", tag: "● QUELLE: GSC" },
-    { value: "340+", text: "Top-3-Rankings erreicht in den letzten 12 Monaten", tag: "● DEUTSCHLAND, AT, CH, GB" },
-    { value: "~3h", text: "durchschnittliche Antwortzeit auf Kundenanfragen", tag: "● WERKTAGS 9-18 UHR" }
-  ],
-  fine_print: "Transparenz: Alle Zahlen sind aggregiert über unser gesamtes Portfolio, keine einzelnen Kunden sichtbar. Stichprobengrundlage und Messmethoden teilen wir gerne im Erstgespräch."
-};
+  headline_h2: "Alles für Ihre digitale Sichtbarkeit",
+  grid_cards: site.services.map((s) => ({
+    slug: s.slug,
+    icon: "✦",
+    badge: "",
+    title: s.title,
+    sub_headline: s.subtitle,
+    description: s.shortDescription,
+    link: `/leistungen/${s.slug}`,
+    tags: s.features.slice(0, 3),
+  })),
+}
 
 export const metricsUSPS = {
   banner_metrics: [
-    { number: "50+", label: "Kunden" },
-    { number: "200+", label: "Projekte" },
-    { number: "13+", label: "Jahre" },
-    { number: "98%", label: "Zufriedenheit" },
+    { number: "+30", label: "Branchenportale" },
+    { number: "50", label: "Satelliten-Seiten" },
+    { number: "24/7", label: "Erreichbarkeit" },
+    { number: "100%", label: "DSGVO-konform" },
   ],
   usps_section: {
     kicker_label: "WARUM WIR",
-    headline_h2: "Was uns ausmacht",
+    headline_h2: "Performance, die man messen kann",
     cards: [
-      { icon: "🎛️", title: "AI-Native Workflow", text: "Künstliche Intelligenz ist bei uns kein Buzzword. Sie steckt in jedem Prozess – von der Analyse bis zur Umsetzung." },
-      { icon: "👥", title: "Persönlich statt Fabrik", text: "Du sprichst direkt mit den Machern. Keine Praktikanten, keine Callcenter, keine Warteschleifen." },
-      { icon: "📊", title: "Ergebnisgetrieben", text: "Alle Maßnahmen richten sich strikt an messbarem Erfolg und ROI aus." },
-      { icon: "👁️", title: "Volle Transparenz", text: "Echtzeit-Einblick in alle Arbeitsabläufe und Anpassungen jederzeit." },
-    ]
-  }
-};
-
-export const processTimeline = {
-  kicker_label: "PROZESS",
-  headline_h2: "So arbeiten wir zusammen.",
-  steps: [
-    { step: "01", title: "Erstgespräch", text: "Wir lernen dein Business, deine Ziele und deine Herausforderungen kennen." },
-    { step: "02", title: "Analyse", text: "Wettbewerb, Markt und Potenziale – wir finden wo die Chancen liegen." },
-    { step: "03", title: "Strategie", text: "Ein klarer, messbarer Plan für dein digitales Wachstum." },
-    { step: "04", title: "Umsetzung", text: "Wir bauen, optimieren und liefern – mit wöchentlichen Updates." },
-    { step: "05", title: "Wachstum", text: "Skalieren was funktioniert. Optimieren was noch besser werden kann." },
-  ]
-};
-
-export const legalPlaceholders = {
-  impressum: {
-    title: "Impressum",
-    content: "Angaben gemäß § 5 TMG:\nGylsere Januzi\nKitzingstraße 7\n73529 Schwäbisch Gmünd\n\nKontakt:\nTelefon: +49 175 6372395\nE-Mail: info@januzi-bau.de\n\nUmsatzsteuer-ID: [PLATZHALTER_UST_ID]\nWirtschafts-ID: [PLATZHALTER_WIRTSCHAFTS_ID]\nAufsichtsbehörde: [PLATZHALTER_AUFSICHTSBEHOERDE]"
+      { icon: "🚀", title: "Schnelle Umsetzung", text: "Von der Analyse bis zum Launch – klar strukturiert und zügig." },
+      { icon: "📈", title: "Messbarer ROI", text: "Transparente KPIs und Reportings statt leerer Versprechen." },
+      { icon: "🛡️", title: "Rechtssicher", text: "DSGVO-konforme Umsetzung inklusive Consent-Management." },
+      { icon: "🤝", title: "Ein Ansprechpartner", text: "Strategie, Technik und Content aus einer Hand." },
+    ],
   },
-  datenschutz: {
-    title: "Datenschutzerklärung",
-    content: "1. Datenschutz auf einen Blick\n[PLATZHALTER_DATENSCHUTZ_ALLGEMEIN]\n\n2. Datenerfassung auf unserer Website\n[PLATZHALTER_DATENERFASSUNG]\n\n3. Analyse-Tools und Tools von Drittanbietern\n[PLATZHALTER_ANALYSE_TOOLS]\n\n4. Google Maps und Cookie-Einstellungen\n[PLATZHALTER_MAPS_COOKIES]"
-  }
-};
+}
+
+export const resultsProcess = {
+  kicker_label: "SO ARBEITEN WIR",
+  headline_h2: "Von der Analyse zur Skalierung",
+  intro_text: "Ein klarer, erprobter Prozess – transparent in jedem Schritt.",
+  left_column_steps: [
+    { step_number: "1", title: "Analyse & Zielbild", description: "Audit von Markt, Wettbewerb und Daten.", duration: "Woche 1" },
+    { step_number: "2", title: "Strategie & Fahrplan", description: "Priorisierter Maßnahmenplan über alle Kanäle.", duration: "Woche 2" },
+    { step_number: "3", title: "Umsetzung & Launch", description: "Design, Content, Technik und Kampagnen.", duration: "Woche 3–6" },
+    { step_number: "4", title: "Skalierung & Betreuung", description: "Kontinuierliche Optimierung und Reporting.", duration: "laufend" },
+  ],
+  right_column_stats: [
+    { value: "+30", text: "Portale synchronisiert", tag: "Local SEO" },
+    { value: "50", text: "Ortschaften-Seiten", tag: "SEO-Regio" },
+    { value: "ab 200€", text: "flexible Ads-Budgets", tag: "Google Ads" },
+    { value: "4K/8K", text: "Foto & Video", tag: "Media" },
+  ],
+  fine_print: "Werte sind Richtwerte und variieren je nach Branche und Ausgangslage.",
+}
+
+export const trustBar = {
+  section_headline: "VERTRAUEN & QUALITÄT",
+  badges: [
+    { text: "DSGVO-konform" },
+    { text: "Made in Schwäbisch Gmünd" },
+    { text: "Premium-Support" },
+  ],
+  grayscale_logos: ["Google", "Microsoft Bing", "Apple Maps", "Meta", "LinkedIn"],
+}

@@ -1,37 +1,35 @@
----
-const nav = [
-  { href: '/leistungen', label: 'Leistungen' },
-  { href: '/ueber-uns', label: 'Über uns' },
-  { href: '/referenzen', label: 'Referenzen' },
-  { href: '/kontakt', label: 'Kontakt' }
-];
----
-<header class="site-header" role="banner">
-  <div class="container">
-    <a class="brand" href="/" aria-label="Startseite">
-      <img
-        class="brand__logo"
-        src="/images/logo-gjk.webp"
-        alt="Gylsere Januzi Krieg Online Marketing Office – Logo"
-        width="180"
-        height="120"
-        decoding="async"
-      />
-      <span class="brand__name">Gylsere Januzi Krieg Online Marketing Office</span>
+<header class="header surface" role="banner">
+  <a class="visually-hidden" href="#main">Zum Inhalt springen</a>
+  <div class="container header__bar">
+    <a href="/" class="header__brand">
+      <span aria-hidden="true" class="header__logo-dot"></span>
+      <strong>GYLSERE JANUZI KRIEG</strong>
+      <span class="text-muted">· Online Marketing Office</span>
     </a>
-
-    <input id="nav-toggle" type="checkbox" class="nav-toggle" aria-label="Menü öffnen/schließen" />
-    <label for="nav-toggle" class="burger" aria-hidden="true">
-      <span></span><span></span><span></span>
-    </label>
-
-    <nav class="nav" aria-label="Hauptnavigation">
-      <ul>
-        {nav.map((item) => (
-          <li><a href={item.href}>{item.label}</a></li>
-        ))}
+    <nav aria-label="Hauptnavigation" class="header__nav">
+      <ul role="list" class="header__list">
+        <li><a class="header__link" href="/">Start</a></li>
+        <li><a class="header__link" href="/ueber-uns">Über uns</a></li>
+        <li><a class="header__link" href="/prozess">Prozess</a></li>
+        <li><a class="header__link" href="/leistungen">Leistungen</a></li>
+        <li><a class="header__link" href="/kontakt">Kontakt</a></li>
+        <li><a class="header__link" href="/impressum">Impressum</a></li>
+        <li><a class="header__link" href="/datenschutz">Datenschutz</a></li>
       </ul>
-      <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
     </nav>
+    <div class="header__cta"><a class="btn btn--ghost" href="/kontakt">Projekt anfragen</a></div>
   </div>
 </header>
+<style>
+.header { position: sticky; top: 0; z-index: 50; backdrop-filter: saturate(1.2) blur(6px);
+  background: color-mix(in oklab, var(--clr-surface) 70%, rgba(255,255,255,.6)); }
+.header__bar { display: grid; grid-template-columns: 1fr auto auto; align-items: center; gap: var(--sp-4); padding-block: .8rem; }
+.header__brand { display: inline-flex; align-items: center; gap: .6rem; font-weight: 700; }
+.header__logo-dot { width: .7rem; height: .7rem; border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, #fff 0, rgba(28,140,255,.9) 45%, rgba(28,140,255,.2) 100%);
+  box-shadow: 0 0 18px rgba(28,140,255,.65); }
+.header__nav { display: none; } @media (min-width: 960px){ .header__nav { display: block; } }
+.header__list { display: flex; gap: var(--sp-4); align-items: center; }
+.header__link { color: var(--clr-text); font-weight: 600; padding: .5rem .25rem; border-radius: 8px; }
+.header__link:hover { color: var(--clr-accent-700); }
+</style>

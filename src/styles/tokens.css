@@ -1,0 +1,43 @@
+:root {
+  --clr-bg: #f7f8fa;
+  --clr-surface: #ffffff;
+  --clr-surface-2: #f2f4f8;
+  --clr-text: #0f1720;
+  --clr-text-muted: #384452;
+  --clr-border: #e3e7ef;
+
+  --clr-accent: #1c8cff;
+  --clr-accent-600: #1577e6;
+  --clr-accent-700: #125fbb;
+  --clr-accent-200: #7cc4ff;
+  --clr-accent-100: #d6edff;
+
+  --clr-success: #14b87a;
+  --clr-warning: #f59e0b;
+  --clr-danger:  #ef4444;
+
+  --ff-heading: "Sora", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --ff-body: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+
+  --fs-xs: 0.8125rem; --fs-sm: 0.9375rem; --fs-md: 1rem; --fs-lg: 1.125rem;
+  --fs-xl: 1.375rem; --fs-2xl: 1.75rem; --fs-3xl: 2.25rem; --fs-4xl: 3rem;
+
+  --lh-tight: 1.15; --lh-snug: 1.3; --lh-normal: 1.55;
+
+  --sp-1: .25rem; --sp-2: .5rem; --sp-3: .75rem; --sp-4: 1rem; --sp-5: 1.5rem;
+  --sp-6: 2rem; --sp-7: 3rem; --sp-8: 4rem; --sp-9: 5rem;
+
+  --radius-sm: 8px; --radius-md: 12px; --radius-lg: 20px; --radius-full: 999px;
+
+  --shadow-sm: 0 1px 2px rgba(13, 27, 42, 0.06);
+  --shadow-md: 0 6px 16px rgba(13, 27, 42, 0.08);
+  --shadow-lg: 0 16px 42px rgba(13, 27, 42, 0.10);
+
+  --easing: cubic-bezier(.2,.7,.1,1);
+  --dur-1: 200ms; --dur-2: 400ms; --dur-3: 700ms;
+
+  --container-max: 1200px; --container-wide: 1400px; --grid-gap: var(--sp-5);
+
+  --particle-accent: 28, 140, 255;
+  --particle-accent-2: 34, 230, 255;
+}

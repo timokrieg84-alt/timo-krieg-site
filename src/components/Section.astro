@@ -1,12 +1,12 @@
 ---
-interface Props {
-  title?: string;
-  intro?: string;
-}
-const { title, intro } = Astro.props;
+const { id, title, intro } = Astro.props;
 ---
-<section class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-  {title && <h2 class="text-3xl font-bold tracking-tight text-white mb-4">{title}</h2>}
-  {intro && <p class="text-lg text-gray-400 mb-8 max-w-3xl">{intro}</p>}
-  <slot />
+<section id={id} class="py-16 md:py-24">
+  <div class="container">
+    {title && <h2 class="h2 reveal-up">{title}</h2>}
+    {intro && <p class="lead mt-3 max-w-[70ch] reveal-up">{intro}</p>}
+    <div class="mt-10">
+      <slot />
+    </div>
+  </div>
 </section>

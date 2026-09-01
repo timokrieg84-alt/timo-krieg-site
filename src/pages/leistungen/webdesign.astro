@@ -1,61 +1,40 @@
 ---
-import '../../styles/global.css';
+import Layout from "../../layouts/Layout.astro";
+import { site } from "../../data/site";
+const service = site.services.find((s)=> s.slug === 'webdesign')!;
+const related = service.related.map((slug)=> site.services.find((s)=> s.slug === slug)!);
 ---
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Webdesign & Entwicklung (Astro/Tailwind) | Leistungen | Timo Krieg</title>
-  <meta name="description" content="Individuelle Websites mit Astro/Tailwind: Top-Speed, exzellente UX und starke Conversion. Core Web Vitals im grünen Bereich." />
-</head>
-<body class="min-h-screen bg-slate-950 text-white font-sans">
-  <header class="border-b border-white/10">
-    <div class="container py-4 flex items-center justify-between">
-      <a href="/" class="font-semibold">Timo Krieg</a>
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="/leistungen/" class="underline">Leistungen</a>
-        <a href="/ueber-uns">Über uns</a>
-        <a href="/kontakt">Kontakt</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="py-16 md:py-24">
-    <div class="container">
-      <h1 class="text-3xl md:text-5xl font-semibold">Webdesign & Entwicklung (Astro/Tailwind)</h1>
-      <p class="mt-4 text-slate-300 max-w-2xl">Markenstarke Websites mit Ladezeiten unter 1 Sekunde, perfekter UX und messbarer Conversion-Steigerung.</p>
-      <div class="mt-8 grid gap-6 md:grid-cols-2">
-        <div class="card">
-          <h2 class="text-xl font-semibold">Leistungsbausteine</h2>
-          <ul class="mt-3 list-disc pl-6 text-slate-300 space-y-1">
-            <li>Astro + Tailwind: statisch, blitzschnell, wartbar</li>
-            <li>Barrierefreiheit (a11y) & Mobile-First</li>
-            <li>Core Web Vitals im grünen Bereich</li>
-            <li>DSGVO-freundliche Einbindungen</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2 class="text-xl font-semibold">Ergebnisse</h2>
-          <ul class="mt-3 list-disc pl-6 text-slate-300 space-y-1">
-            <li>Weniger Absprünge, bessere Rankings</li>
-            <li>Höhere Conversion-Rate</li>
-            <li>Sauberes Tracking & Reporting</li>
-          </ul>
+<Layout>
+  <section class="py-16 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <a href="/" class="text-sm text-[#123D2A] hover:text-[#C8501E]">← Zurück zur Startseite</a>
+      <h1 class="mt-4 text-3xl sm:text-5xl font-semibold text-[#1A1A1A]">{service.title}</h1>
+      <p class="mt-3 text-lg text-[#1A1A1A]/80">{service.subtitle}</p>
+      <div class="mt-6 rounded-2xl border border-[#123D2A]/10 bg-[#F5F1E9] p-6">
+        <p class="text-[#1A1A1A]/80 whitespace-pre-line">{service.longDescription}</p>
+        <h2 class="mt-8 text-xl font-semibold text-[#1A1A1A]">Deliverables</h2>
+        <ul class="mt-3 grid gap-2 list-disc list-inside text-[#1A1A1A]/80">
+          {service.features.map((f)=> (<li>{f}</li>))}
+        </ul>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full bg-[#123D2A] px-5 py-3 text-[#F5F1E9] hover:bg-[#C8501E] transition-colors">Projekt starten</a>
+          <a href="/leistungen/branding" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-5 py-3 text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Branding kombinieren</a>
         </div>
       </div>
-      <div class="mt-8 flex gap-3">
-        <a href="/kontakt" class="btn btn-primary">Projekt anfragen</a>
-        <a href="/leistungen/" class="btn btn-secondary">Zur Übersicht</a>
+
+      <div class="mt-12">
+        <h2 class="text-xl font-semibold text-[#1A1A1A]">Nächste Ausbaustufen</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          {related.map((r)=> (
+            <a href={`/leistungen/${r.slug}`} class="group rounded-2xl border border-[#123D2A]/10 bg-[#F5F1E9] p-5 hover:shadow-md transition-shadow">
+              <div class="text-xs uppercase tracking-wide text-[#123D2A]">{r.subtitle}</div>
+              <div class="mt-1 text-lg font-semibold text-[#1A1A1A]">{r.title}</div>
+              <p class="mt-2 text-[#1A1A1A]/70">{r.shortDescription}</p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[#123D2A] group-hover:text-[#C8501E]">Mehr erfahren →</span>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
-  </main>
-
-  <footer class="mt-16 border-t border-white/10">
-    <div class="container py-8 text-sm text-slate-400 flex items-center justify-between">
-      <span>© {new Date().getFullYear()} Timo Krieg</span>
-      <nav class="flex gap-4"><a class="underline" href="/impressum">Impressum</a><a class="underline" href="/datenschutz">Datenschutz</a></nav>
-    </div>
-  </footer>
-</body>
-</html>
+  </section>
+</Layout>

@@ -1,0 +1,46 @@
+---
+interface TimeRange { open: string; close: string }
+interface ScheduleEntry {
+  days: string[];
+  lunch?: TimeRange;
+  dinner?: TimeRange;
+  continuous?: TimeRange;
+}
+export interface Props {
+  title: string;
+  schedule: ScheduleEntry[];
+  notes?: string;
+  kitchenLastOrder?: Record<string, string>;
+}
+const { title, schedule = [], notes, kitchenLastOrder } = Astro.props as Props;
+---
+<section id="oeffnungszeiten" class="scroll-mt-28 py-20 md:py-24 bg-surface">
+  <div class="container">
+    <h2 class="font-heading text-[32px] md:text-[40px] leading-tight text-text">{title}</h2>
+    <div class="mt-8 grid md:grid-cols-2 gap-8">
+      <ul class="space-y-4">
+        {schedule.map((entry) => (
+          <li class="p-4 rounded-lg border border-divider bg-white shadow-brandSm">
+            <p class="font-semibold text-text">{entry.days.join(' · ')}</p>
+            {entry.lunch && <p class="text-textSecondary text-sm mt-1">Mittag: {entry.lunch.open}–{entry.lunch.close}</p>}
+            {entry.dinner && <p class="text-textSecondary text-sm">Abend: {entry.dinner.open}–{entry.dinner.close}</p>}
+            {entry.continuous && <p class="text-textSecondary text-sm">Durchgehend: {entry.continuous.open}–{entry.continuous.close}</p>}
+          </li>
+        ))}
+      </ul>
+      <div class="p-6 rounded-lg border border-divider bg-bg/70">
+        {kitchenLastOrder && (
+          <div class="text-sm text-textSecondary">
+            <p class="font-semibold text-text mb-2">Letzte Bestellzeiten Küche</p>
+            <ul class="list-disc ml-5 space-y-1">
+              {Object.entries(kitchenLastOrder).map(([k, v]) => (
+                <li class="capitalize">{k}: {v}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+        {notes && <p class="text-sm text-textSecondary mt-4">{notes}</p>}
+      </div>
+    </div>
+  </div>
+</section>

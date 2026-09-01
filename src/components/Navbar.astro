@@ -1,0 +1,45 @@
+---
+const links = [
+  { href: "/#leistungen", label: "Leistungen" },
+  { href: "/#prozess", label: "Prozess" },
+  { href: "/ueber-uns", label: "Über uns" },
+  { href: "/#referenzen", label: "Referenzen" },
+  { href: "/kontakt", label: "Kontakt" },
+];
+---
+<header class="sticky top-0 z-50 border-b border-border/60 bg-bg-1/70 backdrop-blur-xl">
+  <div class="container flex items-center justify-between h-16">
+    <a href="/" class="flex items-center gap-3" aria-label="Startseite">
+      <div class="size-9 rounded-md bg-brand-cyan/15 border border-brand-cyan/40 grid place-items-center">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 7h8M5 12h14M5 17h10" stroke="rgb(var(--brand-cyan))" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <span class="font-heading font-semibold tracking-tight">Gylsere Januzi Krieg</span>
+      <span class="hidden sm:inline text-txt-2">– Online Marketing Office</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-6" aria-label="Hauptnavigation">
+      {links.map(l => <a class="text-txt-2 hover:text-txt-1 transition-colors" href={l.href}>{l.label}</a>)}
+      <a href="/projekt-anfragen" class="btn btn-primary btn-glare" data-magnetic>Projekt anfragen</a>
+    </nav>
+    <button class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-txt-1" aria-label="Menü" aria-expanded="false" id="navToggle">
+      <span class="sr-only">Menü öffnen</span>
+      ☰
+    </button>
+  </div>
+  <div id="mobileNav" class="md:hidden hidden border-t border-border/60 bg-bg-1">
+    <div class="container py-3 flex flex-col gap-3">
+      {links.map(l => <a class="py-2 text-txt-2 hover:text-txt-1" href={l.href}>{l.label}</a>)}
+      <a href="/projekt-anfragen" class="btn btn-primary w-full">Projekt anfragen</a>
+    </div>
+  </div>
+  <script is:client="idle">
+    const btn = document.getElementById('navToggle');
+    const panel = document.getElementById('mobileNav');
+    btn?.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!expanded));
+      panel?.classList.toggle('hidden', expanded);
+    });
+  </script>
+</header>

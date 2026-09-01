@@ -1,11 +1,20 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+const title = 'Impressum | Gylsere Januzi Krieg – Online Marketing Office';
+const description = 'Rechtliche Angaben zum Online Marketing Office. Anbieter, Anschrift, Kontakt, Verantwortliche nach § 5 TMG.';
+const canonical = 'https://online-marketing-office.de/impressum';
 ---
-<BaseLayout title="Impressum – Gylsere Januzi Krieg Online Marketing Office" description="Rechtliche Angaben.">
-  <section class="py-12">
-    <div class="container">
-      <h1 class="text-3xl font-semibold text-white mb-4">Impressum</h1>
-      <p class="text-slate-400">Inhalt folgt. Bitte rechtliche Angaben ergänzen.</p>
-    </div>
-  </section>
-</BaseLayout>
+<Base {title} {description} {canonical}>
+  <Header />
+  <main class="section container flow">
+    <h1>Impressum</h1>
+    <p><strong>Anbieter:</strong> Gylsere Januzi Krieg – Online Marketing Office</p>
+    <p><strong>Anschrift:</strong> Kitzingstraße 7, 73529 Schwäbisch Gmünd</p>
+    <p><strong>Kontakt:</strong> Tel. +49 175 6372395 · E-Mail: <a href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
+    <p>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV: Gylsere Januzi Krieg</p>
+    <p>USt‑ID: wird ergänzt</p>
+  </main>
+  <Footer />
+</Base>

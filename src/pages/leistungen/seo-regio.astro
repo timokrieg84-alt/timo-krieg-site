@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "SEO‑Regio System | Skalierbare Stadt‑Landings für BW & DACH",
+  description: "Rollout‑Framework für Aalen, Heidenheim, Göppingen u. a. Saubere Architektur, interne Verlinkung, konsistente NAP‑Signale.",
+  url: "https://example.com/leistungen/seo-regio/",
+  canonical: "https://example.com/leistungen/seo-regio/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/seo-regio/#service","name":"SEO‑Regio","serviceType":"Regional SEO Rollout","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"State","name":"Baden-Württemberg"},{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="50 Satelliten‑Seiten für die ganze Region." intro="Ein eigenes Netzwerk aus 50 ortsspezifischen Seiten fängt regionale Suchanfragen ab und leitet qualifizierte Leads direkt zu Ihnen.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• 50 eigenständige Ortschaften‑Webseiten</li>
+              <li>• Individuelle, einzigartige Texte je Ort</li>
+              <li>• Ihre bestehende Website bleibt unberührt</li>
+              <li>• Flächendeckende lokale Rankings</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Rankings & Sichtbarkeit je Stadt</li>
+              <li>• Leads/Anfragen pro Stadt</li>
+              <li>• GBP‑Signals & NAP‑Konsistenz</li>
+              <li>• Interne Verlinkung & Crawl‑Tiefe</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>

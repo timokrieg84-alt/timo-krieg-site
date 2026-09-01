@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Premium‑Fotografie & Image‑Videos | Marke erlebbar machen",
+  description: "On‑site Shooting, Praxis‑/Team‑Fotos, Imagefilme & Recruiting‑Clips – inkl. Schnitt, Color & Versionierung.",
+  url: "https://example.com/leistungen/premium-fotografie-image-videos/",
+  canonical: "https://example.com/leistungen/premium-fotografie-image-videos/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/premium-fotografie-image-videos/#service","name":"Premium‑Fotografie & Image‑Videos","serviceType":"Commercial Photography & Brand Films","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"State","name":"Baden-Württemberg"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Echte Bildgewalt schafft Vertrauen." intro="Hochwertige Foto‑ und Videoproduktion on location – für Authentizität, die überzeugt und konvertiert.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Team‑ & Businessfotos vor Ort</li>
+              <li>• Geschäftsführer‑Porträts</li>
+              <li>• Imagefilme & Recruiting‑Videos (4K/8K)</li>
+              <li>• Lizenzierte Drohnenaufnahmen</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Content‑Output & Reichweite</li>
+              <li>• View‑Through‑Rate/Watchtime</li>
+              <li>• Klick‑/Lead‑Rate je Asset</li>
+              <li>• Brand Lift/Recall (optional)</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>

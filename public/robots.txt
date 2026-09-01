@@ -1,3 +1,7 @@
 User-agent: *
+Disallow: /api/
+Disallow: /admin/
+Disallow: /draft/
+Disallow: /preview/
 Allow: /
-Sitemap: https://timo-krieg-site.vercel.app/sitemap.xml
+Sitemap: https://online-marketing-office.de/sitemap.xml

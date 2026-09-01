@@ -1,10 +1,15 @@
 ---
-import site from "../config/site";
-import GoldenMasterLayout from "../layouts/GoldenMasterLayout.astro";
-import ContentSimple from "../components/ContentSimple.astro";
-
-const page = site.pages.find((p) => p.path === "/danke");
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
-<GoldenMasterLayout title={page?.title || site.seo.defaultTitle} variant="default">
-  <ContentSimple heading={page?.content?.heading} text={page?.content?.text} cta={page?.content?.cta} />
-</GoldenMasterLayout>
+<BaseLayout title="Danke – Gylsere Januzi Krieg Online Marketing Office" description="Vielen Dank für Ihre Nachricht. Wir melden uns zeitnah bei Ihnen.">
+  <section class="py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 text-center">
+      <div class="text-xs uppercase tracking-wider text-[#123D2A]">Nachricht gesendet</div>
+      <h1 class="mt-3 text-3xl sm:text-5xl font-semibold text-[#1A1A1A]">Vielen Dank!</h1>
+      <p class="mt-4 text-lg text-[#1A1A1A]/70">Wir haben Ihre Nachricht erhalten und melden uns zeitnah bei Ihnen zurück.</p>
+      <div class="mt-8">
+        <a href="/" class="inline-flex items-center gap-2 rounded-full bg-[#123D2A] px-5 py-3 text-[#F5F1E9] hover:bg-[#C8501E] transition-colors">Zurück zur Startseite</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Premium‑Factoring | Liquidität für Ärzte & KMU",
+  description: "Sofortliquidität, Mahnwesen & Ausfallschutz über geprüfte Verrechnungsstellen – transparent integriert.",
+  url: "https://example.com/leistungen/premium-factoring/",
+  canonical: "https://example.com/leistungen/premium-factoring/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/premium-factoring/#service","name":"Premium‑Factoring","serviceType":"Factoring Services for Healthcare & SMEs","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"},{"@type":"Country","name":"Austria"},{"@type":"Country","name":"Switzerland"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Sofortige Liquidität & Ausfallschutz." intro="Verkaufen Sie offene B2B‑Forderungen und erhalten Sie Ihr Geld sofort – mit Ausfallschutz und professionellem Debitorenmanagement.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Auszahlung in 24–48 Stunden</li>
+              <li>• Bis zu 100% des Rechnungsbetrages</li>
+              <li>• 100% Schutz vor Forderungsausfall</li>
+              <li>• Übernahme des Debitorenmanagements</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Zahlungsziel vs. Auszahlung</li>
+              <li>• Ausfallquote</li>
+              <li>• Kostenquote des Factorings</li>
+              <li>• Working‑Capital‑Effekt</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>

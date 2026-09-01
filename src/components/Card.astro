@@ -1,0 +1,14 @@
+---
+const { title, text, icon } = Astro.props;
+---
+<article class="card p-6 md:p-8 reveal-up h-full">
+  <div class="flex items-start gap-4">
+    <div class="w-10 h-10 rounded-md bg-brand-cyan/10 border border-brand-cyan/30 grid place-items-center text-brand-cyan">
+      {icon ? icon : "◆"}
+    </div>
+    <div>
+      <h3 class="h3">{title}</h3>
+      <p class="text-txt-2 mt-2">{text}</p>
+    </div>
+  </div>
+</article>

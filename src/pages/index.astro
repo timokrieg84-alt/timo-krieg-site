@@ -1,95 +1,26 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Leistungen from '../components/Leistungen.astro';
+import Prozess from '../components/ProzessTimeline.astro';
+import Counters from '../components/Counters.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
-
-const SITE = 'https://timo-krieg-site-git-preview-timo24.vercel.app';
-
-const title = 'Gylsere Januzi Krieg Online Marketing Office – Online-Marketing & Vertriebsmanagement';
-const description = 'Professionelles Online-Marketing und Vertriebsmanagement.';
-const canonical = SITE + '/';
-const ogImage = SITE + '/images/logo-gjk.webp';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': SITE + '/#business',
-  'name': 'Gylsere Januzi Krieg Online Marketing Office',
-  'url': SITE + '/',
-  'email': 'gjanuzikrieg@gmail.com',
-  'telephone': '+49 175 6372395',
-  'image': SITE + '/images/logo-gjk.webp',
-  'address': {
-    '@type': 'PostalAddress',
-    'streetAddress': 'Kitzingstraße 7',
-    'postalCode': '73529',
-    'addressLocality': 'Schwäbisch Gmünd',
-    'addressCountry': 'DE'
-  },
-  'areaServed': 'DE',
-  'sameAs': []
-};
+const title = 'Online‑Marketing Agentur Schwäbisch Gmünd | GJK';
+const description = 'Premium Performance‑Marketing: SEO, Local SEO, Google Ads, GEO, Webdesign/E‑Com & AI – DSGVO‑konform. Angebot anfragen.';
+const canonical = 'https://online-marketing-office.de/';
 ---
-<BaseLayout {title} {description} {canonical} {jsonLd} {ogImage}>
+<Base {title} {description} {canonical} ogImage="/images/hero-office-dusk.webp">
   <Header />
-
   <main id="main">
-    <section class="hero" aria-label="Intro">
-      <div class="container">
-        <h1>Gylsere Januzi Krieg Online Marketing Office</h1>
-        <p class="claim">Professionelles Online-Marketing und Vertriebsmanagement.</p>
-        <div class="cta">
-          <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
-          <a class="btn btn--ghost" href="/leistungen">Leistungen</a>
-        </div>
-      </div>
-
-      <!-- Subtile, performante Noise-Overlay rein mit SVG -->
-      <svg class="noise" xmlns="http://www.w3.org/2000/svg">
-        <filter id="f">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#f)"></rect>
-      </svg>
-    </section>
-
-    <section class="section" id="leistungen">
-      <div class="container">
-        <div class="section-head">
-          <h2>Leistungen</h2>
-        </div>
-        <p>Inhalt folgt. Diese Sektion zeigt später Ihre Kernangebote (z. B. Strategie, Performance Ads, SEO, Vertrieb).</p>
-      </div>
-    </section>
-
-    <section class="section" id="referenzen">
-      <div class="container">
-        <div class="section-head">
-          <h2>Referenzen</h2>
-        </div>
-        <p>Inhalt folgt. Hier platzieren wir Fallstudien, Logos und Ergebnisse – optional mit leichtem Slider.</p>
-      </div>
-    </section>
-
-    <section class="section" id="ueber-uns">
-      <div class="container">
-        <div class="section-head">
-          <h2>Über uns</h2>
-        </div>
-        <p>Inhalt folgt. Kurzprofil, Werte und Arbeitsweise – schlank und glaubwürdig im B2B‑Stil.</p>
-      </div>
-    </section>
-
-    <section class="section" id="kontakt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-        </div>
-        <p>Inhalt folgt. Der CTA führt vorerst zur Kontaktseite (/kontakt), die wir im nächsten Schritt bauen.</p>
-      </div>
-    </section>
+    <Hero />
+    <Leistungen />
+    <Prozess />
+    <Counters />
+    <Testimonials />
+    <Contact />
   </main>
-
   <Footer />
-</BaseLayout>
+</Base>

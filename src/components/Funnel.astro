@@ -1,5 +1,6 @@
 ---
-import { servicesGrid, projectInfo } from "../data/site";
+import { site } from "../data/site";
+const projectInfo = site.contact;
 const step1Options = [
   { label: "SEO", icon: "🔍", slug: "seo" },
   { label: "SEO-Regio", icon: "🟢", slug: "seo-regio" },
@@ -28,7 +29,7 @@ const step1Options = [
     <form id="contact-funnel" class="space-y-6" autocomplete="on" novalidate>
       <input type="text" name="_hp" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-      <!-- Schritt 1 -->
+      
       <div class="step" data-step="1" aria-labelledby="s1-title">
         <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 01 VON 03</p>
         <h3 id="s1-title" class="text-lg font-semibold mt-1 mb-3">WORUM GEHT ES?</h3>
@@ -48,7 +49,7 @@ const step1Options = [
         </div>
       </div>
 
-      <!-- Schritt 2 -->
+      
       <div class="step" data-step="2" hidden aria-labelledby="s2-title">
         <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 02 VON 03</p>
         <h3 id="s2-title" class="text-lg font-semibold mt-1 mb-3">DEINE KONTAKTDATEN</h3>
@@ -64,7 +65,7 @@ const step1Options = [
         </div>
       </div>
 
-      <!-- Schritt 3 -->
+      
       <div class="step" data-step="3" hidden aria-labelledby="s3-title">
         <p class="text-xs font-bold tracking-widest uppercase text-brand-muted">FRAGE 03 VON 03</p>
         <h3 id="s3-title" class="text-lg font-semibold mt-1 mb-3">NACHRICHT</h3>
@@ -106,7 +107,6 @@ const step1Options = [
     if (t.matches('[data-prev]')) show(Math.max(idx-1, 0));
   });
 
-  // Preselect from URL ?service=
   const svcMap = {
     'seo':'SEO','seo-regio':'SEO-Regio','google-ads':'Google Ads','geo':'GEO',
     'webdesign':'Webdesign','terminbuchung':'Terminbuchung','marketing':'Marketing',
@@ -120,7 +120,6 @@ const step1Options = [
     if (match) { match.checked = true; match.dispatchEvent(new Event('change', { bubbles: true })); }
   }
 
-  // HUD time
   const hud = document.getElementById('hud-time');
   const pad = (n) => String(n).padStart(2, '0');
   setInterval(() => {

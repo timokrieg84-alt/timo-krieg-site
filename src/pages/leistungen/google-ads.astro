@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Google Ads Agentur | Performance‑SEA für KMU & B2B",
+  description: "Strukturierte Kampagnen, SKAG/SCAG‑Logik, Conversion‑Tracking & Landingpages. Mehr Anfragen – weniger Streuverlust.",
+  url: "https://example.com/leistungen/google-ads/",
+  canonical: "https://example.com/leistungen/google-ads/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/google-ads/#service","name":"Google Ads","serviceType":"Search Engine Advertising","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"City","name":"Schwäbisch Gmünd"},{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Jeder Klick mit Absicht." intro="Performance‑getriebene Kampagnen für messbaren ROAS – von Search über PMax bis YouTube. Skalierbar, transparent, sicher.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Search & Performance Max</li>
+              <li>• YouTube Ads & Remarketing</li>
+              <li>• Conversion Tracking & Attribution</li>
+              <li>• Landing Pages & CRO</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• ROAS/ROI & Kosten je Lead</li>
+              <li>• Conversion‑Rate & Funnel‑KPIs</li>
+              <li>• Impression Share & Suchanfragen</li>
+              <li>• Qualitätsfaktoren & Relevanz</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>

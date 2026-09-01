@@ -1,0 +1,70 @@
+---
+import '../styles/tokens.css';
+import '../styles/base.css';
+import '../styles/components.css';
+export interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+const SITE_URL = 'https://online-marketing-office.de'; // bei Go-Live anpassen
+const { title = 'Online‑Marketing Agentur Schwäbisch Gmünd | GJK', description = 'Premium Performance‑Marketing für KMU, Praxen & B2B. SEO, Local SEO, Google Ads, GEO, Webdesign, AI. DSGVO‑konform.', canonical = SITE_URL + '/', ogImage = '/images/hero-office-dusk.webp' } = Astro.props as Props;
+---
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="canonical" href={canonical} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet" />
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Gylsere Januzi Krieg – Online Marketing Office",
+        "url": SITE_URL + "/",
+        "logo": SITE_URL + "/assets/logo.svg",
+        "email": "mailto:gjanuzikrieg@gmail.com",
+        "telephone": "+49 175 6372395",
+        "founder": "Gylsere Januzi Krieg",
+        "sameAs": []
+      })}
+    </script>
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "ProfessionalService",
+        "name": "Gylsere Januzi Krieg – Online Marketing Office",
+        "image": SITE_URL + ogImage,
+        "url": SITE_URL + "/",
+        "priceRange": "€€€",
+        "telephone": "+49 175 6372395",
+        "email": "mailto:gjanuzikrieg@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Kitzingstraße 7",
+          "addressLocality": "Schwäbisch Gmünd",
+          "postalCode": "73529",
+          "addressRegion": "Baden‑Württemberg",
+          "addressCountry": "DE"
+        },
+        "areaServed": ["Schwäbisch Gmünd","Aalen","Heidenheim","Göppingen","Waiblingen","Stuttgart Ost","Ostalbkreis"],
+        "knowsAbout": ["SEO","Local SEO","Google Ads","Generative Engine Optimization (GEO)","Webdesign","E‑Commerce","Astro","Next.js","AI & Automation","Online‑Terminbuchung","Reputation & Bewertungen","Social Media","Fotografie","Image‑Videos","Branding","Praxis‑TV","Programmierung","Premium‑Factoring"]
+      })}
+    </script>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
