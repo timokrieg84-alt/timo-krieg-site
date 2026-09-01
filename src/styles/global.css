@@ -1,22 +1,3 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-/* Base typography tuning for premium look */
-:root {
-  --color-primary: #123D2A;
-  --color-secondary: #C8501E;
-  --color-accent: #E58AA0;
-  --color-background: #F5F1E9;
-  --color-text: #1A1A1A;
-  --color-muted: #6B7280;
-  --color-gold: #C8A24B;
-}
-
-html { scroll-behavior: smooth; }
-
-::selection { background: var(--color-accent); color: var(--color-background); }
-
-/***** Utility helpers *****/
-.container-padding { @apply px-4 sm:px-6 lg:px-8; }
-.maxw-content { @apply max-w-7xl mx-auto; }
