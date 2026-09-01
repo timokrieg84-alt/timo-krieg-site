@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import Card from "@/components/Card.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+---
+<Layout title="Leistungen | SEO, Ads, GEO, Astro‑Webdesign, AI, Social u. v. m." description="Ein Team, alle Kanäle: Suchmaschinen, AI‑Search (GEO), Web & Commerce, Automatisierung, Reputation, Foto/Video, Branding, Praxis‑TV, Factoring.">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <Section title="Leistungen" intro="Strategie, Umsetzung und laufende Optimierung – jede Leistung mit klarer Verantwortung und Messpunkten.">
+    <div class="grid-12">
+      <div class="col-span-12 md:col-span-4"><Card title="SEO & Local SEO" text="Ganzheitliches SEO – Technik, Content, Backlinks und lokale Sichtbarkeit." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Google Ads" text="Performance‑getriebene Kampagnen – von Search über PMax bis YouTube." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="SEO‑Regio – Umland‑Dominanz" text="Netzwerk aus 50 ortsspezifischen Seiten für flächendeckende lokale Rankings." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="GEO – Generative Engine Optimization" text="Sichtbarkeit in ChatGPT, Perplexity & Google AI über Entities & Citations." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Webdesign (Astro) & E‑Commerce" text="Ultraschnelle Websites & Shops – Core Web Vitals exzellent, DSGVO‑konform." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="AI & Automation" text="Agenten, Workflows, LLM‑Integration & Chatbots – Effizienz auf Knopfdruck." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Online‑Terminbuchung" text="Reibungslose Terminvergabe für Praxen – integriert & messbar." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Reputation & Bewertungen" text="Mehr echte Top‑Bewertungen & aktiver Rufschutz – rechtssicher." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Social Media" text="Von Strategie bis Produktion: Reichweite, die Anfragen erzeugt." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Premium‑Fotografie & Image‑Videos" text="Hochwertige On‑Site Produktionen – authentisch & konvertierend." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Branding" text="Marken‑DNA, Positionierung & Design‑System – Wiedererkennung, die wirkt." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Praxis‑TV (Medizin)" text="Kuratiertes Wartezimmer‑TV – informiert & steigert Nachfrage für Wunschleistungen." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Code‑Exzellenz & Programmierung" text="Skalierbare Software, saubere Schnittstellen, modernisierte Legacy‑Systeme." /></div>
+      <div class="col-span-12 md:col-span-4"><Card title="Premium‑Factoring" text="Sofortige Liquidität & Ausfallschutz – professionelles Debitorenmanagement." /></div>
+    </div>
+  </Section>
+  <CTA />
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>
