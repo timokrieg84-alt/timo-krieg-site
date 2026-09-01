@@ -8,18 +8,28 @@ import Stats from "@/components/Stats.astro";
 import Testimonials from "@/components/Testimonials.astro";
 import CTA from "@/components/CTA-Bar.astro";
 import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Online‑Marketing Agentur Schwäbisch Gmünd | Gylsere Januzi Krieg",
+  description: "Full‑Service für KMU, Praxen & B2B in BW/DACH: SEO, Google Ads, GEO, Astro‑Webdesign, AI‑Automation & mehr. Jetzt sichtbar wachsen.",
+  url: "https://example.com/",
+  canonical: "https://example.com/",
+  image: "/images/hero-bg.webp",
+  type: "website"
+};
 ---
-<Layout title="Online‑Marketing Agentur Schwäbisch Gmünd | Gylsere Januzi Krieg" description="Full‑Service für KMU, Praxen & B2B in BW/DACH: SEO, Google Ads, GEO, Astro‑Webdesign, AI‑Automation & mehr. Jetzt sichtbar wachsen.">
+<Layout title={meta.title} description={meta.description}>
+  <Fragment slot="head"><HeadSEO {...meta} /></Fragment>
   <Fragment slot="nav"><Navbar /></Fragment>
   <Hero />
   <Section id="leistungen" title="Leistungen" intro="Strategie, Umsetzung und laufende Optimierung – jede Leistung mit klarer Verantwortung und Messpunkten.">
     <div class="grid-12">
-      <div class="col-span-12 md:col-span-4"><Card title="SEO & Local SEO" text="Technik, Content, Backlinks & lokale Sichtbarkeit – inkl. Google Business Profil und 30+ Portale." /></div>
-      <div class="col-span-12 md:col-span-4"><Card title="Google Ads" text="Performance-getriebene Kampagnen – Search bis PMax, sauber getrackt, klarer ROAS." /></div>
-      <div class="col-span-12 md:col-span-4"><Card title="SEO-Regio – Umland-Dominanz" text="50 ortsspezifische Seiten fangen regionale Suchen ab – Ihre Hauptseite bleibt unberührt." /></div>
-      <div class="col-span-12 md:col-span-4"><Card title="GEO – Generative Engine Optimization" text="Sichtbar in AI-Antworten mit sauberen Entities & Citation-Authority." /></div>
-      <div class="col-span-12 md:col-span-4"><Card title="Webdesign (Astro) & E‑Commerce" text="Ultraschnelle Websites & Shops – DSGVO-sicher, konversionsstark, Core Web Vitals top." /></div>
-      <div class="col-span-12 md:col-span-4"><Card title="AI & Automation" text="Agenten, Workflows, Chatbots & Integrationen – echte Effizienzgewinne." /></div>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/seo-local-seo/"><Card title="SEO & Local SEO" text="Technik, Content, Backlinks & lokale Sichtbarkeit – inkl. Google Business Profil und 30+ Portale." /></a>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/google-ads/"><Card title="Google Ads" text="Performance-getriebene Kampagnen – Search bis PMax, sauber getrackt, klarer ROAS." /></a>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/seo-regio/"><Card title="SEO-Regio – Umland-Dominanz" text="50 ortsspezifische Seiten fangen regionale Suchen ab – Ihre Hauptseite bleibt unberührt." /></a>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/geo-generative-engine-optimization/"><Card title="GEO – Generative Engine Optimization" text="Sichtbar in AI-Antworten mit sauberen Entities & Citation-Authority." /></a>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/webdesign-e-commerce/"><Card title="Webdesign (Astro) & E‑Commerce" text="Ultraschnelle Websites & Shops – DSGVO-sicher, konversionsstark, Core Web Vitals top." /></a>
+      <a class="col-span-12 md:col-span-4 block" href="/leistungen/ai-automation/"><Card title="AI & Automation" text="Agenten, Workflows, Chatbots & Integrationen – echte Effizienzgewinne." /></a>
     </div>
   </Section>
   <Section id="prozess" title="So arbeiten wir" intro="Strukturiert, transparent, messbar – in 6 Schritten zum Ergebnis.">
