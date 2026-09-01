@@ -24,7 +24,7 @@
     </picture>
   </div>
 </section>
-<script client:idle>
+<script client:idle lang="ts">
   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (!prefersReduced) {
     (async () => {
