@@ -1,89 +1,20 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Kontakt | Gylsere Januzi Krieg – Online Marketing Office",
-  description: "Sprechen wir über Ziele, Budget und den nächsten Sprint. Termin wählen oder direkt anrufen.",
-  url: "https://example.com/kontakt/",
-  canonical: "https://example.com/kontakt/",
-  image: "/images/city-schwabisch-gmuend.webp",
-  type: "article"
-};
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+const title = 'Kontakt | Angebot anfragen | Online‑Marketing Schwäbisch Gmünd';
+const description = 'Kostenloses Erstgespräch: +49 175 6372395 oder gjanuzikrieg@gmail.com. Online‑Marketing Office für Schwäbisch Gmünd & Umgebung.';
+const canonical = 'https://online-marketing-office.de/kontakt';
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="kontakt" title="Lassen Sie uns über Ihr Projekt sprechen" intro="Erzählen Sie uns kurz von Ihrem Vorhaben – wir melden uns zeitnah mit einer ehrlichen Einschätzung und den nächsten Schritten.">
-        <div class="grid md:grid-cols-2 gap-8 items-start">
-          <form id="contactForm" class="card p-6 grid gap-4" novalidate>
-            <label class="grid gap-1">
-              <span>Name *</span>
-              <input name="name" required class="bg-bg-2 border border-border rounded-md p-3" autocomplete="name" />
-            </label>
-            <label class="grid gap-1">
-              <span>E‑Mail *</span>
-              <input type="email" name="email" required class="bg-bg-2 border border-border rounded-md p-3" autocomplete="email" />
-            </label>
-            <label class="grid gap-1">
-              <span>Telefon</span>
-              <input type="tel" name="phone" class="bg-bg-2 border border-border rounded-md p-3" autocomplete="tel" />
-            </label>
-            <label class="grid gap-1">
-              <span>Ihre Nachricht *</span>
-              <textarea name="message" required rows="5" class="bg-bg-2 border border-border rounded-md p-3"></textarea>
-            </label>
-            <p class="text-txt-2 text-sm">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>. Eingehende Anfragen werden per Telegram benachrichtigt.</p>
-            <button class="btn btn-primary btn-glare" type="submit">Nachricht senden</button>
-            <p id="formMessage" role="status" class="text-sm"></p>
-          </form>
-          <aside class="card p-6">
-            <h3 class="h3">Gylsere Januzi Krieg – Online Marketing Office</h3>
-            <p class="text-txt-2 mt-2">Kitzingstraße 7, 73529 Schwäbisch Gmünd<br/>Tel. +49 175 6372395<br/>Mail gjanuzikrieg@gmail.com</p>
-            <picture class="block mt-6">
-              <img src="/images/city-schwabisch-gmuend.webp" class="w-full h-auto rounded-lg border border-border" alt="Cinematischer Blick über Schwäbisch Gmünd in Blau/Cyan" loading="lazy"/>
-            </picture>
-          </aside>
-        </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-
-    <script is:client="visible">
-      const form = document.querySelector('#contactForm');
-      const msg = document.querySelector('#formMessage');
-      form?.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const fd = new FormData(form);
-        const data = {
-          name: fd.get('name'),
-          email: fd.get('email'),
-          phone: fd.get('phone') || "",
-          site: window.location.hostname,
-          message: fd.get('message')
-        };
-        try {
-          const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
-          });
-          if (res.ok) {
-            msg.textContent = 'Danke! Wir haben Ihre Nachricht erhalten und melden uns zeitnah.';
-            form.reset();
-          } else {
-            msg.textContent = 'Es gab ein Problem. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
-          }
-        } catch (err) {
-          msg.textContent = 'Netzwerkfehler. Bitte später erneut versuchen.';
-        }
-      });
-    </script>
-  </body>
-</html>
+<Base {title} {description} {canonical}>
+  <Header />
+  <main id="main">
+    <section class="section container flow">
+      <h1>Kontakt</h1>
+      <p class="text-muted">Wir melden uns in der Regel innerhalb von 24 Stunden mit den nächsten Schritten.</p>
+    </section>
+    <Contact />
+  </main>
+  <Footer />
+</Base>
