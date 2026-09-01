@@ -1,4 +1,6 @@
 ---
+// Import global styles (Tailwind + Tokens)
+import "@/styles/global.css";
 const { title = "Gylsere Januzi Krieg – Online Marketing Office", description = "Premium Online-Marketing. Souverän. Messbar. Klar." } = Astro.props;
 ---
 <!DOCTYPE html>
@@ -8,7 +10,6 @@ const { title = "Gylsere Januzi Krieg – Online Marketing Office", description 
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="stylesheet" href="/src/styles/global.css" />
     <link rel="preload" href="/fonts/inter-var.woff2" as="font" type="font/woff2" crossorigin>
   </head>
   <body>
