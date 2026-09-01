@@ -10,12 +10,12 @@ import { brand, colors, sections, services } from "../data/site";
         <h1 class={`text-4xl md:text-6xl font-semibold tracking-tight text-[${colors.primary}]`}>{sections.hero.headline}</h1>
         <p class={`mt-6 text-lg md:text-xl leading-8 text-[${colors.text}]/80`}>{sections.hero.subheadline}</p>
         <div class="mt-10 flex flex-wrap items-center gap-4">
-          <a href={sections.hero.ctaPrimary.href} class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-white text-sm md:text-base font-semibold shadow hover:shadow-lg transition-shadow border border-[${colors.gold}]`}>{sections.hero.ctaPrimary.label}</a>
-          <a href={sections.hero.ctaSecondary.href} class={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold text-[${colors.primary}] border border-[${colors.primary}]/30 hover:border-[${colors.primary}] hover:bg-white`}>{sections.hero.ctaSecondary.label}</a>
+          <a href={sections.hero.ctaPrimary.href} class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-[${colors.background}] text-sm md:text-base font-semibold shadow hover:shadow-lg transition-shadow border border-[${colors.gold}]`}>{sections.hero.ctaPrimary.label}</a>
+          <a href={sections.hero.ctaSecondary.href} class={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold text-[${colors.primary}] border border-[${colors.primary}]/30 hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>{sections.hero.ctaSecondary.label}</a>
         </div>
       </div>
     </div>
-    <div class="pointer-events-none absolute right-0 top-0 -mr-32 -mt-24 h-72 w-72 rounded-full bg-white/70 ring-1 ring-[${colors.gold}]/30 blur-2xl"></div>
+    <div class={`pointer-events-none absolute right-0 top-0 -mr-32 -mt-24 h-72 w-72 rounded-full bg-[${colors.accent}]/10 ring-1 ring-[${colors.gold}]/30 blur-2xl`}></div>
   </section>
 
   <!-- Leistungen Übersicht -->
@@ -23,7 +23,7 @@ import { brand, colors, sections, services } from "../data/site";
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
       <div class="mb-10 flex items-end justify-between gap-6">
         <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>Leistungen</h2>
-        <a href="#kontakt" class={`hidden md:inline-flex items-center gap-2 rounded-full bg-[${colors.secondary}] px-4 py-2 text-white text-sm font-semibold shadow hover:shadow-md`}>
+        <a href="#kontakt" class={`hidden md:inline-flex items-center gap-2 rounded-full bg-[${colors.secondary}] px-4 py-2 text-[${colors.background}] text-sm font-semibold shadow hover:shadow-md`}>
           Jetzt anfragen
           <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M7 5l6 5-6 5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
@@ -31,7 +31,7 @@ import { brand, colors, sections, services } from "../data/site";
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s) => (
           <div id={s.slug} class="scroll-mt-24">
-            <div class={`group relative flex h-full flex-col justify-between rounded-2xl border border-[${colors.muted}]/20 bg-white p-6 shadow-sm transition-shadow hover:shadow-md`}>
+            <div class={`group relative flex h-full flex-col justify-between rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 shadow-sm transition-shadow hover:shadow-md`}>
               <div>
                 <h3 class={`text-lg font-semibold text-[${colors.text}]`}>{s.title}</h3>
                 {s.subtitle && <p class={`mt-1 text-sm text-[${colors.muted}]`}>{s.subtitle}</p>}
@@ -41,7 +41,7 @@ import { brand, colors, sections, services } from "../data/site";
                 {s.features && s.features.length > 0 && (
                   <ul class="mt-4 space-y-2">
                     {s.features.slice(0, 4).map((f) => (
-                      <li class="flex items-start gap-2 text-sm text-[black]/70"><span class={`mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.secondary}]`}></span>{f}</li>
+                      <li class={`flex items-start gap-2 text-sm text-[${colors.text}]/70`}><span class={`mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.secondary}]`}></span>{f}</li>
                     ))}
                   </ul>
                 )}
@@ -62,22 +62,22 @@ import { brand, colors, sections, services } from "../data/site";
   </section>
 
   <!-- Über uns -->
-  <section id="about" class={`border-y border-[${colors.muted}]/20 bg-white scroll-mt-24`}>
+  <section id="about" class={`border-y border-[${colors.muted}]/20 bg-[${colors.background}] scroll-mt-24`}>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
       <div>
         <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.about.headline}</h2>
         <p class={`mt-6 text-[${colors.text}]/80 leading-7`}>{sections.about.text}</p>
         <ul class="mt-8 space-y-3">
           {sections.about.bullets.map((b) => (
-            <li class="flex items-start gap-3 text-sm text-black/80"><span class={`mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.gold}]`}></span>{b}</li>
+            <li class={`flex items-start gap-3 text-sm text-[${colors.text}]/80`}><span class={`mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.gold}]`}></span>{b}</li>
           ))}
         </ul>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div class={`h-40 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
-        <div class={`h-56 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
-        <div class={`h-56 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
-        <div class={`h-40 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-40 rounded-xl bg-[${colors.accent}]/10 ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-56 rounded-xl bg-[${colors.accent}]/10 ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-56 rounded-xl bg-[${colors.accent}]/10 ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-40 rounded-xl bg-[${colors.accent}]/10 ring-1 ring-[${colors.gold}]/30`}></div>
       </div>
     </div>
   </section>
@@ -88,7 +88,7 @@ import { brand, colors, sections, services } from "../data/site";
       <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.process.headline}</h2>
       <ol class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {sections.process.steps.map((step) => (
-          <li class={`relative rounded-2xl border border-[${colors.muted}]/20 bg-white p-6 shadow-sm`}>
+          <li class={`relative rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 shadow-sm`}>
             <h3 class={`text-base font-semibold text-[${colors.primary}]`}>{step.title}</h3>
             <p class={`mt-2 text-sm text-[${colors.text}]/80`}>{step.text}</p>
             <div class={`pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-[${colors.gold}]/10`}></div>
@@ -99,7 +99,7 @@ import { brand, colors, sections, services } from "../data/site";
   </section>
 
   <!-- Kontakt -->
-  <section id="kontakt" class={`scroll-mt-24 border-t border-[${colors.muted}]/20 bg-white`}>
+  <section id="kontakt" class={`scroll-mt-24 border-t border-[${colors.muted}]/20 bg-[${colors.background}]`}>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
       <div>
         <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.contact.headline}</h2>
@@ -115,24 +115,24 @@ import { brand, colors, sections, services } from "../data/site";
           <input type="hidden" name="form-name" value="kontakt" />
           <div>
             <label class="block text-sm font-medium mb-1" for="name">Name</label>
-            <input id="name" name="name" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+            <input id="name" name="name" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-[${colors.background}] px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label class="block text-sm font-medium mb-1" for="email">E-Mail</label>
-              <input id="email" type="email" name="email" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+              <input id="email" type="email" name="email" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-[${colors.background}] px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
             </div>
             <div>
               <label class="block text-sm font-medium mb-1" for="phone">Telefon</label>
-              <input id="phone" type="tel" name="phone" class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+              <input id="phone" type="tel" name="phone" class={`w-full rounded-md border border-[${colors.muted}]/30 bg-[${colors.background}] px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
             </div>
           </div>
           <div>
             <label class="block text-sm font-medium mb-1" for="message">Nachricht</label>
-            <textarea id="message" name="message" rows="5" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`}></textarea>
+            <textarea id="message" name="message" rows="5" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-[${colors.background}] px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`}></textarea>
           </div>
           <p class={`text-xs text-[${colors.muted}]`}>{sections.contact.form.privacyNote} <a href="/datenschutz" class={`text-[${colors.primary}] hover:text-[${colors.secondary}] underline`}>Datenschutzerklärung</a>.</p>
-          <button type="submit" class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-white text-sm font-semibold shadow hover:shadow-md border border-[${colors.gold}]`}>Absenden</button>
+          <button type="submit" class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-[${colors.background}] text-sm font-semibold shadow hover:shadow-md border border-[${colors.gold}]`}>Absenden</button>
         </form>
       </div>
     </div>
