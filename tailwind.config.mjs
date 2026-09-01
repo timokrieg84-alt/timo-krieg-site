@@ -1,10 +1,15 @@
-import forms from '@tailwindcss/forms';
-import typography from '@tailwindcss/typography';
-
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx,vue}'],
-  darkMode: 'class',
-  theme: { extend: {} },
-  plugins: [forms, typography],
-};
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}',
+  ],
+  theme: {
+    extend: {
+      colors: {},
+      borderRadius: {
+        '2xl': '1rem',
+      },
+    },
+  },
+  plugins: [],
+}
