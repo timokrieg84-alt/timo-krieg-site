@@ -3,10 +3,11 @@ const heading = "Mehr Sichtbarkeit. Mehr Anfragen. Mehr Wachstum.";
 const sub = "Premium-Online-Marketing aus einer Hand: SEO, Google Ads, Webdesign (Astro), Automation und mehr – messbar, DSGVO-sicher und auf nachhaltiges Wachstum ausgelegt.";
 ---
 <section class="relative overflow-hidden">
-  <picture class="absolute inset-0 -z-10">
+  <picture class="absolute inset-0 -z-20">
     <source srcset="/images/hero-bg.webp" type="image/webp" />
     <img src="/images/hero-bg.webp" alt="Abstrakter, edler dunkler Hintergrund mit Cyan-Lichtakzenten" class="w-full h-full object-cover" loading="eager" fetchpriority="high"/>
   </picture>
+  <canvas id="heroParticles" class="absolute inset-0 -z-10 w-full h-full block"></canvas>
 
   <div class="container py-24 md:py-32">
     <div class="badge mb-6 reveal-up">Online Marketing Office · Schwäbisch Gmünd</div>
@@ -24,3 +25,74 @@ const sub = "Premium-Online-Marketing aus einer Hand: SEO, Google Ads, Webdesign
     </div>
   </div>
 </section>
+
+<script is:client="load">
+  const prefersReduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Magnetic + glare micro-interaction
+  if (!prefersReduce) {
+    const magnets = document.querySelectorAll('[data-magnetic]');
+    magnets.forEach(btn => {
+      const strength = 18;
+      btn.addEventListener('mousemove', (e) => {
+        const r = btn.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - 0.5) * 2;
+        const y = ((e.clientY - r.top) / r.height - 0.5) * 2;
+        (btn as HTMLElement).style.transform = `translate(${x*strength}px, ${y*strength}px)`;
+        (btn as HTMLElement).style.setProperty('--mx', `${x*30}px`);
+        (btn as HTMLElement).style.setProperty('--my', `${y*30}px`);
+      });
+      btn.addEventListener('mouseleave', () => {
+        (btn as HTMLElement).style.transform = '';
+        (btn as HTMLElement).style.setProperty('--mx', `0px`);
+        (btn as HTMLElement).style.setProperty('--my', `0px`);
+      });
+    });
+  }
+
+  // tsParticles slim (leicht) + IntersectionObserver + reduce-motion
+  const canvas = document.getElementById('heroParticles') as HTMLCanvasElement | null;
+  if (canvas && !prefersReduce) {
+    let engine: any, container: any;
+    const io = new IntersectionObserver(async (entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) {
+          if (!engine) {
+            const [{ tsParticles }, { loadSlim }] = await Promise.all([
+              import('tsparticles-engine'),
+              import('tsparticles-slim'),
+            ]);
+            engine = tsParticles;
+            await loadSlim(engine);
+          }
+          if (!container) {
+            container = await engine.load(canvas, {
+              fpsLimit: 60,
+              detectRetina: true,
+              background: { color: { value: 'transparent' } },
+              particles: {
+                number: { value: window.innerWidth < 640 ? 28 : 58, density: { enable: false } },
+                color: { value: ['#2EE6D6', '#4C77FF'] },
+                shape: { type: 'circle' },
+                opacity: { value: 0.35 },
+                size: { value: { min: 1, max: 3 } },
+                links: { enable: true, distance: 120, color: '#2EE6D6', opacity: 0.18, width: 1 },
+                move: { enable: true, speed: 0.6, direction: 'none', outModes: { default: 'out' } },
+              },
+              interactivity: {
+                events: { onHover: { enable: true, mode: 'repulse' }, resize: true },
+                modes: { repulse: { distance: 80, duration: 0.4 } },
+              },
+            });
+          } else {
+            container.play();
+          }
+        } else {
+          container?.pause();
+        }
+      }
+    }, { rootMargin: '200px' });
+    io.observe(canvas);
+    window.addEventListener('visibilitychange', () => { if (!container) return; document.hidden ? container.pause() : container.play(); });
+  }
+</script>
