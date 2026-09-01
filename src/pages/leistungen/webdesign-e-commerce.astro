@@ -4,26 +4,54 @@ import Navbar from "@/components/Navbar.astro";
 import Section from "@/components/Section.astro";
 import CTA from "@/components/CTA-Bar.astro";
 import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Astro Website & High‑Performance Webdesign | E‑Commerce BW",
+  description: "Astro‑basierte Websites: Core Web Vitals exzellent, blitzschnell, SEO‑ready. Headless/Shopify/Shopware – Conversion im Fokus.",
+  url: "https://example.com/leistungen/webdesign-e-commerce/",
+  canonical: "https://example.com/leistungen/webdesign-e-commerce/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
 ---
-<Layout title="Astro Website & High‑Performance Webdesign | E‑Commerce BW" description="Astro‑basierte Websites: Core Web Vitals exzellent, blitzschnell, SEO‑ready. Headless/Shopify/Shopware – Conversion im Fokus.">
-  <Fragment slot="nav"><Navbar /></Fragment>
-  <Section title="Websites, die verkaufen." intro="Maßgeschneiderte, ultraschnelle Websites und Shops – konversionsstark, DSGVO‑sicher und tief in Ihre Systeme integriert.">
-    <div class="grid md:grid-cols-2 gap-6">
-      <div class="card p-6">
-        <h3 class="h3">Leistungsbausteine</h3>
-        <ul class="mt-3 text-txt-2 grid gap-2 list-disc pl-5">
-          <li>Custom Design</li>
-          <li>Astro & Headless CMS</li>
-          <li>Core Web Vitals</li>
-          <li>Conversion‑Rate‑Optimierung (CRO)</li>
-        </ul>
-      </div>
-      <div class="card p-6">
-        <h3 class="h3">Ergebnis</h3>
-        <p class="text-txt-2 mt-2">Schnelle, suchmaschinenstarke Websites mit klarer Conversion‑Führung und rechtssicherem Setup.</p>
-      </div>
-    </div>
-  </Section>
-  <CTA />
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":["Service"],"@id":"https://example.com/leistungen/webdesign-e-commerce/#service","name":"Webdesign & E‑Commerce","serviceType":"High‑Performance Webdesign (Astro) & E‑Commerce","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"State","name":"Baden-Württemberg"},{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Websites, die verkaufen." intro="Maßgeschneiderte, ultraschnelle Websites und Shops – konversionsstark, DSGVO‑sicher und tief in Ihre Systeme integriert.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Custom Design & UX</li>
+              <li>• Astro‑Build mit minimaler JS‑Last</li>
+              <li>• Headless CMS & Commerce (z. B. Sanity, Shopify)</li>
+              <li>• Core Web Vitals & SEO‑Basics</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• CWV (LCP, INP, CLS)</li>
+              <li>• Conversion‑Rate & Leads/Checkout</li>
+              <li>• Lighthouse/PageSpeed Scores</li>
+              <li>• Organische Rankings & Indexierung</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>
