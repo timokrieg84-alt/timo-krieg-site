@@ -1,7 +1,13 @@
-import { defineConfig } from 'astro/config';
-import tailwind from '@astrojs/tailwind';
+import { defineConfig } from "astro/config";
 
 export default defineConfig({
-  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
-  vite: { resolve: { alias: { '@': '/src' } } }
+  site: "https://example.com", // TODO: replace with live domain before go-live
+  scopedStyleStrategy: "where",
+  vite: {
+    resolve: {
+      alias: {
+        "@": new URL("./src", import.meta.url).pathname,
+      },
+    },
+  },
 });
