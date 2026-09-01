@@ -1,6 +1,7 @@
-import { defineConfig } from "astro/config";
-
+import { defineConfig } from 'astro/config';
 export default defineConfig({
-  site: "https://example.com", // TODO: replace with live domain
-  scopedStyleStrategy: "where",
+  output: 'static',
+  prefetch: true,
+  integrations: [],
+  site: 'https://online-marketing-office.de' // bei Go-Live anpassen
 });
