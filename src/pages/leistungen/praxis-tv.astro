@@ -1,57 +1,72 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Praxis‑TV fürs Wartezimmer | Infos statt Wartefrust",
-  description: "Eigenes Praxis‑Programm, GEMA‑frei, DSGVO‑konform. Inhalte, Technik & Betrieb aus einer Hand.",
-  url: "https://example.com/leistungen/praxis-tv/",
-  canonical: "https://example.com/leistungen/praxis-tv/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Layout from "../../layouts/Layout.astro";
+import { brand, colors, services } from "../../data/site";
+const service = services.find(s => s.slug === 'praxis-tv');
+const others = services.filter(s => s.slug !== 'praxis-tv');
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-    <script type="application/ld+json">
-      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/praxis-tv/#service","name":"Praxis‑TV","serviceType":"Digital Signage for Healthcare Waiting Rooms","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"}],"audience":{"@type":"MedicalAudience"}})}
-    </script>
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="intro" title="Wartezeit wird Aufklärungszeit." intro="Kuratiertes Wartezimmer‑TV, das informiert, Vertrauen aufbaut und Nachfrage für Wunschleistungen steigert.">
-        <div class="grid md:grid-cols-2 gap-8">
-          <article class="card p-6">
-            <h3 class="h3">Leistungspaket</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Konzeption & Text</li>
-              <li>• Visuelle Bildschirmpräsentationen</li>
-              <li>• Darstellung von IGeL & Behandlungsmethoden</li>
-              <li>• Betrieb, Wartung & Support</li>
+<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
+  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
+      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
+      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
+      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Programm starten</a>
+        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class={`bg-[${colors.background}]`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2">
+        <div>
+          <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Aufklärung statt Wartezeit</h2>
+          <p class={`mt-4 text-[${colors.text}]/90`}>Praxis-TV informiert verständlich über Leistungen, Prävention und Abläufe – ohne Werbegefühl. Patienten nutzen Wartezeit sinnvoll, verstehen Ihr Angebot besser und treffen schneller fundierte Entscheidungen. Das steigert Nachfrage nach IGeL-Leistungen und entlastet Ihr Team.</p>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Redaktion & Gestaltung</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Konzeption medizinisch korrekter, laienverständlicher Inhalte</li>
+            <li>CI-konforme Visuals mit klarer Typografie und dezenten Animationen</li>
+            <li>Regelmäßige Updates bei Leitlinien- oder Angebotsänderungen</li>
+            <li>Diskrete CTAs: QR-Codes zu Terminbuchung oder Infomaterial</li>
+          </ul>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
+          {service?.features && (
+            <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+              {service.features.map((f) => (<li>{f}</li>))}
             </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
-              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
-            </div>
-          </article>
-          <article class="card p-6">
-            <h3 class="h3">Messpunkte</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Patientenfeedback</li>
-              <li>• Inanspruchnahme von Wunschleistungen</li>
-              <li>• Content‑Aktualität & Laufzeit</li>
-              <li>• System‑Uptime</li>
-            </ul>
-          </article>
+          )}
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Implementierung</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Technik-Setup für Monitore/Player inkl. Vorlagen</li>
+            <li>Redaktionsplan und Verantwortlichkeiten im Team</li>
+            <li>Schulung für schnelle Eigenanpassungen</li>
+            <li>DSGVO- und Berufsrecht-Check</li>
+          </ul>
         </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
+          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Wir prüfen Räumlichkeiten, Inhalte und Ziele – und erstellen ein passgenaues Konzept.</p>
+          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Kostenloses Erstgespräch</a>
+        </div>
+      </div>
+      <aside class="lg:col-span-1">
+        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
+          <ul class="mt-3 space-y-2">
+            {others.map((o) => (
+              <li>
+                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
+                  <span class="font-medium">{o.title}</span>
+                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
