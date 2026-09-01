@@ -1,40 +1,57 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { site } from "../../data/site";
-const service = site.services.find((s)=> s.slug === 'praxis-tv')!;
-const related = service.related.map((slug)=> site.services.find((s)=> s.slug === slug)!);
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Praxis‑TV fürs Wartezimmer | Infos statt Wartefrust",
+  description: "Eigenes Praxis‑Programm, GEMA‑frei, DSGVO‑konform. Inhalte, Technik & Betrieb aus einer Hand.",
+  url: "https://example.com/leistungen/praxis-tv/",
+  canonical: "https://example.com/leistungen/praxis-tv/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
 ---
-<Layout>
-  <section class="py-16 sm:py-24 lg:py-28">
-    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-      <a href="/" class="text-sm text-[#123D2A] hover:text-[#C8501E]">← Zurück zur Startseite</a>
-      <h1 class="mt-4 text-3xl sm:text-5xl font-semibold text-[#1A1A1A]">{service.title}</h1>
-      <p class="mt-3 text-lg text-[#1A1A1A]/80">{service.subtitle}</p>
-      <div class="mt-6 rounded-2xl border border-[#123D2A]/10 bg-[#F5F1E9] p-6">
-        <p class="text-[#1A1A1A]/80 whitespace-pre-line">{service.longDescription}</p>
-        <h2 class="mt-8 text-xl font-semibold text-[#1A1A1A]">Bausteine</h2>
-        <ul class="mt-3 grid gap-2 list-disc list-inside text-[#1A1A1A]/80">
-          {service.features.map((f)=> (<li>{f}</li>))}
-        </ul>
-        <div class="mt-6 flex flex-wrap gap-3">
-          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full bg-[#123D2A] px-5 py-3 text-[#F5F1E9] hover:bg-[#C8501E] transition-colors">Praxis-TV starten</a>
-          <a href="/leistungen/online-terminbuchung" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-5 py-3 text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Mit Terminbuchung verknüpfen</a>
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/praxis-tv/#service","name":"Praxis‑TV","serviceType":"Digital Signage for Healthcare Waiting Rooms","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"}],"audience":{"@type":"MedicalAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Wartezeit wird Aufklärungszeit." intro="Kuratiertes Wartezimmer‑TV, das informiert, Vertrauen aufbaut und Nachfrage für Wunschleistungen steigert.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Konzeption & Text</li>
+              <li>• Visuelle Bildschirmpräsentationen</li>
+              <li>• Darstellung von IGeL & Behandlungsmethoden</li>
+              <li>• Betrieb, Wartung & Support</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Patientenfeedback</li>
+              <li>• Inanspruchnahme von Wunschleistungen</li>
+              <li>• Content‑Aktualität & Laufzeit</li>
+              <li>• System‑Uptime</li>
+            </ul>
+          </article>
         </div>
-      </div>
-
-      <div class="mt-12">
-        <h2 class="text-xl font-semibold text-[#1A1A1A]">Verwandte Leistungen</h2>
-        <div class="mt-4 grid gap-4 sm:grid-cols-2">
-          {related.map((r)=> (
-            <a href={`/leistungen/${r.slug}`} class="group rounded-2xl border border-[#123D2A]/10 bg-[#F5F1E9] p-5 hover:shadow-md transition-shadow">
-              <div class="text-xs uppercase tracking-wide text-[#123D2A]">{r.subtitle}</div>
-              <div class="mt-1 text-lg font-semibold text-[#1A1A1A]">{r.title}</div>
-              <p class="mt-2 text-[#1A1A1A]/70">{r.shortDescription}</p>
-              <span class="mt-3 inline-flex items-center gap-2 text-[#123D2A] group-hover:text-[#C8501E]">Mehr erfahren →</span>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-</Layout>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>
