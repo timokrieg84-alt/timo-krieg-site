@@ -1,48 +1,99 @@
 ---
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
-  canonical?: string;
-  jsonLd?: any;
-  ogImage?: string;
+  lang?: string;
 }
 const {
-  title = 'Gylsere Januzi Krieg Online Marketing Office',
-  description = 'Professionelles Online-Marketing und Vertriebsmanagement.',
-  canonical = 'https://timo-krieg-site-git-preview-timo24.vercel.app/',
-  jsonLd,
-  ogImage
+  title = 'Trattoria Bella Vista | Italienisches Restaurant in Berlin-Mitte',
+  description = 'Moderne italienische Küche in Berlin-Mitte: hausgemachte Pasta, Steinofenpizza, frische Antipasti und ausgewählte Weine. Jetzt Speisekarte ansehen und reservieren.',
+  lang = 'de-DE'
 } = Astro.props as Props;
+const navItems = [
+  { label: 'Start', href: '#hero' },
+  { label: 'Speisekarte', href: '#speisekarte' },
+  { label: 'Öffnungszeiten', href: '#oeffnungszeiten' },
+  { label: 'Standort & Kontakt', href: '#kontakt' },
+  { label: 'Reservierung', href: '#reservierung' }
+];
 ---
-<!DOCTYPE html>
-<html lang="de">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#0284c7" />
-    <title>{title}</title>
     <meta name="description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:locale" content="de_DE" />
-    <meta property="og:site_name" content="Gylsere Januzi Krieg Online Marketing Office" />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    {ogImage && <meta property="og:image" content={ogImage} />}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    {ogImage && <meta name="twitter:image" content={ogImage} />}
-    <link rel="stylesheet" href="/styles/main.css" />
-    {jsonLd && (
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
-    )}
+    <meta name="theme-color" content="#9E2A2B" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>{title}</title>
   </head>
-  <body>
-    <a class="skip-link" href="#main">Zum Inhalt springen</a>
-    <slot />
+  <body class="min-h-screen bg-bg text-text antialiased">
+    <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-surface text-text px-3 py-2 rounded-md shadow-brandSm">Zum Inhalt springen</a>
+    <header id="site-header" class="fixed top-0 inset-x-0 z-40 transition-shadow">
+      <nav class="container flex items-center justify-between py-4">
+        <a href="#hero" class="text-text hover:text-linkHover font-heading text-xl md:text-2xl tracking-wide">
+          Trattoria <span class="text-brand">Bella Vista</span>
+        </a>
+        <button id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-divider text-text" aria-label="Navigation umschalten" aria-expanded="false">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
+        </button>
+        <ul id="nav-menu" class="hidden md:flex gap-6 items-center text-sm">
+          {navItems.map((item) => (
+            <li><a href={item.href} class="text-textSecondary hover:text-linkHover transition-colors">{item.label}</a></li>
+          ))}
+          <li>
+            <a href="#reservierung" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand text-white hover:bg-linkHover shadow-brandSm">
+              Jetzt reservieren
+            </a>
+          </li>
+        </ul>
+      </nav>
+      <script is:inline>
+        const header = document.getElementById('site-header');
+        const menu = document.getElementById('nav-menu');
+        const toggle = document.getElementById('nav-toggle');
+        const links = menu?.querySelectorAll('a');
+        const setShadow = () => {
+          if (window.scrollY > 8) header?.classList.add('shadow-brandSm','bg-surface/90','backdrop-blur');
+          else header?.classList.remove('shadow-brandSm','bg-surface/90','backdrop-blur');
+        };
+        window.addEventListener('scroll', setShadow, { passive: true });
+        setShadow();
+        toggle?.addEventListener('click', () => {
+          const isOpen = menu?.classList.toggle('hidden') === false;
+          toggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        links?.forEach(l => l.addEventListener('click', () => {
+          if (window.innerWidth < 768) menu?.classList.add('hidden');
+        }));
+      </script>
+    </header>
+    <main class="pt-20">
+      <slot />
+    </main>
+    <footer class="mt-24 border-t border-divider bg-surface/70">
+      <div class="container py-10 grid md:grid-cols-3 gap-8 text-sm">
+        <div>
+          <p class="font-heading text-lg">Trattoria <span class="text-brand">Bella Vista</span></p>
+          <p class="text-textSecondary mt-2">Musterstrasse 12, 10115 Berlin</p>
+          <p class="text-textSecondary">Tel. <a class="text-link hover:text-linkHover" href="tel:+49301234567">+49 30 1234567</a></p>
+          <p class="text-textSecondary">E‑Mail <a class="text-link hover:text-linkHover" href="mailto:info@bellavista-berlin.de">info@bellavista-berlin.de</a></p>
+        </div>
+        <div>
+          <p class="font-semibold text-text mb-2">Öffnungszeiten</p>
+          <ul class="text-textSecondary space-y-1">
+            <li>Mo–Fr: 12:00–15:00, 17:30–22:30</li>
+            <li>Sa: 12:00–23:00</li>
+            <li>So: 12:00–22:00</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-text mb-2">Hinweis</p>
+          <p class="text-textSecondary">Reservierungen für 2–8 Personen telefonisch oder per E‑Mail. Kurzfristige Reservierungen bitte telefonisch.</p>
+        </div>
+      </div>
+      <div class="border-t border-divider py-4 text-center text-xs text-textSecondary">© {new Date().getFullYear()} Trattoria Bella Vista · Berlin</div>
+    </footer>
   </body>
 </html>
