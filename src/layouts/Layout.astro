@@ -1,5 +1,7 @@
 ---
 import { site } from "../data/site";
+import "../styles/tailwind.css";
+import "../styles/global.css";
 const { brand, nav } = site;
 const allPages = [
   { label: "Start", href: "/" },
@@ -19,8 +21,6 @@ const allLegal = nav.legal;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href={Astro.resolve('../styles/tailwind.css')} />
-    <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} />
   </head>
   <body class="min-h-dvh bg-[#F5F1E9] text-[#1A1A1A] antialiased selection:bg-[#123D2A]/10 selection:text-[#123D2A]">
     <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-[#F5F1E9] focus:text-[#1A1A1A] focus:px-3 focus:py-2 focus:rounded">Zum Inhalt springen</a>
