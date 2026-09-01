@@ -1,93 +1,142 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/Hero.astro";
+import MenuSection from "../components/MenuSection.astro";
+import HoursSection from "../components/HoursSection.astro";
+import ContactSection from "../components/ContactSection.astro";
+import ReservationCTA from "../components/ReservationCTA.astro";
 
-const SITE = 'https://timo-krieg-site-git-preview-timo24.vercel.app';
+const seo = {
+  title: 'Trattoria Bella Vista | Italienisches Restaurant in Berlin-Mitte',
+  description: 'Moderne italienische Küche in Berlin-Mitte: hausgemachte Pasta, Steinofenpizza, frische Antipasti und ausgewählte Weine. Jetzt Speisekarte ansehen und reservieren.'
+};
 
-const title = 'Gylsere Januzi Krieg Online Marketing Office – Online-Marketing & Vertriebsmanagement';
-const description = 'Professionelles Online-Marketing und Vertriebsmanagement.';
-const canonical = SITE + '/';
-const ogImage = SITE + '/images/logo-gjk.webp';
-
-const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  '@id': SITE + '/#business',
-  'name': 'Gylsere Januzi Krieg Online Marketing Office',
-  'url': SITE + '/',
-  'email': 'gjanuzikrieg@gmail.com',
-  'telephone': '+49 175 6372395',
-  'image': SITE + '/images/logo-gjk.webp',
-  'address': {
-    '@type': 'PostalAddress',
-    'streetAddress': 'Kitzingstraße 7',
-    'postalCode': '73529',
-    'addressLocality': 'Schwäbisch Gmünd',
-    'addressCountry': 'DE'
+const sections = {
+  hero: {
+    eyebrow: 'Italienische Küche in Berlin-Mitte',
+    title: 'Trattoria Bella Vista',
+    slogan: 'Hausgemachte Pasta, Steinofenpizza & ausgewählte Weine.',
+    description: 'Moderne Trattoria mit warmem Ambiente – authentische Aromen, saisonale Zutaten und herzlicher Service.',
+    primaryAction: { label: 'Tisch reservieren', href: '#reservierung', ariaLabel: 'Zur Reservierungssektion' },
+    secondaryAction: { label: 'Speisekarte ansehen', href: '#speisekarte', ariaLabel: 'Zur Speisekarte springen' },
+    badges: [
+      { text: 'Hausgemacht' },
+      { text: 'Steinofen' },
+      { text: 'Vegetarische Optionen' }
+    ]
   },
-  'areaServed': 'DE',
-  'sameAs': []
+  menu: {
+    title: 'Speisekarte',
+    subtitle: 'Frisch, saisonal und mit viel Amore zubereitet.',
+    currency: 'EUR',
+    locale: 'de-DE',
+    categories: [
+      {
+        id: 'antipasti',
+        title: 'Antipasti',
+        items: [
+          { name: 'Bruschetta al Pomodoro', description: 'Geröstetes Landbrot, Tomate, Basilikum, Knoblauch, Olivenöl', price: 7.5, tags: ['vegetarisch'] },
+          { name: 'Caprese di Bufala', description: 'Büffelmozzarella, Tomaten, Basilikum, natives Olivenöl', price: 12.0, tags: ['glutenfrei', 'vegetarisch'] },
+          { name: 'Carpaccio di Manzo', description: 'Dünn geschnittenes Rinderfilet, Rucola, Parmesan, Zitrone', price: 14.5, tags: ['glutenfrei'] },
+          { name: 'Calamari Fritti', description: 'Knusprig frittierte Tintenfischringe, Zitronen-Aioli', price: 13.0 },
+          { name: 'Verdure Grigliate', description: 'Gegrilltes Gemüse, Balsamico-Reduktion', price: 10.5, tags: ['vegan', 'glutenfrei'] }
+        ]
+      },
+      {
+        id: 'pasta',
+        title: 'Pasta',
+        note: 'Unsere Pasta wird täglich frisch im Haus hergestellt.',
+        items: [
+          { name: 'Spaghetti Aglio e Olio', description: 'Knoblauch, Chili, Petersilie, Olivenöl', price: 12.0, tags: ['vegan', 'scharf'] },
+          { name: 'Tagliatelle al Ragù', description: 'Langsam geschmortes Rinderragout, Rotwein, Kräuter', price: 15.5 },
+          { name: 'Pappardelle ai Funghi', description: 'Waldpilze, Sahne, Trüffelöl, Parmesan', price: 16.5, tags: ['vegetarisch'] },
+          { name: 'Gnocchi al Pesto', description: 'Basilikumpesto, Pinienkerne, Pecorino', price: 14.0, tags: ['vegetarisch'] },
+          { name: 'Linguine alle Vongole', description: 'Venusmuscheln, Knoblauch, Weißwein, Petersilie', price: 18.5 }
+        ]
+      },
+      {
+        id: 'pizza',
+        title: 'Pizza (Steinofen)',
+        items: [
+          { name: 'Margherita', description: 'Tomatensugo, Fior di Latte, Basilikum', price: 10.5, tags: ['vegetarisch'] },
+          { name: 'Diavola', description: 'Tomatensugo, Fior di Latte, scharfe Salami, Chili', price: 13.5, tags: ['scharf'] },
+          { name: 'Prosciutto e Funghi', description: 'Tomatensugo, Fior di Latte, gekochter Schinken, Champignons', price: 13.0 },
+          { name: 'Quattro Formaggi', description: 'Fior di Latte, Gorgonzola, Pecorino, Parmesan', price: 14.0, tags: ['vegetarisch'] },
+          { name: 'Ortolana', description: 'Tomatensugo, Fior di Latte, gegrilltes Gemüse, Rucola', price: 13.0, tags: ['vegetarisch'] }
+        ]
+      },
+      {
+        id: 'pesce-carne',
+        title: 'Pesce & Carne',
+        items: [
+          { name: 'Branzino al Limone', description: 'Wolfsbarschfilet, Zitronenbutter, Kräuter, saisonales Gemüse', price: 24.0, tags: ['glutenfrei'] },
+          { name: 'Saltimbocca alla Romana', description: 'Kalbfleisch, Salbei, Parmaschinken, Weißweinsauce, Rosmarinkartoffeln', price: 22.5, tags: ['glutenfrei'] },
+          { name: 'Melanzane alla Parmigiana', description: 'Geschichtete Aubergine, Tomate, Mozzarella, Parmesan', price: 16.0, tags: ['vegetarisch', 'glutenfrei'] }
+        ]
+      },
+      {
+        id: 'dessert',
+        title: 'Dolci',
+        items: [
+          { name: 'Tiramisù della Casa', description: 'Mascarponecreme, Espresso, Löffelbiskuit, Kakao', price: 7.5, tags: ['vegetarisch'] },
+          { name: 'Panna Cotta', description: 'Mit Beerenragout', price: 7.0, tags: ['glutenfrei', 'vegetarisch'] },
+          { name: 'Gelato Artigianale', description: 'Zwei Kugeln hausgemachtes Eis nach Wahl', price: 5.5, tags: ['vegetarisch'] }
+        ]
+      },
+      {
+        id: 'getraenke',
+        title: 'Getränke',
+        items: [
+          { name: 'Hauswein Weiß/Rot (0,2 l)', description: 'Ausgewählter italienischer Landwein', price: 5.5, tags: ['alkoholisch'] },
+          { name: 'Prosecco (0,1 l)', description: 'Frizzante', price: 4.8, tags: ['alkoholisch'] },
+          { name: 'Espresso', description: 'Einfach oder doppio', price: 2.4 },
+          { name: 'Cappuccino', description: 'Mit Milch', price: 3.2 },
+          { name: 'San Pellegrino (0,75 l)', description: 'Mineralwasser, prickelnd', price: 6.5 }
+        ]
+      }
+    ]
+  },
+  hours: {
+    title: 'Öffnungszeiten',
+    schedule: [
+      { days: ['Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag'], lunch: { open: '12:00', close: '15:00' }, dinner: { open: '17:30', close: '22:30' } },
+      { days: ['Samstag'], continuous: { open: '12:00', close: '23:00' } },
+      { days: ['Sonntag'], continuous: { open: '12:00', close: '22:00' } }
+    ],
+    kitchenLastOrder: { lunch: '14:30', dinner: '22:00', continuous: '22:30' },
+    notes: 'Feiertagsöffnungszeiten werden gesondert bekanntgegeben.'
+  },
+  contact: {
+    title: 'Standort & Kontakt',
+    address: 'Musterstrasse 12, 10115 Berlin',
+    contactMethods: [
+      { type: 'phone', label: '+49 30 1234567', href: 'tel:+49301234567' },
+      { type: 'email', label: 'info@bellavista-berlin.de', href: 'mailto:info@bellavista-berlin.de' }
+    ],
+    map: {
+      provider: 'google',
+      embedUrl: 'https://www.google.com/maps?q=Musterstrasse%2012%2C%2010115%20Berlin&output=embed',
+      mapLink: 'https://www.google.com/maps/search/?api=1&query=Musterstrasse%2012%2C%2010115%20Berlin',
+      ariaLabel: 'Karte: Trattoria Bella Vista, Musterstrasse 12, 10115 Berlin'
+    },
+    info: ['Barrierearmer Zugang', 'Kartenzahlung möglich', 'Hunde willkommen']
+  },
+  reservation: {
+    title: 'Reservierung',
+    text: 'Wir freuen uns auf Ihren Besuch! Reservierungen für 2–8 Personen nehmen wir gern telefonisch oder per E‑Mail entgegen. Für Gruppen ab 9 Personen kontaktieren Sie uns bitte per E‑Mail.',
+    actions: [
+      { label: 'Jetzt anrufen', href: 'tel:+49301234567', variant: 'primary', ariaLabel: 'Telefonisch reservieren' },
+      { label: 'E‑Mail senden', href: 'mailto:info@bellavista-berlin.de?subject=Reservierung%20Trattoria%20Bella%20Vista', variant: 'secondary', ariaLabel: 'Reservierungsanfrage per E‑Mail' }
+    ],
+    notes: 'Kurzfristige Reservierungen am selben Tag bitte telefonisch.'
+  }
 };
 ---
-<BaseLayout {title} {description} {canonical} {jsonLd} {ogImage}>
-  <Header />
 
-  <main id="main">
-    <section class="hero" aria-label="Intro">
-      <div class="container">
-        <h1>Gylsere Januzi Krieg Online Marketing Office</h1>
-        <p class="claim">Professionelles Online-Marketing und Vertriebsmanagement.</p>
-        <div class="cta">
-          <a class="btn btn--primary" href="/kontakt">Kontakt aufnehmen</a>
-          <a class="btn btn--ghost" href="/leistungen">Leistungen</a>
-        </div>
-      </div>
-      <svg class="noise" xmlns="http://www.w3.org/2000/svg">
-        <filter id="f">
-          <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch" />
-          <feColorMatrix type="saturate" values="0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#f)"></rect>
-      </svg>
-    </section>
-
-    <section class="section" id="leistungen">
-      <div class="container">
-        <div class="section-head">
-          <h2>Leistungen</h2>
-        </div>
-        <p>Inhalt folgt. Diese Sektion zeigt später Ihre Kernangebote.</p>
-      </div>
-    </section>
-
-    <section class="section" id="referenzen">
-      <div class="container">
-        <div class="section-head">
-          <h2>Referenzen</h2>
-        </div>
-        <p>Inhalt folgt. Platz für Case-Studys & Ergebnisse.</p>
-      </div>
-    </section>
-
-    <section class="section" id="ueber-uns">
-      <div class="container">
-        <div class="section-head">
-          <h2>Über uns</h2>
-        </div>
-        <p>Inhalt folgt. Kurzprofil, Werte und Arbeitsweise.</p>
-      </div>
-    </section>
-
-    <section class="section" id="kontakt">
-      <div class="container">
-        <div class="section-head">
-          <h2>Kontakt</h2>
-        </div>
-        <p>Inhalt folgt. CTA führt vorerst zur Kontaktseite.</p>
-      </div>
-    </section>
-  </main>
-
-  <Footer />
+<BaseLayout title={seo.title} description={seo.description} lang="de-DE">
+  <Hero {...sections.hero} />
+  <MenuSection {...sections.menu} />
+  <HoursSection {...sections.hours} />
+  <ContactSection {...sections.contact} />
+  <ReservationCTA {...sections.reservation} />
 </BaseLayout>
