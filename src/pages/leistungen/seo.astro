@@ -1,108 +1,40 @@
 ---
-import '../../styles/global.css';
-const title = 'SEO Agentur für den Mittelstand in Schwäbisch Gmünd | B2B | Timo Krieg';
-const description = 'Technisches SEO, Content-Strategie und stabile Rankings für B2B-Unternehmen in Schwäbisch Gmünd, Ostwürttemberg & DACH – inklusive Core Web Vitals.';
-const canonical = '/leistungen/seo/';
+import Layout from "../../layouts/Layout.astro";
+import { site } from "../../data/site";
+const service = site.services.find((s)=> s.slug === 'seo')!;
+const related = service.related.map((slug)=> site.services.find((s)=> s.slug === slug)!);
 ---
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{title}</title>
-  <meta name="description" content={description} />
-  <link rel="canonical" href={canonical} />
-  <meta property="og:title" content={title} />
-  <meta property="og:description" content={description} />
-  <meta property="og:image" content="/og-default.jpg" />
-  <script type="application/ld+json">{JSON.stringify({
-    '@context':'https://schema.org','@type':'Service',serviceType:'SEO & Content',category:'https://schema.org/SEO',
-    provider:{'@type':'LocalBusiness',name:'Timo Krieg',address:{'@type':'PostalAddress',postalCode:'73529',addressLocality:'Schwäbisch Gmünd',addressCountry:'DE'},areaServed:['DE','AT','CH']},
-    url: canonical
-  })}</script>
-  <script type="application/ld+json">{JSON.stringify({
-    '@context':'https://schema.org','@type':'WebPage', name:title, description, url: canonical, inLanguage:'de',
-    breadcrumb:{'@type':'BreadcrumbList', itemListElement:[{'@type':'ListItem', position:1, name:'Start', item:'/'},{'@type':'ListItem', position:2, name:'Leistungen', item:'/leistungen/'},{'@type':'ListItem', position:3, name:'SEO', item: canonical}]}
-  })}</script>
-</head>
-<body>
-  <header class="border-b border-slate-200 bg-white/70 backdrop-blur sticky top-0 z-50">
-    <div class="container py-4 flex items-center justify-between gap-4">
-      <a href="/" class="font-semibold tracking-tight">Timo Krieg</a>
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="/leistungen/" class="nav-link">Leistungen</a>
-        <a href="/ueber-uns" class="nav-link">Über uns</a>
-        <a href="/kontakt" class="nav-link">Kontakt</a>
-        <a href="tel:+491604365363" class="btn btn-primary">Jetzt anrufen</a>
-      </nav>
-      <a href="/kontakt" class="md:hidden btn btn-primary">Kontakt</a>
-    </div>
-  </header>
-
-  <main>
-    <section class="section">
-      <div class="container grid gap-8 lg:grid-cols-2 items-start">
-        <div>
-          <h1 class="text-4xl md:text-5xl font-semibold tracking-tight">Sichtbarkeit, die Anfragen bringt.</h1>
-          <p class="mt-4 text-lg text-slate-600">Als SEO‑Agentur für den Mittelstand kombiniere ich technisches SEO mit präzisem B2B‑Content – für planbare Rankings und qualifizierte Leads.</p>
-          <div class="mt-6 flex gap-3">
-            <a href="/kontakt" class="btn btn-primary">Jetzt Sichtbarkeit aufbauen</a>
-            <a href="/leistungen/cro-conversion-rate-optimierung/" class="btn btn-secondary">SEO‑Traffic besser konvertieren</a>
-          </div>
-        </div>
-        <ul class="card space-y-2">
-          <li>SEO‑Audit: Technik, Content, Offpage, Potenziale</li>
-          <li>Keyword‑ und Themencluster, SERP‑Analyse</li>
-          <li>Onpage‑Optimierung, interne Verlinkung, Schema</li>
-          <li>Content‑Plan & Produktion mit Partnern</li>
-          <li>Monitoring, Reporting, Iteration</li>
+<Layout>
+  <section class="py-16 sm:py-24 lg:py-28">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+      <a href="/" class="text-sm text-[var(--primary)] hover:text-[var(--secondary)]">← Zurück zur Startseite</a>
+      <h1 class="mt-4 text-3xl sm:text-5xl font-semibold text-[var(--text)]">{service.title}</h1>
+      <p class="mt-3 text-lg text-[var(--text)]/80">{service.subtitle}</p>
+      <div class="mt-6 rounded-2xl border border-[var(--primary)]/10 bg-white p-6">
+        <p class="text-[var(--text)]/80 whitespace-pre-line">{service.longDescription}</p>
+        <h2 class="mt-8 text-xl font-semibold text-[var(--text)]">Leistungsbausteine</h2>
+        <ul class="mt-3 grid gap-2 list-disc list-inside text-[var(--text)]/80">
+          {service.features.map((f)=> (<li>{f}</li>))}
         </ul>
-      </div>
-    </section>
-
-    <section class="section bg-slate-50">
-      <div class="container">
-        <h2 class="text-3xl md:text-4xl font-semibold tracking-tight">In 4 Schritten zum SEO‑Erfolg</h2>
-        <ol class="mt-8 grid gap-6 md:grid-cols-4">
-          <li class="card"><h3 class="font-semibold">1) Diagnose</h3><p class="mt-1 text-slate-600">Datenlage, Wettbewerber, Prioritäten.</p></li>
-          <li class="card"><h3 class="font-semibold">2) Strategie</h3><p class="mt-1 text-slate-600">Cluster, Funnel, Content‑Gaps.</p></li>
-          <li class="card"><h3 class="font-semibold">3) Umsetzung</h3><p class="mt-1 text-slate-600">Seiten, Artikel, Optimierungen.</p></li>
-          <li class="card"><h3 class="font-semibold">4) Wachstum</h3><p class="mt-1 text-slate-600">Linkaufbau light, Refresh, Skalierung.</p></li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container grid gap-6 md:grid-cols-2">
-        <div class="card">
-          <h2 class="text-2xl font-semibold">Vorteile für den Mittelstand</h2>
-          <ul class="mt-3 list-disc pl-5 text-slate-600 space-y-1">
-            <li>Weniger Abhängigkeit von Klickpreisen</li>
-            <li>Inhalte, die Vertriebsgespräche vorbereiten</li>
-            <li>Stabile Rankings trotz Update‑Zyklen</li>
-            <li>Messbare Pipeline‑Qualität statt nur Traffic</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h2 class="text-2xl font-semibold">FAQ</h2>
-          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Wie schnell wirkt SEO?</summary><div class="mt-2 text-slate-600">Erste Effekte in 6–12 Wochen, tragfähige Ergebnisse in 3–6 Monaten.</div></details>
-          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Schreiben Sie auch Texte?</summary><div class="mt-2 text-slate-600">Ja, mit qualifizierten Partnern – ich liefere Strategie, Briefings und Qualitätssicherung.</div></details>
-          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Brauchen wir viele Backlinks?</summary><div class="mt-2 text-slate-600">Qualität vor Quantität. Relevanz und Technik zuerst, dann gezielter Aufbau.</div></details>
-          <details class="mt-3 group rounded-xl border border-slate-200 bg-white p-5 hover:bg-slate-50 transition"><summary class="font-medium">Funktioniert SEO in Nischen?</summary><div class="mt-2 text-slate-600">Ja – besonders gut durch klare Themenautorität.</div></details>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full bg-[var(--primary)] px-5 py-3 text-white hover:bg-[var(--secondary)] transition-colors">Projekt anfragen</a>
+          <a href="/leistungen/google-ads" class="inline-flex items-center gap-2 rounded-full border border-[var(--primary)]/20 bg-white px-5 py-3 text-[var(--primary)] hover:border-[var(--secondary)] hover:text-[var(--secondary)] transition-colors">Google Ads kombinieren</a>
         </div>
       </div>
-      <div class="container mt-8"><a href="/kontakt" class="btn btn-primary">Kostenloses Erstgespräch</a></div>
-    </section>
-  </main>
 
-  <footer class="border-t border-slate-200">
-    <div class="container py-8 text-sm text-slate-600 flex flex-col md:flex-row items-center justify-between gap-3">
-      <span>© {new Date().getFullYear()} Timo Krieg – Performance Marketing</span>
-      <nav class="flex items-center gap-4">
-        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/impressum">Impressum</a>
-        <a class="underline decoration-slate-300 underline-offset-4 hover:decoration-slate-400" href="/datenschutz">Datenschutz</a>
-      </nav>
+      <div class="mt-12">
+        <h2 class="text-xl font-semibold text-[var(--text)]">Passende Ergänzungen</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2">
+          {related.map((r)=> (
+            <a href={`/leistungen/${r.slug}`} class="group rounded-2xl border border-[var(--primary)]/10 bg-white p-5 hover:shadow-md transition-shadow">
+              <div class="text-xs uppercase tracking-wide text-[var(--primary)]">{r.subtitle}</div>
+              <div class="mt-1 text-lg font-semibold text-[var(--text)]">{r.title}</div>
+              <p class="mt-2 text-[var(--text)]/70">{r.shortDescription}</p>
+              <span class="mt-3 inline-flex items-center gap-2 text-[var(--primary)] group-hover:text-[var(--secondary)]">Mehr erfahren →</span>
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
-  </footer>
-</body>
-</html>
+  </section>
+</Layout>
