@@ -1,7 +1,13 @@
 ---
 // Import global styles (Tailwind + Tokens)
 import "@/styles/global.css";
-const { title = "Gylsere Januzi Krieg – Online Marketing Office", description = "Premium Online-Marketing. Souverän. Messbar. Klar." } = Astro.props;
+const {
+  title = "Gylsere Januzi Krieg – Online Marketing Office",
+  description = "Premium Online-Marketing. Souverän. Messbar. Klar.",
+} = Astro.props;
+const site = Astro.site?.toString() ?? "https://example.com/";
+const canonical = new URL(Astro.url.pathname || "/", site).toString();
+const ogImage = new URL("/images/hero-bg.webp", site).toString();
 ---
 <!DOCTYPE html>
 <html lang="de" class="dark">
@@ -10,6 +16,18 @@ const { title = "Gylsere Januzi Krieg – Online Marketing Office", description 
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Gylsere Januzi Krieg – Online Marketing Office" />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
   </head>
   <body>
     <a href="#main" class="skip-link">Zum Inhalt springen</a>
@@ -19,7 +37,7 @@ const { title = "Gylsere Januzi Krieg – Online Marketing Office", description 
     </main>
     <slot name="footer" />
     <script>
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
         document.documentElement.style.scrollBehavior = 'auto';
       }
     </script>
