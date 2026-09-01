@@ -1,43 +1,39 @@
----
-const items = [
-  { quote: "Klares Reporting, starke Performance – genau, was wir brauchten.", author: "Dr. M. Köhler, Praxisinhaber" },
-  { quote: "B2B-Leads +142% bei stabilen CPL. Empfehlung!", author: "S. Berger, SaaS" },
-  { quote: "Transparenz & Tempo – sehr professionell.", author: "A. Weber, KMU" },
-];
----
-<section id="referenzen" class="py-16 md:py-24">
-  <div class="container">
-    <h2 class="h2 reveal-up">Stimmen unserer Kunden</h2>
-    <div class="swiper mt-8 reveal-up" aria-label="Testimonials Carousel">
+<section id="cases" class="section">
+  <div class="container stack">
+    <div class="stack center max-w-md" data-reveal>
+      <span class="eyebrow" data-reveal-child>Referenzen</span>
+      <h2 data-reveal-child>Ergebnisse, die Vertrauen schaffen</h2>
+    </div>
+    <div class="swiper js-logos">
       <div class="swiper-wrapper">
-        {items.map(i => (
-          <div class="swiper-slide">
-            <article class="card p-6 md:p-8 h-full flex flex-col justify-between">
-              <p class="text-lg">“{i.quote}”</p>
-              <p class="text-txt-2 mt-4">— {i.author}</p>
-            </article>
-          </div>
-        ))}
+        <div class="swiper-slide"><span>Logo 1</span></div>
+        <div class="swiper-slide"><span>Logo 2</span></div>
+        <div class="swiper-slide"><span>Logo 3</span></div>
+        <div class="swiper-slide"><span>Logo 4</span></div>
       </div>
       <div class="swiper-pagination"></div>
     </div>
   </div>
 </section>
-
-<script is:client="visible">
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+<style>
+.swiper { padding-top: var(--sp-5); }
+.swiper-slide { display: grid; place-items: center; height: 96px; border: 1px solid var(--clr-border); border-radius: var(--radius-md); background: var(--clr-surface); }
+.swiper-pagination-progressbar { background: rgba(28,140,255,.15); }
+.swiper-pagination-progressbar-fill { background: var(--clr-accent); }
+</style>
+<script client:idle>
+  import 'swiper/css'; import 'swiper/css/pagination';
   (async () => {
-    const { default: Swiper } = await import('swiper');
-    const { Pagination, A11y } = await import('swiper/modules');
-    new Swiper('.swiper', {
-      modules: [Pagination, A11y],
-      slidesPerView: 1,
-      spaceBetween: 16,
-      pagination: { el: '.swiper-pagination', clickable: true },
+    const { Swiper } = await import('swiper');
+    const { Pagination, A11y, Autoplay } = await import('swiper/modules');
+    const el = document.querySelector('.js-logos'); if (!el) return;
+    new Swiper(el as any, {
+      modules: [Pagination, A11y, Autoplay],
+      slidesPerView: 2, spaceBetween: 16,
+      autoplay: { delay: 2500, pauseOnMouseEnter: true, disableOnInteraction: false },
       a11y: { enabled: true },
-      speed: reduce ? 0 : 450,
-      allowTouchMove: true,
-      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+      pagination: { el: (el as HTMLElement).querySelector('.swiper-pagination') as HTMLElement, type: 'progressbar' },
+      breakpoints: { 640: { slidesPerView: 3, spaceBetween: 20 }, 960: { slidesPerView: 4, spaceBetween: 24 } }
     });
   })();
 </script>
