@@ -1,57 +1,72 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Branding & Corporate Design | Marken, die performen",
-  description: "Positionierung, Name, CD‑Systeme & Brand Guidelines – für differenziertes Wachstum on‑ und offline.",
-  url: "https://example.com/leistungen/branding/",
-  canonical: "https://example.com/leistungen/branding/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Layout from "../../layouts/Layout.astro";
+import { brand, colors, services } from "../../data/site";
+const service = services.find(s => s.slug === 'branding');
+const others = services.filter(s => s.slug !== 'branding');
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-    <script type="application/ld+json">
-      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/branding/#service","name":"Branding","serviceType":"Brand Strategy & Corporate Design","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
-    </script>
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="intro" title="Markenbildung mit Substanz." intro="Von der Marken‑DNA bis zum Design System – Positionierung, die Wiedererkennung und Präzision in der Kommunikation schafft.">
-        <div class="grid md:grid-cols-2 gap-8">
-          <article class="card p-6">
-            <h3 class="h3">Leistungspaket</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Brand Strategy & Workshops</li>
-              <li>• Logo & Visual Identity</li>
-              <li>• Design System & Guidelines</li>
-              <li>• Messaging & Tone of Voice</li>
+<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
+  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
+      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
+      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
+      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
+      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Erstgespräch vereinbaren</a>
+        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
+      </div>
+    </div>
+  </section>
+
+  <section class={`bg-[${colors.background}]`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
+      <div class="lg:col-span-2">
+        <div>
+          <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Marken-DNA, die Entscheidungen erleichtert</h2>
+          <p class={`mt-4 text-[${colors.text}]/90`}>Starke Marken entstehen, wenn Strategie, Design und Sprache zu einem präzisen System verschmelzen. Wir schärfen Nutzenversprechen, Positionierung und Tonalität – und übersetzen sie in eine visuelle Identität, die über alle Touchpoints konsistent wirkt.</p>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Vorgehen</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Research & Alignment: Markt, Wettbewerb, Zielgruppensegmente, Jobs-to-be-done</li>
+            <li>Brand Strategy: Positionierung, Werte, Value Proposition, Proof Points</li>
+            <li>Identity: Logo, Typografie, Farbklima, Komponenten & Anwendung</li>
+            <li>Messaging: Claims, Narrative, Tone of Voice, Textbausteine</li>
+          </ul>
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
+          {service?.features && (
+            <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+              {service.features.map((f) => (<li>{f}</li>))}
             </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
-              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
-            </div>
-          </article>
-          <article class="card p-6">
-            <h3 class="h3">Messpunkte</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Markenbekanntheit & Recall</li>
-              <li>• Konsistenz über Touchpoints</li>
-              <li>• Conversion‑Lift durch Klarheit</li>
-              <li>• Wachstum der Direktzugriffe</li>
-            </ul>
-          </article>
+          )}
+          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Ergebnisse</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
+            <li>Strategie-Dokument inkl. Differenzierung und Proof</li>
+            <li>Brand Guidelines mit Komponentenbibliothek</li>
+            <li>Messaging-Guidelines mit Beispielen je Kanal</li>
+            <li>Rollout-Plan für Website, Vertriebsmaterial und Social</li>
+          </ul>
         </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
+          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Wir validieren Positionierung und Narrative mit echten Kundenfeedbacks – schnell, pragmatisch, datenbasiert.</p>
+          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Kostenlose Erstberatung</a>
+        </div>
+      </div>
+      <aside class="lg:col-span-1">
+        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
+          <ul class="mt-3 space-y-2">
+            {others.map((o) => (
+              <li>
+                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
+                  <span class="font-medium">{o.title}</span>
+                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Layout>
