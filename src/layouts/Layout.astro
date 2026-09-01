@@ -20,7 +20,7 @@ const allServices = services;
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body class={`min-h-screen bg-[${colors.background}] text-[${colors.text}] antialiased`} style={`font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, Apple Color Emoji, Segoe UI Emoji;`}>
-    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/60 bg-white/90 border-b border-[${colors.muted}]/20">
+    <header class={`sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-[${colors.background}]/60 bg-[${colors.background}]/90 border-b border-[${colors.muted}]/20`}>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="/" class="flex items-center gap-3 group" aria-label={brand.name}>
@@ -39,34 +39,34 @@ const allServices = services;
                 Leistungen
                 <svg width="16" height="16" viewBox="0 0 20 20" fill="none" class={`text-[${colors.muted}]`}><path d="M5 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
               </button>
-              <div class={`invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute left-1/2 -translate-x-1/2 mt-3 w-[720px] max-w-[90vw] bg-white border border-[${colors.muted}]/20 shadow-xl rounded-xl p-4 grid grid-cols-2 md:grid-cols-3 gap-2`}>
+              <div class={`invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute left-1/2 -translate-x-1/2 mt-3 w-[720px] max-w-[90vw] bg-[${colors.background}] border border-[${colors.muted}]/20 rounded-xl p-4 grid grid-cols-2 md:grid-cols-3 gap-2`}>
                 {allServices.map((s) => (
-                  <a href={`/leistungen/${s.slug}`} class={`rounded-lg px-3 py-2 hover:bg-[${colors.background}] focus:bg-[${colors.background}] transition-colors text-sm text-[${colors.text}]/80 hover:text-[${colors.text}]`}>{s.title}</a>
+                  <a href={`/leistungen/${s.slug}`} class={`rounded-lg px-3 py-2 hover:bg-[${colors.accent}]/10 focus:bg-[${colors.accent}]/10 transition-colors text-sm text-[${colors.text}]/80 hover:text-[${colors.text}]`}>{s.title}</a>
                 ))}
               </div>
             </div>
-            <a href="/#kontakt" class={`inline-flex items-center gap-2 rounded-full bg-[${colors.primary}] px-4 py-2 text-white text-sm font-semibold shadow hover:shadow-md transition-shadow border border-[${colors.gold}]`}>Kontakt</a>
+            <a href="/#kontakt" class={`inline-flex items-center gap-2 rounded-full bg-[${colors.primary}] px-4 py-2 text-[${colors.background}] text-sm font-semibold transition-shadow border border-[${colors.gold}]`}>Kontakt</a>
           </nav>
-          <button id="mobileMenuBtn" class={`lg:hidden inline-flex items-center justify-center rounded-md p-2 text-[${colors.text}]/70 hover:text-[${colors.text}] hover:bg-[${colors.background}] focus:outline-none focus:ring-2 focus:ring-[${colors.gold}]`} aria-controls="mobileMenu" aria-expanded="false">
+          <button id="mobileMenuBtn" class={`lg:hidden inline-flex items-center justify-center rounded-md p-2 text-[${colors.text}]/70 hover:text-[${colors.text}] hover:bg-[${colors.accent}]/10 focus:outline-none focus:ring-2 focus:ring-[${colors.gold}]`} aria-controls="mobileMenu" aria-expanded="false">
             <span class="sr-only">Menü öffnen</span>
             <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
       </div>
-      <div id="mobileMenu" class={`lg:hidden origin-top scale-y-0 opacity-0 pointer-events-none transition-all duration-200 border-t border-[${colors.muted}]/20 bg-white`}>
+      <div id="mobileMenu" class={`lg:hidden origin-top scale-y-0 opacity-0 pointer-events-none transition-all duration-200 border-t border-[${colors.muted}]/20 bg-[${colors.background}]`}>
         <div class="space-y-1 px-4 py-4">
           {nav.main.map((item) => (
-            <a href={item.href} class={`block rounded-md px-3 py-2 text-base font-medium text-[${colors.text}]/80 hover:bg-[${colors.background}] hover:text-[${colors.text}]`}>{item.label}</a>
+            <a href={item.href} class={`block rounded-md px-3 py-2 text-base font-medium text-[${colors.text}]/80 hover:bg-[${colors.accent}]/10 hover:text-[${colors.text}]`}>{item.label}</a>
           ))}
           <details class="group">
-            <summary class={`cursor-pointer rounded-md px-3 py-2 text-base font-medium text-[${colors.text}]/80 hover:bg-[${colors.background}] hover:text-[${colors.text}]`}>Leistungen</summary>
+            <summary class={`cursor-pointer rounded-md px-3 py-2 text-base font-medium text-[${colors.text}]/80 hover:bg-[${colors.accent}]/10 hover:text-[${colors.text}]`}>Leistungen</summary>
             <div class="mt-2 grid grid-cols-1 gap-1">
               {allServices.map((s) => (
-                <a href={`/leistungen/${s.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.text}]/80 hover:bg-[${colors.background}] hover:text-[${colors.text}]`}>{s.title}</a>
+                <a href={`/leistungen/${s.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.text}]/80 hover:bg-[${colors.accent}]/10 hover:text-[${colors.text}]`}>{s.title}</a>
               ))}
             </div>
           </details>
-          <a href="/#kontakt" class={`mt-2 inline-flex items-center gap-2 rounded-full bg-[${colors.primary}] px-4 py-2 text-white text-sm font-semibold border border-[${colors.gold}]`}>Kontakt</a>
+          <a href="/#kontakt" class={`mt-2 inline-flex items-center gap-2 rounded-full bg-[${colors.primary}] px-4 py-2 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Kontakt</a>
         </div>
       </div>
     </header>
@@ -75,7 +75,7 @@ const allServices = services;
       <slot />
     </main>
 
-    <footer class={`mt-24 border-t border-[${colors.muted}]/20 bg-white`}>
+    <footer class={`mt-24 border-t border-[${colors.muted}]/20 bg-[${colors.background}]`}>
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="space-y-3">
           <div class="flex items-center gap-3">
