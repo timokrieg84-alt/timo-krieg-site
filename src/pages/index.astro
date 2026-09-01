@@ -1,53 +1,26 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Hero from "@/components/Hero.astro";
-import Section from "@/components/Section.astro";
-import Card from "@/components/Card.astro";
-import Stats from "@/components/Stats.astro";
-import Testimonials from "@/components/Testimonials.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Online‑Marketing Agentur Schwäbisch Gmünd | Gylsere Januzi Krieg",
-  description: "Full‑Service für KMU, Praxen & B2B in BW/DACH: SEO, Google Ads, GEO, Astro‑Webdesign, AI‑Automation & mehr. Jetzt sichtbar wachsen.",
-  url: "https://example.com/",
-  canonical: "https://example.com/",
-  image: "/images/hero-bg.webp",
-  type: "website"
-};
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Leistungen from '../components/Leistungen.astro';
+import Prozess from '../components/ProzessTimeline.astro';
+import Counters from '../components/Counters.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+const title = 'Online‑Marketing Agentur Schwäbisch Gmünd | GJK';
+const description = 'Premium Performance‑Marketing: SEO, Local SEO, Google Ads, GEO, Webdesign/E‑Com & AI – DSGVO‑konform. Angebot anfragen.';
+const canonical = 'https://online-marketing-office.de/';
 ---
-<Layout title={meta.title} description={meta.description}>
-  <Fragment slot="head"><HeadSEO {...meta} /></Fragment>
-  <Fragment slot="nav"><Navbar /></Fragment>
-  <Hero />
-  <Section id="leistungen" title="Leistungen" intro="Strategie, Umsetzung und laufende Optimierung – jede Leistung mit klarer Verantwortung und Messpunkten.">
-    <div class="grid-12">
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/seo-local-seo/"><Card title="SEO & Local SEO" text="Technik, Content, Backlinks & lokale Sichtbarkeit – inkl. Google Business Profil und 30+ Portale." /></a>
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/google-ads/"><Card title="Google Ads" text="Performance-getriebene Kampagnen – Search bis PMax, sauber getrackt, klarer ROAS." /></a>
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/seo-regio/"><Card title="SEO-Regio – Umland-Dominanz" text="50 ortsspezifische Seiten fangen regionale Suchen ab – Ihre Hauptseite bleibt unberührt." /></a>
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/geo-generative-engine-optimization/"><Card title="GEO – Generative Engine Optimization" text="Sichtbar in AI-Antworten mit sauberen Entities & Citation-Authority." /></a>
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/webdesign-e-commerce/"><Card title="Webdesign (Astro) & E‑Commerce" text="Ultraschnelle Websites & Shops – DSGVO-sicher, konversionsstark, Core Web Vitals top." /></a>
-      <a class="col-span-12 md:col-span-4 block" href="/leistungen/ai-automation/"><Card title="AI & Automation" text="Agenten, Workflows, Chatbots & Integrationen – echte Effizienzgewinne." /></a>
-    </div>
-  </Section>
-  <Section id="prozess" title="So arbeiten wir" intro="Strukturiert, transparent, messbar – in 6 Schritten zum Ergebnis.">
-    <div class="grid md:grid-cols-3 gap-6">
-      <Card title="Analyse & Zielbild" text="Audit von Markt, Wettbewerb und Daten – klare, messbare Ziele." />
-      <Card title="Strategie & Fahrplan" text="Priorisierter Maßnahmenplan über alle relevanten Kanäle." />
-      <Card title="Umsetzung & Launch" text="Design, Content, Technik und Kampagnen – sauber umgesetzt." />
-    </div>
-  </Section>
-  <Section id="zahlen" title="Zahlen, die zählen">
-    <Stats />
-  </Section>
-  <Testimonials />
-  <CTA />
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
-
-<!-- JSON-LD Organization/LocalBusiness -->
-<script type="application/ld+json">
-{ "@context": "https://schema.org", "@graph": [ { "@type": ["Organization","LocalBusiness","AdvertisingAgency"], "@id": "https://example.com/#organization", "name": "Gylsere Januzi Krieg – Online Marketing Office", "url": "https://example.com/", "logo": "https://example.com/images/hero-bg.webp", "image": "https://example.com/images/hero-bg.webp", "telephone": "+49-175-6372395", "email": "gjanuzikrieg@gmail.com", "priceRange": "€€€", "address": { "@type": "PostalAddress", "streetAddress": "Kitzingstraße 7", "postalCode": "73529", "addressLocality": "Schwäbisch Gmünd", "addressRegion": "BW", "addressCountry": "DE" }, "areaServed": [ {"@type":"City","name":"Schwäbisch Gmünd"}, {"@type":"State","name":"Baden-Württemberg"}, {"@type":"Country","name":"Germany"}, {"@type":"Country","name":"Austria"}, {"@type":"Country","name":"Switzerland"} ] }, { "@type": "WebSite", "@id": "https://example.com/#website", "url": "https://example.com/", "name": "Gylsere Januzi Krieg – Online Marketing Office", "inLanguage": "de-DE" } ] }
-</script>
+<Base {title} {description} {canonical} ogImage="/images/hero-office-dusk.webp">
+  <Header />
+  <main id="main">
+    <Hero />
+    <Leistungen />
+    <Prozess />
+    <Counters />
+    <Testimonials />
+    <Contact />
+  </main>
+  <Footer />
+</Base>
