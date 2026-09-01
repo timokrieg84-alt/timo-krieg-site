@@ -1,0 +1,49 @@
+---
+interface ContactMethod { type: 'phone' | 'email'; label: string; href: string }
+interface MapConf { provider: string; embedUrl: string; mapLink?: string; ariaLabel?: string }
+export interface Props {
+  title: string;
+  address: string;
+  contactMethods: ContactMethod[];
+  map: MapConf;
+  info?: string[];
+}
+const { title, address, contactMethods = [], map, info = [] } = Astro.props as Props;
+---
+<section id="kontakt" class="scroll-mt-28 py-20 md:py-24 bg-bg border-t border-divider">
+  <div class="container">
+    <div class="md:flex md:items-start md:justify-between md:gap-10">
+      <div class="md:w-1/2">
+        <h2 class="font-heading text-[32px] md:text-[40px] leading-tight text-text">{title}</h2>
+        <p class="mt-2 text-textSecondary">{address}</p>
+        <ul class="mt-4 space-y-2">
+          {contactMethods.map((m) => (
+            <li>
+              <a href={m.href} class="inline-flex items-center gap-2 text-link hover:text-linkHover">
+                <span class="inline-block w-5 h-5" aria-hidden="true">{m.type === 'phone' ? '☎' : '✉'}</span>
+                <span class="underline-offset-2">{m.label}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        {info.length > 0 && (
+          <ul class="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {info.map((i) => (
+              <li class="px-3 py-2 rounded-md bg-white border border-divider text-sm text-textSecondary">{i}</li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div class="md:w-1/2 mt-6 md:mt-0">
+        <div class="aspect-video rounded-lg overflow-hidden border border-divider shadow-brandMd">
+          <iframe src={map.embedUrl} title={map.ariaLabel} aria-label={map.ariaLabel} loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="w-full h-full"></iframe>
+        </div>
+        {map.mapLink && (
+          <p class="text-sm text-textSecondary mt-2">
+            <a href={map.mapLink} class="text-link hover:text-linkHover underline underline-offset-2" target="_blank" rel="noopener">In Karten-App öffnen</a>
+          </p>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
