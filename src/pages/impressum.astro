@@ -1,15 +1,18 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { site } from "../data/site";
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Footer from "@/components/Footer.astro";
 ---
-<Layout>
-  <section class="py-16 sm:py-24 lg:py-28">
-    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-      <h1 class="text-3xl sm:text-5xl font-semibold text-[#1A1A1A] mb-6">Impressum</h1>
-      <div class="whitespace-pre-line text-[#1A1A1A]/80 bg-[#F5F1E9] rounded-2xl border border-[#123D2A]/10 p-6">{site.legal.impressum}</div>
-      <div class="mt-8">
-        <a href="/" class="text-sm text-[#123D2A] hover:text-[#C8501E]">← Zurück zur Startseite</a>
-      </div>
+<Layout title="Impressum | Gylsere Januzi Krieg – Online Marketing Office" description="Rechtliche Angaben (Impressum)">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <main class="container py-16 md:py-24">
+    <h1 class="h1">Impressum</h1>
+    <div class="mt-6 card p-6 text-txt-2">
+      <p><strong>Angaben gemäß § 5 TMG</strong></p>
+      <p>Gylsere Januzi Krieg – Online Marketing Office<br/>Kitzingstraße 7<br/>73529 Schwäbisch Gmünd</p>
+      <p>Kontakt: <a class="underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a> · <a class="underline" href="tel:+491756372395">+49 175 6372395</a></p>
+      <p class="mt-4 text-sm">Hinweis: Inhalte werden laufend gepflegt. Alle Marken gehören ihren jeweiligen Eigentümern.</p>
     </div>
-  </section>
+  </main>
+  <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
