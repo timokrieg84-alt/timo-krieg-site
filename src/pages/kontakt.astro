@@ -1,27 +1,76 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const submit = `async function onSubmit(e){e.preventDefault();const f=e.currentTarget;const data={name:f.name.value,email:f.email.value,phone:f.phone.value,site:f.site.value,message:f.message.value};const btn=f.querySelector('[data-submit]');btn.disabled=true;btn.textContent='Wird gesendet…';try{const res=await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});if(!res.ok)throw new Error('Request failed');f.reset();alert('Danke! Wir melden uns – es gibt eine Telegram-Benachrichtigung.');}catch(err){console.error(err);alert('Fehler beim Senden. Bitte später erneut versuchen.');}finally{btn.disabled=false;btn.textContent='Nachricht senden';}}`;
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import Footer from "@/components/Footer.astro";
 ---
-<BaseLayout title="Kontakt – Gylsere Januzi Krieg Online Marketing Office" description="Kontakt aufnehmen: Erstgespräch, E-Mail oder Telefon. Wir antworten schnell.">
-  <section class="py-16 sm:py-24" id="erstgespraech">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <div class="text-xs uppercase tracking-wider text-[#123D2A]">Kontakt</div>
-        <h1 class="mt-3 text-3xl sm:text-5xl font-semibold text-[#1A1A1A] mb-4">Lassen Sie uns über Ihr Projekt sprechen</h1>
-        <p class="text-lg text-[#1A1A1A]/70 mb-8">Erstgespräch, E-Mail oder Telefon – wir sind schnell für Sie da.</p>
+<Layout title="Kontakt | Gylsere Januzi Krieg – Online Marketing Office" description="Sprechen wir über Ziele, Budget und den nächsten Sprint. Termin wählen oder direkt anrufen.">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <Section title="Lassen Sie uns über Ihr Projekt sprechen" intro="Erzählen Sie uns kurz von Ihrem Vorhaben – wir melden uns zeitnah mit einer ehrlichen Einschätzung und den nächsten Schritten.">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="card p-6">
+        <form id="contactForm" class="grid gap-4" novalidate>
+          <label class="grid gap-1">
+            <span>Name *</span>
+            <input class="p-3 rounded-md bg-bg-2 border border-border" type="text" name="name" required />
+          </label>
+          <label class="grid gap-1">
+            <span>E‑Mail *</span>
+            <input class="p-3 rounded-md bg-bg-2 border border-border" type="email" name="email" required />
+          </label>
+          <label class="grid gap-1">
+            <span>Telefon</span>
+            <input class="p-3 rounded-md bg-bg-2 border border-border" type="tel" name="phone" />
+          </label>
+          <label class="grid gap-1">
+            <span>Ihre Nachricht *</span>
+            <textarea class="p-3 rounded-md bg-bg-2 border border-border" name="message" rows="5" required></textarea>
+          </label>
+          <p class="text-txt-2 text-sm">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>.</p>
+          <button class="btn btn-primary btn-glare" type="submit">Nachricht senden</button>
+          <p id="formMessage" role="status" class="text-sm text-txt-2"></p>
+        </form>
       </div>
-
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl" on:submit={submit}>
-        <input required name="name" placeholder="Ihr Name" class="bg-white border border-[#123D2A]/20 rounded-md p-3 text-[#1A1A1A] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#123D2A]" />
-        <input required type="email" name="email" placeholder="E-Mail" class="bg-white border border-[#123D2A]/20 rounded-md p-3 text-[#1A1A1A] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#123D2A]" />
-        <input name="phone" placeholder="Telefon" class="bg-white border border-[#123D2A]/20 rounded-md p-3 text-[#1A1A1A] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#123D2A]" />
-        <input name="site" placeholder="Website (optional)" class="bg-white border border-[#123D2A]/20 rounded-md p-3 text-[#1A1A1A] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#123D2A]" />
-        <textarea required name="message" placeholder="Nachricht" class="md:col-span-2 bg-white border border-[#123D2A]/20 rounded-md p-3 text-[#1A1A1A] placeholder:text-[#6B7280] focus:outline-none focus:ring-2 focus:ring-[#123D2A]" rows="5"></textarea>
-        <button type="submit" data-submit class="md:col-span-2 px-5 py-3 rounded-full bg-[#123D2A] text-[#F5F1E9] hover:bg-[#C8501E] transition-colors">Nachricht senden</button>
-      </form>
-      <div class="mt-6 text-[#1A1A1A]/70">
-        <p><strong>Oder direkt:</strong> <a class="text-[#123D2A] underline hover:text-[#C8501E]" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a> · <a class="text-[#123D2A] underline hover:text-[#C8501E]" href="tel:+491756372395">+49 175 6372395</a></p>
+      <div class="card p-6">
+        <address class="not-italic grid gap-2 text-txt-2">
+          <strong>Gylsere Januzi Krieg – Online Marketing Office</strong>
+          <span>Kitzingstraße 7, 73529 Schwäbisch Gmünd</span>
+          <span>Tel. <a class="underline" href="tel:+491756372395">+49 175 6372395</a></span>
+          <span>Mail <a class="underline" href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></span>
+        </address>
+        <figure class="mt-6">
+          <img src="/images/city-schwabisch-gmuend.webp" alt="Abendliche Stadtszene in Schwäbisch Gmünd" class="w-full h-auto rounded-md border border-border" loading="lazy" />
+        </figure>
       </div>
     </div>
-  </section>
-</BaseLayout>
+  </Section>
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>
+
+<script is:client="visible">
+  const form = document.querySelector('#contactForm');
+  const msg = document.querySelector('#formMessage');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      name: form.name.value,
+      email: form.email.value,
+      phone: form.phone.value || "",
+      site: window.location.hostname,
+      message: form.message.value
+    };
+    try {
+      const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+      });
+      if (res.ok) {
+        msg.textContent = 'Danke! Wir haben Ihre Nachricht erhalten und melden uns zeitnah.';
+        form.reset();
+      } else {
+        msg.textContent = 'Es gab ein Problem. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
+      }
+    } catch (err) {
+      msg.textContent = 'Netzwerkfehler. Bitte später erneut versuchen.';
+    }
+  });
+</script>
