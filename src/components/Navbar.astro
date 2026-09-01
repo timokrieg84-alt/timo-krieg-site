@@ -10,7 +10,7 @@ const links = [
 <header class="sticky top-0 z-50 border-b border-border/60 bg-bg-1/70 backdrop-blur-xl">
   <div class="container flex items-center justify-between h-16">
     <a href="/" class="flex items-center gap-3" aria-label="Startseite">
-      <div class="size-9 rounded-md bg-brand-cyan/15 border border-brand-cyan/40 grid place-items-center">
+      <div class="w-9 h-9 rounded-md bg-brand-cyan/15 border border-brand-cyan/40 grid place-items-center">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M5 7h8M5 12h14M5 17h10" stroke="rgb(var(--brand-cyan))" stroke-width="2" stroke-linecap="round"/>
         </svg>
@@ -22,7 +22,7 @@ const links = [
       {links.map(l => <a class="text-txt-2 hover:text-txt-1 transition-colors" href={l.href}>{l.label}</a>)}
       <a href="/projekt-anfragen" class="btn btn-primary btn-glare" data-magnetic>Projekt anfragen</a>
     </nav>
-    <button class="md:hidden inline-flex items-center justify-center size-10 rounded-md border border-border text-txt-1" aria-label="Menü" aria-expanded="false" id="navToggle">
+    <button class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-txt-1" aria-label="Menü" aria-expanded="false" id="navToggle">
       <span class="sr-only">Menü öffnen</span>
       ☰
     </button>
