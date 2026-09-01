@@ -1,0 +1,46 @@
+---
+interface MenuItem { id: string; name: string; description?: string; price: number; allergens?: string[]; dietary?: string[] }
+interface Category { id: string; name: string; description?: string; items: MenuItem[] }
+interface Props { id?: string; categories: Category[]; ctaLabel?: string; }
+const { id = 'menu', categories = [], ctaLabel = 'Gesamte Speisekarte' } = Astro.props as Props;
+function formatPrice(v:number){
+  try{ return new Intl.NumberFormat('de-DE',{style:'currency',currency:'EUR'}).format(v);}catch{return v.toFixed(2)+' €'}
+}
+---
+<section id={id} class="scroll-mt-20 py-16 md:py-24 bg-[#F3F4F6]">
+  <div class="mx-auto max-w-[1200px] px-4">
+    <div class="flex items-end justify-between gap-4">
+      <div>
+        <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#1F2937]">Unsere Empfehlungen</h2>
+        <p class="mt-2 text-[#374151]">Ein Auszug aus unserer aktuellen Karte.</p>
+      </div>
+      <div>
+        <a href="#menu" class="hidden md:inline-flex items-center rounded-md bg-[#2E7D32] text-white px-4 py-2 text-sm font-medium shadow hover:bg-emerald-700">Zur Speisekarte</a>
+      </div>
+    </div>
+
+    <div class="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {categories.map((cat) => (
+        <div class="rounded-lg bg-white p-5 shadow-sm ring-1 ring-slate-200">
+          <h3 class="font-serif text-xl font-semibold text-[#1F2937]">{cat.name}</h3>
+          {cat.description && <p class="mt-1 text-sm text-[#6B7280]">{cat.description}</p>}
+          <ul class="mt-4 space-y-3">
+            {cat.items.slice(0,3).map((item) => (
+              <li class="flex items-start justify-between gap-3">
+                <div>
+                  <p class="text-[#1F2937] font-medium">{item.name}</p>
+                  {item.description && <p class="text-sm text-[#6B7280]">{item.description}</p>}
+                </div>
+                <div class="text-[#1F2937] font-semibold whitespace-nowrap">{formatPrice(item.price)}</div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    <div class="mt-10 text-center">
+      <a href="#menu" class="inline-flex items-center rounded-md border border-[#2E7D32] text-[#2E7D32] px-5 py-2.5 text-sm font-medium hover:bg-emerald-50">Komplette Speisekarte ansehen</a>
+    </div>
+  </div>
+</section>
