@@ -21,7 +21,7 @@
 .swiper-pagination-progressbar { background: rgba(28,140,255,.15); }
 .swiper-pagination-progressbar-fill { background: var(--clr-accent); }
 </style>
-<script client:idle>
+<script client:idle lang="ts">
   import 'swiper/css'; import 'swiper/css/pagination';
   (async () => {
     const { Swiper } = await import('swiper');
