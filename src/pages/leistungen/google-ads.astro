@@ -21,36 +21,48 @@ const others = services.filter(s => s.slug !== 'google-ads');
   <section class={`bg-[${colors.background}]`}>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
       <div class="lg:col-span-2">
-        <div class={`prose max-w-none prose-headings:text-[${colors.text}] prose-p:text-[${colors.text}]/90 prose-li:text-[${colors.text}]/90`}>
-          <h2>Absicht trifft Angebot</h2>
-          <p>Google Ads performt, wenn Relevanz, Gebote und Zielseiten millimetergenau zusammenspielen. Wir bauen ein Setup, das Suchintention in qualifizierte Leads und Umsatz verwandelt – transparent, skalierbar und budgeteffizient.</p>
-          <h3>Methodik</h3>
-          <ul>
-            <li>Fundierte Kontostruktur: Kampagnen nach Intent und Profit-Potenzial, klare Namenskonventionen.</li>
-            <li>First-Party-Tracking: GA4, Consent-Setup und optional serverseitiges Tracking für robuste Daten.</li>
-            <li>Kreative Varianten: Anzeigentexte und Assets, die testen, lernen und Gewinner zementieren.</li>
-            <li>Conversion-getrimmte Landing Pages: Schnelle Ladezeiten, glasklare Botschaften, starke CTAs.</li>
-          </ul>
-          <h3>Leistungsbausteine</h3>
-          {service?.features && (
-            <ul>
-              {service.features.map((f) => (<li>{f}</li>))}
+        <div class="space-y-6">
+          <div>
+            <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Absicht trifft Angebot</h2>
+            <p class={`mt-3 text-[${colors.text}]/90`}>Google Ads performt, wenn Relevanz, Gebote und Zielseiten millimetergenau zusammenspielen. Wir bauen ein Setup, das Suchintention in qualifizierte Leads und Umsatz verwandelt – transparent, skalierbar und budgeteffizient.</p>
+          </div>
+          <div>
+            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Methodik</h3>
+            <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
+              <li>Fundierte Kontostruktur: Kampagnen nach Intent und Profit-Potenzial, klare Namenskonventionen.</li>
+              <li>First-Party-Tracking: GA4, Consent-Setup und optional serverseitiges Tracking für robuste Daten.</li>
+              <li>Kreative Varianten: Anzeigentexte und Assets, die testen, lernen und Gewinner zementieren.</li>
+              <li>Conversion-getrimmte Landing Pages: Schnelle Ladezeiten, glasklare Botschaften, starke CTAs.</li>
             </ul>
+          </div>
+          {service?.features && (
+            <div>
+              <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
+              <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
+                {service.features.map((f) => (<li>{f}</li>))}
+              </ul>
+            </div>
           )}
-          <h3>Liefergegenstände</h3>
-          <ul>
-            <li>Konto-Audit inkl. Quick-Wins und Roadmap</li>
-            <li>Kampagnen-Setup (Search, PMax, YouTube) inkl. Feed-/Asset-Erstellung</li>
-            <li>Conversion-Tracking, Consent-Check und Event-Mapping</li>
-            <li>Landing-Page-Konzept und -Umsetzung inkl. A/B-Testplan</li>
-            <li>Wöchentliches Monitoring, monatliches Reporting mit CPL/CPA & ROAS</li>
-          </ul>
-          <h3>Erfolgsmessung</h3>
-          <p>Wir reporten nicht nur Klicks, sondern Pipeline-Qualität: Leads, Abschlüsse, Kosten je Abschluss und Deckungsbeiträge. Entscheidungen basieren auf realen Geschäftszahlen.</p>
-          <h3>FAQ</h3>
-          <p><strong>Wie hoch sollte das Startbudget sein?</strong><br/>Wir arbeiten ab 200 € mtl. Media-Spend sinnvoll – optimal sind 1.000–4.000 € je nach Markt.</p>
-          <p><strong>Wie schnell gibt es Ergebnisse?</strong><br/>Erste belastbare Learnings nach 2–4 Wochen, stabile Performance nach 6–8 Wochen.</p>
-          <p><strong>Übernehmt ihr bestehende Konten?</strong><br/>Ja. Wir migrieren sauber oder optimieren inkrementell – ohne Datenverlust.</p>
+          <div>
+            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Liefergegenstände</h3>
+            <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
+              <li>Konto-Audit inkl. Quick-Wins und Roadmap</li>
+              <li>Kampagnen-Setup (Search, PMax, YouTube) inkl. Feed-/Asset-Erstellung</li>
+              <li>Conversion-Tracking, Consent-Check und Event-Mapping</li>
+              <li>Landing-Page-Konzept und -Umsetzung inkl. A/B-Testplan</li>
+              <li>Wöchentliches Monitoring, monatliches Reporting mit CPL/CPA & ROAS</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Erfolgsmessung</h3>
+            <p class={`mt-3 text-[${colors.text}]/90`}>Wir reporten nicht nur Klicks, sondern Pipeline-Qualität: Leads, Abschlüsse, Kosten je Abschluss und Deckungsbeiträge. Entscheidungen basieren auf realen Geschäftszahlen.</p>
+          </div>
+          <div>
+            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>FAQ</h3>
+            <p class={`mt-3 text-[${colors.text}]/90`}><strong>Wie hoch sollte das Startbudget sein?</strong> Wir arbeiten ab 200 € mtl. Media-Spend sinnvoll – optimal sind 1.000–4.000 € je nach Markt.</p>
+            <p class={`mt-2 text-[${colors.text}]/90`}><strong>Wie schnell gibt es Ergebnisse?</strong> Erste belastbare Learnings nach 2–4 Wochen, stabile Performance nach 6–8 Wochen.</p>
+            <p class={`mt-2 text-[${colors.text}]/90`}><strong>Übernehmt ihr bestehende Konten?</strong> Ja. Wir migrieren sauber oder optimieren inkrementell – ohne Datenverlust.</p>
+          </div>
         </div>
         <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
           <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
