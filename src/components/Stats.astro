@@ -1,14 +1,14 @@
 ---
 const stats = [
-  { label: "Branchenportale", value: 30, suffix: "+" },
-  { label: "Satelliten-Seiten", value: 50, suffix: "" },
-  { label: "DSGVO-konform", value: 100, suffix: "%" },
+  { label: "+30 Branchenportale", value: 30, suffix: "+" },
+  { label: "50 Satelliten-Seiten", value: 50, suffix: "" },
+  { label: "100% DSGVO-konform", value: 100, suffix: "%" },
 ];
 ---
 <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
-  {stats.map((s) => (
+  {stats.map((s, i) => (
     <div class="card p-6 reveal-up">
-      <div class="text-4xl font-extrabold">
+      <div class="text-4xl font-heading font-bold">
         <span class="stat" data-target={s.value} aria-live="polite">0</span>{s.suffix}
       </div>
       <div class="text-txt-2 mt-1">{s.label}</div>
@@ -21,7 +21,10 @@ const stats = [
   const els = document.querySelectorAll('.stat');
   const duration = 1.2;
   (async () => {
-    if (reduce) { els.forEach(el => el.textContent = el.dataset.target); return; }
+    if (reduce) {
+      els.forEach(el => el.textContent = el.dataset.target);
+      return;
+    }
     const [{ gsap }, { ScrollTrigger }] = await Promise.all([
       import('gsap/dist/gsap'),
       import('gsap/dist/ScrollTrigger'),
