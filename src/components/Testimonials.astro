@@ -1,0 +1,44 @@
+---
+const items = [
+  { quote: "Klares Reporting, starke Performance – genau, was wir brauchten.", author: "Dr. M. Köhler, Praxisinhaber" },
+  { quote: "B2B-Leads +142% bei stabilen CPL. Empfehlung!", author: "S. Berger, SaaS" },
+  { quote: "Transparenz & Tempo – sehr professionell.", author: "A. Weber, KMU" },
+];
+---
+<section id="referenzen" class="py-16 md:py-24">
+  <div class="container">
+    <h2 class="h2 reveal-up">Stimmen unserer Kunden</h2>
+    <div class="swiper mt-8 reveal-up" aria-label="Testimonials Carousel">
+      <div class="swiper-wrapper">
+        {items.map(i => (
+          <div class="swiper-slide">
+            <article class="card p-6 md:p-8 h-full flex flex-col justify-between">
+              <p class="text-lg">“{i.quote}”</p>
+              <p class="text-txt-2 mt-4">— {i.author}</p>
+            </article>
+          </div>
+        ))}
+      </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<script is:client="visible">
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const init = async () => {
+    const { default: Swiper } = await import('swiper');
+    const { Pagination, A11y } = await import('swiper/modules');
+    new Swiper('.swiper', {
+      modules: [Pagination, A11y],
+      slidesPerView: 1,
+      spaceBetween: 16,
+      pagination: { el: '.swiper-pagination', clickable: true },
+      a11y: { enabled: true },
+      speed: reduce ? 0 : 450,
+      allowTouchMove: true,
+      breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }
+    });
+  };
+  init();
+</script>
