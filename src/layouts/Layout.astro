@@ -3,6 +3,7 @@ import { site } from "../data/site";
 const { brand, nav } = site;
 const allPages = [
   { label: "Start", href: "/" },
+  { label: "Leistungen", href: "/leistungen" },
   ...nav.primary.filter((n) => n.href !== "/"),
 ];
 const allServices = nav.services;
@@ -22,13 +23,13 @@ const allLegal = nav.legal;
     <link rel="stylesheet" href={Astro.resolve('../styles/global.css')} />
   </head>
   <body class="min-h-dvh bg-[#F5F1E9] text-[#1A1A1A] antialiased selection:bg-[#123D2A]/10 selection:text-[#123D2A]">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-white focus:text-black focus:px-3 focus:py-2 focus:rounded">Zum Inhalt springen</a>
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-[#F5F1E9] focus:text-[#1A1A1A] focus:px-3 focus:py-2 focus:rounded">Zum Inhalt springen</a>
 
     <header class="sticky top-0 z-50 bg-[#F5F1E9]/80 backdrop-blur border-b border-[#123D2A]/10">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="/" class="flex items-center gap-3 group" aria-label="Startseite">
-            <div class="h-8 w-8 rounded bg-[#123D2A] text-white grid place-items-center font-semibold">GJ</div>
+            <div class="h-8 w-8 rounded bg-[#123D2A] text-[#F5F1E9] grid place-items-center font-semibold">GJ</div>
             <div class="leading-tight">
               <div class="font-semibold tracking-wide text-sm sm:text-base text-[#123D2A] group-hover:text-[#C8501E] transition-colors">{brand.logoText}</div>
               <div class="text-[10px] sm:text-xs text-[#6B7280]">{brand.tagline}</div>
@@ -43,7 +44,7 @@ const allLegal = nav.legal;
                 Leistungen
                 <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
               </button>
-              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 mt-2 w-[340px] max-h-[70vh] overflow-auto rounded-lg border border-[#123D2A]/10 bg-white shadow-xl p-2 grid grid-cols-1">
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 mt-2 w-[340px] max-h-[70vh] overflow-auto rounded-lg border border-[#123D2A]/10 bg-[#F5F1E9] shadow-xl p-2 grid grid-cols-1">
                 {allServices.map((s) => (
                   <a href={s.href} class="px-3 py-2 rounded text-sm hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{s.label}</a>
                 ))}
@@ -52,14 +53,14 @@ const allLegal = nav.legal;
             {allLegal.map((l) => (
               <a href={l.href} class="text-sm text-[#1A1A1A]/60 hover:text-[#123D2A]">{l.label}</a>
             ))}
-            <a href="/#contact" class="ml-2 inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-white px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+            <a href="/#contact" class="ml-2 inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
           </nav>
           <button class="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-[#1A1A1A] hover:text-[#123D2A]" aria-label="Menü öffnen" id="mobile-menu-button">
             <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
           </button>
         </div>
       </div>
-      <div id="mobile-menu" class="lg:hidden hidden border-t border-[#123D2A]/10 bg-white/90 backdrop-blur">
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-[#123D2A]/10 bg-[#F5F1E9]/90 backdrop-blur">
         <div class="mx-auto max-w-7xl px-4 py-4 space-y-2">
           {allPages.map((item) => (
             <a href={item.href} class="block rounded px-3 py-2 text-[#1A1A1A]/80 hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{item.label}</a>
@@ -77,7 +78,7 @@ const allLegal = nav.legal;
               <a href={l.href} class="text-sm text-[#1A1A1A]/60 hover:text-[#123D2A]">{l.label}</a>
             ))}
           </div>
-          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-white px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
         </div>
       </div>
       <script>
@@ -93,7 +94,7 @@ const allLegal = nav.legal;
       <slot />
     </main>
 
-    <footer class="mt-24 border-t border-[#123D2A]/10 bg-white">
+    <footer class="mt-24 border-t border-[#123D2A]/10 bg-[#F5F1E9]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-4">
         <div class="space-y-3">
           <div class="text-[#123D2A] font-semibold tracking-wide">{brand.logoText}</div>
@@ -103,7 +104,7 @@ const allLegal = nav.legal;
         <div>
           <div class="font-semibold text-[#1A1A1A] mb-3">Sektionen</div>
           <nav class="grid gap-2 text-sm">
-            {nav.footer.sections.map((i)=> (
+            {[...nav.footer.sections, { label: 'Leistungen', href: '/leistungen' }].map((i)=> (
               <a href={i.href} class="text-[#1A1A1A]/70 hover:text-[#123D2A]">{i.label}</a>
             ))}
           </nav>
@@ -124,7 +125,7 @@ const allLegal = nav.legal;
             ))}
           </nav>
           <div class="mt-6">
-            <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-white px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+            <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
           </div>
         </div>
       </div>
