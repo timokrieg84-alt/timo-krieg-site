@@ -33,7 +33,7 @@
 input.bordered, textarea.bordered { width: 100%; padding: .75rem .9rem; border-radius: var(--radius-md); border: 1px solid var(--clr-border); background: #fff; }
 input.bordered:focus, textarea.bordered:focus { border-color: var(--clr-accent-600); box-shadow: 0 0 0 3px rgba(28,140,255,.15); outline: none; }
 </style>
-<script client:idle>
+<script client:idle lang="ts">
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const success = document.getElementById('form-success') as HTMLElement | null;
   if (form) {
