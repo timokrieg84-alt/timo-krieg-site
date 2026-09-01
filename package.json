@@ -1,17 +1,19 @@
 {
   "name": "online-marketing-office",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
+  "engines": { "node": ">=18.18 <23" },
   "scripts": {
+    "preinstall": "rm -f package-lock.json || true",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "lint": "echo \"Add your linter here\""
+    "preview": "astro preview --host"
   },
   "dependencies": {
-    "astro": "^4.10.0",
+    "astro": "^4.12.0",
     "gsap": "^3.12.5",
-    "swiper": "^11.1.1"
+    "swiper": "^11.1.4"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
