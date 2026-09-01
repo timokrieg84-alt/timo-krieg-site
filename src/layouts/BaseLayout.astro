@@ -1,4 +1,5 @@
 ---
+import "../styles/global.css";
 export interface Props {
   title?: string;
   description?: string;
@@ -22,6 +23,7 @@ const navItems = [
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="italienisches Restaurant Berlin, Trattoria Berlin Mitte, Pasta Berlin, Pizza Steinofen Berlin, italienische Küche Berlin, Bella Vista Berlin" />
     <meta name="theme-color" content="#9E2A2B" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +42,7 @@ const navItems = [
         </button>
         <ul id="nav-menu" class="hidden md:flex gap-6 items-center text-sm">
           {navItems.map((item) => (
-            <li><a href={item.href} class="text-textSecondary hover:text-linkHover transition-colors">{item.label}</a></li>
+            <li><a href={item.href} class="nav-link text-textSecondary hover:text-linkHover transition-colors">{item.label}</a></li>
           ))}
           <li>
             <a href="#reservierung" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand text-white hover:bg-linkHover shadow-brandSm">
@@ -53,7 +55,10 @@ const navItems = [
         const header = document.getElementById('site-header');
         const menu = document.getElementById('nav-menu');
         const toggle = document.getElementById('nav-toggle');
-        const links = menu?.querySelectorAll('a');
+        const links = menu?.querySelectorAll('a.nav-link');
+        const sections = ['hero','speisekarte','oeffnungszeiten','kontakt','reservierung']
+          .map(id => document.getElementById(id))
+          .filter(Boolean);
         const setShadow = () => {
           if (window.scrollY > 8) header?.classList.add('shadow-brandSm','bg-surface/90','backdrop-blur');
           else header?.classList.remove('shadow-brandSm','bg-surface/90','backdrop-blur');
@@ -61,18 +66,37 @@ const navItems = [
         window.addEventListener('scroll', setShadow, { passive: true });
         setShadow();
         toggle?.addEventListener('click', () => {
-          const isOpen = menu?.classList.toggle('hidden') === false;
+          const removed = menu?.classList.toggle('hidden');
+          const isOpen = removed === false; // hidden removed => open
           toggle.setAttribute('aria-expanded', String(isOpen));
         });
         links?.forEach(l => l.addEventListener('click', () => {
           if (window.innerWidth < 768) menu?.classList.add('hidden');
         }));
+        // ScrollSpy
+        const linkById = new Map();
+        links?.forEach(l => linkById.set(l.getAttribute('href')?.slice(1), l));
+        const activate = (id) => {
+          links?.forEach(l => l.classList.remove('text-brand','font-semibold'));
+          const active = linkById.get(id);
+          if (active) {
+            active.classList.add('text-brand','font-semibold');
+          }
+        };
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              activate(e.target.id);
+            }
+          });
+        }, { rootMargin: '-72px 0px -60% 0px', threshold: 0.1 });
+        sections.forEach((s) => s && io.observe(s));
       </script>
     </header>
-    <main class="pt-20">
+    <main class="pt-20" role="main">
       <slot />
     </main>
-    <footer class="mt-24 border-t border-divider bg-surface/70">
+    <footer class="mt-24 border-t border-divider bg-surface/70" role="contentinfo">
       <div class="container py-10 grid md:grid-cols-3 gap-8 text-sm">
         <div>
           <p class="font-heading text-lg">Trattoria <span class="text-brand">Bella Vista</span></p>
