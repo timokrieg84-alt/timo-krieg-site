@@ -36,3 +36,8 @@ import Footer from "@/components/Footer.astro";
   <CTA />
   <Fragment slot="footer"><Footer /></Fragment>
 </Layout>
+
+<!-- JSON-LD Organization/LocalBusiness -->
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@graph": [ { "@type": ["Organization","LocalBusiness","AdvertisingAgency"], "@id": "https://example.com/#organization", "name": "Gylsere Januzi Krieg – Online Marketing Office", "url": "https://example.com/", "logo": "https://example.com/images/hero-bg.webp", "image": "https://example.com/images/hero-bg.webp", "telephone": "+49-175-6372395", "email": "gjanuzikrieg@gmail.com", "priceRange": "€€€", "address": { "@type": "PostalAddress", "streetAddress": "Kitzingstraße 7", "postalCode": "73529", "addressLocality": "Schwäbisch Gmünd", "addressRegion": "BW", "addressCountry": "DE" }, "areaServed": [ {"@type":"City","name":"Schwäbisch Gmünd"}, {"@type":"State","name":"Baden-Württemberg"}, {"@type":"Country","name":"Germany"}, {"@type":"Country","name":"Austria"}, {"@type":"Country","name":"Switzerland"} ] }, { "@type": "WebSite", "@id": "https://example.com/#website", "url": "https://example.com/", "name": "Gylsere Januzi Krieg – Online Marketing Office", "inLanguage": "de-DE" } ] }
+</script>
