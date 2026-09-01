@@ -1,21 +1,20 @@
 {
-  "name": "online-marketing-office",
-  "version": "1.0.0",
+  "name": "generated-site",
   "private": true,
+  "version": "1.0.0",
   "type": "module",
-  "engines": { "node": ">=18.18 <23" },
   "scripts": {
-    "preinstall": "rm -f package-lock.json || true",
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.12.2",
-    "gsap": "^3.12.5",
-    "swiper": "^11.1.4"
-  },
-  "devDependencies": {
-    "typescript": "^5.5.4"
+    "astro": "^4.7.0",
+    "@astrojs/tailwind": "^5.1.0",
+    "tailwindcss": "^3.4.10",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tailwindcss/typography": "^0.5.13",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.41"
   }
 }
