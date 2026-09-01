@@ -1,0 +1,59 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const city = "Göppingen";
+const slug = "goeppingen";
+const meta = {
+  title: `SEO‑Regio ${city} | Lokale Sichtbarkeit mit Stadt‑Landings`,
+  description: `Skalierbare Local‑SEO‑Landings für ${city} und Umgebung: saubere Architektur, einzigartige Inhalte, konsistente NAP‑Signale.`,
+  url: `https://example.com/leistungen/seo-regio/${slug}/`,
+  canonical: `https://example.com/leistungen/seo-regio/${slug}/`,
+  image: "/images/hero-bg.webp",
+  type: "article",
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":`https://example.com/leistungen/seo-regio/${slug}/#service`,"name":`SEO‑Regio ${city}`,"serviceType":"Regional SEO Landing Pages","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"City","name":city},{"@type":"State","name":"Baden-Württemberg"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title={`SEO‑Regio: ${city}`} intro={`Für Unternehmen in ${city} und Umgebung: Ein Netzwerk aus ortsspezifischen Seiten fängt Suchanfragen ab und leitet qualifizierte Leads direkt zu Ihnen.`}>
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Setup</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Eigene Landing für ${city} mit einzigartigem Content</li>
+              <li>• Interne Verlinkung & Stadt‑Cluster</li>
+              <li>• NAP‑Konsistenz & Branchenportale</li>
+              <li>• GBP‑Optimierung & Local Packs</li>
+            </ul>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">KPIs</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Rankings & Sichtbarkeit in ${city}</li>
+              <li>• Leads/Anfragen aus ${city}</li>
+              <li>• GBP‑Signals (Anrufe, Routen)</li>
+              <li>• Crawl‑Tiefe & Indexierung</li>
+            </ul>
+          </article>
+        </div>
+        <div class="mt-6 flex gap-3">
+          <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+          <a href="/leistungen/seo-regio/" class="btn btn-secondary">Zur Übersicht</a>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>
