@@ -1,28 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://example.com/ueber-uns/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/prozess/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/leistungen/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://example.com/leistungen/seo-local-seo/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://example.com/leistungen/google-ads/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://example.com/leistungen/seo-regio/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/leistungen/geo-generative-engine-optimization/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://example.com/leistungen/webdesign-e-commerce/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://example.com/leistungen/ai-automation/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/leistungen/online-terminbuchung/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/leistungen/reputation-bewertungen/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/leistungen/social-media/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/leistungen/premium-fotografie-image-videos/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/leistungen/branding/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/leistungen/praxis-tv/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/leistungen/code-exzellenz-programmierung/</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
-  <url><loc>https://example.com/leistungen/premium-factoring/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://example.com/leistungen/seo-regio/aalen/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://example.com/leistungen/seo-regio/heidenheim/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://example.com/leistungen/seo-regio/goeppingen/</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
-  <url><loc>https://example.com/kontakt/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
-  <url><loc>https://example.com/projekt-anfragen/</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://example.com/impressum/</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
-  <url><loc>https://example.com/datenschutz/</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://online-marketing-office.de/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://online-marketing-office.de/ueber-uns</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://online-marketing-office.de/prozess</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://online-marketing-office.de/leistungen</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://online-marketing-office.de/kontakt</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://online-marketing-office.de/impressum</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
+  <url><loc>https://online-marketing-office.de/datenschutz</loc><changefreq>yearly</changefreq><priority>0.2</priority></url>
 </urlset>
