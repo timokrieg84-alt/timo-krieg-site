@@ -17,21 +17,25 @@ const storageKey = 'announcementBar:dismissed:' + btoa(encodeURIComponent(messag
     <div class="mx-auto max-w-[1200px] flex items-center justify-center gap-3">
       <span class="text-sm md:text-base">{message}</span>
       <a href={linkAnchor} class="text-sm md:text-base font-medium underline underline-offset-2">Mehr Infos</a>
-      <button type="button" aria-label="Schließen" class="ml-2 rounded px-2 py-1/2 text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white/70" on:click={() => {
-        try { localStorage.setItem(storageKey, Date.now().toString()); } catch {}
-        const el = document.getElementById('announcement');
-        if (el) el.style.display = 'none';
-      }}>×</button>
+      <button id="announcement-close" type="button" aria-label="Schließen" class="ml-2 rounded px-2 py-0.5 text-sm hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-white/70">×</button>
     </div>
   </div>
 )}
 <script is:inline>
-  try {
-    const key = '{storageKey}';
-    const dismissed = localStorage.getItem(key);
-    if (dismissed) {
+  (function(){
+    try {
+      const key = '{storageKey}';
+      const dismissed = localStorage.getItem(key);
       const el = document.getElementById('announcement');
-      if (el) el.style.display = 'none';
-    }
-  } catch {}
+      const btn = document.getElementById('announcement-close');
+      if (dismissed && el) { el.style.display = 'none'; }
+      if (btn) {
+        btn.addEventListener('click', function(){
+          try { localStorage.setItem(key, Date.now().toString()); } catch {}
+          const el = document.getElementById('announcement');
+          if (el) el.style.display = 'none';
+        });
+      }
+    } catch {}
+  })();
 </script>
