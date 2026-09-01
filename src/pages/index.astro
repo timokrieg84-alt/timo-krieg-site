@@ -1,26 +1,140 @@
 ---
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import Leistungen from '../components/Leistungen.astro';
-import Prozess from '../components/ProzessTimeline.astro';
-import Counters from '../components/Counters.astro';
-import Testimonials from '../components/Testimonials.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
-const title = 'Online‑Marketing Agentur Schwäbisch Gmünd | GJK';
-const description = 'Premium Performance‑Marketing: SEO, Local SEO, Google Ads, GEO, Webdesign/E‑Com & AI – DSGVO‑konform. Angebot anfragen.';
-const canonical = 'https://online-marketing-office.de/';
+import Layout from "../layouts/Layout.astro";
+import { brand, colors, sections, services } from "../data/site";
 ---
-<Base {title} {description} {canonical} ogImage="/images/hero-office-dusk.webp">
-  <Header />
-  <main id="main">
-    <Hero />
-    <Leistungen />
-    <Prozess />
-    <Counters />
-    <Testimonials />
-    <Contact />
-  </main>
-  <Footer />
-</Base>
+<Layout title={`${brand.name} – ${brand.tagline}`} description={sections.hero.subheadline}>
+  <!-- Hero -->
+  <section class={`relative overflow-hidden bg-[${colors.background}]`}> 
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-28 md:pb-32">
+      <div class="max-w-3xl">
+        <h1 class={`text-4xl md:text-6xl font-semibold tracking-tight text-[${colors.primary}]`}>{sections.hero.headline}</h1>
+        <p class={`mt-6 text-lg md:text-xl leading-8 text-[${colors.text}]/80`}>{sections.hero.subheadline}</p>
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a href={sections.hero.ctaPrimary.href} class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-white text-sm md:text-base font-semibold shadow hover:shadow-lg transition-shadow border border-[${colors.gold}]`}>{sections.hero.ctaPrimary.label}</a>
+          <a href={sections.hero.ctaSecondary.href} class={`inline-flex items-center justify-center rounded-full px-6 py-3 text-sm md:text-base font-semibold text-[${colors.primary}] border border-[${colors.primary}]/30 hover:border-[${colors.primary}] hover:bg-white`}>{sections.hero.ctaSecondary.label}</a>
+        </div>
+      </div>
+    </div>
+    <div class="pointer-events-none absolute right-0 top-0 -mr-32 -mt-24 h-72 w-72 rounded-full bg-white/70 ring-1 ring-[${colors.gold}]/30 blur-2xl"></div>
+  </section>
+
+  <!-- Leistungen Übersicht -->
+  <section id="leistungen" class="scroll-mt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <div class="mb-10 flex items-end justify-between gap-6">
+        <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>Leistungen</h2>
+        <a href="#kontakt" class={`hidden md:inline-flex items-center gap-2 rounded-full bg-[${colors.secondary}] px-4 py-2 text-white text-sm font-semibold shadow hover:shadow-md`}>
+          Jetzt anfragen
+          <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M7 5l6 5-6 5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s) => (
+          <div id={s.slug} class="scroll-mt-24">
+            <div class={`group relative flex h-full flex-col justify-between rounded-2xl border border-[${colors.muted}]/20 bg-white p-6 shadow-sm transition-shadow hover:shadow-md`}>
+              <div>
+                <h3 class={`text-lg font-semibold text-[${colors.text}]`}>{s.title}</h3>
+                {s.subtitle && <p class={`mt-1 text-sm text-[${colors.muted}]`}>{s.subtitle}</p>}
+                {s.shortDescription && (
+                  <p class={`mt-4 text-sm leading-6 text-[${colors.text}]/80`}>{s.shortDescription}</p>
+                )}
+                {s.features && s.features.length > 0 && (
+                  <ul class="mt-4 space-y-2">
+                    {s.features.slice(0, 4).map((f) => (
+                      <li class="flex items-start gap-2 text-sm text-[black]/70"><span class={`mt-1 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.secondary}]`}></span>{f}</li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div class="mt-6 flex items-center justify-between">
+                <a href={`/leistungen/${s.slug}`} class={`inline-flex items-center gap-2 text-sm font-semibold text-[${colors.primary}] hover:text-[${colors.secondary}]`}>
+                  Mehr erfahren
+                  <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M7 5l6 5-6 5" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <a href={`/#${s.slug}`} class={`text-xs text-[${colors.muted}] underline-offset-4 hover:underline`}>nach oben</a>
+              </div>
+              <div class={`pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-[${colors.gold}]/0 transition group-hover:ring-[${colors.gold}]/40`}></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Über uns -->
+  <section id="about" class={`border-y border-[${colors.muted}]/20 bg-white scroll-mt-24`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.about.headline}</h2>
+        <p class={`mt-6 text-[${colors.text}]/80 leading-7`}>{sections.about.text}</p>
+        <ul class="mt-8 space-y-3">
+          {sections.about.bullets.map((b) => (
+            <li class="flex items-start gap-3 text-sm text-black/80"><span class={`mt-2 h-1.5 w-1.5 flex-none rounded-full bg-[${colors.gold}]`}></span>{b}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class={`h-40 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-56 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-56 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
+        <div class={`h-40 rounded-xl bg-[${colors.background}] ring-1 ring-[${colors.gold}]/30`}></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Prozess -->
+  <section id="prozess" class="scroll-mt-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
+      <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.process.headline}</h2>
+      <ol class="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {sections.process.steps.map((step) => (
+          <li class={`relative rounded-2xl border border-[${colors.muted}]/20 bg-white p-6 shadow-sm`}>
+            <h3 class={`text-base font-semibold text-[${colors.primary}]`}>{step.title}</h3>
+            <p class={`mt-2 text-sm text-[${colors.text}]/80`}>{step.text}</p>
+            <div class={`pointer-events-none absolute inset-0 rounded-2xl ring-1 ring-inset ring-[${colors.gold}]/10`}></div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Kontakt -->
+  <section id="kontakt" class={`scroll-mt-24 border-t border-[${colors.muted}]/20 bg-white`}>
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div>
+        <h2 class={`text-2xl md:text-4xl font-semibold text-[${colors.text}]`}>{sections.contact.headline}</h2>
+        <p class={`mt-4 text-[${colors.text}]/80`}>{sections.contact.subheadline}</p>
+        <div class="mt-8 space-y-2 text-sm">
+          <p><strong>Adresse:</strong> {sections.contact.address}</p>
+          <p><strong>Telefon:</strong> <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="tel:+491756372395">+49 175 6372395</a></p>
+          <p><strong>E-Mail:</strong> <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="mailto:gjanuzikrieg@gmail.com">gjanuzikrieg@gmail.com</a></p>
+        </div>
+      </div>
+      <div>
+        <form netlify name="kontakt" method="POST" class={`space-y-4 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
+          <input type="hidden" name="form-name" value="kontakt" />
+          <div>
+            <label class="block text-sm font-medium mb-1" for="name">Name</label>
+            <input id="name" name="name" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium mb-1" for="email">E-Mail</label>
+              <input id="email" type="email" name="email" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+            </div>
+            <div>
+              <label class="block text-sm font-medium mb-1" for="phone">Telefon</label>
+              <input id="phone" type="tel" name="phone" class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`} />
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium mb-1" for="message">Nachricht</label>
+            <textarea id="message" name="message" rows="5" required class={`w-full rounded-md border border-[${colors.muted}]/30 bg-white px-3 py-2 text-sm outline-none focus:border-[${colors.primary}] focus:ring-2 focus:ring-[${colors.gold}]/40`}></textarea>
+          </div>
+          <p class={`text-xs text-[${colors.muted}]`}>{sections.contact.form.privacyNote} <a href="/datenschutz" class={`text-[${colors.primary}] hover:text-[${colors.secondary}] underline`}>Datenschutzerklärung</a>.</p>
+          <button type="submit" class={`inline-flex items-center justify-center rounded-full bg-[${colors.primary}] px-6 py-3 text-white text-sm font-semibold shadow hover:shadow-md border border-[${colors.gold}]`}>Absenden</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</Layout>
