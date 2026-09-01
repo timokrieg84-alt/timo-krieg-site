@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
+
 export default defineConfig({
-  output: 'static',
-  prefetch: true,
-  integrations: [],
-  site: 'https://online-marketing-office.de' // bei Go-Live anpassen
+  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
+  vite: { resolve: { alias: { '@': '/src' } } }
 });
