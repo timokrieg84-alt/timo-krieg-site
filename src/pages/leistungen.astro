@@ -1,33 +1,22 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import { site } from "../data/site";
-const services = site.services;
+import Base from '../layouts/Base.astro';
+import Header from '../components/Header.astro';
+import Leistungen from '../components/Leistungen.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+const title = 'Leistungen: SEO, Local SEO, Ads, GEO, Webdesign/E‑Com | GJK';
+const description = 'Full‑Service: SEO, Local SEO, Google Ads, GEO, Webdesign & E‑Commerce (Astro/Next.js), AI & Automation, Terminbuchung, Reputation, Social, Foto/Video, Branding, Praxis‑TV, Code & Factoring.';
+const canonical = 'https://online-marketing-office.de/leistungen';
 ---
-<BaseLayout title="Leistungen – Gylsere Januzi Krieg Online Marketing Office" description="Alle Leistungen im Überblick: SEO, GEO, Google Ads, Webdesign, Social Media, AI & Automation und mehr – messbar wirksam und DSGVO-sicher.">
-  <section class="py-16 sm:py-24">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl">
-        <div class="text-xs uppercase tracking-wider text-[#123D2A]">Leistungen</div>
-        <h1 class="mt-3 text-3xl sm:text-5xl font-semibold text-[#1A1A1A]">Unser vollständiges Leistungsspektrum</h1>
-        <p class="mt-4 text-lg text-[#1A1A1A]/70">Modular kombinierbar, messbar wirksam – von Sichtbarkeit über Performance-Kampagnen bis zu Automatisierung und Reputation.</p>
-      </div>
-      <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((s) => (
-          <article id={s.slug} class="group rounded-2xl border border-[#123D2A]/10 bg-[#F5F1E9] p-6 shadow-sm hover:shadow-md transition-shadow flex flex-col">
-            <div class="text-xs uppercase tracking-wide text-[#123D2A]">{s.subtitle}</div>
-            <h2 class="mt-1 text-xl font-semibold text-[#1A1A1A]">{s.title}</h2>
-            <p class="mt-2 text-[#1A1A1A]/70">{s.shortDescription}</p>
-            <ul class="mt-4 space-y-1 text-sm text-[#1A1A1A]/70 list-disc list-inside">
-              {s.features.slice(0, 4).map((f) => (<li>{f}</li>))}
-            </ul>
-            <div class="mt-6 flex-1"></div>
-            <div class="mt-6 flex items-center gap-3">
-              <a href={`/leistungen/${s.slug}`} class="inline-flex items-center gap-2 rounded-full bg-[#123D2A] px-4 py-2 text-[#F5F1E9] hover:bg-[#C8501E] transition-colors">Mehr erfahren</a>
-              <a href="/#contact" class="text-sm text-[#123D2A] hover:text-[#C8501E]">Angebot anfragen</a>
-            </div>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-</BaseLayout>
+<Base {title} {description} {canonical}>
+  <Header />
+  <main id="main">
+    <section class="section container flow">
+      <h1>Leistungen</h1>
+      <p class="text-muted">End‑to‑End: Strategie, Umsetzung, Optimierung – immer messbar.</p>
+    </section>
+    <Leistungen />
+    <Contact />
+  </main>
+  <Footer />
+</Base>
