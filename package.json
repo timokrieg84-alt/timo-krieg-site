@@ -8,10 +8,10 @@
     "preinstall": "rm -f package-lock.json || true",
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview --host"
+    "preview": "astro preview"
   },
   "dependencies": {
-    "astro": "^4.12.0",
+    "astro": "^4.10.0",
     "gsap": "^3.12.5",
     "swiper": "^11.1.4"
   },
