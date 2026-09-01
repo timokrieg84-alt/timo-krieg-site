@@ -1,3 +1,5 @@
 User-agent: *
 Allow: /
-Sitemap: https://timo-krieg-site.vercel.app/sitemap.xml
+Disallow: /preview/
+Disallow: /staging/
+Sitemap: https://example.com/sitemap.xml
