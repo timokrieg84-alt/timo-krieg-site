@@ -17,5 +17,5 @@ module.exports = {
     // Rings
     'ring-[#123D2A]','ring-[#C8501E]','ring-[#E58AA0]','ring-[#F5F1E9]','ring-[#1A1A1A]','ring-[#6B7280]','ring-[#C8A24B]',
   ],
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [],
 };
