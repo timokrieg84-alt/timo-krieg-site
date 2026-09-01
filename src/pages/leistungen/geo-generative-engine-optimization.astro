@@ -1,0 +1,57 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "GEO Agentur | Sichtbarkeit in AI‑Antworten (ChatGPT, Perplexity)",
+  description: "Citations, Authority & Justifications: Wir machen Ihre Marke auffindbar in AI Overviews & LLM‑Antworten – über SEO hinaus.",
+  url: "https://example.com/leistungen/geo-generative-engine-optimization/",
+  canonical: "https://example.com/leistungen/geo-generative-engine-optimization/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/geo-generative-engine-optimization/#service","name":"GEO – Generative Engine Optimization","serviceType":"Generative Engine Optimization","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"},{"@type":"Country","name":"Austria"},{"@type":"Country","name":"Switzerland"}],"audience":{"@type":"BusinessAudience"}})}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Sichtbar in ChatGPT, Perplexity & Google AI." intro="Wir machen Ihre Marke zitierfähig für generative Antworten – über saubere Entities, Quellenautorität und LLM‑lesbare Inhalte.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• LLM‑Crawling & technische Lesbarkeit</li>
+              <li>• Entity‑SEO & Wissensgraph</li>
+              <li>• Citation‑Ready Content & Quellenführung</li>
+              <li>• llms.txt & AI Overviews‑Optimierung</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• AI‑Antwort‑Citations & Justifications</li>
+              <li>• Brand‑Erwähnungen & Autorität</li>
+              <li>• SERP/AI‑Overview Präsenz</li>
+              <li>• Content‑Abdeckung je Entität</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>
