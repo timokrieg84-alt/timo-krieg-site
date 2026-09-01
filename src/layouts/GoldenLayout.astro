@@ -1,0 +1,193 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+const {
+  title = 'Zum Lindenhof – Regionale deutsche Küche in Berlin-Kreuzberg',
+  description = 'Zum Lindenhof in Berlin-Kreuzberg: Regionale, saisonale Küche, wechselnde Mittagsgerichte, hausgemachte Spezialitäten. Jetzt Speisekarte ansehen und Tisch reservieren.',
+  ogImage = '/assets/images/og/zum-lindenhof-og.jpg'
+} = Astro.props as Props;
+
+// Branding & config (subset)
+const SITE = {
+  name: 'Zum Lindenhof',
+  domain: 'www.zum-lindenhof.de',
+  canonical: 'https://www.zum-lindenhof.de',
+  language: 'de',
+  colors: {
+    primary: '#2E7D32',
+    secondary: '#FFC107',
+    accent: '#C62828',
+    neutral900: '#1F2937',
+    neutral700: '#374151',
+    neutral500: '#6B7280',
+    neutral100: '#F3F4F6',
+    background: '#FFFFFF'
+  },
+  logo: {
+    light: '/assets/brand/zum-lindenhof-logo-light.svg',
+    dark: '/assets/brand/zum-lindenhof-logo-dark.svg',
+    favicon: '/assets/brand/favicon.png',
+    apple: '/assets/brand/apple-touch-icon.png'
+  },
+  performance: {
+    preloadFonts: ['/assets/fonts/Inter-Variable.woff2','/assets/fonts/PlayfairDisplay-Bold.woff2']
+  },
+  analytics: {
+    provider: 'matomo' as const,
+    url: 'https://analytics.zum-lindenhof.de',
+    siteId: '7',
+    respectDNT: true
+  },
+  announcement: {
+    enabled: true,
+    message: 'Spargelwochen vom 15.04. bis 15.06. – Jetzt reservieren!',
+    style: 'accent' as const,
+    linkAnchor: '#menu'
+  }
+};
+const NAV = [
+  { label: 'Startseite', href: '#hero' },
+  { label: 'Speisekarte', href: '#menu' },
+  { label: 'Öffnungszeiten', href: '#hours' },
+  { label: 'Kontakt', href: '#contact' }
+];
+---
+<!doctype html>
+<html lang={SITE.language}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href={SITE.canonical} />
+    <link rel="icon" href={SITE.logo.favicon} />
+    <link rel="apple-touch-icon" href={SITE.logo.apple} />
+    <meta property="og:type" content="restaurant" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:url" content={SITE.canonical} />
+    <meta name="theme-color" content={SITE.colors.primary} />
+    {SITE.performance.preloadFonts.map((href) => (
+      <link rel="preload" href={href} as="font" type="font/woff2" crossorigin="anonymous" />
+    ))}
+    <style is:global>
+      :root{
+        --color-primary: {SITE.colors.primary};
+        --color-accent: {SITE.colors.accent};
+        --radius: 8px;
+        --shadow: 0 8px 24px rgba(0,0,0,0.08);
+      }
+      .font-serif{ font-family: 'Playfair Display', Georgia, serif; }
+      .font-sans{ font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+      html{ scroll-behavior:smooth; }
+      section[id]{ scroll-margin-top: 5rem; }
+    </style>
+  </head>
+  <body class="font-sans text-[#1F2937] bg-white">
+    {SITE.announcement.enabled && (
+      <import src="../components/AnnouncementBar.astro" />,
+      <AnnouncementBar message={SITE.announcement.message} style={SITE.announcement.style} linkAnchor={SITE.announcement.linkAnchor} />
+    )}
+    <header class="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60">
+      <div class="mx-auto max-w-[1200px] px-4 h-16 flex items-center justify-between gap-4">
+        <a href="#hero" class="flex items-center gap-3">
+          <img src={SITE.logo.dark} alt={SITE.name} class="h-7 w-auto" loading="eager" />
+          <span class="sr-only">{SITE.name}</span>
+        </a>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          {NAV.map((n) => (<a href={n.href} class="text-[#374151] hover:text-[#1F2937]">{n.label}</a>))}
+        </nav>
+        <div class="hidden md:block">
+          <a href="#contact" class="inline-flex items-center rounded-md bg-[#2E7D32] text-white px-4 py-2 text-sm font-medium shadow hover:bg-emerald-700">Tisch reservieren</a>
+        </div>
+        <button class="md:hidden inline-flex items-center justify-center rounded-md border border-slate-300 px-3 py-2 text-sm" aria-label="Menü öffnen" on:click={() => {
+          const m = document.getElementById('mobile-nav');
+          if (m) m.classList.toggle('hidden');
+        }}>
+          ☰
+        </button>
+      </div>
+      <div id="mobile-nav" class="md:hidden hidden border-t border-slate-200 bg-white">
+        <div class="mx-auto max-w-[1200px] px-4 py-3 grid gap-2">
+          {NAV.map((n) => (
+            <a href={n.href} class="block py-2 text-[#374151] hover:text-[#1F2937]" on:click={() => { const m=document.getElementById('mobile-nav'); if(m) m.classList.add('hidden'); }}>{n.label}</a>
+          ))}
+          <a href="#contact" class="mt-2 inline-flex items-center justify-center rounded-md bg-[#2E7D32] text-white px-4 py-2 text-sm font-medium shadow hover:bg-emerald-700">Tisch reservieren</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="mt-16 border-t border-slate-200 bg-[#F3F4F6]">
+      <div class="mx-auto max-w-[1200px] px-4 py-10 grid gap-8 md:grid-cols-3">
+        <div>
+          <img src={SITE.logo.dark} alt={SITE.name} class="h-7 w-auto" loading="lazy" />
+          <p class="mt-3 text-sm text-[#374151]">Regional. Saisonal. Herzlich.</p>
+          <p class="mt-4 text-sm text-[#6B7280]">Lindenstraße 28<br/>10969 Berlin, Deutschland</p>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg font-semibold">Navigation</h3>
+          <ul class="mt-3 space-y-2 text-sm">
+            <li><a href="#hero" class="hover:underline">Startseite</a></li>
+            <li><a href="#menu" class="hover:underline">Speisekarte</a></li>
+            <li><a href="#hours" class="hover:underline">Öffnungszeiten</a></li>
+            <li><a href="#contact" class="hover:underline">Kontakt</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="font-serif text-lg font-semibold">Kontakt</h3>
+          <ul class="mt-3 text-sm text-[#374151] space-y-1">
+            <li>Telefon: <a class="hover:underline" href="tel:+493023456780">+49 30 23456780</a></li>
+            <li>E-Mail: <a class="hover:underline" href="mailto:hallo@zum-lindenhof.de">hallo@zum-lindenhof.de</a></li>
+            <li class="pt-2 flex gap-3">
+              <a href="https://www.instagram.com/zumlindenhof_berlin" aria-label="Instagram" target="_blank" rel="noopener" class="hover:opacity-80">Instagram</a>
+              <a href="https://www.facebook.com/zumlindenhofberlin" aria-label="Facebook" target="_blank" rel="noopener" class="hover:opacity-80">Facebook</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-slate-200">
+        <div class="mx-auto max-w-[1200px] px-4 py-4 text-xs text-[#6B7280] flex items-center justify-between gap-4">
+          <span>© {new Date().getFullYear()} {SITE.name}</span>
+          <span>Berlin, Germany</span>
+        </div>
+      </div>
+    </footer>
+
+    {SITE.analytics.provider === 'matomo' && (
+      <>
+        <script is:inline>
+          var _paq = window._paq = window._paq || [];
+          _paq.push(['requireConsent']);
+          _paq.push(['trackPageView']);
+          _paq.push(['enableLinkTracking']);
+          (function() {
+            var u="{SITE.analytics.url}/";
+            _paq.push(['setTrackerUrl', u+'matomo.php']);
+            _paq.push(['setSiteId', '{SITE.analytics.siteId}']);
+            var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+            g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+          })();
+        </script>
+        <noscript><p><img referrerpolicy="no-referrer-when-downgrade" src="{SITE.analytics.url}/matomo.php?idsite={SITE.analytics.siteId}&rec=1" style="border:0" alt="" /></p></noscript>
+      </>
+    )}
+
+    <script is:inline>
+      // Respect DNT optionally
+      try {
+        var dnt = navigator.doNotTrack == '1' || window.doNotTrack == '1' || navigator.msDoNotTrack == '1';
+        if (dnt && window._paq) { window._paq.push(['optUserOut']); }
+      } catch {}
+    </script>
+  </body>
+</html>
