@@ -1,5 +1,7 @@
 User-agent: *
-Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /draft/
 Disallow: /preview/
-Disallow: /staging/
-Sitemap: https://example.com/sitemap.xml
+Allow: /
+Sitemap: https://online-marketing-office.de/sitemap.xml
