@@ -3,65 +3,76 @@ import Layout from "@/layouts/Layout.astro";
 import Navbar from "@/components/Navbar.astro";
 import Section from "@/components/Section.astro";
 import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "Projekt anfragen | Angebot in 48h",
+  description: "Kurzbriefing senden – Sie erhalten Roadmap, Kostenrahmen und Quick‑Wins. Priorisiert für KMU, Praxen & B2B.",
+  url: "https://example.com/projekt-anfragen/",
+  canonical: "https://example.com/projekt-anfragen/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
 ---
-<Layout title="Projekt anfragen | Angebot in 48h" description="Kurzbriefing senden – Sie erhalten Roadmap, Kostenrahmen und Quick‑Wins. Priorisiert für KMU, Praxen & B2B.">
-  <Fragment slot="nav"><Navbar /></Fragment>
-  <Section title="Projekt anfragen" intro="In 30 Minuten klären wir Ziele, Potenziale und den schnellsten Weg zu mehr Anfragen.">
-    <div class="card p-6">
-      <form id="contactForm" class="grid gap-4" novalidate>
-        <label class="grid gap-1">
-          <span>Name *</span>
-          <input class="p-3 rounded-md bg-bg-2 border border-border" type="text" name="name" required />
-        </label>
-        <label class="grid gap-1">
-          <span>E‑Mail *</span>
-          <input class="p-3 rounded-md bg-bg-2 border border-border" type="email" name="email" required />
-        </label>
-        <label class="grid gap-1">
-          <span>Telefon</span>
-          <input class="p-3 rounded-md bg-bg-2 border border-border" type="tel" name="phone" />
-        </label>
-        <label class="grid gap-1">
-          <span>Website (falls vorhanden)</span>
-          <input class="p-3 rounded-md bg-bg-2 border border-border" type="url" name="site" />
-        </label>
-        <label class="grid gap-1">
-          <span>Ihre Nachricht *</span>
-          <textarea class="p-3 rounded-md bg-bg-2 border border-border" name="message" rows="5" required></textarea>
-        </label>
-        <p class="text-txt-2 text-sm">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>. Eingehende Anfragen werden per Telegram benachrichtigt.</p>
-        <button class="btn btn-primary btn-glare" type="submit">Anfrage senden</button>
-        <p id="formMessage" role="status" class="text-sm text-txt-2"></p>
-      </form>
-    </div>
-  </Section>
-  <Fragment slot="footer"><Footer /></Fragment>
-</Layout>
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="lead" title="Schnell zum Angebot" intro="In 30 Minuten klären wir Ziele, Potenziale und den schnellsten Weg zu mehr Anfragen.">
+        <form id="contactForm" class="card p-6 grid gap-4" novalidate>
+          <label class="grid gap-1">
+            <span>Name *</span>
+            <input name="name" required class="bg-bg-2 border border-border rounded-md p-3" autocomplete="name" />
+          </label>
+          <label class="grid gap-1">
+            <span>E‑Mail *</span>
+            <input type="email" name="email" required class="bg-bg-2 border border-border rounded-md p-3" autocomplete="email" />
+          </label>
+          <label class="grid gap-1">
+            <span>Telefon</span>
+            <input type="tel" name="phone" class="bg-bg-2 border border-border rounded-md p-3" autocomplete="tel" />
+          </label>
+          <label class="grid gap-1">
+            <span>Ihr Vorhaben *</span>
+            <textarea name="message" required rows="6" class="bg-bg-2 border border-border rounded-md p-3" placeholder="Kurz: Branche, Ziel, Timing, Budgetrahmen"></textarea>
+          </label>
+          <p class="text-txt-2 text-sm">Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage verwendet. Details in der <a class="underline" href="/datenschutz">Datenschutzerklärung</a>. Eingehende Anfragen werden per Telegram benachrichtigt.</p>
+          <button class="btn btn-primary btn-glare" type="submit">Anfrage senden</button>
+          <p id="formMessage" role="status" class="text-sm"></p>
+        </form>
+      </Section>
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
 
-<script is:client="visible">
-  const form = document.querySelector('#contactForm');
-  const msg = document.querySelector('#formMessage');
-  form?.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const data = {
-      name: form.name.value,
-      email: form.email.value,
-      phone: form.phone.value || "",
-      site: form.site.value || window.location.hostname,
-      message: form.message.value
-    };
-    try {
-      const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+    <script is:client="visible">
+      const form = document.querySelector('#contactForm');
+      const msg = document.querySelector('#formMessage');
+      form?.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const fd = new FormData(form);
+        const data = {
+          name: fd.get('name'),
+          email: fd.get('email'),
+          phone: fd.get('phone') || "",
+          site: window.location.hostname,
+          message: fd.get('message')
+        };
+        try {
+          const res = await fetch('https://timokrieg.app.n8n.cloud/webhook/contact-form', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data)
+          });
+          if (res.ok) {
+            msg.textContent = 'Danke! Wir haben Ihre Nachricht erhalten und melden uns zeitnah.';
+            form.reset();
+          } else {
+            msg.textContent = 'Es gab ein Problem. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
+          }
+        } catch (err) {
+          msg.textContent = 'Netzwerkfehler. Bitte später erneut versuchen.';
+        }
       });
-      if (res.ok) {
-        msg.textContent = 'Danke! Wir haben Ihre Nachricht erhalten und melden uns zeitnah.';
-        form.reset();
-      } else {
-        msg.textContent = 'Es gab ein Problem. Bitte versuchen Sie es erneut oder rufen Sie uns an.';
-      }
-    } catch (err) {
-      msg.textContent = 'Netzwerkfehler. Bitte später erneut versuchen.';
-    }
-  });
-</script>
+    </script>
+  </body>
+</html>
