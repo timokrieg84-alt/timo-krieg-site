@@ -5,7 +5,6 @@ import "../styles/global.css";
 const { brand, nav } = site;
 const allPages = [
   { label: "Start", href: "/" },
-  { label: "Leistungen", href: "/leistungen" },
   ...nav.primary.filter((n) => n.href !== "/"),
 ];
 const allServices = nav.services;
@@ -40,10 +39,10 @@ const allLegal = nav.legal;
               <a href={item.href} class="text-sm text-[#1A1A1A]/80 hover:text-[#123D2A] transition-colors">{item.label}</a>
             ))}
             <div class="relative group">
-              <button class="text-sm text-[#1A1A1A]/80 hover:text-[#123D2A] transition-colors inline-flex items-center gap-2" aria-haspopup="true" aria-expanded="false">
+              <a href="/leistungen" class="text-sm text-[#1A1A1A]/80 hover:text-[#123D2A] transition-colors inline-flex items-center gap-2">
                 Leistungen
                 <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-              </button>
+              </a>
               <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 mt-2 w-[340px] max-h-[70vh] overflow-auto rounded-lg border border-[#123D2A]/10 bg-[#F5F1E9] shadow-xl p-2 grid grid-cols-1">
                 {allServices.map((s) => (
                   <a href={s.href} class="px-3 py-2 rounded text-sm hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{s.label}</a>

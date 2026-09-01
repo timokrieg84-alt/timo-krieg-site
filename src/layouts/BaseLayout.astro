@@ -1,123 +1,144 @@
 ---
+import { site } from "../data/site";
+import "../styles/tailwind.css";
 import "../styles/global.css";
 export interface Props {
   title?: string;
   description?: string;
   lang?: string;
 }
+const { brand, nav } = site;
 const {
-  title = 'Trattoria Bella Vista | Italienisches Restaurant in Berlin-Mitte',
-  description = 'Moderne italienische Küche in Berlin-Mitte: hausgemachte Pasta, Steinofenpizza, frische Antipasti und ausgewählte Weine. Jetzt Speisekarte ansehen und reservieren.',
-  lang = 'de-DE'
+  title = `${brand.name} – ${brand.tagline}`,
+  description = "Premium-Online-Marketing: SEO, Google Ads, Webdesign, Automation u.v.m. – messbar, DSGVO-sicher, skalierbar.",
+  lang = "de",
 } = Astro.props as Props;
-const navItems = [
-  { label: 'Start', href: '#hero' },
-  { label: 'Speisekarte', href: '#speisekarte' },
-  { label: 'Öffnungszeiten', href: '#oeffnungszeiten' },
-  { label: 'Standort & Kontakt', href: '#kontakt' },
-  { label: 'Reservierung', href: '#reservierung' }
+const allPages = [
+  { label: "Start", href: "/" },
+  ...nav.primary.filter((n) => n.href !== "/"),
 ];
+const allServices = nav.services;
+const allLegal = nav.legal;
 ---
 <html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <meta name="keywords" content="italienisches Restaurant Berlin, Trattoria Berlin Mitte, Pasta Berlin, Pizza Steinofen Berlin, italienische Küche Berlin, Bella Vista Berlin" />
-    <meta name="theme-color" content="#9E2A2B" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#123D2A" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body class="min-h-screen bg-bg text-text antialiased">
-    <a href="#hero" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-surface text-text px-3 py-2 rounded-md shadow-brandSm">Zum Inhalt springen</a>
-    <header id="site-header" class="fixed top-0 inset-x-0 z-40 transition-shadow">
-      <nav class="container flex items-center justify-between py-4">
-        <a href="#hero" class="text-text hover:text-linkHover font-heading text-xl md:text-2xl tracking-wide">
-          Trattoria <span class="text-brand">Bella Vista</span>
-        </a>
-        <button id="nav-toggle" class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-divider text-text" aria-label="Navigation umschalten" aria-expanded="false">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" /></svg>
-        </button>
-        <ul id="nav-menu" class="hidden md:flex gap-6 items-center text-sm">
-          {navItems.map((item) => (
-            <li><a href={item.href} class="nav-link text-textSecondary hover:text-linkHover transition-colors">{item.label}</a></li>
-          ))}
-          <li>
-            <a href="#reservierung" class="inline-flex items-center gap-2 px-4 py-2 rounded-md bg-brand text-white hover:bg-linkHover shadow-brandSm">
-              Jetzt reservieren
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <script is:inline>
-        const header = document.getElementById('site-header');
-        const menu = document.getElementById('nav-menu');
-        const toggle = document.getElementById('nav-toggle');
-        const links = menu?.querySelectorAll('a.nav-link');
-        const sections = ['hero','speisekarte','oeffnungszeiten','kontakt','reservierung']
-          .map(id => document.getElementById(id))
-          .filter(Boolean);
-        const setShadow = () => {
-          if (window.scrollY > 8) header?.classList.add('shadow-brandSm','bg-surface/90','backdrop-blur');
-          else header?.classList.remove('shadow-brandSm','bg-surface/90','backdrop-blur');
-        };
-        window.addEventListener('scroll', setShadow, { passive: true });
-        setShadow();
-        toggle?.addEventListener('click', () => {
-          const removed = menu?.classList.toggle('hidden');
-          const isOpen = removed === false; // hidden removed => open
-          toggle.setAttribute('aria-expanded', String(isOpen));
-        });
-        links?.forEach(l => l.addEventListener('click', () => {
-          if (window.innerWidth < 768) menu?.classList.add('hidden');
-        }));
-        // ScrollSpy
-        const linkById = new Map();
-        links?.forEach(l => linkById.set(l.getAttribute('href')?.slice(1), l));
-        const activate = (id) => {
-          links?.forEach(l => l.classList.remove('text-brand','font-semibold'));
-          const active = linkById.get(id);
-          if (active) {
-            active.classList.add('text-brand','font-semibold');
-          }
-        };
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach((e) => {
-            if (e.isIntersecting) {
-              activate(e.target.id);
-            }
-          });
-        }, { rootMargin: '-72px 0px -60% 0px', threshold: 0.1 });
-        sections.forEach((s) => s && io.observe(s));
-      </script>
-    </header>
-    <main class="pt-20" role="main">
-      <slot />
-    </main>
-    <footer class="mt-24 border-t border-divider bg-surface/70" role="contentinfo">
-      <div class="container py-10 grid md:grid-cols-3 gap-8 text-sm">
-        <div>
-          <p class="font-heading text-lg">Trattoria <span class="text-brand">Bella Vista</span></p>
-          <p class="text-textSecondary mt-2">Musterstrasse 12, 10115 Berlin</p>
-          <p class="text-textSecondary">Tel. <a class="text-link hover:text-linkHover" href="tel:+49301234567">+49 30 1234567</a></p>
-          <p class="text-textSecondary">E‑Mail <a class="text-link hover:text-linkHover" href="mailto:info@bellavista-berlin.de">info@bellavista-berlin.de</a></p>
-        </div>
-        <div>
-          <p class="font-semibold text-text mb-2">Öffnungszeiten</p>
-          <ul class="text-textSecondary space-y-1">
-            <li>Mo–Fr: 12:00–15:00, 17:30–22:30</li>
-            <li>Sa: 12:00–23:00</li>
-            <li>So: 12:00–22:00</li>
-          </ul>
-        </div>
-        <div>
-          <p class="font-semibold text-text mb-2">Hinweis</p>
-          <p class="text-textSecondary">Reservierungen für 2–8 Personen telefonisch oder per E‑Mail. Kurzfristige Reservierungen bitte telefonisch.</p>
+  <body class="min-h-dvh bg-[#F5F1E9] text-[#1A1A1A] antialiased selection:bg-[#123D2A]/10 selection:text-[#123D2A]" style="font-family:Inter,system-ui,sans-serif">
+    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-[#F5F1E9] focus:text-[#1A1A1A] focus:px-3 focus:py-2 focus:rounded">Zum Inhalt springen</a>
+
+    <header class="sticky top-0 z-50 bg-[#F5F1E9]/80 backdrop-blur border-b border-[#123D2A]/10">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <a href="/" class="flex items-center gap-3 group" aria-label="Startseite">
+            <div class="h-8 w-8 rounded bg-[#123D2A] text-[#F5F1E9] grid place-items-center font-semibold">GJ</div>
+            <div class="leading-tight">
+              <div class="font-semibold tracking-wide text-sm sm:text-base text-[#123D2A] group-hover:text-[#C8501E] transition-colors">{brand.logoText}</div>
+              <div class="text-[10px] sm:text-xs text-[#6B7280]">{brand.tagline}</div>
+            </div>
+          </a>
+          <nav class="hidden lg:flex items-center gap-6" aria-label="Hauptnavigation">
+            {allPages.map((item) => (
+              <a href={item.href} class="text-sm text-[#1A1A1A]/80 hover:text-[#123D2A] transition-colors">{item.label}</a>
+            ))}
+            <div class="relative group">
+              <a href="/leistungen" class="text-sm text-[#1A1A1A]/80 hover:text-[#123D2A] transition-colors inline-flex items-center gap-2">
+                Leistungen
+                <svg class="h-3 w-3" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 4l3 3 3-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </a>
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 mt-2 w-[340px] max-h-[70vh] overflow-auto rounded-lg border border-[#123D2A]/10 bg-[#F5F1E9] shadow-xl p-2 grid grid-cols-1">
+                {allServices.map((s) => (
+                  <a href={s.href} class="px-3 py-2 rounded text-sm hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{s.label}</a>
+                ))}
+              </div>
+            </div>
+            {allLegal.map((l) => (
+              <a href={l.href} class="text-sm text-[#1A1A1A]/60 hover:text-[#123D2A]">{l.label}</a>
+            ))}
+            <a href="/#contact" class="ml-2 inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+          </nav>
+          <button class="lg:hidden inline-flex items-center justify-center rounded-md p-2 text-[#1A1A1A] hover:text-[#123D2A]" aria-label="Menü öffnen" id="mobile-menu-button">
+            <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+          </button>
         </div>
       </div>
-      <div class="border-t border-divider py-4 text-center text-xs text-textSecondary">© {new Date().getFullYear()} Trattoria Bella Vista · Berlin</div>
+      <div id="mobile-menu" class="lg:hidden hidden border-t border-[#123D2A]/10 bg-[#F5F1E9]/90 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-4 py-4 space-y-2">
+          {allPages.map((item) => (
+            <a href={item.href} class="block rounded px-3 py-2 text-[#1A1A1A]/80 hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{item.label}</a>
+          ))}
+          <details class="group">
+            <summary class="cursor-pointer px-3 py-2 text-[#1A1A1A]/80 hover:text-[#123D2A]">Leistungen</summary>
+            <div class="mt-2 space-y-1 pl-3">
+              {allServices.map((s) => (
+                <a href={s.href} class="block rounded px-3 py-2 text-sm hover:bg-[#123D2A]/5 hover:text-[#123D2A]">{s.label}</a>
+              ))}
+            </div>
+          </details>
+          <div class="pt-2 flex gap-3">
+            {allLegal.map((l) => (
+              <a href={l.href} class="text-sm text-[#1A1A1A]/60 hover:text-[#123D2A]">{l.label}</a>
+            ))}
+          </div>
+          <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+        </div>
+      </div>
+      <script>
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        btn?.addEventListener('click', ()=>{ menu?.classList.toggle('hidden'); })
+      </script>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <footer class="mt-24 border-t border-[#123D2A]/10 bg-[#F5F1E9]">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-4">
+        <div class="space-y-3">
+          <div class="text-[#123D2A] font-semibold tracking-wide">{brand.logoText}</div>
+          <div class="text-sm text-[#6B7280]">{brand.tagline}</div>
+          <div class="pt-2 text-sm text-[#1A1A1A]/70">{site.contact.company}<br/>{site.contact.street}, {site.contact.zip} {site.contact.city}<br/>Tel. <a class="underline hover:text-[#123D2A]" href={`tel:${site.contact.phone.replace(/\s/g,'')}`}>{site.contact.phone}</a><br/>Mail <a class="underline hover:text-[#123D2A]" href={`mailto:${site.contact.email}`}>{site.contact.email}</a></div>
+        </div>
+        <div>
+          <div class="font-semibold text-[#1A1A1A] mb-3">Sektionen</div>
+          <nav class="grid gap-2 text-sm">
+            {[...nav.footer.sections, { label: 'Leistungen', href: '/leistungen' }].map((i)=> (
+              <a href={i.href} class="text-[#1A1A1A]/70 hover:text-[#123D2A]">{i.label}</a>
+            ))}
+          </nav>
+        </div>
+        <div>
+          <div class="font-semibold text-[#1A1A1A] mb-3">Leistungen</div>
+          <nav class="grid gap-2 text-sm max-h-56 overflow-auto pr-2">
+            {nav.footer.services.map((i)=> (
+              <a href={i.href} class="text-[#1A1A1A]/70 hover:text-[#123D2A]">{i.label}</a>
+            ))}
+          </nav>
+        </div>
+        <div>
+          <div class="font-semibold text-[#1A1A1A] mb-3">Rechtliches</div>
+          <nav class="grid gap-2 text-sm">
+            {nav.footer.legal.map((i)=> (
+              <a href={i.href} class="text-[#1A1A1A]/70 hover:text-[#123D2A]">{i.label}</a>
+            ))}
+          </nav>
+          <div class="mt-6">
+            <a href="/#contact" class="inline-flex items-center gap-2 rounded-full border border-[#123D2A]/20 bg-[#F5F1E9] px-4 py-2 text-sm font-medium text-[#123D2A] hover:border-[#C8501E] hover:text-[#C8501E] transition-colors">Projekt anfragen</a>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-[#123D2A]/10 py-6 text-center text-xs text-[#6B7280]">
+        © {new Date().getFullYear()} {brand.name}. Alle Rechte vorbehalten.
+      </div>
     </footer>
   </body>
 </html>
