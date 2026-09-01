@@ -1,0 +1,29 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+---
+<Layout title="Astro Website & High‑Performance Webdesign | E‑Commerce BW" description="Astro‑basierte Websites: Core Web Vitals exzellent, blitzschnell, SEO‑ready. Headless/Shopify/Shopware – Conversion im Fokus.">
+  <Fragment slot="nav"><Navbar /></Fragment>
+  <Section title="Websites, die verkaufen." intro="Maßgeschneiderte, ultraschnelle Websites und Shops – konversionsstark, DSGVO‑sicher und tief in Ihre Systeme integriert.">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="card p-6">
+        <h3 class="h3">Leistungsbausteine</h3>
+        <ul class="mt-3 text-txt-2 grid gap-2 list-disc pl-5">
+          <li>Custom Design</li>
+          <li>Astro & Headless CMS</li>
+          <li>Core Web Vitals</li>
+          <li>Conversion‑Rate‑Optimierung (CRO)</li>
+        </ul>
+      </div>
+      <div class="card p-6">
+        <h3 class="h3">Ergebnis</h3>
+        <p class="text-txt-2 mt-2">Schnelle, suchmaschinenstarke Websites mit klarer Conversion‑Führung und rechtssicherem Setup.</p>
+      </div>
+    </div>
+  </Section>
+  <CTA />
+  <Fragment slot="footer"><Footer /></Fragment>
+</Layout>
