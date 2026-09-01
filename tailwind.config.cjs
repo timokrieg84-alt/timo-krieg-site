@@ -1,5 +1,7 @@
 module.exports = {
-  content: ["./src/**/*.{astro,html,js,ts,jsx,tsx}"],
+  content: [
+    "./src/**/*.{astro,html,js,ts,jsx,tsx,mdx}",
+  ],
   darkMode: "class",
   theme: {
     extend: {
@@ -33,7 +35,7 @@ module.exports = {
         brand2: "var(--shadow-2)",
       },
       fontFamily: {
-        heading: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial"],
+        heading: ["Sora", "Inter", "system-ui"],
         sans: ["Inter", "system-ui", "-apple-system", "Segoe UI", "Roboto", "Helvetica Neue", "Arial"],
       },
       maxWidth: {
