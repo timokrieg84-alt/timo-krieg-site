@@ -1,0 +1,66 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Navbar from "@/components/Navbar.astro";
+import Section from "@/components/Section.astro";
+import CTA from "@/components/CTA-Bar.astro";
+import Footer from "@/components/Footer.astro";
+import HeadSEO from "@/components/HeadSEO.astro";
+const meta = {
+  title: "SEO Agentur Schwäbisch Gmünd | Local SEO für KMU & Praxen",
+  description: "Technisches SEO, Content & Local Packs. Regionale Leads aus SG, Ostalb & BW – inklusive SEO‑Regio‑System für Stadt‑Landings.",
+  url: "https://example.com/leistungen/seo-local-seo/",
+  canonical: "https://example.com/leistungen/seo-local-seo/",
+  image: "/images/hero-bg.webp",
+  type: "article"
+};
+---
+<html lang="de" class="dark">
+  <head>
+    <HeadSEO {...meta} />
+    <script type="application/ld+json">
+      {JSON.stringify({
+        "@context":"https://schema.org",
+        "@type":"Service",
+        "@id":"https://example.com/leistungen/seo-local-seo/#service",
+        "name":"SEO & Local SEO",
+        "serviceType":"SEO & Local SEO",
+        "provider": {"@id":"https://example.com/#organization"},
+        "areaServed":[{"@type":"City","name":"Schwäbisch Gmünd"},{"@type":"State","name":"Baden-Württemberg"},{"@type":"Country","name":"Germany"}],
+        "audience":{"@type":"BusinessAudience","businessFunction":"LeadGeneration"}
+      })}
+    </script>
+  </head>
+  <body>
+    <Layout title={meta.title} description={meta.description}>
+      <Fragment slot="nav"><Navbar /></Fragment>
+      <Section id="intro" title="Sichtbar werden, wenn es zählt." intro="Ganzheitliches SEO mit Fokus auf Technik, Content, Backlinks und lokaler Sichtbarkeit – inklusive Google Business Profil und 30+ Branchenportalen.">
+        <div class="grid md:grid-cols-2 gap-8">
+          <article class="card p-6">
+            <h3 class="h3">Leistungspaket</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Technisches SEO (Crawling, CWV, Strukturen)</li>
+              <li>• Content & Keywords (Themenplan, Onpage)</li>
+              <li>• Backlink‑Aufbau & Digital PR</li>
+              <li>• Local SEO (GBP, NAP‑Konsistenz, Portale)</li>
+            </ul>
+            <div class="mt-6 flex gap-3">
+              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
+              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
+            </div>
+          </article>
+          <article class="card p-6">
+            <h3 class="h3">Messpunkte</h3>
+            <ul class="mt-3 text-txt-2 grid gap-2">
+              <li>• Rankings & Sichtbarkeit (organisch/lokal)</li>
+              <li>• Leads/Anfragen aus organischen Kanälen</li>
+              <li>• GBP‑Insights (Anrufe, Routen, Websiteklicks)</li>
+              <li>• Technische Health Scores</li>
+            </ul>
+          </article>
+        </div>
+      </Section>
+      <CTA />
+      <Fragment slot="footer"><Footer /></Fragment>
+    </Layout>
+  </body>
+</html>
