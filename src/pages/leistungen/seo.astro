@@ -1,94 +1,68 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { brand, services, contact } from '../../data/site';
-const service = services.find(s => s.slug === 'seo');
-const others = services.filter(s => s.slug !== 'seo');
+import Layout from "../../layouts/Layout.astro";
+import { services } from "../../data/site";
+const current = services.find((s) => s.slug === "seo")!;
+const others = services.filter((s) => s.slug !== "seo");
 ---
-<Layout title={service?.seo.title ?? `${brand.name} – SEO & Local SEO`} description={service?.seo.description}>
-  <section class="relative bg-[#0B1220] text-[#F8FAFC]">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.15),transparent_40%)]"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <nav class="text-xs text-[#F8FAFC]/70"><a href="/" class="hover:text-[#F8FAFC]">Start</a> · <span>SEO & Local SEO</span></nav>
-      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">SEO & Local SEO</h1>
-      <p class="mt-2 max-w-3xl text-[#F8FAFC]/80">{service?.short}</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">Kostenloses SEO‑Erstgespräch</a>
-        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">Zur Startseite</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
-    <div class="lg:col-span-2">
-      <h2 class="text-xl font-semibold">Warum SEO mit ListingProfis?</h2>
-      <p class="mt-3 text-[#475569]">Wir kombinieren präzise technische Optimierung mit suchintention‑starkem Content und hochwertigem Linkaufbau. Für lokale Unternehmen bauen wir zusätzlich belastbare Local‑Signale auf – vom perfektionierten Google Business Profil bis zu konsistenten Citations in über 30 Branchenportalen.</p>
-
-      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5">
-          <div class="text-sm font-semibold">Technisches Fundament</div>
-          <p class="mt-1 text-sm text-[#475569]">Crawl‑Budget, Indexierung, interne Verlinkung und Strukturierte Daten – wir beseitigen Bremsklötze und schaffen eine skalierbare Architektur.</p>
-        </div>
-        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5">
-          <div class="text-sm font-semibold">Content, der konvertiert</div>
-          <p class="mt-1 text-sm text-[#475569]">Redaktionspläne auf Intent‑Ebene, SERP‑Reverse‑Engineering und UX‑Patterns, die Leads messbar steigern.</p>
-        </div>
-        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5">
-          <div class="text-sm font-semibold">Authority & Digital PR</div>
-          <p class="mt-1 text-sm text-[#475569]">Sauberer Linkaufbau, Erwähnungen und lokale Signale – Qualität statt Masse für nachhaltige Rankings.</p>
-        </div>
-        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5">
-          <div class="text-sm font-semibold">Local SEO Exzellenz</div>
-          <p class="mt-1 text-sm text-[#475569]">Optimiertes GBP, NAP‑Konsistenz und hyperlokale Landingpages für Top‑Platzierungen in der Map‑Pack.</p>
-        </div>
-      </div>
-
-      <h3 class="mt-10 text-lg font-semibold">Leistungsumfang</h3>
-      <ul class="mt-3 space-y-2 text-sm text-[#0B1220]">
-        {(service?.features ?? []).map((f) => (
-          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
-        ))}
-        <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>Tracking, Reporting & klare Zielmetriken</span></li>
-      </ul>
-
-      <h3 class="mt-10 text-lg font-semibold">Vorgehensmodell</h3>
-      <ol class="mt-3 space-y-3">
-        <li class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><strong>1. Audit & Strategie:</strong> Technische Analyse, Keyword‑Landschaft, Wettbewerber und Roadmap.</li>
-        <li class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><strong>2. Quick Wins & Setup:</strong> Technische Fixes, OnPage‑Optimierung, Content‑Blueprints, GBP‑Optimierung.</li>
-        <li class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><strong>3. Content & Authority:</strong> Veröffentlichung, interne Verlinkung, Digital PR, lokale Signale.</li>
-        <li class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><strong>4. Skalierung & Tests:</strong> Themencluster ausbauen, Tests und kontinuierliche Verbesserung.</li>
+<Layout>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
+        <li>/</li>
+        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
+        <li>/</li>
+        <li class="text-[#0B1221]">{current.title}</li>
       </ol>
+    </nav>
 
-      <div class="mt-10 rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-[#F8FAFC]">
-        <div class="text-lg font-semibold">Lassen Sie uns starten</div>
-        <p class="mt-1 text-[#F8FAFC]/80">In 30 Minuten klären wir Ziele, Potenziale und den nächsten sinnvollen Schritt.</p>
-        <div class="mt-4 flex flex-wrap gap-3">
-          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
-          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">E‑Mail schreiben</a>
+    <header class="mt-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
+      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Wir verbinden technisches SEO mit Content-Architektur und nutzerzentrierter Information. Von Crawlbarkeit und strukturieren Daten bis hin zu suchintention-genauem Content – für stabile Rankings und organisches Wachstum.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Beratung anfragen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Zur Startseite</a>
+        <a href="/leistungen/performance" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Performance</a>
+      </div>
+    </header>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12">
+      <article class="lg:col-span-8">
+        <section class="prose max-w-none">
+          <h2 class="text-2xl font-bold text-[#0B1221]">Mehr Sichtbarkeit durch System</h2>
+          <p class="mt-3 text-[#0B1221]/90">Erfolg in der Suche ist kein Zufall. Wir entwickeln Informationsarchitekturen, die Themenfelder klar strukturieren, interne Verlinkung stärken und Suchintention präzise bedienen. Technische Hygiene trifft hier auf relevanten Content.</p>
+          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Leistungspakete</h3>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Technik-Audit</strong><br/><span class="text-[#64748B]">Crawlbarkeit, Logfiles, strukturierte Daten, Indexierung.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Content-Plan</strong><br/><span class="text-[#64748B]">Keyword-Mapping, Suchintention, Autorität und Tiefe.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>OnPage-Setup</strong><br/><span class="text-[#64748B]">Meta, Headings, interne Links, Medienoptimierung.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Monitoring</strong><br/><span class="text-[#64748B]">Dashboards, Alerts und kontinuierliche Iteration.</span></li>
+          </ul>
+          <p class="mt-6 text-[#0B1221]">SEO wirkt besonders stark in Kombination mit <a href="/leistungen/content" class="text-[#0EA5E9] hover:underline">Content-Design</a> und <a href="/leistungen/analytics" class="text-[#0EA5E9] hover:underline">Analytics</a>.</p>
+        </section>
+      </article>
+      <aside class="lg:col-span-4">
+        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
+          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
+          <ul class="mt-3 space-y-2">
+            {others.map((s) => (
+              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
+            ))}
+          </ul>
+          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
+            <a href="/#leistungen" class="text-sm text-[#0EA5E9] hover:underline">Zur Übersicht</a>
+          </div>
         </div>
-      </div>
+      </aside>
     </div>
 
-    <aside class="lg:col-span-1">
-      <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-6">
-        <div class="text-sm font-semibold">Weitere Leistungen</div>
-        <nav class="mt-3 grid grid-cols-1 gap-2">
-          {others.map((o) => (
-            <a href={`/leistungen/${o.slug}`} class="text-sm text-[#1B2A4A] hover:text-[#22D3EE] transition-colors">{o.title}</a>
-          ))}
-        </nav>
-        <a href="/" class="mt-4 inline-block text-xs text-[#475569] hover:text-[#0B1220]">← Zur Startseite</a>
+    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
+      <h2 class="text-2xl font-bold text-[#0B1221]">Organisches Wachstum starten</h2>
+      <p class="mt-2 text-[#64748B]">Jetzt Potenziale identifizieren und priorisieren – wir unterstützen pragmatisch und messbar.</p>
+      <div class="mt-5 flex justify-center gap-3">
+        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
       </div>
-    </aside>
-  </section>
-
-  <section id="kontakt" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
-    <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-8">
-      <h2 class="text-xl font-semibold">Kostenloses Erstgespräch</h2>
-      <p class="mt-2 text-[#475569]">Wir zeigen transparent, wie wir Ihre SEO‑Sichtbarkeit steigern – lokal und deutschlandweit.</p>
-      <div class="mt-4 flex flex-wrap gap-3">
-        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Anrufen</a>
-        <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail</a>
-      </div>
-    </div>
+    </section>
   </section>
 </Layout>
