@@ -1,53 +1,47 @@
 ---
-import { brand, nav, services, contact } from '../data/site';
+import { brand, nav, contact, services } from "../data/site";
 const year = new Date().getFullYear();
 ---
-<footer class="mt-24 border-t border-[#94A3B8]/50 bg-[#0B1220] text-[#F8FAFC]">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 md:grid-cols-4 gap-8">
+<footer class="mt-24 border-t border-[#F1F5F9] bg-[#FFFFFF]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <div class="flex items-center gap-3">
-        <div class="h-8 w-8 rounded bg-[#22D3EE] ring-4 ring-[#22D3EE]/20"></div>
-        <div class="text-lg font-semibold">{brand.logoText}</div>
-      </div>
-      <p class="mt-4 text-sm text-[#94A3B8] max-w-xs">{brand.tagline}</p>
-      <div class="mt-4 text-sm text-[#94A3B8]">
-        <div>{contact.street}</div>
-        <div>{contact.zip} {contact.city}</div>
-        <div class="mt-2"><a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="hover:text-[#F8FAFC] transition-colors">{contact.phone}</a></div>
-        <div><a href={`mailto:${contact.email}`} class="hover:text-[#F8FAFC] transition-colors">{contact.email}</a></div>
-        <div class="mt-2">{contact.openingHours}</div>
-      </div>
+      <div class="text-lg font-extrabold tracking-tight text-[#0F172A]">{brand.logoText}</div>
+      <p class="mt-3 text-sm text-[#1E293B] max-w-xs">{contact.address}</p>
+      <p class="mt-2 text-sm"><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`mailto:${contact.email}`}>{contact.email}</a></p>
+      <p class="mt-1 text-sm"><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`tel:${contact.phone.replace(/\s/g,'')}`}>{contact.phone}</a></p>
     </div>
-
     <div>
-      <div class="text-sm font-semibold uppercase tracking-wide text-[#94A3B8]">Navigation</div>
-      <nav class="mt-3 flex flex-col gap-2">
-        {nav.main.map((item) => (
-          <a href={item.href} class="text-sm text-[#F8FAFC]/90 hover:text-[#22D3EE] transition-colors">{item.label}</a>
+      <h3 class="text-sm font-semibold text-[#0F172A]">Navigation</h3>
+      <ul class="mt-3 space-y-2">
+        {nav.main.map((n) => (
+          <li><a href={n.href} class="text-sm text-[#1E293B] hover:text-[#06B6D4]">{n.label}</a></li>
         ))}
-      </nav>
+      </ul>
     </div>
-
     <div>
-      <div class="text-sm font-semibold uppercase tracking-wide text-[#94A3B8]">Leistungen</div>
-      <nav class="mt-3 grid grid-cols-1 gap-2">
+      <h3 class="text-sm font-semibold text-[#0F172A]">Leistungen</h3>
+      <ul class="mt-3 space-y-2">
         {services.map((s) => (
-          <a href={`/leistungen/${s.slug}`} class="text-sm text-[#F8FAFC]/90 hover:text-[#22D3EE] transition-colors">{s.title}</a>
+          <li><a href={`/leistungen/${s.slug}`} class="text-sm text-[#1E293B] hover:text-[#06B6D4]">{s.name}</a></li>
         ))}
-      </nav>
+      </ul>
     </div>
-
     <div>
-      <div class="text-sm font-semibold uppercase tracking-wide text-[#94A3B8]">Kontakt</div>
-      <div class="mt-3 text-sm text-[#94A3B8] space-y-2">
-        <div>
-          <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-4 py-2 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Erstgespräch buchen</a>
-        </div>
-        <div>
-          <a href="/impressum" class="hover:text-[#F8FAFC] transition-colors">Impressum</a> · <a href="/datenschutz" class="hover:text-[#F8FAFC] transition-colors">Datenschutz</a>
-        </div>
+      <h3 class="text-sm font-semibold text-[#0F172A]">Kontakt</h3>
+      <p class="mt-3 text-sm text-[#1E293B]">Erreichbarkeit: {contact.availability}</p>
+      <a href={`mailto:${contact.email}`} class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">
+        {contact.cta}
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h9.19L9.53 5.84a.75.75 0 111.06-1.06l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06l3.41-3.41H3.75A.75.75 0 013 10z" clip-rule="evenodd" /></svg>
+      </a>
+    </div>
+  </div>
+  <div class="border-t border-[#F1F5F9] py-6">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-xs text-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p>© {year} {brand.logoText}. Alle Rechte vorbehalten.</p>
+      <div class="flex items-center gap-4">
+        <a href="/impressum" class="hover:text-[#06B6D4]">Impressum</a>
+        <a href="/datenschutz" class="hover:text-[#06B6D4]">Datenschutz</a>
       </div>
     </div>
   </div>
-  <div class="border-t border-[#94A3B8]/40 py-4 text-center text-xs text-[#94A3B8]">© {year} {brand.name}. Alle Rechte vorbehalten.</div>
 </footer>
