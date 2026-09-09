@@ -1,11 +1,7 @@
-import { defineConfig } from "astro/config";
+import { defineConfig } from 'astro/config';
+import tailwind from '@astrojs/tailwind';
 
-// Astro 7 config
 export default defineConfig({
-  output: 'static',
-  prefetch: true,
-  experimental: {
-    clientPrerender: true
-  },
-  // site: 'https://www.listingprofis.de', // Optional: nach Domain-Freigabe aktivieren
+  integrations: [tailwind({ configFile: './tailwind.config.mjs' })],
+  vite: { resolve: { alias: { '@': '/src' } } }
 });
