@@ -1,55 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { brand, legal } from '../data/site';
-const i = legal.impressum;
+import Layout from "../layouts/Layout.astro";
+import { legal } from "../data/site";
 ---
-<Layout title={`Impressum | ${brand.name}`} description={`${brand.name} – Impressum und Anbieterkennzeichnung.`}>
+<Layout>
   <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-semibold tracking-tight">Impressum</h1>
-    <div class="mt-6 space-y-6 text-sm text-[#0B1220]">
-      <div>
-        <h2 class="text-base font-semibold">Angaben gemäß § 5 TMG</h2>
-        <p class="mt-2">
-          {i.company}<br />
-          {i.street}<br />
-          {i.zip} {i.city}<br />
-          {i.country}
-        </p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Kontakt</h2>
-        <p class="mt-2">
-          Telefon: <a href={`tel:${i.phone.replace(/\s+/g,'')}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{i.phone}</a><br />
-          E‑Mail: <a href={`mailto:${i.email}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{i.email}</a>
-        </p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Vertreten durch</h2>
-        <p class="mt-2">{i.representative}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Registereintrag</h2>
-        <p class="mt-2">{i.register}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Umsatzsteuer‑ID</h2>
-        <p class="mt-2">{i.vatId}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Verantwortlich für den Inhalt</h2>
-        <p class="mt-2">{i.responsibility}</p>
-      </div>
-
-      <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-4 text-xs text-[#475569]">
-        <p><strong>Haftung für Inhalte:</strong> Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
-        <p class="mt-2"><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
-        <p class="mt-2"><strong>Urheberrecht:</strong> Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
-      </div>
+    <div class="prose prose-headings:tracking-tight prose-a:text-[#0EA5E9] hover:prose-a:underline max-w-none">
+      <div set:html={legal.impressum}></div>
     </div>
   </section>
 </Layout>
