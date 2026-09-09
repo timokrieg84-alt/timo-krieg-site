@@ -1,13 +1,79 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { legal } from "../data/site";
+import { legal, projectInfo, sections } from "../data/site";
+const i = legal.imprint;
 ---
-<Layout>
-  <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="mx-auto">
-      <div class="[&>h1]:text-3xl [&>h1]:font-extrabold [&>h1]:tracking-tight [&>h1]:text-[#0B1221] [&>h2]:mt-8 [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:text-[#0B1221] [&>p]:mt-4 [&>p]:text-[#0B1221]/90 [&_a]:text-[#0EA5E9] hover:[&_a]:underline">
-        <div set:html={legal.impressum}></div>
+<Layout title={`Impressum – ${projectInfo.name}`} description={`Impressum von ${projectInfo.name}` }>
+  <section class="pt-10 sm:pt-14 lg:pt-16 pb-10">
+    <nav class="text-xs text-[#1E293B] mb-4" aria-label="Breadcrumb">
+      <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
+      <span class="mx-2">/</span>
+      <span class="text-[#0F172A] font-medium">Impressum</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">Impressum</h1>
+    <p class="mt-3 max-w-3xl text-[#1E293B]">Angaben gemäß § 5 TMG und § 18 Abs. 2 MStV.</p>
+  </section>
+
+  <section class="grid lg:grid-cols-12 gap-10 py-8 border-t border-[#F1F5F9]">
+    <div class="lg:col-span-7 space-y-8">
+      <div>
+        <h2 class="text-xl font-bold text-[#0F172A]">Diensteanbieter</h2>
+        <p class="mt-3 text-[#1E293B]">
+          {i.company} ({i.legalForm})<br />
+          Vertreten durch: {i.representedBy}
+        </p>
+        <p class="mt-3 text-[#1E293B]">
+          {i.address.street}<br />
+          {i.address.zip} {i.address.city}<br />
+          {i.address.country}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-[#0F172A]">Kontakt</h2>
+        <p class="mt-3 text-[#1E293B]">
+          Telefon: <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`tel:${i.contact.phone.replace(/\s/g,'')}`}>{i.contact.phone}</a><br />
+          E-Mail: <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`mailto:${i.contact.email}`}>{i.contact.email}</a>
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-[#0F172A]">Registereintrag</h2>
+        <p class="mt-3 text-[#1E293B]">
+          Sitz der Gesellschaft: {i.registeredOffice}<br />
+          Handelsregister: {i.commercialRegister.court}, Nr. {i.commercialRegister.number}
+        </p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-[#0F172A]">Umsatzsteuer-ID</h2>
+        <p class="mt-3 text-[#1E293B]">{i.vatId}</p>
+      </div>
+
+      <div>
+        <h2 class="text-xl font-bold text-[#0F172A]">Haftungsausschluss</h2>
+        <h3 class="mt-4 font-semibold text-[#0F172A]">Inhalte</h3>
+        <p class="mt-2 text-[#1E293B]">{i.disclaimer.content}</p>
+        <h3 class="mt-4 font-semibold text-[#0F172A]">Links</h3>
+        <p class="mt-2 text-[#1E293B]">{i.disclaimer.links}</p>
+        <h3 class="mt-4 font-semibold text-[#0F172A]">Urheberrecht</h3>
+        <p class="mt-2 text-[#1E293B]">{i.disclaimer.copyright}</p>
+        <h3 class="mt-4 font-semibold text-[#0F172A]">Streitbeilegung</h3>
+        <p class="mt-2 text-[#1E293B]">{i.disclaimer.dispute}</p>
       </div>
     </div>
+
+    <aside class="lg:col-span-5">
+      <div class="rounded-2xl border border-[#F1F5F9] p-6">
+        <h3 class="text-base font-semibold text-[#0F172A]">Direktlinks</h3>
+        <ul class="mt-3 space-y-2 text-sm text-[#1E293B]">
+          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href="/">Startseite</a></li>
+          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a></li>
+          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.kontakt}`}>Kontakt</a></li>
+          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href="/datenschutz">Datenschutz</a></li>
+        </ul>
+        <p class="mt-4 text-xs text-[#1E293B]">Diese Angaben gelten für die gesamte Website von {projectInfo.name}.</p>
+      </div>
+    </aside>
   </section>
 </Layout>
