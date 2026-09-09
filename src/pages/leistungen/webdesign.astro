@@ -1,72 +1,74 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { brand, colors, services } from "../../data/site";
-const service = services.find(s => s.slug === 'webdesign');
-const others = services.filter(s => s.slug !== 'webdesign');
+import { services, sections } from "../../data/site";
+const current = services.find((s) => s.slug === "webdesign")!;
+const others = services.filter((s) => s.slug !== "webdesign");
 ---
-<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
-  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
-      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
-      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
-      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Projekt anfragen</a>
-        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
-      </div>
-    </div>
-  </section>
+<Layout>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
+        <li>/</li>
+        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
+        <li>/</li>
+        <li class="text-[#0B1221]">{current.title}</li>
+      </ol>
+    </nav>
 
-  <section class={`bg-[${colors.background}]`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
-      <div class="lg:col-span-2">
-        <div>
-          <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Websites, die Story und Conversion verbinden</h2>
-          <p class={`mt-4 text-[${colors.text}]/90`}>Wir entwickeln Websites und Shops, die in Millisekunden überzeugen: klare Informationsarchitektur, feine Typografie, schnelle Ladezeiten und starke Micro-Interactions. Jede Seite führt konsequent zur Conversion – ob Anfrage, Kauf oder Termin.</p>
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Was unsere Websites auszeichnet</h3>
-          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
-            <li>Custom Design mit Komponentenbibliothek und skalierbarem Design System</li>
-            <li>Technische Exzellenz (Core Web Vitals, Barrierefreiheit, SEO-ready)</li>
-            <li>CMS nach Bedarf (Headless/WordPress) oder Next.js-Frontend</li>
-            <li>Conversion-Orientierung: klare Pfade, Social Proof, Performance-UX</li>
-          </ul>
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
-          {service?.features && (
-            <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
-              {service.features.map((f) => (<li>{f}</li>))}
-            </ul>
-          )}
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Lieferumfang</h3>
-          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
-            <li>Informationsarchitektur, Wireframes und High-Fidelity-Designs</li>
-            <li>Entwicklung, QA, Tracking-Setup und Consent-Management</li>
-            <li>Integration von CRM/ERP/Payment via API</li>
-            <li>Launch-Plan, Performance-Tuning und Schulung Ihres Teams</li>
-          </ul>
-        </div>
-        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
-          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Wir prüfen Ziele, Inhalte, Systeme und definieren einen klaren MVP. Auf Wunsch starten wir mit einer Landing-Page als Proof.</p>
-          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Kostenloses Erstgespräch</a>
-        </div>
+    <header class="mt-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
+      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Wir gestalten Interfaces, die Markencharakter spürbar machen und sich nahtlos anfühlen. Klare Informationsarchitektur, zugängliche Komponenten, fein abgestimmte Typografie und States, die in jeder Viewport-Größe überzeugen.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Projekt anfragen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Zur Startseite</a>
+        <a href="/#about" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Über uns</a>
       </div>
-      <aside class="lg:col-span-1">
-        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
+    </header>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12">
+      <article class="lg:col-span-8">
+        <section class="prose max-w-none">
+          <h2 class="text-2xl font-bold text-[#0B1221]">Design, das führt – nicht nur gefällt</h2>
+          <p class="mt-3 text-[#0B1221]/90">Gutes Webdesign ist Führung: Es klärt Hierarchien, reduziert kognitive Last und verstärkt Markenwerte. Wir arbeiten mit skalierbaren Komponentenbibliotheken, konsistenten Spacing- und Typo-Systemen sowie klaren Kontrastverhältnissen. So wird Ihr Interface nicht nur schön, sondern auch schnell erfassbar und messbar erfolgreicher.</p>
+          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Was Sie erhalten</h3>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Designsystem</strong><br/><span class="text-[#64748B]">Komponenten, Tokens und Guidelines für nachhaltige Weiterentwicklung.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Responsive Layouts</strong><br/><span class="text-[#64748B]">Mobile First gedacht, mit starker Desktop-Inszenierung.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Accessibility</strong><br/><span class="text-[#64748B]">Saubere Semantik, Fokus-States, Farbkontraste – WCAG-konform.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Prototyping</strong><br/><span class="text-[#64748B]">Interaktive Click-Dummies für Tests und Stakeholder-Alignment.</span></li>
+          </ul>
+          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Unser Vorgehen</h3>
+          <ol class="mt-3 grid gap-3">
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Discovery</strong> – Markenleitplanken, Nutzerziele und Content-Strukturen verstehen.</li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Systemdesign</strong> – Komponenten, States und Musterbibliothek definieren.</li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Validierung</strong> – Usability-Tests und Iterationen vor dem Build.</li>
+          </ol>
+          <p class="mt-6 text-[#0B1221]">Für maximale Wirkung verzahnen wir Design mit <a href="/leistungen/seo" class="text-[#0EA5E9] hover:underline">SEO</a> und <a href="/leistungen/performance" class="text-[#0EA5E9] hover:underline">Performance</a> von Anfang an.</p>
+        </section>
+      </article>
+      <aside class="lg:col-span-4">
+        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
+          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
           <ul class="mt-3 space-y-2">
-            {others.map((o) => (
-              <li>
-                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
-                  <span class="font-medium">{o.title}</span>
-                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
-                </a>
-              </li>
+            {others.map((s) => (
+              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
             ))}
           </ul>
-          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
+          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
+            <a href="/#process" class="text-sm text-[#0EA5E9] hover:underline">So arbeiten wir</a>
+          </div>
         </div>
       </aside>
     </div>
+
+    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
+      <h2 class="text-2xl font-bold text-[#0B1221]">Bereit für ein starkes Interface?</h2>
+      <p class="mt-2 text-[#64748B]">Schildern Sie uns kurz Ihr Vorhaben – wir melden uns in 24 Stunden mit einer ersten Einschätzung.</p>
+      <div class="mt-5 flex justify-center gap-3">
+        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+      </div>
+    </section>
   </section>
 </Layout>
