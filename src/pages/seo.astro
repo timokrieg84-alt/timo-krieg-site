@@ -1,0 +1,315 @@
+---
+const siteName = 'ListingProfis GmbH';
+const pageTitle = 'SEO & Local SEO Agentur Stuttgart/Kornwestheim | ListingProfis';
+const description = 'Ganzheitliches SEO mit Technik, Content & Backlinks. Lokale Sichtbarkeit durch Google Business Profil und über 30 Branchenportale. Messbar mehr Anfragen in Stuttgart, Kornwestheim & Region.';
+const canonical = '/seo';
+const ogImage = '/images/hero-office.webp';
+const phone = '07154 8047800';
+const address = 'Bahnhofstraße 5, 70806 Kornwestheim';
+const openingHours = 'Mo–Fr 09:00–16:00';
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <style>
+      :root {
+        --clr-navy: #1e3a8a; /* navy */
+        --clr-orange: #f97316; /* orange */
+        --clr-bg: #0b1220; /* deep navy bg */
+        --clr-text: #e5e7eb; /* neutral-200 */
+        --clr-muted: #94a3b8; /* slate-400 */
+        --clr-card: #0f172a; /* slate-950 */
+        --radius: 14px;
+        --shadow: 0 10px 30px rgba(0,0,0,.35);
+        --maxw: 1200px;
+      }
+      * { box-sizing: border-box; }
+      html, body { height: 100%; }
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, Noto Sans, Ubuntu, Cantarell, Helvetica Neue, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+        color: var(--clr-text);
+        background: radial-gradient(1200px 600px at 80% -10%, rgba(249,115,22,0.25), rgba(30,58,138,0)) no-repeat, var(--clr-bg);
+        line-height: 1.6;
+      }
+      a { color: #fbbf24; text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      header {
+        position: sticky; top: 0; z-index: 50;
+        background: rgba(11,18,32,0.7); backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(148,163,184,0.15);
+      }
+      .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; max-width: var(--maxw); margin: 0 auto; padding: 14px 20px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: .2px; }
+      .brand-mark {
+        width: 28px; height: 28px; border-radius: 8px;
+        background: conic-gradient(from 30deg, var(--clr-orange), #fb923c 35%, #fde68a 40%, var(--clr-navy) 75%, #0b1220 90%);
+        box-shadow: inset 0 0 0 2px rgba(255,255,255,.1), 0 8px 16px rgba(0,0,0,.35);
+      }
+      .menu { display: flex; gap: 18px; align-items: center; }
+      .menu a { color: var(--clr-text); opacity: .85; }
+      .menu a[aria-current="page"] { color: white; opacity: 1; font-weight: 600; }
+      .btn {
+        display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+        background: linear-gradient(180deg, #fb923c, var(--clr-orange));
+        color: #111827; font-weight: 700; padding: 12px 18px; border-radius: 999px;
+        box-shadow: 0 6px 18px rgba(249,115,22,.35);
+        transition: transform .15s ease, box-shadow .15s ease;
+      }
+      .btn:hover { transform: translateY(-1px); box-shadow: 0 10px 24px rgba(249,115,22,.45); text-decoration: none; }
+      .btn.secondary {
+        background: transparent; color: #e5e7eb; border: 1px solid rgba(148,163,184,0.35);
+        box-shadow: none;
+      }
+
+      .container { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+      .hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 36px; align-items: center; padding: 56px 0 28px; }
+      .hero h1 { font-size: clamp(2rem, 3.4vw, 3.4rem); line-height: 1.05; margin: 0 0 12px; letter-spacing: .2px; }
+      .hero p.lead { font-size: clamp(1.05rem, 1.45vw, 1.35rem); color: var(--clr-muted); margin: 10px 0 18px; }
+      .hero-visual { position: relative; }
+      .hero-visual img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid rgba(148,163,184,0.15); }
+      .badges { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
+      .badge { font-size: .85rem; background: rgba(148,163,184,0.15); color: #e5e7eb; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.25); }
+
+      .section { padding: 38px 0; }
+      .section h2 { font-size: clamp(1.6rem, 2.2vw, 2.2rem); margin: 0 0 12px; }
+      .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+      .card { background: linear-gradient(180deg, rgba(15,23,42,0.9), rgba(2,6,23,0.9)); border: 1px solid rgba(148,163,184,0.15); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); }
+      .card h3 { margin: 0 0 8px; font-size: 1.15rem; }
+      .muted { color: var(--clr-muted); }
+      .list { margin: 0; padding-left: 18px; }
+      .process { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; }
+      .step { background: rgba(148,163,184,0.12); border: 1px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 14px; }
+      .step strong { display: block; font-size: 0.92rem; margin-bottom: 6px; color: #fff; }
+
+      .cta { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 16px; background: linear-gradient(90deg, rgba(249,115,22,.1), rgba(30,58,138,.25)); border: 1px solid rgba(148,163,184,0.25); border-radius: var(--radius); padding: 18px; }
+
+      details { background: rgba(15,23,42,0.7); border: 1px solid rgba(148,163,184,0.2); border-radius: 12px; padding: 10px 14px; }
+      details + details { margin-top: 10px; }
+      details summary { cursor: pointer; font-weight: 600; }
+      details[open] { background: rgba(15,23,42,0.9); }
+
+      footer { border-top: 1px solid rgba(148,163,184,0.15); margin-top: 36px; }
+      .foot { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 10px; padding: 18px 20px; }
+
+      @media (max-width: 960px) {
+        .hero { grid-template-columns: 1fr; }
+        .grid { grid-template-columns: 1fr; }
+        .process { grid-template-columns: 1fr; }
+        .cta { grid-template-columns: 1fr; text-align: center; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .btn, .card, .hero-visual img { transition: none !important; }
+      }
+    </style>
+
+    <script type="application/ld+json" defer>
+      {JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Service',
+        name: 'SEO & Local SEO',
+        description,
+        areaServed: [
+          { '@type': 'City', name: 'Stuttgart' },
+          { '@type': 'City', name: 'Kornwestheim' },
+          { '@type': 'City', name: 'Ludwigsburg' },
+          { '@type': 'Place', name: 'Baden-Württemberg' }
+        ],
+        provider: {
+          '@type': 'LocalBusiness',
+          name: siteName,
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: 'Bahnhofstraße 5',
+            postalCode: '70806',
+            addressLocality: 'Kornwestheim',
+            addressCountry: 'DE'
+          },
+          telephone: phone,
+          openingHours: 'Mo-Fr 09:00-16:00'
+        },
+        hasOfferCatalog: {
+          '@type': 'OfferCatalog',
+          name: 'SEO-Leistungen',
+          itemListElement: [
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Technisches SEO' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Content-SEO' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Backlinks & Digital PR' } },
+            { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Local SEO (GBP & Branchenverzeichnisse)' } }
+          ]
+        }
+      }, null, 2)}
+    </script>
+  </head>
+  <body>
+    <header>
+      <nav class="nav" aria-label="Hauptnavigation">
+        <a class="brand" href="/" aria-label="{siteName} Startseite">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>{siteName}</span>
+        </a>
+        <div class="menu">
+          <a href="/" >Start</a>
+          <a href="/leistungen/" >Leistungen</a>
+          <a href="/seo" aria-current="page">SEO</a>
+          <a href="/kontakt/" class="btn">Jetzt anfragen</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="main" class="container" style="padding-bottom: 32px;">
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <h1 id="hero-title">SEO & Local SEO, die Anfragen bringt – in Stuttgart, Kornwestheim & Region</h1>
+          <p class="lead">Ganzheitliches SEO mit Fokus auf Umsatz: Technik, Content und Backlinks – kombiniert mit <strong>Local SEO</strong> über das Google Business Profil und über 30 hochwertige Branchenportale.</p>
+          <div class="badges" aria-label="Leistungsbausteine">
+            <span class="badge">Technisches SEO</span>
+            <span class="badge">Content-Strategie</span>
+            <span class="badge">Backlinks & PR</span>
+            <span class="badge">Local Pack & GBP</span>
+            <span class="badge">Citations (30+)</span>
+            <span class="badge">Tracking & KPIs</span>
+          </div>
+          <div style="margin-top: 16px; display:flex; gap: 10px; flex-wrap: wrap;">
+            <a class="btn" href="/kontakt/">Kostenlose Potenzialanalyse</a>
+            <a class="btn secondary" href={`tel:${phone}`}>Anrufen: {phone}</a>
+          </div>
+          <p class="muted" style="margin-top:10px">{siteName} · {address} · {openingHours}</p>
+        </div>
+        <div class="hero-visual">
+          <img src={ogImage} alt="Modernes Büro mit Teamwork – Symbolbild für professionelle SEO-Strategie" loading="eager" fetchpriority="high" />
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="why-title">
+        <h2 id="why-title">Warum ListingProfis für SEO?</h2>
+        <div class="grid" role="list">
+          <article class="card" role="listitem">
+            <h3>Technisches SEO</h3>
+            <p class="muted">Crawling, Indexierung, Core Web Vitals, interne Verlinkung, strukturierte Daten – wir beseitigen technische Bremsen und schaffen Ranking-Fundamente.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Local SEO</h3>
+            <p class="muted">Optimiertes Google Business Profil, NAP-Konsistenz, <em>Citation Building</em> in 30+ Verzeichnissen und lokale Landingpages für maximale Sichtbarkeit im <strong>Local Pack</strong>.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Content, der konvertiert</h3>
+            <p class="muted">Themen- und Keyword-Cluster, Briefings, Redaktionsplan, E‑E‑A‑T und UX-Optimierung – Inhalte mit messbarer Wirkung auf Leads.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Backlinks & Digital PR</h3>
+            <p class="muted">White‑Hat Linkaufbau, Branchen- und Regional-Assets, PR‑Platzierungen – nachhaltig und risikoarm für Autorität.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Tracking & KPIs</h3>
+            <p class="muted">GA4, GSC, Rank-Tracking, Call‑Tracking und CRM‑KPIs – volle Transparenz über Rankings, Leads und Umsatzbeitrag.</p>
+          </article>
+          <article class="card" role="listitem">
+            <h3>Transparente Roadmap</h3>
+            <p class="muted">Monatliche Sprints mit klaren Aufgaben, Status und Effekten – Sie wissen immer, was als Nächstes kommt.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="services-title">
+        <h2 id="services-title">Leistungsumfang SEO & Local SEO</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Technisches SEO</h3>
+            <ul class="list">
+              <li>Audit: Crawling, Indexierung, CWV, JS‑Hydration, Sitemap/Robots</li>
+              <li>Fixes: Canonicals, Hreflang, Redirects, Schema.org</li>
+              <li>Struktur: Informationsarchitektur, interne Verlinkung</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Content & Onpage</h3>
+            <ul class="list">
+              <li>Keyword- & Themen-Cluster für Stuttgart/Kornwestheim</li>
+              <li>Briefings & Redaktion, SERP‑Entitäten & People‑Also‑Ask</li>
+              <li>Conversion‑Optimierung: CTAs, Layout, Lesbarkeit</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3>Local SEO</h3>
+            <ul class="list">
+              <li>Google Business Profil: Struktur, Kategorien, Services, Posts</li>
+              <li>Citations: 30+ Verzeichnisse (NAP‑Konsistenz)</li>
+              <li>Lokale Landingpages und Bewertungsstrategie</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="process-title">
+        <h2 id="process-title">So arbeiten wir – in 6 Schritten</h2>
+        <div class="process" role="list">
+          <div class="step" role="listitem"><strong>1) Audit</strong> Vollständige Analyse: Technik, Inhalte, Autorität, Lokal.</div>
+          <div class="step" role="listitem"><strong>2) Quick Wins</strong> Schnelle Fixes für Indexierung, Snippets & Performance.</div>
+          <div class="step" role="listitem"><strong>3) Content</strong> Redaktionsplan und hochwertige Landingpages/Blogposts.</div>
+          <div class="step" role="listitem"><strong>4) Authority</strong> Backlinks, PR, Branchen/Citations, lokale Proof‑Signale.</div>
+          <div class="step" role="listitem"><strong>5) Local Pack</strong> GBP‑Optimierung, Bewertungen, Q&A, lokale Posts.</div>
+          <div class="step" role="listitem"><strong>6) Monitoring</strong> GA4, GSC, Ranking‑Reports, Lead‑Tracking & Optimierung.</div>
+        </div>
+      </section>
+
+      <section class="section" aria-labelledby="faq-title">
+        <h2 id="faq-title">FAQ zu SEO & Local SEO</h2>
+        <details>
+          <summary>Wie schnell sind Ergebnisse sichtbar?</summary>
+          <p class="muted">Erste Effekte oft in 4–8 Wochen (Quick Wins, Local Pack). Nachhaltige Rankings typischerweise nach 3–6 Monaten – abhängig von Wettbewerb und Ausgangslage.</p>
+        </details>
+        <details>
+          <summary>Für wen lohnt sich Local SEO besonders?</summary>
+          <p class="muted">Für standortgebundene Unternehmen wie Praxen, Kanzleien, Handwerk, Showrooms. Mehr Sichtbarkeit in Stuttgart, Kornwestheim, Ludwigsburg und Umland.</p>
+        </details>
+        <details>
+          <summary>Arbeitet ihr transparent?</summary>
+          <p class="muted">Ja – Sie erhalten eine klare Maßnahmen‑Roadmap, monatliche Reports und Zugriff auf die wichtigsten Dashboards.</p>
+        </details>
+      </section>
+
+      <section class="section">
+        <div class="cta" role="region" aria-label="Jetzt anfragen">
+          <div>
+            <strong>Mehr Sichtbarkeit. Mehr Anfragen.</strong><br/>
+            Starten wir mit einer kostenlosen Potenzialanalyse – spezialisiert auf Stuttgart, Kornwestheim & Region.
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap: wrap; justify-content: end;">
+            <a class="btn" href="/kontakt/">Kostenlos anfragen</a>
+            <a class="btn secondary" href={`tel:${phone}`}>Anrufen: {phone}</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="foot container">
+        <div>
+          © {new Date().getFullYear()} {siteName} · {address}
+        </div>
+        <nav aria-label="Footernavigation" class="menu">
+          <a href="/impressum/">Impressum</a>
+          <a href="/datenschutz/">Datenschutz</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
