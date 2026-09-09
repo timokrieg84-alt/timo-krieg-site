@@ -1,57 +1,11 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { brand, legal } from '../data/site';
-const p = legal.privacy;
+import Layout from "../layouts/Layout.astro";
+import { legal } from "../data/site";
 ---
-<Layout title={`Datenschutz | ${brand.name}`} description={`${brand.name} – Datenschutzerklärung gemäß DSGVO.`}>
+<Layout>
   <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
-    <h1 class="text-3xl font-semibold tracking-tight">Datenschutzerklärung</h1>
-
-    <div class="mt-6 space-y-6 text-sm text-[#0B1220]">
-      <div>
-        <h2 class="text-base font-semibold">Verantwortlicher</h2>
-        <p class="mt-2">{p.controller}, {p.address}<br />E‑Mail: <a href={`mailto:${p.email}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{p.email}</a>, Telefon: <a href={`tel:${p.phone.replace(/\s+/g,'')}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{p.phone}</a></p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Zweck und Umfang</h2>
-        <p class="mt-2">{p.scope}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Hosting</h2>
-        <p class="mt-2">{p.hosting}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Cookies</h2>
-        <p class="mt-2">{p.cookies}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Webanalyse</h2>
-        <p class="mt-2">{p.analytics}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Kontaktaufnahme</h2>
-        <p class="mt-2">{p.contactForms}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Ihre Rechte</h2>
-        <p class="mt-2">{p.rights}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Datenschutzbeauftragter</h2>
-        <p class="mt-2">{p.dpo}</p>
-      </div>
-
-      <div>
-        <h2 class="text-base font-semibold">Änderungen</h2>
-        <p class="mt-2">{p.updates}</p>
-      </div>
+    <div class="prose prose-headings:tracking-tight prose-a:text-[#0EA5E9] hover:prose-a:underline max-w-none">
+      <div set:html={legal.datenschutz}></div>
     </div>
   </section>
 </Layout>
