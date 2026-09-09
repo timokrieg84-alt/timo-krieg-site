@@ -1,59 +1,54 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { brand, colors, legal } from "../data/site";
-const imp = legal.impressum;
+import Layout from '../layouts/Layout.astro';
+import { brand, legal } from '../data/site';
+const i = legal.impressum;
 ---
-<Layout title={`${imp.title} – ${brand.name}`} description={`${brand.name} – ${imp.title}`}>
-  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-      <nav class="text-sm">
-        <a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a>
-        <span class={`mx-2 text-[${colors.text}]/40`}>/</span>
-        <span class={`text-[${colors.text}]/60`}>{imp.title}</span>
-      </nav>
-      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{imp.title}</h1>
-      <p class={`mt-2 text-[${colors.muted}]`}>Angaben gemäß § 5 TMG/§ 5 DDG</p>
-    </div>
-  </section>
-  <section class={`bg-[${colors.background}]`}>
-    <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Diensteanbieter</h2>
-        <p class={`mt-3 text-[${colors.text}]/90`}>
-          {imp.provider.unternehmen}<br />
-          Inhaberin: {imp.provider.inhaberin}<br />
-          {imp.provider.anschrift}
+<Layout title={`Impressum | ${brand.name}`} description={`${brand.name} – Impressum und Anbieterkennzeichnung.`}>
+  <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
+    <h1 class="text-3xl font-semibold tracking-tight">Impressum</h1>
+    <div class="mt-6 space-y-6 text-sm text-[#0B1220]">
+      <div>
+        <h2 class="text-base font-semibold">Angaben gemäß § 5 TMG</h2>
+        <p class="mt-2">
+          {i.company}<br />
+          {i.street}<br />
+          {i.zip} {i.city}<br />
+          {i.country}
         </p>
-        <p class={`mt-3 text-[${colors.text}]/90`}>
-          Telefon: <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="tel:+491756372395">{imp.provider.kontakt.telefon}</a><br />
-          E-Mail: <a class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`} href="mailto:{imp.provider.kontakt.eMail}">{imp.provider.kontakt.eMail}</a>
+      </div>
+
+      <div>
+        <h2 class="text-base font-semibold">Kontakt</h2>
+        <p class="mt-2">
+          Telefon: <a href={`tel:${i.phone.replace(/\s+/g,'')}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{i.phone}</a><br />
+          E‑Mail: <a href={`mailto:${i.email}`} class="text-[#1B2A4A] hover:text-[#22D3EE]">{i.email}</a>
         </p>
-        <p class={`mt-3 text-[${colors.text}]/90`}>Vertretungsberechtigt: {imp.vertretungsberechtigt}</p>
-        <p class={`mt-1 text-[${colors.text}]/90`}>Verantwortlich nach § 18 Abs. 2 MStV: {imp.verantwortlichNachMStV}</p>
       </div>
 
-      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
-        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Verbraucherstreitbeilegung/OS-Plattform</h2>
-        <p class={`text-[${colors.text}]/90`}>{imp.verbraucherstreitbeilegung}</p>
+      <div>
+        <h2 class="text-base font-semibold">Vertreten durch</h2>
+        <p class="mt-2">{i.representative}</p>
       </div>
 
-      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
-        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Haftung für Inhalte</h2>
-        <p class={`text-[${colors.text}]/90`}>{imp.haftungFuerInhalte}</p>
+      <div>
+        <h2 class="text-base font-semibold">Registereintrag</h2>
+        <p class="mt-2">{i.register}</p>
       </div>
 
-      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
-        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Haftung für Links</h2>
-        <p class={`text-[${colors.text}]/90`}>{imp.haftungFuerLinks}</p>
+      <div>
+        <h2 class="text-base font-semibold">Umsatzsteuer‑ID</h2>
+        <p class="mt-2">{i.vatId}</p>
       </div>
 
-      <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6 space-y-4`}>
-        <h2 class={`text-xl font-semibold text-[${colors.text}]`}>Urheberrecht</h2>
-        <p class={`text-[${colors.text}]/90`}>{imp.urheberrecht}</p>
+      <div>
+        <h2 class="text-base font-semibold">Verantwortlich für den Inhalt</h2>
+        <p class="mt-2">{i.responsibility}</p>
       </div>
 
-      <div class="pt-4">
-        <a href="/" class={`text-sm text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Zur Startseite</a>
+      <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-4 text-xs text-[#475569]">
+        <p><strong>Haftung für Inhalte:</strong> Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+        <p class="mt-2"><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.</p>
+        <p class="mt-2"><strong>Urheberrecht:</strong> Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.</p>
       </div>
     </div>
   </section>
