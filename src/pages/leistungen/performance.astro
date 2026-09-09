@@ -1,68 +1,79 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { services } from "../../data/site";
-const current = services.find((s) => s.slug === "performance")!;
-const others = services.filter((s) => s.slug !== "performance");
+import CTAButton from "../../components/CTAButton.astro";
+import { services, sections, contact, projectInfo } from "../../data/site";
+const s = services.find((x) => x.slug === "performance");
+if (!s) throw new Error("Service not found: performance");
+const others = services.filter((x) => x.slug !== s.slug);
 ---
-<Layout>
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
-        <li>/</li>
-        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
-        <li>/</li>
-        <li class="text-[#0B1221]">{current.title}</li>
-      </ol>
+<Layout title={`${s.name} – ${projectInfo.name}`} description={s.description}>
+  <section class="pt-10 sm:pt-14 lg:pt-16 pb-10">
+    <nav class="text-xs text-[#1E293B] mb-4" aria-label="Breadcrumb">
+      <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
+      <span class="mx-2">/</span>
+      <a class="hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a>
+      <span class="mx-2">/</span>
+      <span class="text-[#0F172A] font-medium">{s.name}</span>
     </nav>
-
-    <header class="mt-6">
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
-      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Performance ist Erlebnis. Wir planen Rendering-Pfade, minimieren JavaScript, priorisieren kritische Ressourcen und messen echte User-Daten. Ergebnis: gefühlte Geschwindigkeit, die konvertiert – und stabile Core Web Vitals.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Audit anfragen</a>
-        <a href="/leistungen/seo" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">SEO</a>
-        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
-      </div>
-    </header>
-
-    <div class="mt-12 grid gap-8 lg:grid-cols-12">
-      <article class="lg:col-span-8">
-        <section class="prose max-w-none">
-          <h2 class="text-2xl font-bold text-[#0B1221]">Schnelligkeit von Architektur her denken</h2>
-          <p class="mt-3 text-[#0B1221]/90">Wir setzen auf serverseitiges Rendering, partielle Hydration und kluge Bundling-Strategien. Bildpipelines, Font-Loading, Preload/Prefetch und Caching an der Edge sind Teil unseres Standard-Repertoires.</p>
-          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Leistungsschwerpunkte</h3>
-          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Code-Splitting</strong><br/><span class="text-[#64748B]">Hydration minimieren, Runtimes verkleinern, FID verbessern.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Asset-Optimierung</strong><br/><span class="text-[#64748B]">Kritisches CSS, Bilder, Fonts und HTTP/2 Strategien.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Monitoring</strong><br/><span class="text-[#64748B]">RUM-Daten, Dashboards und Regression-Alerts.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Edge Caching</strong><br/><span class="text-[#64748B]">CDN-Regeln, ISR/SSG-Strategien, global schnell.</span></li>
-          </ul>
-          <p class="mt-6 text-[#0B1221]">In Kombination mit <a href="/leistungen/analytics" class="text-[#0EA5E9] hover:underline">Analytics</a> werden Performance-Ziele operabel und messbar.</p>
-        </section>
-      </article>
-      <aside class="lg:col-span-4">
-        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
-          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
-          <ul class="mt-3 space-y-2">
-            {others.map((s) => (
-              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
-            ))}
-          </ul>
-          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
-            <a href="/#leistungen" class="text-sm text-[#0EA5E9] hover:underline">Zur Übersicht</a>
-          </div>
-        </div>
-      </aside>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">{s.name}</h1>
+    <p class="mt-3 max-w-3xl text-[#1E293B]">{s.longDescription}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Projekt anfragen">Projekt anfragen</CTAButton>
+      <CTAButton href="/" variant="secondary" ariaLabel="Zur Startseite">Zur Startseite</CTAButton>
     </div>
+  </section>
 
-    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
-      <h2 class="text-2xl font-bold text-[#0B1221]">CWV auf Grün schalten</h2>
-      <p class="mt-2 text-[#64748B]">Wir priorisieren die Kennzahlen, die wirklich wirken – und setzen sie technisch sauber um.</p>
-      <div class="mt-5 flex justify-center gap-3">
-        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
-        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+  <section class="grid lg:grid-cols-12 gap-10 py-8 border-t border-[#F1F5F9]">
+    <div class="lg:col-span-7">
+      <h2 class="text-xl font-bold text-[#0F172A]">Millisekunden, die sich auszahlen</h2>
+      <p class="mt-3 text-[#1E293B]">Wir analysieren Ihren Stack ganzheitlich: Renderpfade, Blocking-Assets, Third-Party-Skripte und Caching. Daraus entsteht ein priorisierter Maßnahmenplan, der technische Schulden abbaut und die wahrgenommene Geschwindigkeit spürbar erhöht.</p>
+      <p class="mt-3 text-[#1E293B]">Die Umsetzung folgt klaren Leitplanken: Bildpipelines, Code-Splitting, Server-Hints und Monitoring sorgen dafür, dass Performance nicht einmalig, sondern dauerhaft bleibt.</p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Vorteile</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.benefits.map((b) => (<li>{b}</li>))}
+          </ul>
+        </div>
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Audit-Bausteine</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.features.map((f) => (<li>{f}</li>))}
+          </ul>
+        </div>
       </div>
-    </section>
+      <div class="mt-8 rounded-xl border border-[#F1F5F9] p-5">
+        <h3 class="font-semibold text-[#0F172A]">Vorgehen</h3>
+        <ol class="mt-3 space-y-3 text-sm text-[#1E293B] list-decimal list-inside">
+          <li>Ist-Analyse: Lighthouse, WebPageTest, RUM-Daten.</li>
+          <li>Engpass-Identifikation: Critical Path, Rendering, Netzwerk.</li>
+          <li>Maßnahmen: Quick Wins und strukturelle Verbesserungen.</li>
+          <li>Validierung: Regressionstests, Monitoring, Alerts.</li>
+        </ol>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="rounded-2xl border border-[#F1F5F9] p-6">
+        <h3 class="text-base font-semibold text-[#0F172A]">Weitere Leistungen</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          {others.map((o) => (
+            <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/leistungen/${o.slug}`}>{o.name}</a></li>
+          ))}
+        </ul>
+        <div class="mt-6">
+          <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Kontakt aufnehmen">{contact.cta}</CTAButton>
+        </div>
+        <p class="mt-3 text-xs text-[#1E293B]">Oder <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>alle Leistungen</a> ansehen.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="py-10 border-t border-[#F1F5F9]">
+    <div class="flex flex-wrap gap-4 items-center">
+      <a href="/" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Startseite</a>
+      <a href={`/#${sections.leistungen}`} class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Leistungen</a>
+      <a href="/impressum" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Impressum</a>
+      <a href="/datenschutz" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Datenschutz</a>
+    </div>
   </section>
 </Layout>
