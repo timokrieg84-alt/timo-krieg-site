@@ -1,57 +1,72 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Code‑Exzellenz & Programmierung | Performance by Design",
-  description: "API‑/Headless‑Builds, Astro+React/Vue, Core‑Web‑Vitals‑Tuning, QA & Monitoring – sauber versioniert und testbar.",
-  url: "https://example.com/leistungen/code-exzellenz-programmierung/",
-  canonical: "https://example.com/leistungen/code-exzellenz-programmierung/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Layout from '../../layouts/Layout.astro';
+import { brand, services, contact } from '../../data/site';
+const service = services.find(s => s.slug === 'code-exzellenz-programmierung');
+const others = services.filter(s => s.slug !== 'code-exzellenz-programmierung');
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-    <script type="application/ld+json">
-      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/code-exzellenz-programmierung/#service","name":"Code‑Exzellenz & Programmierung","serviceType":"Web Development & Performance Engineering","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
-    </script>
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="intro" title="Fehlerfreier, perfekter Code." intro="Skalierbare Software, saubere Schnittstellen und modernisierte Legacy‑Systeme – entwickelt nach Best Practices.">
-        <div class="grid md:grid-cols-2 gap-8">
-          <article class="card p-6">
-            <h3 class="h3">Leistungspaket</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Individuelle Softwarelösungen</li>
-              <li>• API‑Schnittstellen & CRM‑Verknüpfungen</li>
-              <li>• Optimierung von Altsystemen</li>
-              <li>• Code‑Audits & Refactoring</li>
-            </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
-              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
-            </div>
-          </article>
-          <article class="card p-6">
-            <h3 class="h3">Messpunkte</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Performance‑Metriken (CWV, TTFB)</li>
-              <li>• Fehlerrate & Regressionen</li>
-              <li>• Abdeckung durch Tests</li>
-              <li>• Deployment‑Frequenz & MTTR</li>
-            </ul>
-          </article>
+<Layout title={service?.seo.title ?? `${brand.name} – Code‑Exzellenz & Programmierung`} description={service?.seo.description}>
+  <section class="relative bg-[#0B1220] text-[#F8FAFC]">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.16),transparent_45%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <nav class="text-xs text-[#F8FAFC]/70"><a href="/" class="hover:text-[#F8FAFC]">Start</a> · <span>Code‑Exzellenz & Programmierung</span></nav>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">Software, die skaliert und bleibt</h1>
+      <p class="mt-2 max-w-3xl text-[#F8FAFC]/80">{service?.short}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">Projekt anfragen</a>
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">Zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <h2 class="text-xl font-semibold">Architektur, Qualität, Tempo</h2>
+      <p class="mt-3 text-[#475569]">Wir entwickeln robuste Web‑Anwendungen, verbinden Systeme über APIs und auditieren bestehende Codebasen. Der Fokus: saubere Architekturen, testbare Module und ein Setup, das Features schnell und sicher in Produktion bringt.</p>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Individuelle Web‑Apps</div><p class="mt-1 text-sm text-[#475569]">Von MVP bis Enterprise – modular, dokumentiert, sicher.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">API‑Design & Integrationen</div><p class="mt-1 text-sm text-[#475569]">Saubere Schnittstellen, Webhooks und Datenmodelle, die wachsen können.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">CRM‑Verknüpfungen</div><p class="mt-1 text-sm text-[#475569]">HubSpot, Salesforce & Co. – bidirektional, stabil, nachvollziehbar.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Code‑Reviews & Audits</div><p class="mt-1 text-sm text-[#475569]">Objektive Bewertungen, Security‑Checks und Migrationspfade.</p></div>
+      </div>
+
+      <h3 class="mt-10 text-lg font-semibold">Leistungsumfang</h3>
+      <ul class="mt-3 space-y-2 text-sm text-[#0B1220]">
+        {(service?.features ?? []).map((f) => (
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
+        ))}
+        <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>Dokumentation & Übergabe</span></li>
+      </ul>
+
+      <div class="mt-10 rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-[#F8FAFC]">
+        <div class="text-lg font-semibold">Stark im Code, stark im Produkt</div>
+        <p class="mt-1 text-[#F8FAFC]/80">Wir bauen Qualität, die Produktteams beschleunigt und Risiken minimiert.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
+          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">E‑Mail schreiben</a>
         </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-6">
+        <div class="text-sm font-semibold">Weitere Leistungen</div>
+        <nav class="mt-3 grid grid-cols-1 gap-2">
+          {others.map((o) => (<a href={`/leistungen/${o.slug}`} class="text-sm text-[#1B2A4A] hover:text-[#22D3EE] transition-colors">{o.title}</a>))}
+        </nav>
+        <a href="/" class="mt-4 inline-block text-xs text-[#475569] hover:text-[#0B1220]">← Zur Startseite</a>
+      </div>
+    </aside>
+  </section>
+
+  <section id="kontakt" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-8">
+      <h2 class="text-xl font-semibold">Projektstart & Erstgespräch</h2>
+      <p class="mt-2 text-[#475569]">Wir definieren Scope, Architektur und Meilensteine – transparent und messbar.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Anrufen</a>
+        <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail</a>
+      </div>
+    </div>
+  </section>
+</Layout>
