@@ -4,8 +4,10 @@ import { legal } from "../data/site";
 ---
 <Layout>
   <section class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16">
-    <div class="prose prose-headings:tracking-tight prose-a:text-[#0EA5E9] hover:prose-a:underline max-w-none">
-      <div set:html={legal.impressum}></div>
+    <div class="mx-auto">
+      <div class="[&>h1]:text-3xl [&>h1]:font-extrabold [&>h1]:tracking-tight [&>h1]:text-[#0B1221] [&>h2]:mt-8 [&>h2]:text-xl [&>h2]:font-semibold [&>h2]:text-[#0B1221] [&>p]:mt-4 [&>p]:text-[#0B1221]/90 [&_a]:text-[#0EA5E9] hover:[&_a]:underline">
+        <div set:html={legal.impressum}></div>
+      </div>
     </div>
   </section>
 </Layout>
