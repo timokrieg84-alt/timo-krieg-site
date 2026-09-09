@@ -1,91 +1,86 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { brand, colors, services } from "../../data/site";
+import Layout from '../../layouts/Layout.astro';
+import { brand, services, contact } from '../../data/site';
 const service = services.find(s => s.slug === 'google-ads');
 const others = services.filter(s => s.slug !== 'google-ads');
 ---
-<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
-  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
-      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
-      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
-      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Beratung anfragen</a>
-        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
+<Layout title={service?.seo.title ?? `${brand.name} – Google Ads`} description={service?.seo.description}>
+  <section class="relative bg-[#0B1220] text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(245,158,11,0.16),transparent_40%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <nav class="text-xs text-white/70"><a href="/" class="hover:text-white">Start</a> · <span>Google Ads</span></nav>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">Google Ads, die verkaufen</h1>
+      <p class="mt-2 max-w-3xl text-white/80">{service?.short}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">Kostenloses Ads‑Audit</a>
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:bg-white/10 transition-colors">Zur Startseite</a>
       </div>
     </div>
   </section>
 
-  <section class={`bg-[${colors.background}]`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
-      <div class="lg:col-span-2">
-        <div class="space-y-6">
-          <div>
-            <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Absicht trifft Angebot</h2>
-            <p class={`mt-3 text-[${colors.text}]/90`}>Google Ads performt, wenn Relevanz, Gebote und Zielseiten millimetergenau zusammenspielen. Wir bauen ein Setup, das Suchintention in qualifizierte Leads und Umsatz verwandelt – transparent, skalierbar und budgeteffizient.</p>
-          </div>
-          <div>
-            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Methodik</h3>
-            <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
-              <li>Fundierte Kontostruktur: Kampagnen nach Intent und Profit-Potenzial, klare Namenskonventionen.</li>
-              <li>First-Party-Tracking: GA4, Consent-Setup und optional serverseitiges Tracking für robuste Daten.</li>
-              <li>Kreative Varianten: Anzeigentexte und Assets, die testen, lernen und Gewinner zementieren.</li>
-              <li>Conversion-getrimmte Landing Pages: Schnelle Ladezeiten, glasklare Botschaften, starke CTAs.</li>
-            </ul>
-          </div>
-          {service?.features && (
-            <div>
-              <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Leistungsbausteine</h3>
-              <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
-                {service.features.map((f) => (<li>{f}</li>))}
-              </ul>
-            </div>
-          )}
-          <div>
-            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Liefergegenstände</h3>
-            <ul class={`mt-3 space-y-2 text-sm text-[${colors.text}]/90`}>
-              <li>Konto-Audit inkl. Quick-Wins und Roadmap</li>
-              <li>Kampagnen-Setup (Search, PMax, YouTube) inkl. Feed-/Asset-Erstellung</li>
-              <li>Conversion-Tracking, Consent-Check und Event-Mapping</li>
-              <li>Landing-Page-Konzept und -Umsetzung inkl. A/B-Testplan</li>
-              <li>Wöchentliches Monitoring, monatliches Reporting mit CPL/CPA & ROAS</li>
-            </ul>
-          </div>
-          <div>
-            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>Erfolgsmessung</h3>
-            <p class={`mt-3 text-[${colors.text}]/90`}>Wir reporten nicht nur Klicks, sondern Pipeline-Qualität: Leads, Abschlüsse, Kosten je Abschluss und Deckungsbeiträge. Entscheidungen basieren auf realen Geschäftszahlen.</p>
-          </div>
-          <div>
-            <h3 class={`text-xl font-semibold text-[${colors.text}]`}>FAQ</h3>
-            <p class={`mt-3 text-[${colors.text}]/90`}><strong>Wie hoch sollte das Startbudget sein?</strong> Wir arbeiten ab 200 € mtl. Media-Spend sinnvoll – optimal sind 1.000–4.000 € je nach Markt.</p>
-            <p class={`mt-2 text-[${colors.text}]/90`}><strong>Wie schnell gibt es Ergebnisse?</strong> Erste belastbare Learnings nach 2–4 Wochen, stabile Performance nach 6–8 Wochen.</p>
-            <p class={`mt-2 text-[${colors.text}]/90`}><strong>Übernehmt ihr bestehende Konten?</strong> Ja. Wir migrieren sauber oder optimieren inkrementell – ohne Datenverlust.</p>
-          </div>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <h2 class="text-xl font-semibold">Performance‑getriebene Kampagnen</h2>
+      <p class="mt-3 text-[#475569]">Wir planen und skalieren Google Ads mit einem klaren Fokus: profitabler Umsatz. Von Search über Performance Max bis YouTube richten wir Kampagnen auf Kaufintentionen aus, verbinden sie mit sauberem Tracking und führen konsequente A/B‑Tests durch. Eigene Landingpages sorgen für maximale Conversion‑Rate.</p>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5">
+          <div class="text-sm font-semibold">Account‑Struktur & Hygiene</div>
+          <p class="mt-1 text-sm text-[#475569]">Saubere Kampagnen‑, Anzeigengruppen‑ und Keyword‑Strukturen mit klarer Negativlogik und Budgetsteuerung.</p>
         </div>
-        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
-          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Kostenloses Erstgespräch: Ziele, Status, Budgetrahmen. Wir skizzieren den Fahrplan – klar und pragmatisch.</p>
-          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Gespräch buchen</a>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5">
+          <div class="text-sm font-semibold">Conversion‑Tracking</div>
+          <p class="mt-1 text-sm text-[#475569]">Server‑seitiges Tracking, Consent‑Aware Messung und aussagekräftige Micro/Macro‑KPIs für echte Entscheidungen.</p>
+        </div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5">
+          <div class="text-sm font-semibold">Kreatives Testing</div>
+          <p class="mt-1 text-sm text-[#475569]">Anzeigenvarianten, Hooks und Visuals werden systematisch getestet – für stetig bessere CTR und CVR.</p>
+        </div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5">
+          <div class="text-sm font-semibold">Landingpages, die konvertieren</div>
+          <p class="mt-1 text-sm text-[#475569]">Schnell, relevant, überzeugend: Ads‑spezifische Seiten mit Social Proof, Trust‑Elementen und klaren CTAs.</p>
         </div>
       </div>
-      <aside class="lg:col-span-1">
-        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
-          <ul class="mt-3 space-y-2">
-            {others.map((o) => (
-              <li>
-                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
-                  <span class="font-medium">{o.title}</span>
-                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
+
+      <h3 class="mt-10 text-lg font-semibold">Leistungsumfang</h3>
+      <ul class="mt-3 space-y-2 text-sm text-[#0B1220]">
+        {(service?.features ?? []).map((f) => (
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
+        ))}
+        <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>laufendes Monitoring & Budget‑Optimierung</span></li>
+      </ul>
+
+      <div class="mt-10 rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-white">
+        <div class="text-lg font-semibold">Mehr Leistung aus jedem Euro Werbebudget</div>
+        <p class="mt-1 text-white/80">Wir finden Ineffizienzen, schließen Messlücken und skalieren nur, was sich rechnet.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
+          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:bg-white/10 transition-colors">E‑Mail schreiben</a>
         </div>
-      </aside>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div class="rounded-2xl border border-[#94A3B8]/40 bg-white p-6">
+        <div class="text-sm font-semibold">Weitere Leistungen</div>
+        <nav class="mt-3 grid grid-cols-1 gap-2">
+          {others.map((o) => (
+            <a href={`/leistungen/${o.slug}`} class="text-sm text-[#1B2A4A] hover:text-[#22D3EE] transition-colors">{o.title}</a>
+          ))}
+        </nav>
+        <a href="/" class="mt-4 inline-block text-xs text-[#475569] hover:text-[#0B1220]">← Zur Startseite</a>
+      </div>
+    </aside>
+  </section>
+
+  <section id="kontakt" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="rounded-2xl border border-[#94A3B8]/40 bg-white p-8">
+      <h2 class="text-xl font-semibold">Kostenloses Erstgespräch</h2>
+      <p class="mt-2 text-[#475569]">Wir prüfen Ihren Account, finden Quick Wins und planen die nächsten Schritte.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Anrufen</a>
+        <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail</a>
+      </div>
     </div>
   </section>
 </Layout>
