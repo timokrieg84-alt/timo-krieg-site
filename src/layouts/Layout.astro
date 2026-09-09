@@ -1,5 +1,5 @@
 ---
-import { brand, colors, nav, projectInfo } from "../data/site";
+import { brand, nav, projectInfo } from "../data/site";
 const { logoText } = brand;
 ---
 
@@ -10,62 +10,49 @@ const { logoText } = brand;
     <meta name="description" content={projectInfo.tagline} />
     <title>{projectInfo.name} – {projectInfo.tagline}</title>
   </head>
-  <body class="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
-    <style is:global>
-      :root{
-        --bg: {colors.background};
-        --text: {colors.primary};
-        --muted: {colors.muted};
-        --accent: {colors.accent};
-        --accent2: {colors.accent2};
-        --surface: {colors.surface};
-        --border: {colors.border};
-        --text-inv: {colors.primaryContrast};
-      }
-    </style>
-
-    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 border-b border-[var(--border)]">
+  <body class="min-h-screen bg-[#FFFFFF] text-[#0B1221] antialiased">
+    <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 bg-white/90 border-b border-[#E2E8F0]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
           <a href="/" class="flex items-center gap-2 group" aria-label="Startseite">
-            <div class="h-8 w-8 rounded bg-[var(--text)] text-[var(--text-inv)] grid place-items-center font-bold">P</div>
-            <span class="text-lg font-semibold tracking-tight group-hover:text-[var(--accent)] transition-colors">{logoText}</span>
+            <div class="h-8 w-8 rounded bg-[#0B1221] text-[#FFFFFF] grid place-items-center font-bold">P</div>
+            <span class="text-lg font-semibold tracking-tight group-hover:text-[#0EA5E9] transition-colors">{logoText}</span>
           </a>
           <nav class="hidden md:flex items-center gap-6">
             {nav.main.map((item) => (
-              <a class="text-sm text-[var(--muted)] hover:text-[var(--text)] transition-colors" href={item.href}>{item.label}</a>
+              <a class="text-sm text-[#64748B] hover:text-[#0B1221] transition-colors" href={item.href}>{item.label}</a>
             ))}
             <div class="relative group">
-              <button class="text-sm text-[var(--muted)] hover:text-[var(--text)] transition-colors">Leistungen</button>
-              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute right-0 mt-3 w-72 rounded-lg border border-[var(--border)] bg-[var(--surface)] shadow-lg p-2 grid grid-cols-1">
+              <button class="text-sm text-[#64748B] hover:text-[#0B1221] transition-colors">Leistungen</button>
+              <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all absolute right-0 mt-3 w-72 rounded-lg border border-[#E2E8F0] bg-[#F8FAFC] shadow-lg p-2 grid grid-cols-1">
                 {nav.servicePages.map((s) => (
-                  <a href={s.href} class="px-3 py-2 rounded-md hover:bg-white text-sm text-[var(--text)]">{s.label}</a>
+                  <a href={s.href} class="px-3 py-2 rounded-md hover:bg-[#FFFFFF] text-sm text-[#0B1221]">{s.label}</a>
                 ))}
               </div>
             </div>
             {nav.legal.map((l) => (
-              <a class="text-sm text-[var(--muted)] hover:text-[var(--text)] transition-colors" href={l.href}>{l.label}</a>
+              <a class="text-sm text-[#64748B] hover:text-[#0B1221] transition-colors" href={l.href}>{l.label}</a>
             ))}
-            <a href="#contact" class="ml-2 inline-flex items-center rounded-md bg-[var(--text)] px-3 py-2 text-sm font-medium text-[var(--text-inv)] hover:bg-[var(--accent)] transition-colors">Kontakt</a>
+            <a href="#contact" class="ml-2 inline-flex items-center rounded-md bg-[#0B1221] px-3 py-2 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9] transition-colors">Kontakt</a>
           </nav>
-          <button class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[var(--muted)] hover:text-[var(--text)] focus:outline-none" aria-label="Menü öffnen" id="mobile-menu-button">☰</button>
+          <button class="md:hidden inline-flex items-center justify-center rounded-md p-2 text-[#64748B] hover:text-[#0B1221] focus:outline-none" aria-label="Menü öffnen" id="mobile-menu-button">☰</button>
         </div>
       </div>
-      <div id="mobile-menu" class="md:hidden border-t border-[var(--border)] hidden">
+      <div id="mobile-menu" class="md:hidden border-t border-[#E2E8F0] hidden bg-[#FFFFFF]/95">
         <div class="space-y-1 px-4 py-3">
           {nav.main.map((item) => (
-            <a class="block rounded px-3 py-2 text-base text-[var(--text)] hover:bg-[var(--surface)]" href={item.href}>{item.label}</a>
+            <a class="block rounded px-3 py-2 text-base text-[#0B1221] hover:bg-[#F8FAFC]" href={item.href}>{item.label}</a>
           ))}
           <div class="pt-2">
-            <div class="px-3 pb-1 text-xs uppercase tracking-wide text-[var(--muted)]">Leistungen</div>
+            <div class="px-3 pb-1 text-xs uppercase tracking-wide text-[#64748B]">Leistungen</div>
             {nav.servicePages.map((s) => (
-              <a href={s.href} class="block rounded px-3 py-2 text-base text-[var(--text)] hover:bg-[var(--surface)]">{s.label}</a>
+              <a href={s.href} class="block rounded px-3 py-2 text-base text-[#0B1221] hover:bg-[#F8FAFC]">{s.label}</a>
             ))}
           </div>
           {nav.legal.map((l) => (
-            <a class="block rounded px-3 py-2 text-base text-[var(--text)] hover:bg-[var(--surface)]" href={l.href}>{l.label}</a>
+            <a class="block rounded px-3 py-2 text-base text-[#0B1221] hover:bg-[#F8FAFC]" href={l.href}>{l.label}</a>
           ))}
-          <a href="#contact" class="mt-2 inline-flex w-full justify-center rounded-md bg-[var(--text)] px-3 py-2 text-sm font-medium text-[var(--text-inv)] hover:bg-[var(--accent)]">Kontakt</a>
+          <a href="#contact" class="mt-2 inline-flex w-full justify-center rounded-md bg-[#0B1221] px-3 py-2 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt</a>
         </div>
       </div>
       <script>
@@ -81,46 +68,46 @@ const { logoText } = brand;
       <slot />
     </main>
 
-    <footer class="mt-24 border-t border-[var(--border)] bg-[var(--surface)]">
+    <footer class="mt-24 border-t border-[#E2E8F0] bg-[#F8FAFC]">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid gap-8 md:grid-cols-4">
         <div>
           <div class="flex items-center gap-2">
-            <div class="h-8 w-8 rounded bg-[var(--text)] text-[var(--text-inv)] grid place-items-center font-bold">P</div>
+            <div class="h-8 w-8 rounded bg-[#0B1221] text-[#FFFFFF] grid place-items-center font-bold">P</div>
             <span class="text-lg font-semibold tracking-tight">{logoText}</span>
           </div>
-          <p class="mt-3 text-sm text-[var(--muted)]">{projectInfo.tagline}</p>
+          <p class="mt-3 text-sm text-[#64748B]">{projectInfo.tagline}</p>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-[var(--text)]">Navigation</h3>
+          <h3 class="text-sm font-semibold text-[#0B1221]">Navigation</h3>
           <ul class="mt-3 space-y-2">
             {nav.main.map((item) => (
-              <li><a class="text-sm text-[var(--muted)] hover:text-[var(--text)]" href={item.href}>{item.label}</a></li>
+              <li><a class="text-sm text-[#64748B] hover:text-[#0B1221]" href={item.href}>{item.label}</a></li>
             ))}
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-[var(--text)]">Leistungen</h3>
+          <h3 class="text-sm font-semibold text-[#0B1221]">Leistungen</h3>
           <ul class="mt-3 space-y-2">
             {nav.servicePages.map((s) => (
-              <li><a class="text-sm text-[var(--muted)] hover:text-[var(--text)]" href={s.href}>{s.label}</a></li>
+              <li><a class="text-sm text-[#64748B] hover:text-[#0B1221]" href={s.href}>{s.label}</a></li>
             ))}
           </ul>
         </div>
         <div>
-          <h3 class="text-sm font-semibold text-[var(--text)]">Rechtliches</h3>
+          <h3 class="text-sm font-semibold text-[#0B1221]">Rechtliches</h3>
           <ul class="mt-3 space-y-2">
             {nav.legal.map((l) => (
-              <li><a class="text-sm text-[var(--muted)] hover:text-[var(--text)]" href={l.href}>{l.label}</a></li>
+              <li><a class="text-sm text-[#64748B] hover:text-[#0B1221]" href={l.href}>{l.label}</a></li>
             ))}
           </ul>
         </div>
       </div>
-      <div class="border-t border-[var(--border)]">
+      <div class="border-t border-[#E2E8F0]">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6 flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
-          <p class="text-xs text-[var(--muted)]">© {new Date().getFullYear()} {projectInfo.name}. Alle Rechte vorbehalten.</p>
+          <p class="text-xs text-[#64748B]">© {new Date().getFullYear()} {projectInfo.name}. Alle Rechte vorbehalten.</p>
           <div class="flex flex-wrap gap-4">
             {nav.main.concat(nav.servicePages).concat(nav.legal).map((i) => (
-              <a class="text-xs text-[var(--muted)] hover:text-[var(--text)]" href={i.href}>{i.label}</a>
+              <a class="text-xs text-[#64748B] hover:text-[#0B1221]" href={i.href}>{i.label}</a>
             ))}
           </div>
         </div>
