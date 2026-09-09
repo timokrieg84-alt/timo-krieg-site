@@ -1,341 +1,222 @@
-// Zentrale Site-Konfiguration für ListingProfis GmbH
-// WICHTIG: Alle Importe in den Seiten/Layouts greifen ausschließlich auf die hier definierten named exports zu.
-
-export const colors = {
-  primary: '#0B1220', // Tiefes Nachtblau für Header/Footer/Hero
-  secondary: '#1B2A4A', // Abgesetztes Blau für Flächen/Hover
-  accent: '#22D3EE', // Akzent/Cyan für CTAs & Links
-  highlight: '#F59E0B', // Highlight/Amber für Badges
-  muted: '#94A3B8', // Dezentes Grau für Meta/Lines
-  light: '#F8FAFC', // Sehr hell für Hintergründe (ersetzt "weiß")
-  dark: '#05070E', // Fast schwarz für Kontrast
-  subtle: '#475569', // dezente Textfarbe (Slate‑Ton)
-} as const;
-
-export const brand = {
-  name: 'ListingProfis GmbH',
-  logoText: 'ListingProfis',
-  colors,
-  domain: 'listingprofis.de',
-  tagline: 'Sichtbarkeit, die verkauft.'
-} as const;
-
-export const contact = {
-  phone: '07154 8047800',
-  email: 'info@listingprofis.de',
-  street: 'Bahnhofstraße 5',
-  zip: '70806',
-  city: 'Kornwestheim',
-  country: 'Deutschland',
-  openingHours: 'Montag–Freitag 09:00–16:00 Uhr (Samstag & Sonntag geschlossen)'
-} as const;
+// Zentrale Site-Konfiguration (Golden Source)
+// HINWEIS: Alle Komponenten/Seiten importieren ausschliesslich benannte Exporte aus dieser Datei.
 
 export const projectInfo = {
-  name: brand.name,
-  owner: 'ListingProfis GmbH',
-  tagline: brand.tagline,
-  street: contact.street,
-  zip: contact.zip,
-  city: contact.city,
-  country: contact.country,
-  phone: contact.phone,
-  email: contact.email,
-} as const;
+  name: "Pixelkraft Digital GmbH",
+  owner: "Pixelkraft Digital GmbH",
+  tagline: "High-End Websites, die performen und konvertieren.",
+  street: "Schulterblatt 55",
+  zip: "20357",
+  city: "Hamburg",
+  country: "Deutschland",
+  phone: "+49 40 1234567",
+  email: "hallo@pixelkraft.digital",
+};
+
+export const brand = {
+  logoText: "Pixelkraft",
+  slogan: "Exzellentes Frontend. Messbarer Impact.",
+  colors: {
+    primary: "#0B1221", // Tiefes Navy für Texte/Header
+    primaryContrast: "#FFFFFF", // Kontrast auf dunklem Grund
+    accent: "#0EA5E9", // Akzent (Links/Buttons)
+    accent2: "#F59E0B", // Zweitakzent (Highlights)
+    muted: "#64748B", // Sekundärtext
+    surface: "#F8FAFC", // Flächen/Hintergründe
+    border: "#E2E8F0", // Linien/Divider
+    background: "#FFFFFF", // Page-Background
+  },
+};
+
+// Alias, damit Farben bequem importiert werden koennen
+export const colors = brand.colors;
+
+export const contact = {
+  email: projectInfo.email,
+  phone: projectInfo.phone,
+  addressHtml: `${projectInfo.name}<br>${projectInfo.street}<br>${projectInfo.zip} ${projectInfo.city}`,
+};
 
 export const services = [
   {
-    title: 'SEO & Local SEO',
-    slug: 'seo',
-    short: 'Ganzheitliches SEO: Technik, Content, Backlinks. Plus lokale Sichtbarkeit über Google Business & Branchenportale.',
-    features: [
-      'Technisches SEO-Audit & Fixes',
-      'Content-Strategie & Redaktionsplan',
-      'Linkaufbau & Digital PR',
-      'Google Business Profil Optimierung',
-      'Listing-Management in 30+ Portalen'
+    id: "webdesign",
+    slug: "webdesign",
+    title: "Webdesign & UI/UX",
+    excerpt:
+      "Preisgekrönte Interfaces, die Markencharakter und Conversion vereinen.",
+    benefits: [
+      "Designsysteme mit klarer Typografie und Premium-Ästhetik",
+      "Responsiv bis ins Detail – Mobile First, Desktop perfekt",
+      "Barrierearme Komponenten und saubere Semantik",
+      "Prototyping & Usability-Tests vor dem Go-Live",
     ],
-    seo: {
-      title: 'SEO & Local SEO | ListingProfis GmbH',
-      description: 'Nachhaltige Rankings durch Technik, Content und Backlinks. Lokale Sichtbarkeit via Google Business und über 30 Branchenportale.',
-      keywords: 'SEO, Local SEO, Google Business, Branchenportale, Linkaufbau, Content SEO'
-    }
+    href: "/leistungen/webdesign",
   },
   {
-    title: 'Google Ads',
-    slug: 'google-ads',
-    short: 'Performance-getriebene Kampagnen in Search, Performance Max und YouTube. Conversion Tracking inklusive.',
-    features: [
-      'Search & Performance Max Kampagnen',
-      'YouTube Ads & Remarketing',
-      'Conversion-Tracking & Attributionsanalyse',
-      'A/B-Tests und Landingpages'
+    id: "seo",
+    slug: "seo",
+    title: "SEO-Optimierung",
+    excerpt:
+      "Technisches SEO, Content-Architektur und Performance für Top-Rankings.",
+    benefits: [
+      "Clean HTML, strukturierte Daten und Indexierbarkeit",
+      "Keyword-Mapping und Informationsarchitektur",
+      "PageSpeed-Optimierung & CWV-Verbesserungen",
+      "Monitoring & kontinuierliche Iteration",
     ],
-    seo: {
-      title: 'Google Ads Agentur | ListingProfis GmbH',
-      description: 'Skalierbare Google Ads mit klarem Performance-Fokus. Tracking, Testing und Landingpages aus einem Guss.',
-      keywords: 'Google Ads, Performance Max, YouTube Ads, SEA, Conversion Tracking'
-    }
+    href: "/leistungen/seo",
   },
   {
-    title: 'SEO-Regio',
-    slug: 'seo-regio',
-    short: 'Umland-Dominanz: 50 eigenständige Ortschaften-Seiten für regionale Suchanfragen – Hauptdomain bleibt unberührt.',
-    features: [
-      'Skalierbare Ortschaften-Websites (50+)',
-      'Individueller Content je Ort',
-      'Technische Trennung zur Hauptseite',
-      'Lokale Signale & Citations'
+    id: "performance",
+    slug: "performance",
+    title: "Performance & Core Web Vitals",
+    excerpt:
+      "Millisekunden zählen: Lighthouse 95+ durch moderne Bundling-Strategien.",
+    benefits: [
+      "Code-Splitting, Hydration-Strategien, Edge Caching",
+      "Bildoptimierung, Fonts und kritisches CSS",
+      "Messung mit RUM-Daten statt nur Lab-Traffic",
+      "Webworker, Preload/Prefetch und HTTP/2 Push Patterns",
     ],
-    seo: {
-      title: 'SEO-Regio: Regionale Dominanz | ListingProfis GmbH',
-      description: 'Regionale Sichtbarkeit mit eigenständigen Ortschaften-Seiten. Individueller Content, starke lokale Signale.',
-      keywords: 'Local SEO, Ortschaften, regionale Sichtbarkeit, Citations'
-    }
+    href: "/leistungen/performance",
   },
   {
-    title: 'GEO – Generative Engine Optimization',
-    slug: 'geo',
-    short: 'Optimierung für ChatGPT, Perplexity & Google AI Overviews: Entity-SEO, LLM-Crawling & Citation-Ready Content.',
-    features: [
-      'Entity-SEO & Knowledge-Graph-Aufbau',
-      'LLM-Crawling & Prompt-Indexing',
-      'Strukturierte Daten & Quellenfähigkeit',
-      'Antwortformate für AI Overviews'
+    id: "ecommerce",
+    slug: "ecommerce",
+    title: "Headless E‑Commerce",
+    excerpt:
+      "Schnelle, skalierende Commerce-Erlebnisse mit Headless-Architektur.",
+    benefits: [
+      "Storefronts mit Astro/Next auf Headless-Backends",
+      "API-first Integrationen (PIM, DAM, Checkout, Search)",
+      "A/B-Testing, Merchandising & Personalisierung",
+      "SEO-fähige Kategorieseiten und Facettennavigation",
     ],
-    seo: {
-      title: 'GEO – Generative Engine Optimization | ListingProfis GmbH',
-      description: 'Sichtbarkeit in generativen Antworten: Entity-SEO, strukturierte Daten und zitierfähiger Content für LLMs.',
-      keywords: 'GEO, Generative Engine Optimization, AI Overviews, Entity SEO, LLM SEO'
-    }
+    href: "/leistungen/ecommerce",
   },
   {
-    title: 'Webdesign & E-Commerce',
-    slug: 'webdesign-ecommerce',
-    short: 'Ultraschnelle Websites & Shops: Custom Design, Next.js/WordPress, Core Web Vitals & CRO.',
-    features: [
-      'UX-Konzept & Prototyping',
-      'Headless/Next.js & WordPress',
-      'Core Web Vitals & Performance',
-      'CRO & A/B-Testing'
+    id: "content",
+    slug: "content",
+    title: "Content & Redaktion",
+    excerpt:
+      "Content-Design, das informiert, überzeugt und gefunden wird.",
+    benefits: [
+      "Content-Strategie und Redaktionsprozesse",
+      "UX Writing, Mikrocopy und Tonalität",
+      "CMS-Workflows (Headless/Markdown) und Governance",
+      "Lokalisierung & Terminologie-Management",
     ],
-    seo: {
-      title: 'Webdesign & E‑Commerce | ListingProfis GmbH',
-      description: 'Konversionsstarke Websites & Shops mit exzellenten Core Web Vitals. Design, Development und CRO aus einer Hand.',
-      keywords: 'Webdesign, E-Commerce, Core Web Vitals, CRO, Next.js, WordPress'
-    }
+    href: "/leistungen/content",
   },
   {
-    title: 'AI & Automation',
-    slug: 'ai-automation',
-    short: 'Prozessautomatisierung mit Custom AI Agents, LLM-Integration & Chatbots.',
-    features: [
-      'Individuelle AI Agents & Tools',
-      'LLM-Integration in Prozesse',
-      'RAG, Vektor-Suche & Datenpipelines',
-      'Chatbots & Support-Automation'
+    id: "analytics",
+    slug: "analytics",
+    title: "Analytics & Tracking",
+    excerpt:
+      "Datenschutzkonformes Tracking und KPI-Frameworks für Wachstum.",
+    benefits: [
+      "GA4/Server-Side-Tracking & Consent-Strategien",
+      "Event-Taxonomie und Data-Layer-Design",
+      "Dashboards, Attribution & Experimentation",
+      "Privacy-by-Design und Dokumentation",
     ],
-    seo: {
-      title: 'AI & Automation | ListingProfis GmbH',
-      description: 'Automatisieren Sie Marketing und Support mit maßgeschneiderten AI Agents, LLM-Integrationen und Chatbots.',
-      keywords: 'AI, Automation, LLM, Chatbots, RAG, Vektorsuche'
-    }
+    href: "/leistungen/analytics",
   },
-  {
-    title: 'Online-Terminbuchung',
-    slug: 'online-terminbuchung',
-    short: 'Schnittstellen & Echtzeit-API-Anbindung – z. B. Jameda & Doctolib Integration.',
-    features: [
-      'Jameda & Doctolib Integration',
-      'Realtime-APIs & Synchronisation',
-      'Kalender- und Ressourcen-Logik',
-      'Reminder & No-Show-Reduktion'
-    ],
-    seo: {
-      title: 'Online‑Terminbuchung | ListingProfis GmbH',
-      description: 'Nahtlose Online-Terminbuchung mit Echtzeit-APIs und Schnittstellen. Ideal für Praxen und Dienstleister.',
-      keywords: 'Online-Termin, Doctolib, Jameda, API, Kalender'
-    }
-  },
-  {
-    title: 'Reputation & Bewertungen',
-    slug: 'reputation-bewertungen',
-    short: 'Automatisiertes 5‑Sterne‑System, Review‑Monitoring & Antwort‑Management.',
-    features: [
-      'Bewertungs-Automation & Anfragen',
-      'Monitoring & Alerts',
-      'Antwort-Templates & Eskalation',
-      'Widget-Integration auf Website'
-    ],
-    seo: {
-      title: 'Reputation & Bewertungen | ListingProfis GmbH',
-      description: 'Mehr 5‑Sterne‑Bewertungen durch Automation, Monitoring und professionelles Antwort‑Management.',
-      keywords: 'Reputation, Bewertungen, Reviews, Monitoring, Sterne'
-    }
-  },
-  {
-    title: 'Social Media',
-    slug: 'social-media',
-    short: 'Content-Produktion, Community-Management & Paid Social – aus einer Hand.',
-    features: [
-      'Redaktion & Content-Produktion',
-      'Community-Management',
-      'Paid Social & Funnels',
-      'Social Analytics'
-    ],
-    seo: {
-      title: 'Social Media Marketing | ListingProfis GmbH',
-      description: 'Von Content bis Paid Social: Social Media, das Reichweite in Kunden verwandelt.',
-      keywords: 'Social Media, Content, Paid Social, Community Management'
-    }
-  },
-  {
-    title: 'Premium-Fotografie & Image-Videos',
-    slug: 'premium-fotografie-image-videos',
-    short: 'Businessfotos vor Ort, 4K/8K Recruiting-Videos & lizenzierte Drohnenaufnahmen.',
-    features: [
-      'On-Location Business-Fotografie',
-      '4K/8K Video & Schnitt',
-      'Drohnenaufnahmen (lizenziert)',
-      'Brand-Story & Script'
-    ],
-    seo: {
-      title: 'Premium‑Fotografie & Image‑Videos | ListingProfis GmbH',
-      description: 'Starke Bilder, die verkaufen: Businessfotografie, Imagefilme und Drohnenaufnahmen in Premium‑Qualität.',
-      keywords: 'Fotografie, Imagefilm, Drohne, Recruiting-Video'
-    }
-  },
-  {
-    title: 'Branding',
-    slug: 'branding',
-    short: 'Brand Strategy, Visual Identity, Logo & Design Systems.',
-    features: [
-      'Markenworkshop & Positionierung',
-      'Visuelle Identität & Logo',
-      'Design System & Guidelines',
-      'Go‑Live‑Assets'
-    ],
-    seo: {
-      title: 'Branding & Markenaufbau | ListingProfis GmbH',
-      description: 'Markenstrategie, visuelle Identität und skalierbare Design‑Systeme für nachhaltige Differenzierung.',
-      keywords: 'Branding, Markenstrategie, Corporate Design, Logo'
-    }
-  },
-  {
-    title: 'Praxis-TV (Exklusiv für Mediziner)',
-    slug: 'praxis-tv',
-    short: 'Wartezimmer-TV zur Aufklärung & Bewerbung von Wunschleistungen (IGeL).',
-    features: [
-      'Content-Programmierung & Redaktion',
-      'Hardware-Setup & Betrieb',
-      'IGeL‑Leistungen promoten',
-      'Compliance & Datenschutz'
-    ],
-    seo: {
-      title: 'Praxis‑TV für Mediziner | ListingProfis GmbH',
-      description: 'Wartezimmer-TV mit aufklärenden Inhalten und IGeL‑Promotions – rechtssicher und patientenfreundlich.',
-      keywords: 'Praxis TV, Wartezimmer, IGeL, Medizin Marketing'
-    }
-  },
-  {
-    title: 'Code-Exzellenz & Programmierung',
-    slug: 'code-exzellenz-programmierung',
-    short: 'Individuelle Software, API‑Schnittstellen, CRM‑Verknüpfung & Code‑Audits.',
-    features: [
-      'Individuelle Web‑Apps & Tools',
-      'API‑Design & Integrationen',
-      'CRM‑Verknüpfungen',
-      'Code‑Reviews & Audits'
-    ],
-    seo: {
-      title: 'Code‑Exzellenz & Programmierung | ListingProfis GmbH',
-      description: 'Robuste Softwarelösungen, saubere APIs und Code‑Audits – Qualität, die skaliert.',
-      keywords: 'Programmierung, API, CRM, Code Audit'
-    }
-  },
-  {
-    title: 'Premium-Factoring',
-    slug: 'premium-factoring',
-    short: 'Sofortige Liquidität für B2B‑Forderungen (Auszahlung in 24–48h) mit 100% Ausfallschutz.',
-    features: [
-      'Schnelle Auszahlung 24–48h',
-      '100% Ausfallschutz',
-      'Bonitätsprüfung & Debitorenmanagement',
-      'Transparente Konditionen'
-    ],
-    seo: {
-      title: 'Premium‑Factoring | ListingProfis GmbH',
-      description: 'Liquidität ohne Wartezeit: Factoring für B2B‑Forderungen mit vollständigem Ausfallschutz.',
-      keywords: 'Factoring, Liquidität, Ausfallschutz, B2B'
-    }
-  }
 ] as const;
 
 export const sections = {
+  heroId: "hero",
+  servicesId: "leistungen",
+  aboutId: "about",
+  processId: "process",
+  contactId: "contact",
   hero: {
-    headline: 'Performance‑Marketing, das in Umsatz messbar ist.',
-    subheadline: 'SEO, Ads, GEO & Web – mit Premium‑Content, Automatisierung und exzellenter Technik.',
-    ctaPrimary: { label: 'Kostenloses Erstgespräch', href: '#kontakt' },
-    ctaSecondary: { label: 'Leistungen entdecken', href: '#leistungen' }
+    headline: "Websites, die Eindruck machen und Umsatz schaffen.",
+    subline:
+      "Wir entwerfen und entwickeln High-End Frontends mit Astro und Tailwind – ultraschnell, präzise, markenkonform.",
+    primaryCta: { label: "Projekt anfragen", href: "#contact" },
+    secondaryCta: { label: "Leistungen ansehen", href: "#leistungen" },
   },
   about: {
-    id: 'ueber-uns',
-    title: 'Über ListingProfis',
-    text: 'Wir sind Ihre Sparringspartner für digitale Sichtbarkeit: tief technisch, kreativ im Content und kompromisslos in der Performance. Unsere Lösungen verbinden Strategie, Exekution und Automatisierung – für nachhaltiges Wachstum.',
+    title: "Über uns",
+    text:
+      "Wir sind eine fokussierte, seniorige Frontend-Agentur. Design, UX und Technik greifen bei uns nahtlos ineinander. Unser Anspruch: Reibungslose User Journeys, makelloser Code und sichtbarer Business-Impact.",
   },
   process: {
-    id: 'prozess',
-    title: 'So arbeiten wir',
+    title: "Unser Prozess",
     steps: [
-      { title: 'Audit & Strategie', text: 'Messbarer Status‑quo, klare Zielarchitektur und Roadmap.' },
-      { title: 'Setup & Quick Wins', text: 'Technik-Fixes, Tracking, Kampagnen und Content‑Grundlagen.' },
-      { title: 'Scale & Automate', text: 'Systematische Skalierung, Testing und Automatisierung.' }
-    ]
+      {
+        title: "Discovery",
+        text: "Ziele, Nutzerbedürfnisse und Markenleitplanken präzise verstehen.",
+      },
+      {
+        title: "Design",
+        text: "Systematisches UI mit Komponenten, States und Barrierefreiheit.",
+      },
+      {
+        title: "Build",
+        text: "Astro-Komponenten, saubere Semantik und Performance by Default.",
+      },
+      {
+        title: "Launch & Learn",
+        text: "Stabile Deployments, Monitoring und datengetriebene Iteration.",
+      },
+    ],
   },
   contact: {
-    id: 'kontakt',
-    title: 'Sprechen wir über Ihre Ziele',
-    text: 'Ob Lead‑Generierung, E‑Commerce oder regionale Dominanz – wir zeigen in 30 Minuten auf, wie Sie planbar wachsen.',
-  }
+    title: "Kontakt",
+    text:
+      "Erzählen Sie uns kurz von Ihrem Vorhaben – wir melden uns innerhalb von 24 Stunden mit einer ersten Einschätzung.",
+  },
 } as const;
 
 export const nav = {
   main: [
-    { label: 'Start', href: '/' },
-    { label: 'Leistungen', href: '/#leistungen' },
-    { label: 'Über uns', href: '/#ueber-uns' },
-    { label: 'Prozess', href: '/#prozess' },
-    { label: 'Kontakt', href: '/#kontakt' },
-    { label: 'Impressum', href: '/impressum' },
-    { label: 'Datenschutz', href: '/datenschutz' }
-  ]
+    { label: "Start", href: "/" },
+    { label: "Leistungen", href: "/#leistungen" },
+    { label: "Über uns", href: "/#about" },
+    { label: "Prozess", href: "/#process" },
+    { label: "Kontakt", href: "/#contact" },
+  ],
+  serviceAnchors: services.map((s) => ({ label: s.title, href: `/#${s.id}` })),
+  servicePages: services.map((s) => ({ label: s.title, href: s.href })),
+  legal: [
+    { label: "Impressum", href: "/impressum" },
+    { label: "Datenschutz", href: "/datenschutz" },
+  ],
 } as const;
 
 export const legal = {
-  impressum: {
-    company: brand.name,
-    street: contact.street,
-    zip: contact.zip,
-    city: contact.city,
-    country: contact.country,
-    phone: contact.phone,
-    email: contact.email,
-    representative: 'Geschäftsführung: Angaben folgen',
-    register: 'Handelsregister: Angaben folgen',
-    vatId: 'USt‑IdNr.: Angaben folgen',
-    responsibility: 'Inhaltlich verantwortlich gemäß § 18 Abs. 2 MStV: ListingProfis GmbH',
-  },
-  privacy: {
-    controller: brand.name,
-    address: `${contact.street}, ${contact.zip} ${contact.city}, ${contact.country}`,
-    email: contact.email,
-    phone: contact.phone,
-    scope: 'Diese Datenschutzerklärung informiert über die Verarbeitung personenbezogener Daten beim Besuch dieser Website.',
-    hosting: 'Das Hosting erfolgt bei einem europäischen Anbieter. Es werden Server‑Logfiles (IP‑Adresse gekürzt, Datum/Uhrzeit, Referrer, User‑Agent) zur Sicherstellung des Betriebs erhoben und nach 30 Tagen gelöscht.',
-    cookies: 'Wir verwenden ausschließlich technisch notwendige Cookies, um die Website bereitzustellen. Eine Verarbeitung zu Werbezwecken findet nicht statt.',
-    analytics: 'Es kommt keine externe Webanalyse zum Einsatz. Es werden nur aggregierte, nicht‑personalisierte Zugriffsdaten verarbeitet.',
-    contactForms: 'Bei Kontaktaufnahme (Telefon, E‑Mail) verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO.',
-    rights: 'Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch. Zudem besteht ein Beschwerderecht bei einer Aufsichtsbehörde.',
-    dpo: 'Ein Datenschutzbeauftragter ist nicht bestellt, da keine gesetzliche Pflicht besteht.',
-    updates: 'Wir passen diese Datenschutzerklärung an, sobald Änderungen der Datenverarbeitung dies erforderlich machen.'
-  }
+  impressum: `
+    <h1>Impressum</h1>
+    <p><strong>${projectInfo.name}</strong><br>${projectInfo.street}<br>${projectInfo.zip} ${projectInfo.city}<br>${projectInfo.country}</p>
+    <p>Telefon: ${projectInfo.phone}<br>E-Mail: <a href="mailto:${projectInfo.email}">${projectInfo.email}</a></p>
+    <p>Vertreten durch die Geschäftsführung: ${projectInfo.owner}</p>
+    <p>Handelsregister: Amtsgericht Hamburg, HRB 999999<br>USt-IdNr.: DE999999999</p>
+    <h2>Haftung für Inhalte</h2>
+    <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+    <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+    <h2>Haftung für Links</h2>
+    <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+    <h2>Urheberrecht</h2>
+    <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+    <h2>EU-Streitschlichtung</h2>
+    <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a href="https://ec.europa.eu/consumers/odr/" rel="nofollow noopener" target="_blank">ec.europa.eu/consumers/odr</a>.</p>
+  `,
+  datenschutz: `
+    <h1>Datenschutzerklärung</h1>
+    <p>Wir freuen uns über Ihr Interesse an unserem Online-Angebot. Der Schutz Ihrer personenbezogenen Daten ist uns ein wichtiges Anliegen.</p>
+    <h2>Verantwortlicher</h2>
+    <p>${projectInfo.name}<br>${projectInfo.street}<br>${projectInfo.zip} ${projectInfo.city}<br>E-Mail: <a href="mailto:${projectInfo.email}">${projectInfo.email}</a></p>
+    <h2>Zugriffsdaten/Server-Logfiles</h2>
+    <p>Wir (beziehungsweise unser Webspace-Provider) erheben Daten über jeden Zugriff auf das Angebot (so genannte Serverlogfiles). Zu den Zugriffsdaten gehören Name der abgerufenen Webseite, Datei, Datum und Uhrzeit des Abrufs, übertragene Datenmenge, Meldung über erfolgreichen Abruf, Browsertyp nebst Version, das Betriebssystem des Nutzers, Referrer URL, IP-Adresse und der anfragende Provider. Wir verwenden die Protokolldaten nur für statistische Auswertungen zum Zweck des Betriebs, der Sicherheit und der Optimierung des Angebotes.</p>
+    <h2>Reichweitenmessung & Cookies</h2>
+    <p>Dieses Angebot verwendet Cookies zur pseudonymisierten Reichweitenmessung, die entweder von unserem Server oder dem Server Dritter an den Browser des Nutzers übertragen werden. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.</p>
+    <h2>Einbindung von Diensten und Inhalten Dritter</h2>
+    <p>Es kann vorkommen, dass innerhalb dieses Onlineangebotes Inhalte Dritter, wie zum Beispiel Videos, Kartenmaterial, RSS-Feeds oder Grafiken von anderen Webseiten eingebunden werden. Dies setzt immer voraus, dass die Anbieter dieser Inhalte die IP-Adresse der Nutzer wahrnehmen. Ohne die IP-Adresse könnten sie die Inhalte nicht an den Browser des jeweiligen Nutzers senden.</p>
+    <h2>Rechte der Nutzer</h2>
+    <p>Nutzer haben das Recht, auf Antrag unentgeltlich Auskunft zu erhalten über die personenbezogenen Daten, die über sie gespeichert wurden. Zusätzlich haben Nutzer das Recht auf Berichtigung unrichtiger Daten, Einschränkung der Verarbeitung und Löschung ihrer personenbezogenen Daten, soweit dem keine gesetzliche Aufbewahrungspflicht entgegensteht.</p>
+    <h2>Kontakt</h2>
+    <p>Bei Fragen zur Erhebung, Verarbeitung oder Nutzung Ihrer personenbezogenen Daten sowie bei Auskünften, Berichtigung, Sperrung oder Löschung von Daten wenden Sie sich bitte an uns: <a href="mailto:${projectInfo.email}">${projectInfo.email}</a>.</p>
+  `,
 } as const;
