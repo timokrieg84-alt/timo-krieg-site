@@ -1,57 +1,72 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Navbar from "@/components/Navbar.astro";
-import Section from "@/components/Section.astro";
-import CTA from "@/components/CTA-Bar.astro";
-import Footer from "@/components/Footer.astro";
-import HeadSEO from "@/components/HeadSEO.astro";
-const meta = {
-  title: "Reputation & Bewertungen | Google/Jameda & Review‑Ops",
-  description: "Sammeln, moderieren, ausspielen: Legal‑sicheres Review‑Management für Ärzte, Dienstleister & B2B.",
-  url: "https://example.com/leistungen/reputation-bewertungen/",
-  canonical: "https://example.com/leistungen/reputation-bewertungen/",
-  image: "/images/hero-bg.webp",
-  type: "article"
-};
+import Layout from '../../layouts/Layout.astro';
+import { brand, services, contact } from '../../data/site';
+const service = services.find(s => s.slug === 'reputation-bewertungen');
+const others = services.filter(s => s.slug !== 'reputation-bewertungen');
 ---
-<html lang="de" class="dark">
-  <head>
-    <HeadSEO {...meta} />
-    <script type="application/ld+json">
-      {JSON.stringify({"@context":"https://schema.org","@type":"Service","@id":"https://example.com/leistungen/reputation-bewertungen/#service","name":"Reputation & Bewertungen","serviceType":"Online Reputation Management","provider":{"@id":"https://example.com/#organization"},"areaServed":[{"@type":"Country","name":"Germany"}],"audience":{"@type":"BusinessAudience"}})}
-    </script>
-  </head>
-  <body>
-    <Layout title={meta.title} description={meta.description}>
-      <Fragment slot="nav"><Navbar /></Fragment>
-      <Section id="intro" title="Ihr guter Name, makellos geschützt." intro="Mehr echte Top‑Bewertungen, aktiver Schutz vor Rufschädigung und ein System, das positives Feedback skaliert.">
-        <div class="grid md:grid-cols-2 gap-8">
-          <article class="card p-6">
-            <h3 class="h3">Leistungspaket</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Automatisiertes 5‑Sterne‑Bewertungssystem</li>
-              <li>• Review‑Monitoring in Echtzeit</li>
-              <li>• Antwort‑Management</li>
-              <li>• Melden & Entfernen ungerechtfertigter Rezensionen</li>
-            </ul>
-            <div class="mt-6 flex gap-3">
-              <a href="/projekt-anfragen" class="btn btn-primary btn-glare">Angebot anfragen</a>
-              <a href="/kontakt" class="btn btn-secondary">Beratung buchen</a>
-            </div>
-          </article>
-          <article class="card p-6">
-            <h3 class="h3">Messpunkte</h3>
-            <ul class="mt-3 text-txt-2 grid gap-2">
-              <li>• Bewertungsquote & Sterne‑Durchschnitt</li>
-              <li>• Antwortquote & Reaktionszeit</li>
-              <li>• Anteil positiver vs. negativer Reviews</li>
-              <li>• Sichtbarkeit in Local Packs/Jameda</li>
-            </ul>
-          </article>
+<Layout title={service?.seo.title ?? `${brand.name} – Reputation & Bewertungen`} description={service?.seo.description}>
+  <section class="relative bg-[#0B1220] text-[#F8FAFC]">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(245,158,11,0.16),transparent_45%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <nav class="text-xs text-[#F8FAFC]/70"><a href="/" class="hover:text-[#F8FAFC]">Start</a> · <span>Reputation & Bewertungen</span></nav>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">5‑Sterne‑Reputation auf Autopilot</h1>
+      <p class="mt-2 max-w-3xl text-[#F8FAFC]/80">{service?.short}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">Demo anfragen</a>
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">Zur Startseite</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <h2 class="text-xl font-semibold">Mehr echte Bewertungen, bessere Sichtbarkeit</h2>
+      <p class="mt-3 text-[#475569]">Unser System versendet automatische, zeitlich abgestimmte Bewertungsanfragen, bündelt Rezensionen verschiedener Plattformen in einem Dashboard und unterstützt beim professionellen Antwort‑Management. So wächst Ihre Reputation stetig – authentisch und messbar.</p>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Automatische Anfragen</div><p class="mt-1 text-sm text-[#475569]">Kanal‑ und zeitpunktoptimierte Requests nach Kauf/Termin – DSGVO‑konform und markenkonform.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Monitoring & Alerts</div><p class="mt-1 text-sm text-[#475569]">Zentrale Übersicht, Benachrichtigungen bei neuen Einträgen und Schwellwerte für Eskalation.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Antwort‑Management</div><p class="mt-1 text-sm text-[#475569]">Guidelines, Templates und Freigabeprozesse garantieren schnelle, souveräne Reaktionen.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-5"><div class="text-sm font-semibold">Widgets & Trust‑Signale</div><p class="mt-1 text-sm text-[#475569]">Bewertungs‑Snippets und Rich Results stärken CTR und Conversion auf der Website.</p></div>
+      </div>
+
+      <h3 class="mt-10 text-lg font-semibold">Leistungsumfang</h3>
+      <ul class="mt-3 space-y-2 text-sm text-[#0B1220]">
+        {(service?.features ?? []).map((f) => (
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
+        ))}
+        <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>Reportings & Insights für Management</span></li>
+      </ul>
+
+      <div class="mt-10 rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-[#F8FAFC]">
+        <div class="text-lg font-semibold">Reputation aktiv gestalten</div>
+        <p class="mt-1 text-[#F8FAFC]/80">Wir etablieren Prozesse, die kontinuierlich positive Bewertungen erzeugen – ohne Mehraufwand fürs Team.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
+          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">E‑Mail schreiben</a>
         </div>
-      </Section>
-      <CTA />
-      <Fragment slot="footer"><Footer /></Fragment>
-    </Layout>
-  </body>
-</html>
+      </div>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-6">
+        <div class="text-sm font-semibold">Weitere Leistungen</div>
+        <nav class="mt-3 grid grid-cols-1 gap-2">
+          {others.map((o) => (<a href={`/leistungen/${o.slug}`} class="text-sm text-[#1B2A4A] hover:text-[#22D3EE] transition-colors">{o.title}</a>))}
+        </nav>
+        <a href="/" class="mt-4 inline-block text-xs text-[#475569] hover:text-[#0B1220]">← Zur Startseite</a>
+      </div>
+    </aside>
+  </section>
+
+  <section id="kontakt" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-8">
+      <h2 class="text-xl font-semibold">Demo & Erstgespräch</h2>
+      <p class="mt-2 text-[#475569]">Wir zeigen, wie Ihr Bewertungsfluss heute funktioniert – und wo wir ihn verbessern.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Anrufen</a>
+        <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail</a>
+      </div>
+    </div>
+  </section>
+</Layout>
