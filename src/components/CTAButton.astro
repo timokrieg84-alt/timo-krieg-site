@@ -1,5 +1,19 @@
 ---
-const { href = "#", kind = "primary", label = "Jetzt starten" } = Astro.props;
-const classes = kind === "secondary" ? "btn btn-secondary" : kind === "ghost" ? "btn btn-ghost" : "btn btn-primary";
+interface Props {
+  href: string;
+  variant?: 'primary' | 'secondary';
+  ariaLabel?: string;
+}
+const { href, variant = 'primary', ariaLabel } = Astro.props as Props;
 ---
-<a href={href} class={classes}>{label}</a>
+<a
+  href={href}
+  aria-label={ariaLabel}
+  class={`inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ring-offset-[#FFFFFF] ${
+    variant === 'primary'
+      ? 'bg-[#C026D3] text-[#FFFFFF] hover:bg-[#06B6D4] focus-visible:ring-[#06B6D4]'
+      : 'border border-[#C026D3] text-[#C026D3] hover:text-[#06B6D4] hover:border-[#06B6D4] focus-visible:ring-[#06B6D4]'
+  }`}
+>
+  <slot />
+</a>
