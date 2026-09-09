@@ -1,108 +1,15 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { brand, sections, services, contact } from '../data/site';
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import ServicesOverview from "../components/ServicesOverview.astro";
+import AboutProcess from "../components/AboutProcess.astro";
+import ContactCta from "../components/ContactCta.astro";
+import { services, sections } from "../data/site";
 ---
-<Layout title={`${brand.name} – ${brand.tagline}`} description={`${brand.name}: SEO, Local SEO, Google Ads, GEO, Webdesign, Automation u. v. m. ${sections.hero.subheadline}`}> 
-  <!-- Hero -->
-  <section class="relative overflow-hidden bg-[#0B1220] text-[#F8FAFC]">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_left,rgba(34,211,238,0.15),transparent_40%),radial-gradient(ellipse_at_bottom_right,rgba(245,158,11,0.15),transparent_40%)]"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
-      <div class="max-w-3xl">
-        <h1 class="text-3xl sm:text-5xl font-semibold tracking-tight">{sections.hero.headline}</h1>
-        <p class="mt-4 text-base sm:text-lg text-[#94A3B8]">{sections.hero.subheadline}</p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href={sections.hero.ctaPrimary.href} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">{sections.hero.ctaPrimary.label}</a>
-          <a href={sections.hero.ctaSecondary.href} class="inline-flex items-center gap-2 rounded-full border border-[#F8FAFC]/20 px-5 py-3 text-[#F8FAFC] hover:bg-[#F8FAFC]/10 transition-colors">{sections.hero.ctaSecondary.label}</a>
-        </div>
-        <div class="mt-6 text-xs text-[#94A3B8]">{contact.openingHours} · {contact.city}</div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Leistungen Overview -->
-  <section id="leistungen" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-    <div class="mb-10 flex items-end justify-between gap-6">
-      <div>
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">Leistungen</h2>
-        <p class="mt-2 text-[#475569] max-w-2xl">Von SEO über Ads bis Web & Automation – modular kombinierbar, immer auf Performance getrimmt.</p>
-      </div>
-      <a href="#kontakt" class="hidden sm:inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-4 py-2 text-sm font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Kostenloses Erstgespräch</a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-      {services.map((s) => (
-        <section id={s.slug} class="group rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-6 shadow-sm hover:shadow-md transition-shadow">
-          <div class="flex items-start justify-between gap-4">
-            <h3 class="text-lg font-semibold text-[#0B1220]">{s.title}</h3>
-            <span class="inline-flex h-8 w-8 flex-none items-center justify-center rounded-full bg-[#22D3EE]/15 text-[#22D3EE]">→</span>
-          </div>
-          <p class="mt-2 text-sm text-[#475569]">{s.short}</p>
-          <ul class="mt-4 space-y-1 text-sm text-[#0B1220]">
-            {s.features.map((f) => (
-              <li class="flex items-start gap-2"><span class="mt-1 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
-            ))}
-          </ul>
-          <div class="mt-6 flex flex-wrap gap-3">
-            <a href={`/leistungen/${s.slug}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-4 py-2 text-sm font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Mehr erfahren</a>
-            <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-4 py-2 text-sm text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">Beratung anfragen</a>
-          </div>
-        </section>
-      ))}
-    </div>
-  </section>
-
-  <!-- Über uns -->
-  <section id={sections.about.id} class="scroll-mt-24 bg-[#F8FAFC]/80">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid grid-cols-1 lg:grid-cols-3 gap-10">
-      <div class="lg:col-span-2">
-        <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">{sections.about.title}</h2>
-        <p class="mt-4 text-[#475569] max-w-3xl">{sections.about.text}</p>
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <div class="rounded-xl border border-[#94A3B8]/40 p-5 bg-[#F8FAFC]"><div class="text-sm font-semibold">Technik × Content × Authority</div><p class="mt-1 text-sm text-[#475569]">Wir verknüpfen saubere Technik, tiefenrecherchierten Content und Autoritätssignale zu einem belastbaren Wachstumssystem.</p></div>
-          <div class="rounded-xl border border-[#94A3B8]/40 p-5 bg-[#F8FAFC]"><div class="text-sm font-semibold">Transparente KPIs</div><p class="mt-1 text-sm text-[#475569]">Klar definierte Ziele, Reporting in Plain Language und Entscheidungen auf Basis echter Geschäftsmetriken.</p></div>
-        </div>
-      </div>
-      <aside class="lg:col-span-1">
-        <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-[#F8FAFC]">
-          <div class="text-sm uppercase tracking-wide text-[#F8FAFC]/70">Schnellkontakt</div>
-          <div class="mt-3 space-y-2 text-sm">
-            <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="block rounded-lg bg-[#F8FAFC]/10 px-4 py-2 hover:bg-[#F8FAFC]/15 transition-colors">{contact.phone}</a>
-            <a href={`mailto:${contact.email}`} class="block rounded-lg bg-[#F8FAFC]/10 px-4 py-2 hover:bg-[#F8FAFC]/15 transition-colors">{contact.email}</a>
-          </div>
-          <div class="mt-3 text-xs text-[#F8FAFC]/70">{contact.openingHours}</div>
-        </div>
-      </aside>
-    </div>
-  </section>
-
-  <!-- Prozess -->
-  <section id={sections.process.id} class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-    <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">{sections.process.title}</h2>
-    <div class="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-      {sections.process.steps.map((step, i) => (
-        <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-6">
-          <div class="inline-flex h-10 w-10 items-center justify-center rounded-full bg-[#22D3EE]/15 text-[#22D3EE] font-semibold">{String(i + 1).padStart(2,'0')}</div>
-          <div class="mt-3 text-lg font-semibold">{step.title}</div>
-          <p class="mt-1 text-sm text-[#475569]">{step.text}</p>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- Kontakt / CTA -->
-  <section id={sections.contact.id} class="scroll-mt-24 relative overflow-hidden">
-    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(34,211,238,0.20),transparent_40%),radial-gradient(ellipse_at_bottom_left,rgba(11,18,32,0.08),transparent_40%)]"></div>
-    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-      <div class="rounded-2xl border border-[#94A3B8]/40 bg-[#F8FAFC] p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div>
-          <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">{sections.contact.title}</h2>
-          <p class="mt-2 text-[#475569] max-w-2xl">{sections.contact.text}</p>
-        </div>
-        <div class="flex flex-col sm:flex-row gap-3">
-          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center justify-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
-          <a href={`mailto:${contact.email}`} class="inline-flex items-center justify-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail schreiben</a>
-        </div>
-      </div>
-    </div>
-  </section>
+<Layout>
+  <Hero />
+  <ServicesOverview />
+  <AboutProcess />
+  <ContactCta />
 </Layout>
