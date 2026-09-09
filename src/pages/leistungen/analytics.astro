@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { services } from "../../data/site";
+const current = services.find((s) => s.slug === "analytics")!;
+const others = services.filter((s) => s.slug !== "analytics");
+---
+<Layout>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
+        <li>/</li>
+        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
+        <li>/</li>
+        <li class="text-[#0B1221]">{current.title}</li>
+      </ol>
+    </nav>
+
+    <header class="mt-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
+      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Wir schaffen Messbarkeit ohne Datenschutzrisiken. Mit sauberem Event-Design, Server-Side-Tracking und klaren KPI-Frameworks machen wir Entscheidungen fundiert – nicht gefühlt.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Setup anfragen</a>
+        <a href="/leistungen/performance" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Performance</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+      </div>
+    </header>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12">
+      <article class="lg:col-span-8">
+        <section class="prose max-w-none">
+          <h2 class="text-2xl font-bold text-[#0B1221]">Daten mit Substanz</h2>
+          <p class="mt-3 text-[#0B1221]/90">Wir definieren ein robustes KPI-Set, das Produktziele abbildet. Events werden über eine saubere Taxonomie beschrieben und im Data Layer konsistent verfügbar gemacht – die Basis für Reporting, Attribution und Experimentation.</p>
+          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Bausteine</h3>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Server-Side-Tracking</strong><br/><span class="text-[#64748B]">Weniger Client-JS, mehr Datenqualität und Datenschutz.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Event-Design</strong><br/><span class="text-[#64748B]">Konsistente Benennungen, Parameter und Trigger.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Dashboards</strong><br/><span class="text-[#64748B]">Fokussierte Reports für Teams und Stakeholder.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Consent</strong><br/><span class="text-[#64748B]">Rechtskonforme Strategien mit klarer UX.</span></li>
+          </ul>
+          <p class="mt-6 text-[#0B1221]">In Verbindung mit <a href="/leistungen/seo" class="text-[#0EA5E9] hover:underline">SEO</a> und <a href="/leistungen/performance" class="text-[#0EA5E9] hover:underline">Performance</a> werden Insights direkt umsetzbar.</p>
+        </section>
+      </article>
+      <aside class="lg:col-span-4">
+        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
+          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
+          <ul class="mt-3 space-y-2">
+            {others.map((s) => (
+              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
+            ))}
+          </ul>
+          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
+            <a href="/#leistungen" class="text-sm text-[#0EA5E9] hover:underline">Zur Übersicht</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
+      <h2 class="text-2xl font-bold text-[#0B1221]">Messbar besser entscheiden</h2>
+      <p class="mt-2 text-[#64748B]">Wir schaffen Datenqualität, die man vertrauen kann – und die Teams wirklich nutzen.</p>
+      <div class="mt-5 flex justify-center gap-3">
+        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+      </div>
+    </section>
+  </section>
+</Layout>
