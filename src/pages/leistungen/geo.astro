@@ -1,67 +1,72 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { brand, colors, services } from "../../data/site";
+import Layout from '../../layouts/Layout.astro';
+import { brand, services, contact } from '../../data/site';
 const service = services.find(s => s.slug === 'geo');
 const others = services.filter(s => s.slug !== 'geo');
 ---
-<Layout title={`${service?.title} – ${brand.name}`} description={service?.shortDescription ?? brand.tagline}>
-  <section class={`bg-[${colors.background}] border-b border-[${colors.muted}]/20`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-10">
-      <nav class="text-sm"><a href="/" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Start</a> <span class={`text-[${colors.text}]/40`}>/</span> <a href="/#leistungen" class={`text-[${colors.primary}] hover:text-[${colors.secondary}]`}>Leistungen</a> <span class={`text-[${colors.text}]/40`}>/</span> <span class={`text-[${colors.text}]/60`}>{service?.title}</span></nav>
-      <h1 class={`mt-4 text-3xl md:text-5xl font-semibold text-[${colors.text}]`}>{service?.title}</h1>
-      {service?.subtitle && <p class={`mt-3 text-lg text-[${colors.muted}]`}>{service.subtitle}</p>}
-      {service?.shortDescription && <p class={`mt-6 max-w-3xl text-[${colors.text}]/80`}>{service.shortDescription}</p>}
-      <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/#kontakt" class={`inline-flex items-center rounded-full bg-[${colors.primary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold border border-[${colors.gold}]`}>Beratung anfragen</a>
-        <a href="/#leistungen" class={`inline-flex items-center rounded-full border border-[${colors.primary}]/30 px-5 py-2.5 text-sm font-semibold text-[${colors.primary}] hover:border-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>Alle Leistungen</a>
+<Layout title={service?.seo.title ?? `${brand.name} – GEO`} description={service?.seo.description}>
+  <section class="relative bg-[#0B1220] text-white">
+    <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(34,211,238,0.18),transparent_45%)]"></div>
+    <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+      <nav class="text-xs text-white/70"><a href="/" class="hover:text-white">Start</a> · <span>GEO – Generative Engine Optimization</span></nav>
+      <h1 class="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">GEO – Sichtbarkeit in generativen Antworten</h1>
+      <p class="mt-2 max-w-3xl text-white/80">{service?.short}</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#kontakt" class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 text-[#0B1220] font-semibold hover:bg-[#22D3EE]/90 transition-colors">GEO‑Check anfragen</a>
+        <a href="/" class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:bg-white/10 transition-colors">Zur Startseite</a>
       </div>
     </div>
   </section>
 
-  <section class={`bg-[${colors.background}]`}>
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 lg:grid-cols-3 gap-10">
-      <div class="lg:col-span-2">
-        <div>
-          <h2 class={`text-2xl font-semibold text-[${colors.text}]`}>Von SERP zu Antwort: GEO erklärt</h2>
-          <p class={`mt-4 text-[${colors.text}]/90`}>Generative Suchmaschinen bewerten nicht nur Keywords, sondern Zusammenhänge. Wir modellieren Ihre Marke als eindeutige Entität und liefern Inhalte, die LLMs zuverlässig crawlen, verknüpfen und zitieren können.</p>
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Bausteine</h3>
-          {service?.features && (
-            <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
-              {service.features.map((f) => (<li>{f}</li>))}
-            </ul>
-          )}
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Lieferumfang</h3>
-          <ul class="mt-3 space-y-2 text-sm text-[${colors.text}]/90">
-            <li>Entity- und Knowledge-Graph-Analyse</li>
-            <li>Citation-Ready Content inkl. Quellenführung und Struktur</li>
-            <li>Technische Implementierung von llms.txt und strukturierten Daten</li>
-            <li>Monitoring von AI-Overviews und generativen Treffern</li>
-          </ul>
-          <h3 class={`mt-8 text-xl font-semibold text-[${colors.text}]`}>Warum es wirkt</h3>
-          <p class={`mt-3 text-[${colors.text}]/90`}>LLMs bevorzugen eindeutige, gut vernetzte Informationen. Wer diese Signale liefert, steigert die Chance, in AI-Antworten präsent und zitierfähig zu sein.</p>
-        </div>
-        <div class={`mt-10 rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-base font-semibold text-[${colors.primary}]`}>Nächster Schritt</h3>
-          <p class={`mt-2 text-sm text-[${colors.text}]/80`}>Wir prüfen Ihre Entitätsstruktur und definieren Quick-Wins für sichtbare Effekte in AI-Overviews.</p>
-          <a href="/#kontakt" class={`mt-4 inline-flex items-center rounded-full bg-[${colors.secondary}] px-5 py-2.5 text-[${colors.background}] text-sm font-semibold`}>Gespräch buchen</a>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-1 lg:grid-cols-3 gap-10">
+    <div class="lg:col-span-2">
+      <h2 class="text-xl font-semibold">Was ist GEO?</h2>
+      <p class="mt-3 text-[#475569]">Generative Engine Optimization macht Ihre Marke in Antworten von ChatGPT, Perplexity und Google AI Overviews präsent. Wir schaffen eine belastbare Entity‑Struktur, sorgen für zitierfähige Quellenlage und bereiten Inhalte so auf, dass LLMs sie zuverlässig crawlen, verstehen und korrekt wiedergeben.</p>
+
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5"><div class="text-sm font-semibold">Entity‑SEO & Graph</div><p class="mt-1 text-sm text-[#475569]">Saubere Entitäten, Relationen und Identitäten – strukturierte Daten, die Vertrauensanker setzen.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5"><div class="text-sm font-semibold">Citation‑Ready Content</div><p class="mt-1 text-sm text-[#475569]">Inhalte, die LLMs gerne zitieren: präzise, belegbar, mit Quellen‑Attribution und klarer Lizenz.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5"><div class="text-sm font-semibold">LLM‑Crawling & Prompt‑Index</div><p class="mt-1 text-sm text-[#475569]">Sitemaps, Feeds und Antwortbausteine, die in generativen Flows zuverlässig abgefragt werden.</p></div>
+        <div class="rounded-xl border border-[#94A3B8]/40 bg-white p-5"><div class="text-sm font-semibold">AI Overviews‑Formate</div><p class="mt-1 text-sm text-[#475569]">Antwort‑Snippets und How‑Tos in Formaten, die AI Overviews bevorzugt darstellt.</p></div>
+      </div>
+
+      <h3 class="mt-10 text-lg font-semibold">Leistungsumfang</h3>
+      <ul class="mt-3 space-y-2 text-sm text-[#0B1220]">
+        {(service?.features ?? []).map((f) => (
+          <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>{f}</span></li>
+        ))}
+        <li class="flex items-start gap-2"><span class="mt-2 h-1.5 w-1.5 rounded-full bg-[#22D3EE]"></span><span>Content‑Lizenzierung & Quellenstrategie</span></li>
+      </ul>
+
+      <div class="mt-10 rounded-2xl border border-[#94A3B8]/40 bg-[#0B1220] p-6 text-white">
+        <div class="text-lg font-semibold">Jetzt Reichweite in LLM‑Antworten aufbauen</div>
+        <p class="mt-1 text-white/80">Wir prüfen Ihre Entity‑Lage und entwickeln eine GEO‑Roadmap inkl. Quick Wins.</p>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Jetzt anrufen</a>
+          <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-3 text-white hover:bg-white/10 transition-colors">E‑Mail schreiben</a>
         </div>
       </div>
-      <aside class="lg:col-span-1">
-        <div class={`rounded-2xl border border-[${colors.muted}]/20 bg-[${colors.background}] p-6`}>
-          <h3 class={`text-sm font-semibold text-[${colors.muted}] uppercase tracking-wide`}>Weitere Leistungen</h3>
-          <ul class="mt-3 space-y-2">
-            {others.map((o) => (
-              <li>
-                <a href={`/leistungen/${o.slug}`} class={`block rounded-md px-3 py-2 text-sm text-[${colors.primary}] hover:bg-[${colors.accent}]/10`}>
-                  <span class="font-medium">{o.title}</span>
-                  {o.shortDescription && <span class={`block text-[${colors.muted}]`}>{o.shortDescription}</span>}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <a href="/" class={`mt-4 inline-flex text-sm text-[${colors.text}]/70 hover:text-[${colors.text}]`}>Zur Startseite</a>
-        </div>
-      </aside>
+    </div>
+
+    <aside class="lg:col-span-1">
+      <div class="rounded-2xl border border-[#94A3B8]/40 bg-white p-6">
+        <div class="text-sm font-semibold">Weitere Leistungen</div>
+        <nav class="mt-3 grid grid-cols-1 gap-2">
+          {others.map((o) => (<a href={`/leistungen/${o.slug}`} class="text-sm text-[#1B2A4A] hover:text-[#22D3EE] transition-colors">{o.title}</a>))}
+        </nav>
+        <a href="/" class="mt-4 inline-block text-xs text-[#475569] hover:text-[#0B1220]">← Zur Startseite</a>
+      </div>
+    </aside>
+  </section>
+
+  <section id="kontakt" class="scroll-mt-24 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+    <div class="rounded-2xl border border-[#94A3B8]/40 bg-white p-8">
+      <h2 class="text-xl font-semibold">Kostenloses Erstgespräch</h2>
+      <p class="mt-2 text-[#475569]">Wir zeigen, wie Ihre Marke in generativen Antworten präsent wird – sauber, belegbar, skalierbar.</p>
+      <div class="mt-4 flex flex-wrap gap-3">
+        <a href={`tel:${contact.phone.replace(/\s+/g, '')}`} class="inline-flex items-center gap-2 rounded-full bg-[#22D3EE] px-5 py-3 font-semibold text-[#0B1220] hover:bg-[#22D3EE]/90 transition-colors">Anrufen</a>
+        <a href={`mailto:${contact.email}`} class="inline-flex items-center gap-2 rounded-full border border-[#1B2A4A]/20 px-5 py-3 font-semibold text-[#1B2A4A] hover:bg-[#1B2A4A]/5 transition-colors">E‑Mail</a>
+      </div>
     </div>
   </section>
 </Layout>
