@@ -1,0 +1,79 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CTAButton from "../../components/CTAButton.astro";
+import { services, sections, contact, projectInfo } from "../../data/site";
+const s = services.find((x) => x.slug === "ux-ui-audit");
+if (!s) throw new Error("Service not found: ux-ui-audit");
+const others = services.filter((x) => x.slug !== s.slug);
+---
+<Layout title={`${s.name} – ${projectInfo.name}`} description={s.description}>
+  <section class="pt-10 sm:pt-14 lg:pt-16 pb-10">
+    <nav class="text-xs text-[#1E293B] mb-4" aria-label="Breadcrumb">
+      <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
+      <span class="mx-2">/</span>
+      <a class="hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a>
+      <span class="mx-2">/</span>
+      <span class="text-[#0F172A] font-medium">{s.name}</span>
+    </nav>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">{s.name}</h1>
+    <p class="mt-3 max-w-3xl text-[#1E293B]">{s.longDescription}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Projekt anfragen">Projekt anfragen</CTAButton>
+      <CTAButton href="/" variant="secondary" ariaLabel="Zur Startseite">Zur Startseite</CTAButton>
+    </div>
+  </section>
+
+  <section class="grid lg:grid-cols-12 gap-10 py-8 border-t border-[#F1F5F9]">
+    <div class="lg:col-span-7">
+      <h2 class="text-xl font-bold text-[#0F172A]">Klarheit durch unabhängige Expertise</h2>
+      <p class="mt-3 text-[#1E293B]">Unser Audit vereint Heuristiken, Nutzertests und Analytics-Insights. Statt pauschaler Checklisten liefern wir priorisierte Handlungsempfehlungen, die Wirkung und Aufwand abwägen. So entsteht eine Roadmap, mit der Ihr Team sofort loslegen kann.</p>
+      <p class="mt-3 text-[#1E293B]">Wir dokumentieren konkrete Problemstellen, zeigen Ursachen auf und skizzieren belastbare Lösungsansätze – stets im Kontext Ihrer Produktziele.</p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Vorteile</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.benefits.map((b) => (<li>{b}</li>))}
+          </ul>
+        </div>
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Audit-Bausteine</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.features.map((f) => (<li>{f}</li>))}
+          </ul>
+        </div>
+      </div>
+      <div class="mt-8 rounded-xl border border-[#F1F5F9] p-5">
+        <h3 class="font-semibold text-[#0F172A]">Ablauf</h3>
+        <ol class="mt-3 space-y-3 text-sm text-[#1E293B] list-decimal list-inside">
+          <li>Kickoff & Scope: Ziele, Zielgruppen, Hypothesen.</li>
+          <li>Analyse: Heuristiken, User-Tests, Analytics.</li>
+          <li>Findings: Schweregrad, Ursachen, Beispiele.</li>
+          <li>Roadmap: Quick Wins, Backlog, nächste Schritte.</li>
+        </ol>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="rounded-2xl border border-[#F1F5F9] p-6">
+        <h3 class="text-base font-semibold text-[#0F172A]">Weitere Leistungen</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          {others.map((o) => (
+            <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/leistungen/${o.slug}`}>{o.name}</a></li>
+          ))}
+        </ul>
+        <div class="mt-6">
+          <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Kontakt aufnehmen">{contact.cta}</CTAButton>
+        </div>
+        <p class="mt-3 text-xs text-[#1E293B]">Oder <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>alle Leistungen</a> ansehen.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="py-10 border-t border-[#F1F5F9]">
+    <div class="flex flex-wrap gap-4 items-center">
+      <a href="/" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Startseite</a>
+      <a href={`/#${sections.leistungen}`} class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Leistungen</a>
+      <a href="/impressum" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Impressum</a>
+      <a href="/datenschutz" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Datenschutz</a>
+    </div>
+  </section>
+</Layout>
