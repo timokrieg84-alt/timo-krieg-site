@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { services } from "../../data/site";
+const current = services.find((s) => s.slug === "content")!;
+const others = services.filter((s) => s.slug !== "content");
+---
+<Layout>
+  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
+      <ol class="flex flex-wrap items-center gap-2">
+        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
+        <li>/</li>
+        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
+        <li>/</li>
+        <li class="text-[#0B1221]">{current.title}</li>
+      </ol>
+    </nav>
+
+    <header class="mt-6">
+      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
+      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Inhalte sind Produkt und Vertrieb zugleich. Wir entwickeln Content-Strategien, die informieren, Vertrauen aufbauen und Suchintention treffen – mit klaren Workflows, konsistenter Tonalität und messbarem Effekt.</p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Redaktionsworkshop</a>
+        <a href="/leistungen/seo" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">SEO</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+      </div>
+    </header>
+
+    <div class="mt-12 grid gap-8 lg:grid-cols-12">
+      <article class="lg:col-span-8">
+        <section class="prose max-w-none">
+          <h2 class="text-2xl font-bold text-[#0B1221]">Content-Design, das führt</h2>
+          <p class="mt-3 text-[#0B1221]/90">Wir strukturieren Inhalte entlang von Aufgaben und Entscheidungen. Klare Überschriften, präzise Mikrocopy und schlüssige Storylines reduzieren Reibung – und heben die Conversion.</p>
+          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Leistungen</h3>
+          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Content-Strategie</strong><br/><span class="text-[#64748B]">Rollen, Ziele, Metriken und Governance.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>UX Writing</strong><br/><span class="text-[#64748B]">Mikrocopy, States, Formulartexte – nutzerzentriert.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Workflows</strong><br/><span class="text-[#64748B]">Headless-CMS, Markdown, Review-Prozesse.</span></li>
+            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Lokalisierung</strong><br/><span class="text-[#64748B]">Mehrsprachigkeit, Terminologie, QA.</span></li>
+          </ul>
+          <p class="mt-6 text-[#0B1221]">Besonders wirkungsvoll im Zusammenspiel mit <a href="/leistungen/analytics" class="text-[#0EA5E9] hover:underline">Analytics</a> und <a href="/leistungen/performance" class="text-[#0EA5E9] hover:underline">Performance</a>.</p>
+        </section>
+      </article>
+      <aside class="lg:col-span-4">
+        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
+          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
+          <ul class="mt-3 space-y-2">
+            {others.map((s) => (
+              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
+            ))}
+          </ul>
+          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
+            <a href="/#leistungen" class="text-sm text-[#0EA5E9] hover:underline">Zur Übersicht</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
+      <h2 class="text-2xl font-bold text-[#0B1221]">Content, der wirkt</h2>
+      <p class="mt-2 text-[#64748B]">Wir helfen, die richtigen Botschaften strukturiert auszuspielen – für Nutzer und Suchmaschinen.</p>
+      <div class="mt-5 flex justify-center gap-3">
+        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
+        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+      </div>
+    </section>
+  </section>
+</Layout>
