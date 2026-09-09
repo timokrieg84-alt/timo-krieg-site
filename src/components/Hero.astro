@@ -1,37 +1,48 @@
-<section class="section" aria-label="Hero">
-  <div class="container--wide" style="position: relative;">
-    <canvas id="hero-canvas" aria-hidden="true" style="position:absolute; inset:0; width:100%; height:100%; pointer-events:none;"></canvas>
-    <div class="container" style="position: relative;">
-      <div data-reveal data-stagger="0.06" class="stack max-w-lg" style="padding-top: min(18vh, 10rem); padding-bottom: min(12vh, 8rem);">
-        <span class="badge badge--accent" data-reveal-child>Online Marketing Office · Schwäbisch Gmünd</span>
-        <h1 data-reveal-child>Mehr Sichtbarkeit. Mehr Anfragen. Mehr Wachstum.</h1>
-        <p class="text-muted" data-reveal-child>Premium-Online-Marketing aus einer Hand: SEO, Google Ads, Webdesign, Automation und mehr – messbar, DSGVO-sicher und auf nachhaltiges Wachstum ausgelegt.</p>
-        <div class="btn-row" data-reveal-child>
-          <a class="btn" href="/kontakt">Projekt anfragen</a>
-          <a class="btn btn--secondary" href="/leistungen">Leistungen ansehen</a>
-        </div>
-        <ul role="list" class="flow" style="margin-top: var(--sp-5);" data-reveal-child>
-          <li>Über 30 Branchenportale synchronisiert</li>
-          <li>DSGVO-konform inkl. Consent-Management</li>
-          <li>Transparente KPIs und Reportings</li>
-          <li>Ein fester Ansprechpartner</li>
-        </ul>
+---
+import { sections, colors } from "../data/site";
+const { hero } = sections;
+---
+<section id={sections.heroId} class="relative overflow-hidden bg-[var(--surface)]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28 grid gap-12 lg:grid-cols-12 items-center">
+    <div class="lg:col-span-7">
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-[var(--text)]">
+        {hero.headline}
+      </h1>
+      <p class="mt-6 text-lg leading-8 text-[var(--muted)] max-w-2xl">
+        {hero.subline}
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-3">
+        <a href={hero.primaryCta.href} class="inline-flex items-center justify-center rounded-md bg-[var(--text)] px-6 py-3 text-base font-medium text-[var(--text-inv)] hover:bg-[var(--accent)] transition-colors">
+          {hero.primaryCta.label}
+        </a>
+        <a href={hero.secondaryCta.href} class="inline-flex items-center justify-center rounded-md border border-[var(--border)] bg-white px-6 py-3 text-base font-medium text-[var(--text)] hover:border-[var(--text)] transition-colors">
+          {hero.secondaryCta.label}
+        </a>
       </div>
     </div>
-    <picture>
-      <source srcset="/images/hero-office-dusk.webp" type="image/webp" />
-      <img src="/images/hero-office-dusk.webp" alt="Hochwertiges Online-Marketing-Office mit Electric-Blue-Akzenten" style="position:absolute; inset:0; width:100%; height:100%; object-fit: cover; opacity: .18;" loading="eager" fetchpriority="high" />
-    </picture>
+    <div class="lg:col-span-5">
+      <div class="relative rounded-2xl border border-[var(--border)] bg-white p-6 shadow-sm">
+        <div class="absolute -top-6 -left-6 h-24 w-24 rounded-full bg-[var(--accent)] opacity-10"></div>
+        <div class="absolute -bottom-6 -right-6 h-24 w-24 rounded-full bg-[var(--accent2)] opacity-10"></div>
+        <div class="grid grid-cols-2 gap-3 text-center">
+          <div class="rounded-lg border border-[var(--border)] p-4">
+            <div class="text-3xl font-bold text-[var(--text)]">95+</div>
+            <div class="text-xs uppercase tracking-wide text-[var(--muted)]">Lighthouse</div>
+          </div>
+          <div class="rounded-lg border border-[var(--border)] p-4">
+            <div class="text-3xl font-bold text-[var(--text)]"><span class="text-[var(--accent)]">∞</span></div>
+            <div class="text-xs uppercase tracking-wide text-[var(--muted)]">Skalierbar</div>
+          </div>
+          <div class="rounded-lg border border-[var(--border)] p-4">
+            <div class="text-3xl font-bold text-[var(--text)]">AA</div>
+            <div class="text-xs uppercase tracking-wide text-[var(--muted)]">A11y</div>
+          </div>
+          <div class="rounded-lg border border-[var(--border)] p-4">
+            <div class="text-3xl font-bold text-[var(--text)]">0.9s</div>
+            <div class="text-xs uppercase tracking-wide text-[var(--muted)]">TTI</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
-<script client:idle lang="ts">
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!prefersReduced) {
-    (async () => {
-      const { HeroBackground } = await import('../scripts/hero/HeroBackground.ts');
-      const c = document.getElementById('hero-canvas');
-      if (c) new HeroBackground(c as HTMLCanvasElement, { density: 0.008, maxRadius: 36, speed: 0.3 });
-    })();
-  }
-  import('../scripts/gsap-reveals.ts');
-</script>
