@@ -7,8 +7,9 @@ export const colors = {
   accent: '#22D3EE', // Akzent/Cyan für CTAs & Links
   highlight: '#F59E0B', // Highlight/Amber für Badges
   muted: '#94A3B8', // Dezentes Grau für Meta/Lines
-  light: '#F8FAFC', // Sehr hell für Hintergründe
+  light: '#F8FAFC', // Sehr hell für Hintergründe (ersetzt "weiß")
   dark: '#05070E', // Fast schwarz für Kontrast
+  subtle: '#475569', // dezente Textfarbe (Slate‑Ton)
 } as const;
 
 export const brand = {
