@@ -1,74 +1,79 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { services } from "../../data/site";
-const current = services.find((s) => s.slug === "webdesign")!;
-const others = services.filter((s) => s.slug !== "webdesign");
+import CTAButton from "../../components/CTAButton.astro";
+import { services, sections, contact, brand, projectInfo } from "../../data/site";
+const s = services.find((x) => x.slug === "webdesign");
+if (!s) throw new Error("Service not found: webdesign");
+const others = services.filter((x) => x.slug !== s.slug);
 ---
-<Layout>
-  <section class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-    <nav aria-label="Breadcrumb" class="text-sm text-[#64748B]">
-      <ol class="flex flex-wrap items-center gap-2">
-        <li><a href="/" class="hover:text-[#0B1221]">Start</a></li>
-        <li>/</li>
-        <li><a href="/#leistungen" class="hover:text-[#0B1221]">Leistungen</a></li>
-        <li>/</li>
-        <li class="text-[#0B1221]">{current.title}</li>
-      </ol>
+<Layout title={`${s.name} – ${projectInfo.name}`} description={s.description}>
+  <section class="pt-10 sm:pt-14 lg:pt-16 pb-10">
+    <nav class="text-xs text-[#1E293B] mb-4" aria-label="Breadcrumb">
+      <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
+      <span class="mx-2">/</span>
+      <a class="hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a>
+      <span class="mx-2">/</span>
+      <span class="text-[#0F172A] font-medium">{s.name}</span>
     </nav>
-
-    <header class="mt-6">
-      <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-[#0B1221]">{current.title}</h1>
-      <p class="mt-4 text-lg text-[#64748B] max-w-3xl">Wir gestalten Interfaces, die Markencharakter spürbar machen und sich nahtlos anfühlen. Klare Informationsarchitektur, zugängliche Komponenten, fein abgestimmte Typografie und States, die in jeder Viewport-Größe überzeugen.</p>
-      <div class="mt-6 flex flex-wrap gap-3">
-        <a href="#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Projekt anfragen</a>
-        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Zur Startseite</a>
-        <a href="/#about" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Über uns</a>
-      </div>
-    </header>
-
-    <div class="mt-12 grid gap-8 lg:grid-cols-12">
-      <article class="lg:col-span-8">
-        <section>
-          <h2 class="text-2xl font-bold text-[#0B1221]">Design, das führt – nicht nur gefällt</h2>
-          <p class="mt-3 text-[#0B1221]/90">Gutes Webdesign ist Führung: Es klärt Hierarchien, reduziert kognitive Last und verstärkt Markenwerte. Wir arbeiten mit skalierbaren Komponentenbibliotheken, konsistenten Spacing- und Typo-Systemen sowie klaren Kontrastverhältnissen. So wird Ihr Interface nicht nur schön, sondern auch schnell erfassbar und messbar erfolgreicher.</p>
-          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Was Sie erhalten</h3>
-          <ul class="mt-3 grid gap-3 sm:grid-cols-2">
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Designsystem</strong><br/><span class="text-[#64748B]">Komponenten, Tokens und Guidelines für nachhaltige Weiterentwicklung.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Responsive Layouts</strong><br/><span class="text-[#64748B]">Mobile First gedacht, mit starker Desktop-Inszenierung.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Accessibility</strong><br/><span class="text-[#64748B]">Saubere Semantik, Fokus-States, Farbkontraste – WCAG-konform.</span></li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Prototyping</strong><br/><span class="text-[#64748B]">Interaktive Click-Dummies für Tests und Stakeholder-Alignment.</span></li>
-          </ul>
-          <h3 class="mt-8 text-xl font-semibold text-[#0B1221]">Unser Vorgehen</h3>
-          <ol class="mt-3 grid gap-3">
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Discovery</strong> – Markenleitplanken, Nutzerziele und Content-Strukturen verstehen.</li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Systemdesign</strong> – Komponenten, States und Musterbibliothek definieren.</li>
-            <li class="rounded-lg border border-[#E2E8F0] bg-[#FFFFFF] p-4"><strong>Validierung</strong> – Usability-Tests und Iterationen vor dem Build.</li>
-          </ol>
-          <p class="mt-6 text-[#0B1221]">Für maximale Wirkung verzahnen wir Design mit <a href="/leistungen/seo" class="text-[#0EA5E9] hover:underline">SEO</a> und <a href="/leistungen/performance" class="text-[#0EA5E9] hover:underline">Performance</a> von Anfang an.</p>
-        </section>
-      </article>
-      <aside class="lg:col-span-4">
-        <div class="rounded-xl border border-[#E2E8F0] bg-[#F8FAFC] p-5">
-          <h2 class="text-sm font-semibold text-[#0B1221]">Weitere Leistungen</h2>
-          <ul class="mt-3 space-y-2">
-            {others.map((s) => (
-              <li><a href={s.href} class="text-sm text-[#64748B] hover:text-[#0B1221]">{s.title}</a></li>
-            ))}
-          </ul>
-          <div class="mt-5 border-t border-[#E2E8F0] pt-4">
-            <a href="/#process" class="text-sm text-[#0EA5E9] hover:underline">So arbeiten wir</a>
-          </div>
-        </div>
-      </aside>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">{s.name}</h1>
+    <p class="mt-3 max-w-3xl text-[#1E293B]">{s.longDescription}</p>
+    <div class="mt-6 flex flex-wrap gap-3">
+      <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Projekt anfragen">Projekt anfragen</CTAButton>
+      <CTAButton href="/" variant="secondary" ariaLabel="Zur Startseite">Zur Startseite</CTAButton>
     </div>
+  </section>
 
-    <section class="mt-16 rounded-2xl border border-[#E2E8F0] bg-[#FFFFFF] p-8 text-center">
-      <h2 class="text-2xl font-bold text-[#0B1221]">Bereit für ein starkes Interface?</h2>
-      <p class="mt-2 text-[#64748B]">Schildern Sie uns kurz Ihr Vorhaben – wir melden uns in 24 Stunden mit einer ersten Einschätzung.</p>
-      <div class="mt-5 flex justify-center gap-3">
-        <a href="/#contact" class="inline-flex items-center rounded-md bg-[#0B1221] px-5 py-2.5 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Kontakt aufnehmen</a>
-        <a href="/" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-5 py-2.5 text-sm font-medium text-[#0B1221] hover:border-[#0B1221]">Startseite</a>
+  <section class="grid lg:grid-cols-12 gap-10 py-8 border-t border-[#F1F5F9]">
+    <div class="lg:col-span-7">
+      <h2 class="text-xl font-bold text-[#0F172A]">Design, das Marke und Conversion vereint</h2>
+      <p class="mt-3 text-[#1E293B]">Wir entwickeln visuelle Systeme, die klare Hierarchien, präzise Typografie und ein belastbares Komponenteninventar verbinden. Statt hübscher Einzelstücke erstellen wir belastbare UI-Bausteine, die in allen Zuständen funktionieren – von Landing bis Checkout.</p>
+      <p class="mt-3 text-[#1E293B]">Jede Entscheidung ist nachvollziehbar: von Grid und Rhythmus über Kontrast und Lesbarkeit bis zu States, Motion und Accessibility. Ihr Ergebnis: eine Oberfläche, die Vertrauen aufbaut, Orientierung gibt und nachweislich besser konvertiert.</p>
+      <div class="mt-6 grid sm:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Vorteile</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.benefits.map((b) => (<li>{b}</li>))}
+          </ul>
+        </div>
+        <div class="rounded-xl border border-[#F1F5F9] p-5">
+          <h3 class="font-semibold text-[#0F172A]">Lieferumfang</h3>
+          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
+            {s.features.map((f) => (<li>{f}</li>))}
+          </ul>
+        </div>
       </div>
-    </section>
+      <div class="mt-8 rounded-xl border border-[#F1F5F9] p-5">
+        <h3 class="font-semibold text-[#0F172A]">So arbeiten wir</h3>
+        <ol class="mt-3 space-y-3 text-sm text-[#1E293B] list-decimal list-inside">
+          <li>Design-Discovery: Ziele, Zielgruppen, Markenwerte und Anforderungen schärfen.</li>
+          <li>IA & Wireframes: Informationsarchitektur, Flows und kritische Pfade definieren.</li>
+          <li>Visual Design: Komponenten, States und Muster in einem konsistenten System ausarbeiten.</li>
+          <li>Handover & QA: Übergabe in den Build, Dokumentation, Review und Accessibility-Checks.</li>
+        </ol>
+      </div>
+    </div>
+    <aside class="lg:col-span-5">
+      <div class="rounded-2xl border border-[#F1F5F9] p-6">
+        <h3 class="text-base font-semibold text-[#0F172A]">Weitere Leistungen</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          {others.map((o) => (
+            <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/leistungen/${o.slug}`}>{o.name}</a></li>
+          ))}
+        </ul>
+        <div class="mt-6">
+          <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Kontakt aufnehmen">{contact.cta}</CTAButton>
+        </div>
+        <p class="mt-3 text-xs text-[#1E293B]">Oder <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>alle Leistungen</a> ansehen.</p>
+      </div>
+    </aside>
+  </section>
+
+  <section class="py-10 border-t border-[#F1F5F9]">
+    <div class="flex flex-wrap gap-4 items-center">
+      <a href="/" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Startseite</a>
+      <a href={`/#${sections.leistungen}`} class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Leistungen</a>
+      <a href="/impressum" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Impressum</a>
+      <a href="/datenschutz" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Datenschutz</a>
+    </div>
   </section>
 </Layout>
