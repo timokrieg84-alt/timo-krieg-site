@@ -3,24 +3,24 @@ import { services, sections } from "../data/site";
 ---
 <section id={sections.servicesId} class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
   <div class="flex items-end justify-between gap-6">
-    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[var(--text)]">Unsere Leistungen</h2>
-    <a href="#contact" class="hidden sm:inline-flex items-center rounded-md bg-[var(--text)] px-4 py-2 text-sm font-medium text-[var(--text-inv)] hover:bg-[var(--accent)]">Jetzt anfragen</a>
+    <h2 class="text-3xl sm:text-4xl font-bold tracking-tight text-[#0B1221]">Unsere Leistungen</h2>
+    <a href="#contact" class="hidden sm:inline-flex items-center rounded-md bg-[#0B1221] px-4 py-2 text-sm font-medium text-[#FFFFFF] hover:bg-[#0EA5E9]">Jetzt anfragen</a>
   </div>
   <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
     {services.map((s) => (
-      <article id={s.id} class="group relative rounded-xl border border-[var(--border)] bg-white p-6 shadow-sm transition-shadow hover:shadow-md">
-        <h3 class="text-xl font-semibold text-[var(--text)]">{s.title}</h3>
-        <p class="mt-2 text-sm text-[var(--muted)]">{s.excerpt}</p>
-        <ul class="mt-4 space-y-2 text-sm text-[var(--text)]">
+      <article id={s.id} class="group relative rounded-xl border border-[#E2E8F0] bg-[#FFFFFF] p-6 shadow-sm transition-shadow hover:shadow-md">
+        <h3 class="text-xl font-semibold text-[#0B1221]">{s.title}</h3>
+        <p class="mt-2 text-sm text-[#64748B]">{s.excerpt}</p>
+        <ul class="mt-4 space-y-2 text-sm text-[#0B1221]">
           {s.benefits.map((b) => (
-            <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[var(--accent)]"></span>{b}</li>
+            <li class="flex items-start gap-2"><span class="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-[#0EA5E9]"></span>{b}</li>
           ))}
         </ul>
         <div class="mt-6 flex items-center justify-between">
-          <a href={s.href} class="text-sm font-medium text-[var(--accent)] hover:underline">Mehr erfahren</a>
-          <a href="#contact" class="inline-flex items-center rounded-md border border-[var(--border)] px-3 py-2 text-xs font-medium text-[var(--text)] hover:border-[var(--text)]">Angebot anfragen</a>
+          <a href={s.href} class="text-sm font-medium text-[#0EA5E9] hover:underline">Mehr erfahren</a>
+          <a href="#contact" class="inline-flex items-center rounded-md border border-[#E2E8F0] px-3 py-2 text-xs font-medium text-[#0B1221] hover:border-[#0B1221]">Angebot anfragen</a>
         </div>
-        <a href={s.href} aria-label={`${s.title} – Details`} class="absolute inset-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-[var(--accent)]"><span class="sr-only">{s.title}</span></a>
+        <a href={s.href} aria-label={`${s.title} – Details`} class="absolute inset-0 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#0EA5E9]"><span class="sr-only">{s.title}</span></a>
       </article>
     ))}
   </div>
