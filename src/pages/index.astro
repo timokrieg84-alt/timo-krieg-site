@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { brand, colors, services, sections, projectInfo } from "../data/site";
 ---
 <Layout title={`${brand.logoText} – ${projectInfo.tagline}`} description={projectInfo.tagline}>
-  <section id={sections.hero} class="relative overflow-hidden">
+  <section class="relative overflow-hidden">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="py-20 sm:py-28 lg:py-32 grid lg:grid-cols-2 gap-10 items-center">
         <div>
@@ -38,7 +38,7 @@ import { brand, colors, services, sections, projectInfo } from "../data/site";
       </div>
       <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((s) => (
-          <div class="group rounded-xl border border-[#F1F5F9] p-6 hover:shadow-sm transition-shadow">
+          <section id={s.slug} class="group rounded-xl border border-[#F1F5F9] p-6 hover:shadow-sm transition-shadow">
             <h3 class="text-xl font-semibold">{s.title}</h3>
             <p class="mt-2 text-sm text-[#0F172A]">{s.excerpt}</p>
             <ul class="mt-4 space-y-1 text-sm text-[#0F172A] list-disc pl-5">
@@ -47,7 +47,7 @@ import { brand, colors, services, sections, projectInfo } from "../data/site";
             <div class="mt-6">
               <a href={`/leistungen/${s.slug}`} class="inline-flex items-center text-[#1E40AF] hover:text-[#F97316] font-medium">Mehr erfahren →</a>
             </div>
-          </div>
+          </section>
         ))}
       </div>
     </div>
