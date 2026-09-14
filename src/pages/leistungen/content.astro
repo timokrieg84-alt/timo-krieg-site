@@ -1,79 +1,71 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import CTAButton from "../../components/CTAButton.astro";
-import { services, sections, contact, projectInfo } from "../../data/site";
-const s = services.find((x) => x.slug === "content");
-if (!s) throw new Error("Service not found: content");
-const others = services.filter((x) => x.slug !== s.slug);
+import { brand, services, sections, projectInfo } from "../../data/site";
+const current = services.find((s) => s.slug === "content");
+const others = services.filter((s) => s.slug !== "content");
 ---
-<Layout title={`${s.name} – ${projectInfo.name}`} description={s.description}>
-  <section class="pt-10 sm:pt-14 lg:pt-16 pb-10">
-    <nav class="text-xs text-[#1E293B] mb-4" aria-label="Breadcrumb">
-      <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
-      <span class="mx-2">/</span>
-      <a class="hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a>
-      <span class="mx-2">/</span>
-      <span class="text-[#0F172A] font-medium">{s.name}</span>
-    </nav>
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-[#0F172A]">{s.name}</h1>
-    <p class="mt-3 max-w-3xl text-[#1E293B]">{s.longDescription}</p>
-    <div class="mt-6 flex flex-wrap gap-3">
-      <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Projekt anfragen">Projekt anfragen</CTAButton>
-      <CTAButton href="/" variant="secondary" ariaLabel="Zur Startseite">Zur Startseite</CTAButton>
-    </div>
-  </section>
+<Layout title={`${current?.title} – ${brand.logoText}`} description={current?.excerpt || projectInfo.tagline}>
+  <section class="bg-[#FFFFFF]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <nav class="text-sm text-[#94A3B8]" aria-label="Breadcrumb">
+        <a class="hover:text-[#1E40AF]" href="/">Start</a>
+        <span class="mx-2">/</span>
+        <a class="hover:text-[#1E40AF]" href={`/#${sections.services}`}>Leistungen</a>
+        <span class="mx-2">/</span>
+        <span class="text-[#0F172A]">{current?.title}</span>
+      </nav>
 
-  <section class="grid lg:grid-cols-12 gap-10 py-8 border-t border-[#F1F5F9]">
-    <div class="lg:col-span-7">
-      <h2 class="text-xl font-bold text-[#0F172A]">Content, der führt – nicht nur füllt</h2>
-      <p class="mt-3 text-[#1E293B]">Wir strukturieren Inhalte entlang der Nutzerfragen und priorisieren Klarheit vor Jargon. Jede Seite erhält einen klaren Auftrag, eine starke Headline-Architektur und präzise Microcopy, die Reibungen abbaut. So entsteht ein roter Faden, der Leserinnen und Leser zuverlässig zur Conversion führt.</p>
-      <p class="mt-3 text-[#1E293B]">Von Guidelines bis Redaktion: Wir etablieren wiederholbare Prozesse, die Qualität sichern und Teams entlasten.</p>
-      <div class="mt-6 grid sm:grid-cols-2 gap-6">
-        <div class="rounded-xl border border-[#F1F5F9] p-5">
-          <h3 class="font-semibold text-[#0F172A]">Vorteile</h3>
-          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
-            {s.benefits.map((b) => (<li>{b}</li>))}
-          </ul>
-        </div>
-        <div class="rounded-xl border border-[#F1F5F9] p-5">
-          <h3 class="font-semibold text-[#0F172A]">Leistungsbausteine</h3>
-          <ul class="mt-3 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
-            {s.features.map((f) => (<li>{f}</li>))}
-          </ul>
-        </div>
-      </div>
-      <div class="mt-8 rounded-xl border border-[#F1F5F9] p-5">
-        <h3 class="font-semibold text-[#0F172A]">Workflow</h3>
-        <ol class="mt-3 space-y-3 text-sm text-[#1E293B] list-decimal list-inside">
-          <li>Research & Tonalität: Zielgruppen, Sprache, Beispiele.</li>
-          <li>Struktur & Blueprints: Outline, Headline-Logik, SEO-Kriterien.</li>
-          <li>Draft & Review: Entwurf, Lektorat, Fact-Check.</li>
-          <li>Publish & Measure: Ausspielen, Tracking, Iteration.</li>
-        </ol>
-      </div>
-    </div>
-    <aside class="lg:col-span-5">
-      <div class="rounded-2xl border border-[#F1F5F9] p-6">
-        <h3 class="text-base font-semibold text-[#0F172A]">Weitere Leistungen</h3>
-        <ul class="mt-3 space-y-2 text-sm">
-          {others.map((o) => (
-            <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/leistungen/${o.slug}`}>{o.name}</a></li>
-          ))}
-        </ul>
-        <div class="mt-6">
-          <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Kontakt aufnehmen">{contact.cta}</CTAButton>
-        </div>
-        <p class="mt-3 text-xs text-[#1E293B]">Oder <a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>alle Leistungen</a> ansehen.</p>
-      </div>
-    </aside>
-  </section>
+      <div class="mt-6 grid lg:grid-cols-3 gap-12">
+        <article class="lg:col-span-2">
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">{current?.title}</h1>
+          <p class="mt-4 text-lg text-[#0F172A] max-w-prose">{current?.excerpt}</p>
 
-  <section class="py-10 border-t border-[#F1F5F9]">
-    <div class="flex flex-wrap gap-4 items-center">
-      <a href="/" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Startseite</a>
-      <a href={`/#${sections.leistungen}`} class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Leistungen</a>
-      <a href="/impressum" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Impressum</a>
-      <a href="/datenschutz" class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Datenschutz</a>
+          <div class="mt-8 grid sm:grid-cols-2 gap-6">
+            <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+              <h2 class="text-xl font-semibold">On-Brand Inhalte</h2>
+              <p class="mt-3 text-sm text-[#0F172A]">Wir schreiben Inhalte, die Ihre Marke klingen lassen: präzise, verständlich, suchmaschinenrelevant – und vor allem nutzerzentriert.</p>
+              <ul class="mt-3 space-y-2 text-sm text-[#0F172A] list-disc pl-5">
+                <li>Tone-of-Voice Guidelines und Messaging</li>
+                <li>Conversion-Copy für Landingpages</li>
+                <li>SEO-optimierte Artikel und Ressourcen</li>
+              </ul>
+            </div>
+            <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+              <h2 class="text-xl font-semibold">Prozess & Qualität</h2>
+              <p class="mt-3 text-sm text-[#0F172A]">Vom Briefing über Entwürfe bis zur Freigabe – wir arbeiten transparent, iterativ und belegen Qualität mit Guidelines und Checklisten.</p>
+            </div>
+          </div>
+
+          <div class="mt-10 rounded-xl border border-[#F1F5F9] p-6 bg-[#F1F5F9]">
+            <h2 class="text-xl font-semibold">Wirkung</h2>
+            <p class="mt-2 text-sm text-[#0F172A]">Mehr Relevanz, bessere Rankings und klarere Conversion-Pfade – Content, der arbeitet.</p>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            {others.map((o) => (
+              <a href={`/leistungen/${o.slug}`} class="inline-flex items-center px-3 py-1.5 rounded-full border border-[#F1F5F9] text-[#1E40AF] hover:text-[#F97316] text-sm">Mehr zu {o.title}</a>
+            ))}
+          </div>
+
+          <div class="mt-12 border-t border-[#F1F5F9] pt-6">
+            <a href={`/#${sections.contact}`} class="inline-flex items-center rounded-md bg-[#1E40AF] text-[#FFFFFF] px-5 py-3 font-medium hover:bg-[#0F172A] transition-colors border border-[#1E40AF] hover:border-[#0F172A]">Content anfragen</a>
+          </div>
+        </article>
+
+        <aside class="lg:col-span-1">
+          <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+            <h2 class="font-semibold">Weitere Leistungen</h2>
+            <ul class="mt-3 space-y-2 text-sm">
+              {others.map((o) => (
+                <li><a href={`/leistungen/${o.slug}`} class="hover:text-[#1E40AF]">{o.title}</a></li>
+              ))}
+            </ul>
+            <div class="mt-6">
+              <a href="/" class="text-sm text-[#1E40AF] hover:text-[#F97316]">Zur Startseite</a>
+            </div>
+          </div>
+        </aside>
+      </div>
     </div>
   </section>
 </Layout>
