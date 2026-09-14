@@ -1,141 +1,127 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import CTAButton from "../components/CTAButton.astro";
-import { brand, services, sections, contact, projectInfo } from "../data/site";
+import { brand, colors, services, sections, projectInfo } from "../data/site";
 ---
-<Layout title={projectInfo.name} description={projectInfo.tagline}>
-  {/* Hero */}
-  <section id={sections.hero} class="pt-16 sm:pt-24 lg:pt-28 pb-16">
-    <div class="mx-auto max-w-3xl text-center">
-      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#0F172A]">
-        {projectInfo.tagline}
-      </h1>
-      <p class="mt-5 text-base sm:text-lg text-[#1E293B]">
-        {brand.logoText} entwickelt ultraschnelle, markenstarke Websites mit Fokus auf Klarheit, Usability und Conversion.
-      </p>
-      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-        <CTAButton href={`/#${sections.kontakt}`} ariaLabel="Kontakt aufnehmen">
-          {contact.cta}
-        </CTAButton>
-        <CTAButton href={`/#${sections.leistungen}`} variant="secondary" ariaLabel="Zu unseren Leistungen">
-          Leistungen ansehen
-        </CTAButton>
-      </div>
-      <div class="mt-8 text-sm text-[#1E293B]">
-        <a class="text-[#C026D3] hover:text-[#06B6D4] font-semibold" href={`/#${sections.leistungen}`}>Direkt zu den Leistungen</a>
+<Layout title={`${brand.logoText} – ${projectInfo.tagline}`} description={projectInfo.tagline}>
+  <section id={sections.hero} class="relative overflow-hidden">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="py-20 sm:py-28 lg:py-32 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight">
+            Digitale Präzision für Marken mit Anspruch.
+          </h1>
+          <p class="mt-6 text-lg text-[#0F172A] max-w-prose">
+            {projectInfo.tagline}
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a href={`/#${sections.services}`} class="inline-flex items-center rounded-md bg-[#1E40AF] text-[#FFFFFF] px-5 py-3 font-medium hover:bg-[#0F172A] transition-colors border border-[#1E40AF] hover:border-[#0F172A]">Leistungen ansehen</a>
+            <a href={`/#${sections.contact}`} class="inline-flex items-center rounded-md bg-[#F97316] text-[#FFFFFF] px-5 py-3 font-medium hover:bg-[#1E40AF] transition-colors border border-[#F97316] hover:border-[#1E40AF]">Projekt anfragen</a>
+          </div>
+          <div class="mt-8 flex items-center gap-6 text-sm text-[#94A3B8]">
+            <div>Core Web Vitals optimiert</div>
+            <div>Astro + Tailwind</div>
+            <div>Made in Hamburg</div>
+          </div>
+        </div>
+        <div class="relative">
+          <div class="aspect-[4/3] w-full rounded-2xl border border-[#F1F5F9] bg-[linear-gradient(135deg,_#F1F5F9_0%,_#FFFFFF_60%)]"></div>
+        </div>
       </div>
     </div>
   </section>
 
-  {/* Leistungen Übersicht */}
-  <section id={sections.leistungen} class="py-10 sm:py-16 lg:py-20 border-t border-[#F1F5F9]">
-    <div class="mb-10 text-center">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Leistungen</h2>
-      <p class="mt-3 text-[#1E293B]">Alles, was Sie für performante Web Experiences brauchen – strategisch vernetzt.</p>
-    </div>
-    <div class="grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
-      {services.map((s) => (
-        <section id={s.id} class="group rounded-2xl border border-[#F1F5F9] bg-[#FFFFFF] p-6 hover:border-[#06B6D4] transition-colors">
-          <h3 class="text-xl font-bold text-[#0F172A]">{s.name}</h3>
-          <p class="mt-2 text-sm text-[#1E293B]">{s.excerpt}</p>
-          <ul class="mt-4 space-y-2 text-sm text-[#1E293B] list-disc list-inside">
-            {s.features.slice(0,3).map((f) => (<li>{f}</li>))}
-          </ul>
-          <div class="mt-6 flex items-center gap-3">
-            <CTAButton href={`/leistungen/${s.slug}`} ariaLabel={`Mehr über ${s.name} erfahren`}>
-              Mehr erfahren
-            </CTAButton>
-            <a href={`/#${sections.kontakt}`} class="text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">Angebot anfragen</a>
+  <section id={sections.services} class="py-20 sm:py-24 bg-[#FFFFFF]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Leistungen</h2>
+        <p class="mt-3 text-[#0F172A]">Wir kombinieren Strategie, Design und Performance zu digitalen Produkten, die wirken.</p>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {services.map((s) => (
+          <div class="group rounded-xl border border-[#F1F5F9] p-6 hover:shadow-sm transition-shadow">
+            <h3 class="text-xl font-semibold">{s.title}</h3>
+            <p class="mt-2 text-sm text-[#0F172A]">{s.excerpt}</p>
+            <ul class="mt-4 space-y-1 text-sm text-[#0F172A] list-disc pl-5">
+              {s.bullets.map((b) => <li>{b}</li>)}
+            </ul>
+            <div class="mt-6">
+              <a href={`/leistungen/${s.slug}`} class="inline-flex items-center text-[#1E40AF] hover:text-[#F97316] font-medium">Mehr erfahren →</a>
+            </div>
           </div>
-          <div class="mt-4 text-xs text-[#1E293B]">
-            <a class="hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Alle Leistungen</a>
-            <span class="mx-2">·</span>
-            <a class="hover:text-[#06B6D4]" href="/">Startseite</a>
-          </div>
-        </section>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 
-  {/* Über uns */}
-  <section id={sections.about} class="py-16 lg:py-24 border-t border-[#F1F5F9]">
-    <div class="grid lg:grid-cols-12 gap-10 items-start">
-      <div class="lg:col-span-5">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Über uns</h2>
-        <p class="mt-4 text-[#1E293B]">
-          Wir sind {projectInfo.name} – ein spezialisiertes Team für Frontend, Design und SEO. Wir vereinen Ästhetik mit harter Performance und bauen Systeme statt Einzelstücke.
+  <section id={sections.about} class="py-20 sm:py-24 bg-[#F1F5F9]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Über uns</h2>
+        <p class="mt-4 text-[#0F172A] max-w-prose">
+          Wir sind ein fokussiertes Team aus Designer:innen, Entwickler:innen und Strateg:innen. Unser Anspruch: Klarheit im Design, Exzellenz im Code und messbare Ergebnisse.
+        </p>
+        <p class="mt-3 text-[#0F172A] max-w-prose">
+          Wir arbeiten iterativ, hypothesengetrieben und eng mit Ihrem Team. Kommunikation auf Augenhöhe, saubere Dokumentation und nachhaltige Übergabe sind Standard.
         </p>
       </div>
-      <div class="lg:col-span-7 grid sm:grid-cols-2 gap-6">
-        <div class="rounded-xl border border-[#F1F5F9] p-6">
-          <h3 class="text-base font-semibold text-[#0F172A]">Anspruch</h3>
-          <p class="mt-2 text-sm text-[#1E293B]">Premium-Qualität, die messbar wirkt – in Design, Code und Prozess.</p>
-        </div>
-        <div class="rounded-xl border border-[#F1F5F9] p-6">
-          <h3 class="text-base font-semibold text-[#0F172A]">Stack</h3>
-          <p class="mt-2 text-sm text-[#1E293B]">Astro, React, Tailwind & TypeScript. Schnell, zugänglich, wartbar.</p>
-        </div>
-        <div class="rounded-xl border border-[#F1F5F9] p-6">
-          <h3 class="text-base font-semibold text-[#0F172A]">Arbeitsweise</h3>
-          <p class="mt-2 text-sm text-[#1E293B]">Klarer Scope, kurze Feedback-Loops, fokussierte Sprints und saubere Handover.</p>
-        </div>
-        <div class="rounded-xl border border-[#F1F5F9] p-6">
-          <h3 class="text-base font-semibold text-[#0F172A]">Transparenz</h3>
-          <p class="mt-2 text-sm text-[#1E293B]">Offene Roadmaps, nachvollziehbare Entscheidungen und Reporting statt Bauchgefühl.</p>
-        </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="rounded-xl border border-[#E2E8F0] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">Klarer Prozess</h3><p class="mt-2 text-sm text-[#0F172A]">Von Discovery über Prototyping bis Go-Live – transparent und planbar.</p></div>
+        <div class="rounded-xl border border-[#E2E8F0] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">Senior-Expertise</h3><p class="mt-2 text-sm text-[#0F172A]">Erfahrene Spezialist:innen statt Agentur-Overhead.</p></div>
+        <div class="rounded-xl border border-[#E2E8F0] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">Qualität vor Quantität</h3><p class="mt-2 text-sm text-[#0F172A]">Wenige Projekte parallel, maximale Aufmerksamkeit fürs Detail.</p></div>
+        <div class="rounded-xl border border-[#E2E8F0] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">Langfristig gedacht</h3><p class="mt-2 text-sm text-[#0F172A]">Skalierbare Architekturen und Designsysteme, die wachsen können.</p></div>
       </div>
     </div>
   </section>
 
-  {/* Prozess */}
-  <section id={sections.prozess} class="py-16 lg:py-24 border-t border-[#F1F5F9]">
-    <div class="mb-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Unser Prozess</h2>
-      <p class="mt-3 text-[#1E293B]">Strukturiert, kollaborativ, effizient – für verlässliche Ergebnisse.</p>
+  <section id={sections.process} class="py-20 sm:py-24 bg-[#FFFFFF]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="max-w-2xl">
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Unser Prozess</h2>
+        <p class="mt-3 text-[#0F172A]">Strukturiert, transparent und iterativ – für Ergebnisse, die überzeugen.</p>
+      </div>
+      <ol class="mt-10 grid sm:grid-cols-2 lg:grid-cols-4 gap-6 counter-reset-[step]">
+        <li class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">1. Discovery</h3><p class="mt-2 text-sm text-[#0F172A]">Ziele, Nutzer, Scope und Erfolgskriterien schärfen.</p></li>
+        <li class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">2. Konzeption</h3><p class="mt-2 text-sm text-[#0F172A]">IA, Flows, Wireframes und Content-Struktur.</p></li>
+        <li class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">3. Design</h3><p class="mt-2 text-sm text-[#0F172A]">Visuelles System, Komponenten, Prototyp.</p></li>
+        <li class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]"><h3 class="font-semibold">4. Build & Launch</h3><p class="mt-2 text-sm text-[#0F172A]">Astro-Implementierung, QA, Analytics, Go-Live.</p></li>
+      </ol>
     </div>
-    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-      <li class="rounded-xl border border-[#F1F5F9] p-6">
-        <h3 class="font-semibold text-[#0F172A]">1. Discovery</h3>
-        <p class="mt-2 text-sm text-[#1E293B]">Ziele, Nutzer, Wettbewerb und Rahmen klären. Risiken erkennen, Chancen priorisieren.</p>
-      </li>
-      <li class="rounded-xl border border-[#F1F5F9] p-6">
-        <h3 class="font-semibold text-[#0F172A]">2. Design</h3>
-        <p class="mt-2 text-sm text-[#1E293B]">Informationsarchitektur, Wireframes, UI-Komponenten und States – zugänglich und markenkonsistent.</p>
-      </li>
-      <li class="rounded-xl border border-[#F1F5F9] p-6">
-        <h3 class="font-semibold text-[#0F172A]">3. Build</h3>
-        <p class="mt-2 text-sm text-[#1E293B]">Astro-Templates, Tailwind, semantisches HTML – Performance und SEO im Fokus.</p>
-      </li>
-      <li class="rounded-xl border border-[#F1F5F9] p-6">
-        <h3 class="font-semibold text-[#0F172A]">4. Launch & Iterate</h3>
-        <p class="mt-2 text-sm text-[#1E293B]">Deploy, Messen, Verbessern. Roadmap für Iterationen und Wachstum.</p>
-      </li>
-    </ol>
   </section>
 
-  {/* Kontakt */}
-  <section id={sections.kontakt} class="py-16 lg:py-24 border-t border-[#F1F5F9]">
-    <div class="grid lg:grid-cols-12 gap-10 items-center">
-      <div class="lg:col-span-7">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-[#0F172A]">Lassen Sie uns starten</h2>
-        <p class="mt-3 text-[#1E293B]">Kurzer Call, klare Einschätzung und ein konkreter Vorschlag für das weitere Vorgehen.</p>
-        <div class="mt-6 flex flex-col sm:flex-row gap-4 items-center">
-          <CTAButton href={`mailto:${contact.email}`} ariaLabel="E-Mail schreiben">E-Mail schreiben</CTAButton>
-          <CTAButton href={`tel:${contact.phone.replace(/\s/g,'')}`} variant="secondary" ariaLabel="Anrufen">Anrufen</CTAButton>
+  <section id={sections.contact} class="py-20 sm:py-24 bg-[#F1F5F9]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-start">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-semibold tracking-tight">Projekt anfragen</h2>
+        <p class="mt-3 text-[#0F172A]">Erzählen Sie uns kurz von Ihrem Vorhaben – wir melden uns innerhalb von 24 Stunden.</p>
+        <div class="mt-6 space-y-2 text-sm text-[#0F172A]">
+          <div class="font-medium">E-Mail</div>
+          <a href={`mailto:${projectInfo.email}`} class="text-[#1E40AF] hover:text-[#F97316]">{projectInfo.email}</a>
+          <div class="font-medium mt-4">Telefon</div>
+          <a href={`tel:${projectInfo.phone.replace(/\s+/g, '')}`} class="text-[#1E40AF] hover:text-[#F97316]">{projectInfo.phone}</a>
         </div>
-        <p class="mt-4 text-sm text-[#1E293B]">Erreichbar: {contact.availability} · {contact.address}</p>
       </div>
-      <div class="lg:col-span-5 rounded-2xl border border-[#F1F5F9] p-6">
-        <h3 class="text-base font-semibold text-[#0F172A]">Direktlinks</h3>
-        <ul class="mt-3 space-y-2 text-sm text-[#1E293B]">
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href="/">Startseite</a></li>
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.leistungen}`}>Leistungen</a></li>
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.about}`}>Über uns</a></li>
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`/#${sections.prozess}`}>Prozess</a></li>
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href="/impressum">Impressum</a></li>
-          <li><a class="text-[#C026D3] hover:text-[#06B6D4]" href="/datenschutz">Datenschutz</a></li>
-        </ul>
-      </div>
+      <form class="bg-[#FFFFFF] rounded-xl border border-[#E2E8F0] p-6 grid grid-cols-1 gap-4" netlify>
+        <input type="hidden" name="form-name" value="Kontakt" />
+        <label class="block">
+          <span class="text-sm font-medium">Ihr Name</span>
+          <input required name="name" class="mt-1 w-full rounded-md border border-[#E2E8F0] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1E40AF]" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium">E-Mail</span>
+          <input required type="email" name="email" class="mt-1 w-full rounded-md border border-[#E2E8F0] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1E40AF]" />
+        </label>
+        <label class="block">
+          <span class="text-sm font-medium">Nachricht</span>
+          <textarea required name="message" rows="5" class="mt-1 w-full rounded-md border border-[#E2E8F0] px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1E40AF]"></textarea>
+        </label>
+        <div class="flex items-center justify-between gap-4">
+          <label class="inline-flex items-center gap-2 text-sm">
+            <input type="checkbox" required class="w-4 h-4 rounded border-[#E2E8F0] text-[#1E40AF]" />
+            <span>Ich stimme der <a href="/datenschutz" class="text-[#1E40AF] hover:text-[#F97316] underline">Datenschutzerklärung</a> zu.</span>
+          </label>
+          <button type="submit" class="inline-flex items-center rounded-md bg-[#1E40AF] text-[#FFFFFF] px-5 py-2.5 font-medium hover:bg-[#0F172A] transition-colors border border-[#1E40AF] hover:border-[#0F172A]">Senden</button>
+        </div>
+      </form>
     </div>
   </section>
 </Layout>
