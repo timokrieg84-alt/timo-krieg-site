@@ -1,0 +1,70 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { brand, services, sections, projectInfo } from "../../data/site";
+const current = services.find((s) => s.slug === "ui-ux");
+const others = services.filter((s) => s.slug !== "ui-ux");
+---
+<Layout title={`${current?.title} – ${brand.logoText}`} description={current?.excerpt || projectInfo.tagline}>
+  <section class="bg-[#FFFFFF]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <nav class="text-sm text-[#94A3B8]" aria-label="Breadcrumb">
+        <a class="hover:text-[#1E40AF]" href="/">Start</a>
+        <span class="mx-2">/</span>
+        <a class="hover:text-[#1E40AF]" href={`/#${sections.services}`}>Leistungen</a>
+        <span class="mx-2">/</span>
+        <span class="text-[#0F172A]">{current?.title}</span>
+      </nav>
+
+      <div class="mt-6 grid lg:grid-cols-3 gap-12">
+        <article class="lg:col-span-2">
+          <h1 class="text-3xl sm:text-4xl font-semibold tracking-tight">{current?.title}</h1>
+          <p class="mt-4 text-lg text-[#0F172A] max-w-prose">{current?.excerpt}</p>
+
+          <div class="mt-8 grid sm:grid-cols-2 gap-6">
+            <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+              <h2 class="text-xl font-semibold">Design-Systeme</h2>
+              <p class="mt-3 text-sm text-[#0F172A]">Wir bauen skalierbare Komponentenbibliotheken mit klaren Tokens und Pattern, die in Produktteams funktionieren.</p>
+            </div>
+            <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+              <h2 class="text-xl font-semibold">UX-Methoden</h2>
+              <ul class="mt-3 space-y-2 text-sm text-[#0F172A] list-disc pl-5">
+                <li>User Flows, Jobs-to-be-done, Priorisierung</li>
+                <li>Wireframes, Prototyping und Usability-Tests</li>
+                <li>Accessibility als nicht verhandelbarer Standard</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="mt-10 rounded-xl border border-[#F1F5F9] p-6 bg-[#F1F5F9]">
+            <h2 class="text-xl font-semibold">Ergebnis</h2>
+            <p class="mt-2 text-sm text-[#0F172A]">Interfaces, die eindeutig, zugänglich und effizient sind – messbar durch bessere Task-Completion und Zufriedenheit.</p>
+          </div>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            {others.map((o) => (
+              <a href={`/leistungen/${o.slug}`} class="inline-flex items-center px-3 py-1.5 rounded-full border border-[#F1F5F9] text-[#1E40AF] hover:text-[#F97316] text-sm">Mehr zu {o.title}</a>
+            ))}
+          </div>
+
+          <div class="mt-12 border-t border-[#F1F5F9] pt-6">
+            <a href={`/#${sections.contact}`} class="inline-flex items-center rounded-md bg-[#1E40AF] text-[#FFFFFF] px-5 py-3 font-medium hover:bg-[#0F172A] transition-colors border border-[#1E40AF] hover:border-[#0F172A]">Design anfragen</a>
+          </div>
+        </article>
+
+        <aside class="lg:col-span-1">
+          <div class="rounded-xl border border-[#F1F5F9] p-6 bg-[#FFFFFF]">
+            <h2 class="font-semibold">Weitere Leistungen</h2>
+            <ul class="mt-3 space-y-2 text-sm">
+              {others.map((o) => (
+                <li><a href={`/leistungen/${o.slug}`} class="hover:text-[#1E40AF]">{o.title}</a></li>
+              ))}
+            </ul>
+            <div class="mt-6">
+              <a href="/" class="text-sm text-[#1E40AF] hover:text-[#F97316]">Zur Startseite</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+</Layout>
