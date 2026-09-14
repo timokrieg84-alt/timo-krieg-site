@@ -1,41 +1,25 @@
 ---
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
-import { brand, nav, projectInfo } from "../data/site";
-
-interface Props {
+import { brand, colors, nav, sections } from "../data/site";
+const { title = brand.logoText, description = brand.logoText } = Astro.props as {
   title?: string;
   description?: string;
-}
-const { title = projectInfo.tagline, description = projectInfo.tagline } = Astro.props as Props;
+};
 ---
 <html lang="de" class="scroll-smooth">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title} – {brand.logoText}</title>
+    <title>{title}</title>
     <meta name="description" content={description} />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='0.9em' font-size='90'%3E%F0%9F%8C%84%3C/text%3E%3C/svg%3E" />
   </head>
-  <body class="min-h-screen bg-[#FFFFFF] text-[#0F172A] antialiased [font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,'Apple Color Emoji','Segoe UI Emoji']">
-    <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-[#06B6D4] text-[#FFFFFF] px-3 py-2 rounded">Zum Inhalt springen</a>
+  <body class="min-h-screen bg-[#FFFFFF] text-[#0F172A] antialiased">
     <Header />
-    <main id="main" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main id="{sections.hero}" class="relative">
       <slot />
     </main>
     <Footer />
-    <script>
-      // Kleine Erweiterung: Schließen des mobilen Menüs bei Navigation
-      document.addEventListener('click', (e) => {
-        const details = document.querySelector('header details');
-        if (!details) return;
-        const target = e.target;
-        if (target instanceof HTMLElement && target.tagName === 'A' && details.open) {
-          details.open = false;
-        }
-      });
-    </script>
   </body>
 </html>
