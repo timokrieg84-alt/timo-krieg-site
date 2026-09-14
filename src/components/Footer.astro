@@ -1,46 +1,54 @@
 ---
-import { brand, nav, contact, services } from "../data/site";
-const year = new Date().getFullYear();
+import { brand, services, sections, nav, contact, projectInfo } from "../data/site";
 ---
-<footer class="mt-24 border-t border-[#F1F5F9] bg-[#FFFFFF]">
+<footer class="mt-24 border-t border-[#F1F5F9] bg-[#FFFFFF] text-[#0F172A]">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
-      <div class="text-lg font-extrabold tracking-tight text-[#0F172A]">{brand.logoText}</div>
-      <p class="mt-3 text-sm text-[#1E293B] max-w-xs">{contact.address}</p>
-      <p class="mt-2 text-sm"><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`mailto:${contact.email}`}>{contact.email}</a></p>
-      <p class="mt-1 text-sm"><a class="text-[#C026D3] hover:text-[#06B6D4]" href={`tel:${contact.phone.replace(/\s/g,'')}`}>{contact.phone}</a></p>
+      <a href="/" class="font-semibold text-lg text-[#1E40AF]">{brand.logoText}</a>
+      <p class="mt-3 text-sm text-[#94A3B8]">{projectInfo.tagline}</p>
+      <div class="mt-4 text-sm">
+        <a href={`/#${sections.contact}`} class="inline-flex items-center rounded-md bg-[#F97316] text-[#FFFFFF] px-3 py-2 font-medium hover:bg-[#1E40AF] transition-colors border border-[#F97316] hover:border-[#1E40AF]">Projekt anfragen</a>
+      </div>
     </div>
     <div>
-      <h3 class="text-sm font-semibold text-[#0F172A]">Navigation</h3>
-      <ul class="mt-3 space-y-2">
-        {nav.main.map((n) => (
-          <li><a href={n.href} class="text-sm text-[#1E293B] hover:text-[#06B6D4]">{n.label}</a></li>
-        ))}
+      <h2 class="font-semibold mb-3">Seiten</h2>
+      <ul class="space-y-2 text-sm">
+        <li><a href="/" class="hover:text-[#1E40AF]">Start</a></li>
+        <li><a href={`/#${sections.services}`} class="hover:text-[#1E40AF]">Leistungen</a></li>
+        <li><a href={`/#${sections.about}`} class="hover:text-[#1E40AF]">Über uns</a></li>
+        <li><a href={`/#${sections.process}`} class="hover:text-[#1E40AF]">Prozess</a></li>
+        <li><a href={`/#${sections.contact}`} class="hover:text-[#1E40AF]">Kontakt</a></li>
+        <li><a href="/impressum" class="hover:text-[#1E40AF]">Impressum</a></li>
+        <li><a href="/datenschutz" class="hover:text-[#1E40AF]">Datenschutz</a></li>
       </ul>
     </div>
     <div>
-      <h3 class="text-sm font-semibold text-[#0F172A]">Leistungen</h3>
-      <ul class="mt-3 space-y-2">
+      <h2 class="font-semibold mb-3">Leistungen</h2>
+      <ul class="space-y-2 text-sm">
         {services.map((s) => (
-          <li><a href={`/leistungen/${s.slug}`} class="text-sm text-[#1E293B] hover:text-[#06B6D4]">{s.name}</a></li>
+          <li><a href={`/leistungen/${s.slug}`} class="hover:text-[#1E40AF]">{s.title}</a></li>
         ))}
       </ul>
     </div>
     <div>
-      <h3 class="text-sm font-semibold text-[#0F172A]">Kontakt</h3>
-      <p class="mt-3 text-sm text-[#1E293B]">Erreichbarkeit: {contact.availability}</p>
-      <a href={`mailto:${contact.email}`} class="mt-3 inline-flex items-center gap-2 text-sm font-semibold text-[#C026D3] hover:text-[#06B6D4]">
-        {contact.cta}
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-4 w-4"><path fill-rule="evenodd" d="M3 10a.75.75 0 01.75-.75h9.19L9.53 5.84a.75.75 0 111.06-1.06l5.25 5.25a.75.75 0 010 1.06l-5.25 5.25a.75.75 0 11-1.06-1.06l3.41-3.41H3.75A.75.75 0 013 10z" clip-rule="evenodd" /></svg>
-      </a>
+      <h2 class="font-semibold mb-3">Kontakt</h2>
+      <address class="not-italic text-sm text-[#0F172A]">
+        <div class="space-y-1">
+          {contact.addressLines.map((l) => <div>{l}</div>)}
+        </div>
+        <div class="mt-3">
+          <a class="hover:text-[#1E40AF]" href={`tel:${projectInfo.phone.replace(/\s+/g, '')}`}>{projectInfo.phone}</a><br />
+          <a class="hover:text-[#1E40AF]" href={`mailto:${projectInfo.email}`}>{projectInfo.email}</a>
+        </div>
+      </address>
     </div>
   </div>
-  <div class="border-t border-[#F1F5F9] py-6">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-xs text-[#1E293B] flex flex-col sm:flex-row items-center justify-between gap-3">
-      <p>© {year} {brand.logoText}. Alle Rechte vorbehalten.</p>
+  <div class="border-t border-[#F1F5F9] py-4 text-sm text-[#94A3B8]">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div>© {new Date().getFullYear()} {projectInfo.name}</div>
       <div class="flex items-center gap-4">
-        <a href="/impressum" class="hover:text-[#06B6D4]">Impressum</a>
-        <a href="/datenschutz" class="hover:text-[#06B6D4]">Datenschutz</a>
+        <a href="/impressum" class="hover:text-[#1E40AF]">Impressum</a>
+        <a href="/datenschutz" class="hover:text-[#1E40AF]">Datenschutz</a>
       </div>
     </div>
   </div>
