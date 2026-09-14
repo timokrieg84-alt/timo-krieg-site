@@ -1,237 +1,227 @@
-// Zentrale Site-Konfiguration – alle Seiten/Komponenten importieren NUR aus dieser Datei.
-// WICHTIG: Nur named exports verwenden und Bezeichner konsistent halten.
+// Zentrales Datenmodul: Alle benoetigten named exports exakt hier definieren
+// WICHTIG: Konsistente, identische Namen ueber alle Dateien hinweg verwenden.
 
 export const brand = {
-  logoText: "NEON & NOISE",
-  colors: {
-    primary: "#0F172A", // Tiefes Navy für Text/Heading
-    secondary: "#1E293B", // Dunkler Sekundärton z.B. für Header/Footer-Hintergründe
-    accent: "#C026D3", // Akzentfarbe für CTAs/Links
-    highlight: "#06B6D4", // Sekundärer Akzent (Hover/Details)
-    surface: "#FFFFFF", // Grundfläche (Weiß)
-    muted: "#F1F5F9" // Zarte Flächen/Divider
-  }
+  logoText: "Nordlicht Digital",
 };
 
-export const colors = brand.colors;
+export const colors = {
+  primary: "#1E40AF", // Blau
+  primaryDark: "#0F172A", // sehr dunkles Blau/Slate
+  accent: "#F97316", // Orange Akzent
+  neutralLight: "#F1F5F9", // sehr helles Grau/Slate-100
+  neutral: "#94A3B8", // Slate-400
+  white: "#FFFFFF",
+  black: "#0B1220",
+};
 
 export const projectInfo = {
-  name: "NEON & NOISE GmbH",
-  owner: "Max Beispiel",
-  tagline: "High-End Web Experiences, die messenbar performen.",
-  street: "Beispielstraße 12",
-  zip: "10115",
-  city: "Berlin",
+  name: "Nordlicht Digital",
+  owner: "Lea Hartmann",
+  tagline: "Performance-orientiertes Webdesign und SEO für ambitionierte Marken.",
+  street: "Schulterblatt 88",
+  zip: "20357",
+  city: "Hamburg",
   country: "Deutschland",
-  phone: "+49 30 1234567",
-  email: "hello@neon-noise.de"
+  phone: "+49 40 12345678",
+  email: "hallo@nordlicht-digital.de",
 };
 
 export const contact = {
   phone: projectInfo.phone,
   email: projectInfo.email,
-  address: `${projectInfo.street}, ${projectInfo.zip} ${projectInfo.city}, ${projectInfo.country}`,
-  availability: "Mo–Fr 9–18 Uhr",
-  cta: "Projekt anfragen"
-};
-
-export const sections = {
-  hero: "hero",
-  leistungen: "leistungen",
-  about: "ueber-uns",
-  prozess: "prozess",
-  kontakt: "kontakt"
+  addressLines: [
+    `${projectInfo.street}`,
+    `${projectInfo.zip} ${projectInfo.city}`,
+    `${projectInfo.country}`,
+  ],
 };
 
 export const services = [
   {
-    name: "Webdesign",
     slug: "webdesign",
-    id: "webdesign",
-    excerpt: "Preisgekröntes Interface- und Visual-Design für Marken mit Ambition.",
-    description: "Wir gestalten aus einer klaren Strategie heraus digitale Interfaces, die Marke und Conversion vereinen.",
-    longDescription:
-      "Unser Webdesign ist die Synthese aus Brand, Usability und messbarer Conversion. Wir denken modular, skalierbar und systemisch – für ein Design, das heute begeistert und morgen noch performt.",
-    features: [
-      "Design-Systeme & UI Libraries",
-      "Responsive Komponentenmuster",
-      "Accessible Color & Type Scales",
-      "Motion & Microinteractions"
+    title: "Webdesign & Development",
+    excerpt:
+      "Hochperformante Websites, die Marken präzise inszenieren und Leads messbar steigern.",
+    bullets: [
+      "Responsives Frontend mit Core-Web-Vitals-Fokus",
+      "Astro + Tailwind für maximale Performance",
+      "Komponentenbasierte Architektur, leicht erweiterbar",
     ],
-    benefits: [
-      "Markenkonsistenz über alle Touchpoints",
-      "Klarheit, Fokus und bessere Nutzbarkeit",
-      "Höhere Conversion und geringere Bounce-Rates"
-    ]
   },
   {
-    name: "Webentwicklung",
-    slug: "webentwicklung",
-    id: "webentwicklung",
-    excerpt: "Astro, React & Tailwind – ultraschnell, wartbar und SEO-stark.",
-    description: "Wir entwickeln statische und hybride Frontends mit modernem Stack und Fokus auf Core Web Vitals.",
-    longDescription:
-      "Unsere Frontend-Architektur ist auf Performance, Barrierefreiheit und Wartbarkeit ausgelegt. Sauberer Code, sinnvolle Abstraktionen und ein Build, der unter Last Bestand hat.",
-    features: [
-      "Astro Islands & Partial Hydration",
-      "TypeScript-first Codebase",
-      "CI/CD & Preview Deployments",
-      "Headless CMS Anbindung"
-    ],
-    benefits: [
-      "Ladezeiten im grünen Bereich",
-      "Skalierbarkeit ohne Tech-Schulden",
-      "Stabile Deployments und kurze Time-to-Market"
-    ]
-  },
-  {
-    name: "SEO",
     slug: "seo",
-    id: "seo",
-    excerpt: "Technik, Content und Authority – ganzheitlich, nachhaltig, transparent.",
-    description: "Wir optimieren Struktur, Content und Performance für organisches Wachstum und stabile Rankings.",
-    longDescription:
-      "SEO ist ein System. Wir verbinden technische Exzellenz mit suchintentionstauglichem Content und messbarer Erfolgskontrolle. Kein Voodoo – nur konsequente, nachhaltige Optimierung.",
-    features: [
-      "Technisches SEO & CWV-Optimierung",
-      "Keyword-Strategie & Content-Hubs",
-      "Schema.org & Rich Snippets",
-      "Monitoring & Reporting"
+    title: "SEO & Content-Strategie",
+    excerpt:
+      "Strategische SEO mit sauberer Technik, starken Inhalten und nachhaltigen Rankings.",
+    bullets: [
+      "Technische Audits & Informationsarchitektur",
+      "Keyword-Strategien und Content-Hubs",
+      "Messung via Search Console & Analytics",
     ],
-    benefits: [
-      "Bessere Sichtbarkeit und Reichweite",
-      "Qualifizierter Traffic statt Vanity-Metriken",
-      "Langfristig niedrigere Akquisekosten"
-    ]
   },
   {
-    name: "Content & Copy",
-    slug: "content",
-    id: "content",
-    excerpt: "Story, Struktur, Substance – Content, der informiert und konvertiert.",
-    description: "Editorial Workflows, UX Writing und suchmaschinenfähige Texte aus einem Guss.",
-    longDescription:
-      "Wir entwickeln Content, der Zielgruppen entlang ihrer Journey führt. Klar, präzise und im Ton Ihrer Marke – für Vertrauen, Verständnis und Conversion.",
-    features: [
-      "Informationsarchitektur & UX Copy",
-      "Tone-of-Voice Guidelines",
-      "Redaktion & Lektorat",
-      "Content Operations"
-    ],
-    benefits: [
-      "Konsistente Markenstimme",
-      "Besseres Verständnis komplexer Produkte",
-      "Mehr Leads durch klare Botschaften"
-    ]
-  },
-  {
-    name: "Performance-Optimierung",
     slug: "performance",
-    id: "performance",
-    excerpt: "Millisekunden zählen – wir holen das Maximum aus Ihrem Frontend.",
-    description: "Analyse, Audits und Maßnahmenplan für messbar schnellere Ladezeiten.",
-    longDescription:
-      "Wir messen, analysieren und optimieren. Von Bildpipelines über Code-Splitting bis hin zu Caching-Strategien – für ein spürbar schnelleres Erlebnis.",
-    features: [
-      "Core Web Vitals Audit",
-      "Code-Splitting & Lazy Hydration",
-      "Asset-Pipelines & Caching",
-      "Monitoring & Alerting"
+    title: "Performance-Optimierung",
+    excerpt:
+      "Millisekunden statt Sekunden: wir holen das Maximum aus Ihrer Seite heraus.",
+    bullets: [
+      "Lighthouse & WebPageTest-basierte Analysen",
+      "Code-Splitting, Bildoptimierung, Caching",
+      "CLS/LCP/INP-Optimierung für reale Nutzer",
     ],
-    benefits: [
-      "Bessere Rankings & Conversion",
-      "Weniger Abbrüche auf Mobilgeräten",
-      "Stabile Performance unter Last"
-    ]
   },
   {
-    name: "UX & UI Audit",
-    slug: "ux-ui-audit",
-    id: "ux-ui-audit",
-    excerpt: "Frischer Blick, klare Befunde – Prioritäten statt Bauchgefühl.",
-    description: "Heuristische Evaluation, Nutzertests und klare Handlungsempfehlungen.",
-    longDescription:
-      "Wir identifizieren Reibungen in Flows, Informationsarchitektur und Interaktionsmustern – priorisiert nach Impact und Aufwand, direkt umsetzbar.",
-    features: [
-      "Heuristische Evaluation",
-      "Remote-Usertests",
-      "Analytics-Review",
-      "Roadmap mit Quick Wins"
+    slug: "ecommerce",
+    title: "E‑Commerce & Shop",
+    excerpt:
+      "Konversionsstarke Storefronts mit klarer UX und performanter Technik.",
+    bullets: [
+      "Headless-Ansätze und schnelle Produktlisten",
+      "Checkout-Optimierung & Trust-Elemente",
+      "Tracking & Attribution korrekt aufgesetzt",
     ],
-    benefits: [
-      "Höhere Task-Erfolgsraten",
-      "Weniger Supportaufwand",
-      "Fundierte Roadmap statt Zufallsoptimierung"
-    ]
-  }
+  },
+  {
+    slug: "content",
+    title: "Content-Produktion",
+    excerpt:
+      "On-Brand Copy, Landingpages und Content-Assets, die wirken und konvertieren.",
+    bullets: [
+      "Tone-of-Voice Guidelines & Messaging",
+      "Conversion-Copy für Landingpages",
+      "Redaktionspläne & Content-Serien",
+    ],
+  },
+  {
+    slug: "ui-ux",
+    title: "UX/UI-Design",
+    excerpt:
+      "Klar, konsistent, barrierearm: Interfaces, die Nutzer lieben und verstehen.",
+    bullets: [
+      "Design-Systeme & Komponentenbibliotheken",
+      "User Flows, Wireframes, Prototyping",
+      "Accessibility (WCAG) als Standard",
+    ],
+  },
 ];
 
+export const sections = {
+  hero: "top",
+  services: "leistungen",
+  about: "about",
+  process: "process",
+  contact: "kontakt",
+};
+
 export const nav = {
-  main: [
-    { label: "Home", href: "/" },
-    { label: "Leistungen", href: `/#${sections.leistungen}` },
-    { label: "Über uns", href: `/#${sections.about}` },
-    { label: "Prozess", href: `/#${sections.prozess}` },
-    { label: "Kontakt", href: `/#${sections.kontakt}` },
+  items: [
+    { label: "Start", href: "/" },
+    { label: "Über uns", href: "/#about" },
+    { label: "Prozess", href: "/#process" },
+    { label: "Kontakt", href: "/#kontakt" },
     { label: "Impressum", href: "/impressum" },
-    { label: "Datenschutz", href: "/datenschutz" }
+    { label: "Datenschutz", href: "/datenschutz" },
   ],
-  services: services.map((s) => ({ label: s.name, href: `/leistungen/${s.slug}` }))
 };
 
 export const legal = {
-  imprint: {
-    company: projectInfo.name,
-    legalForm: "Gesellschaft mit beschränkter Haftung (GmbH)",
-    representedBy: projectInfo.owner,
-    registeredOffice: `${projectInfo.zip} ${projectInfo.city}`,
-    commercialRegister: {
-      court: "Amtsgericht Berlin (Charlottenburg)",
-      number: "HRB 123456 B"
-    },
-    vatId: "DE123456789",
-    contact: {
-      phone: projectInfo.phone,
-      email: projectInfo.email
-    },
-    address: {
-      street: projectInfo.street,
-      zip: projectInfo.zip,
-      city: projectInfo.city,
-      country: projectInfo.country
-    },
-    disclaimer: {
-      content: "Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.",
-      links: "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Für diese fremden Inhalte übernehmen wir keine Gewähr. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.",
-      copyright: "Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als solche gekennzeichnet. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
-      dispute: "Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: https://ec.europa.eu/consumers/odr/. Unsere E-Mail-Adresse finden Sie oben im Impressum."
-    }
+  companyName: projectInfo.name,
+  owner: projectInfo.owner,
+  address: {
+    street: projectInfo.street,
+    zip: projectInfo.zip,
+    city: projectInfo.city,
+    country: projectInfo.country,
   },
-  privacy: {
-    responsible: {
-      name: projectInfo.name,
-      representative: projectInfo.owner,
-      address: `${projectInfo.street}, ${projectInfo.zip} ${projectInfo.city}, ${projectInfo.country}`,
-      contact: `${projectInfo.email}, Tel. ${projectInfo.phone}`
+  contact: {
+    phone: projectInfo.phone,
+    email: projectInfo.email,
+    website: "https://nordlicht-digital.de",
+  },
+  register: {
+    type: "Handelsregister",
+    court: "Amtsgericht Hamburg",
+    number: "HRB 123456",
+  },
+  vatId: "DE123456789",
+  supervisoryAuthority: "Handwerkskammer Hamburg",
+  euDisputeResolutionUrl: "https://ec.europa.eu/consumers/odr",
+  consumerDisputeBody:
+    "Wir sind nicht verpflichtet und nicht bereit, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.",
+  impressumSections: [
+    {
+      title: "Haftung für Inhalte",
+      paragraphs: [
+        "Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich.",
+        "Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.",
+        "Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.",
+      ],
     },
-    hosting: {
-      provider: "Vercel Inc.",
-      note: "Hosting über Vercel. Es können personenbezogene Daten (z.B. IP-Adressen) in Drittländer übermittelt werden. Es wurden Standardvertragsklauseln abgeschlossen.",
-      dpa: "Auftragsverarbeitungsvertrag gemäß Art. 28 DSGVO vorhanden."
+    {
+      title: "Haftung für Links",
+      paragraphs: [
+        "Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.",
+        "Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.",
+        "Eine permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar.",
+      ],
     },
-    serverLogs: "Bei jedem Zugriff werden automatisch Server-Logfiles erfasst (IP-Adresse, Datum/Uhrzeit, Browser, Referrer, Anfrage-URL). Die Speicherung erfolgt aus Sicherheitsgründen und zur Fehleranalyse für max. 30 Tage.",
-    cookies: "Diese Website verwendet primär technisch notwendige Cookies. Sofern optionale Cookies/Tracking eingesetzt werden, holen wir vorab Ihre Einwilligung ein (Art. 6 Abs. 1 lit. a DSGVO).",
-    analytics: "Sofern Webanalyse-Tools eingesetzt werden, erfolgt dies mit IP-Anonymisierung und auf Basis Ihrer Einwilligung. Details (Anbieter, Speicherdauer, Widerruf) werden hier transparent aufgeführt.",
-    dataSubjectsRights: [
-      "Recht auf Auskunft, Berichtigung, Löschung, Einschränkung und Datenübertragbarkeit",
-      "Recht auf Widerruf erteilter Einwilligungen mit Wirkung für die Zukunft",
-      "Recht auf Beschwerde bei einer Aufsichtsbehörde"
-    ],
-    processorList: [
-      "Hosting: Vercel Inc.",
-      "CI/CD & Repo: GitHub, Inc."
-    ],
-    contactForPrivacy: projectInfo.email,
-    lastUpdated: "01.09.2026"
-  }
+    {
+      title: "Urheberrecht",
+      paragraphs: [
+        "Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht.",
+        "Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.",
+      ],
+    },
+  ],
+  privacyPolicy: [
+    {
+      title: "1. Verantwortlicher",
+      paragraphs: [
+        `${projectInfo.name}, ${projectInfo.owner}, ${projectInfo.street}, ${projectInfo.zip} ${projectInfo.city}, ${projectInfo.country}`,
+        `Telefon: ${projectInfo.phone} · E-Mail: ${projectInfo.email}`,
+      ],
+    },
+    {
+      title: "2. Hosting",
+      paragraphs: [
+        "Diese Website wird bei einem externen Dienstleister gehostet (Vercel Inc.). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters verarbeitet.",
+        "Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) sowie im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots (Art. 6 Abs. 1 lit. f DSGVO).",
+      ],
+    },
+    {
+      title: "3. Server-Logfiles",
+      paragraphs: [
+        "Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Logfiles, die Ihr Browser automatisch übermittelt.",
+        "Dies sind: Browsertyp und -version, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage, IP-Adresse.",
+        "Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.",
+      ],
+    },
+    {
+      title: "4. Cookies",
+      paragraphs: [
+        "Unsere Website verwendet nur technisch notwendige Cookies, soweit diese für den Betrieb erforderlich sind. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.",
+      ],
+    },
+    {
+      title: "5. Kontaktaufnahme",
+      paragraphs: [
+        "Wenn Sie uns per E-Mail kontaktieren, werden Ihre Angaben zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert.",
+        "Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der Erfüllung eines Vertrags zusammenhängt oder zur Durchführung vorvertraglicher Maßnahmen erforderlich ist.",
+      ],
+    },
+    {
+      title: "6. Ihre Rechte",
+      paragraphs: [
+        "Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch gegen die Verarbeitung Ihrer personenbezogenen Daten.",
+        "Hierzu sowie zu weiteren Fragen zum Thema personenbezogene Daten können Sie sich jederzeit an uns wenden.",
+      ],
+    },
+    {
+      title: "7. Stand",
+      paragraphs: [
+        "Diese Datenschutzerklärung hat den Stand September 2026 und wird bei Bedarf aktualisiert.",
+      ],
+    },
+  ],
 };
